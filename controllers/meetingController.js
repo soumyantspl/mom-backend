@@ -1,10 +1,10 @@
-// Send Otp
+// View Meeting
 
-const sendOtp = async (req, res) => {
+const view = async (req, res) => {
   try {
     return res.status(200).json({
       status: true,
-      msg: "Otp sent Successfully",
+      msg: "Meeting Data Fetched Successfully",
     });
   } catch (error) {
     return res.status(400).json({
@@ -15,5 +15,5 @@ const sendOtp = async (req, res) => {
 };
 
 module.exports = {
-  sendOtp,
+  view,
 };
