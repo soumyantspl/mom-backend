@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
+const dbUrl = process.env.DATABASE_URL
+const Employee=require('../models/employeeModel')
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(dbUrl);
+    console.info(`Database connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.info(`Error while connecting to database',${error}`);
+    process.exit(1);
+  }
+};
 
-const dbUrl = 'mongodb://localhost:27017/MOM'
-
-const dbConnection = () => {
-    mongoose.connect(dbUrl)
-        .then(() => console.log('Connected to DB'))
-        .catch(err =>
-            console.log(err.message));
-}
-module.exports = dbConnection
+module.exports = connectDB;
