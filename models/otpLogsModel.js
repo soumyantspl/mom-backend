@@ -24,8 +24,12 @@ const otpLogsSchema = new mongoose.Schema(
     },
     expiryTime: {
       required: true,
+      type:Date
     },
-    otpResendTime: {},
+    otpResendTime: {
+      default:null,
+      type:Date
+    },
     otpResendCount: {
       type: Number,
       default: 0,
