@@ -12,6 +12,10 @@ const employeeSchema = new mongoose.Schema(
       required: true,
       index: true
     },
+    empId: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       validate: {
@@ -48,6 +52,30 @@ const employeeSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
       default:false
+    },
+    designation: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    department: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    unit: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    organisationId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    status: {
+      type: Boolean,
+      required: true,
+    },
+    isMeetingOrganiser: {
+      type: Boolean,
+      required: true,
     },
     password: {
       type: String
