@@ -1,45 +1,83 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 const employeeSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
+      index: true
     },
-    // empId: {
-    //   type: String,
-    //   required: true,
-    // },
+    empId: {
+      type: String,
+      required: true,
+      index: true
+    },
+    empId: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
+      validate: {
+        validator: validator.isEmail,
+        message: "{VALUE} is not a valid email",
+      },
+      default: null,
+      required: true,
+      index: true
+    },
+    designation: {
+      type: mongoose.Schema.ObjectId,
+     
+    },
+    department: {
+      type: mongoose.Schema.ObjectId,
+     
+    },
+    unit: {
+      type: mongoose.Schema.ObjectId,
+      
+    },
+    organisationId: {
+      type: mongoose.Schema.ObjectId,
       required: true,
     },
-    // designation: {
-    //   type: mongoose.Schema.ObjectId,
-    //   required: true,
-    // },
-    // department: {
-    //   type: mongoose.Schema.ObjectId,
-    //   required: true,
-    // },
-    // unit: {
-    //   type: mongoose.Schema.ObjectId,
-    //   required: true,
-    // },
-    // organisationId: {
-    //   type: mongoose.Schema.ObjectId,
-    //   required: true,
-    // },
-    // status: {
-    //   type: Boolean,
-    //   required: true,
-    // },
-    // isMeetingOrganiser: {
-    //   type: Boolean,
-    //   required: true,
-    // },
-    password: {
-      type: String,
+    isActive: {
+      type: Boolean,
       required: true,
+      index: true
+    },
+    isMeetingOrganiser: {
+      type: Boolean,
+      required: true,
+      default:false
+    },
+    designation: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    department: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    unit: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    organisationId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    status: {
+      type: Boolean,
+      required: true,
+    },
+    isMeetingOrganiser: {
+      type: Boolean,
+      required: true,
+    },
+    password: {
+      type: String
     },
     // otpData: [
     //   {
@@ -60,6 +98,6 @@ const employeeSchema = new mongoose.Schema(
   }
 );
 
-const Employee = mongoose.model("Employee", employeeSchema);
+const Employee = mongoose.model("employee", employeeSchema);
 
 module.exports = Employee;
