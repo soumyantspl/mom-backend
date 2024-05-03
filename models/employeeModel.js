@@ -41,7 +41,8 @@ const employeeSchema = new mongoose.Schema(
     isActive: {
       type: Boolean,
       required: true,
-      index: true
+      index: true,
+      default:true
     },
     isMeetingOrganiser: {
       type: Boolean,
