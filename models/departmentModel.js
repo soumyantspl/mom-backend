@@ -1,11 +1,7 @@
 const mongoose = require("mongoose");
-const unitSchema = new mongoose.Schema(
+const departmentModelSchema = new mongoose.Schema(
   {
     name: {
-      type: String,
-      required: true,
-    },
-    address: {
       type: String,
       required: true,
     },
@@ -13,10 +9,9 @@ const unitSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       required: true,
     },
-    status: {
+    isActive: {
       type: Boolean,
-      require: true,
-      default: true,
+      required: true,
     },
   },
   {
@@ -24,6 +19,9 @@ const unitSchema = new mongoose.Schema(
   }
 );
 
-const Unit = mongoose.model("Organisation", unitSchema);
+const departmentModel = mongoose.model(
+  "departmentModel",
+  departmentModelSchema
+);
 
-module.exports = Unit;
+module.exports = departmentModel;
