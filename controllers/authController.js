@@ -36,7 +36,7 @@ const verifyOtp = async (req, res) => {
     const result = await authService.verifyOtp(req.body);
     console.log("otpFound----------", result);
     if (!result) {
-      return Responses.failResponse(req, res, result, messages.invaliOtp, 404);
+      return Responses.failResponse(req, res, null, messages.invaliOtp, 404);
     }
 
     return Responses.successResponse(

@@ -9,6 +9,25 @@ const generatUserToken = (data) => {
   return `Bearer ${token}`;
 };
 
+
+/*FUNC TO VERIFY A TOKEN FOR USER*/
+const verifyUserToken = (req, res, next) => {
+
+   try{
+      let token = req.headers.authorization;
+  
+    if (token.startsWith("Bearer ")) {
+      token = token.substring(7, token.length);
+    }
+    const decoded = jwt.verify(token, process.env.JWT_USER_SECRET);
+    req.userId = decoded._id;
+    next();
+  }
+  catch(error){
+    return Responses.failResponse(req, res, null, messages.invaliToken, 401);
+  }
+}
+
 module.exports = {
-  generatUserToken,
+  generatUserToken,verifyUserToken
 };
