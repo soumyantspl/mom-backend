@@ -2,7 +2,7 @@ const Employee = require("../models/employeeModel");
 const OtpLogs = require("../models/otpLogsModel");
 const commonHelper = require("../helpers/commomHelper");
 const emailService = require("./emailService");
-
+const authMiddleware = require("../middlewares/authMiddleware");
 /**FUNC- TO VERIFY VALID EMAIL USER */
 const verifyEmail = async (email) => {
   return await Employee.findOne(
@@ -13,9 +13,9 @@ const verifyEmail = async (email) => {
 
 /**FUNC- TO SEND OTP TO EMAIL USER */
 const sendOtp = async (userData) => {
-  const isOtpAdded = await insertOtp(userData);
-  return isOtpAdded;
-  //return await emailService.sendSignInOtpEmail(userData, otp);
+  return await insertOtp(userData);
+  //return isOtpAdded;
+  //  return
 };
 
 /**FUNC- TO INSERT OTP DETAILS IN OTP LOGS */
@@ -28,28 +28,65 @@ const insertOtp = async (userData, otp) => {
   };
   const otpData = new OtpLogs(data);
   await otpData.save();
+  await emailService.sendSignInOtpEmail(userData, data.otp);
   return data.otp;
 };
 
 /**FUNC- TO VERIFY VALID OTP OF USER */
 const verifyOtp = async (data) => {
   let fromTime = new Date();
-  now.setMinutes(now.getMinutes() - 3);
-  console.log("NOW--------------", now);
+  fromTime.setMinutes(fromTime.getMinutes() - 3);
+  console.log("NOW--------------", fromTime);
   console.log("CURRENT-----------", new Date());
 
-  return await OtpLogs.findOne({
-    $and: [
-      { email: data.email, otp: parseInt(data.otp) },
-      {
+  const otpLogsData = await OtpLogs.aggregate([
+    {
+      $match: {
+        email: data.email,
+        otp: parseInt(data.otp),
         createdAt: {
           $gte: fromTime,
           $lt: new Date(),
         },
       },
-    ],
-  });
+    },
+    {
+      $lookup: {
+        from: "employees",
+        localField: "email",
+        foreignField: "email",
+        as: "userDetail",
+      },
+    },
+    {
+      $project: {
+        _id: 1,
+        email: 1,
+        otp: 1,
+        userDetail: {
+          name: 1,
+          _id: 1,
+          email: 1,
+        },
+      },
+    },
+    { $unwind: "$userDetail" },
+  ]);
 
+  console.log("otpLogsData---------", otpLogsData);
+  if (otpLogsData.length !== 0) {
+    const userData = otpLogsData[0].userDetail;
+    const token = await authMiddleware.generatUserToken({
+      userId: userData._id,
+    });
+    console.log(token);
+    return {
+      token,
+      userData,
+    };
+  }
+
+  return false;
 
   /// generate jwt token & store user data & send both in response
 };

@@ -38,14 +38,11 @@ const verifyOtp = async (req, res) => {
     if (!result) {
       return Responses.failResponse(req, res, result, messages.invaliOtp, 404);
     }
-    if (result && result.expired) {
-      return Responses.failResponse(req, res, result, messages.expiredOtp, 404);
-    }
-  
+
     return Responses.successResponse(
       req,
       res,
-      null,
+      result,
       messages.otpVerifiedSuccess,
       200
     );
@@ -56,5 +53,6 @@ const verifyOtp = async (req, res) => {
 };
 
 module.exports = {
-  sendOtp,verifyOtp
+  sendOtp,
+  verifyOtp,
 };
