@@ -24,15 +24,38 @@ const insertOtp = async (userData, otp) => {
     otp: await commonHelper.generateOtp(),
     email: userData.email,
     organisationId: userData.organisationId,
-    expiryTime: await commonHelper.otpExpiryTime(1), // 60 seconds
+    expiryTime: await commonHelper.otpExpiryTime(2), // 10 minutes
   };
   const otpData = new OtpLogs(data);
-
   await otpData.save();
   return data.otp;
+};
+
+/**FUNC- TO VERIFY VALID OTP OF USER */
+const verifyOtp = async (data) => {
+  let fromTime = new Date();
+  now.setMinutes(now.getMinutes() - 3);
+  console.log("NOW--------------", now);
+  console.log("CURRENT-----------", new Date());
+
+  return await OtpLogs.findOne({
+    $and: [
+      { email: data.email, otp: parseInt(data.otp) },
+      {
+        createdAt: {
+          $gte: fromTime,
+          $lt: new Date(),
+        },
+      },
+    ],
+  });
+
+
+  /// generate jwt token & store user data & send both in response
 };
 
 module.exports = {
   verifyEmail,
   sendOtp,
+  verifyOtp,
 };
