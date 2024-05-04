@@ -14,7 +14,7 @@ exports.organisationValidator = async (req, res, next) => {
         .required()
         .messages({
           "number.min": "Mobile number should be 10 digit",
-          "number.max": "Mobile number should be 10 digit",  
+          "number.max": "Mobile number should be 10 digit",
         }),
     });
     await schema.validateAsync(req.body);

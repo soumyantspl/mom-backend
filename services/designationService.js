@@ -8,6 +8,8 @@ const createDesignation = async (name, organisationId) => {
   return designation;
 };
 
+
 module.exports = {
   createDesignation,
 };
+

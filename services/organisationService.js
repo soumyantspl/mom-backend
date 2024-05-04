@@ -17,7 +17,9 @@ const createOrganisationService = async (
   return await newOrganisation.save();
 };
 
-const viewOrganisationService = async () => {};
+const viewOrganisationService = async () => {
+    
+};
 
 module.exports = {
   createOrganisationService,

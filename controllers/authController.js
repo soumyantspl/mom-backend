@@ -1,31 +1,34 @@
 const authService = require("../services/authService");
+const Responses = require("../helpers/response");
+const messages = require("../constants/constantMessages");
 
 // Send Otp
 
 // Send Otp
 const sendOtp = async (req, res) => {
   try {
-    const userFound = await authService.verifyEmail(req.body.email);
-    console.log("userFound----------", userFound);
-    if (!userFound) {
-      return res.status(404).json({
-        status: false,
-        msg: "User not found",
-        statusCode: 404,
-      });
+    const result = await authService.verifyEmail(req.body.email);
+    console.log("userFound----------", result);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        result,
+        messages.userNotFound,
+        404
+      );
     }
-    const sendOtp=await authService.sendOtp(userFound);
-    console.log('sendOtp--------------',sendOtp)
-    return res.status(200).json({
-      status: true,
-      msg: "Otp sent Successfully",
-    });
+    await authService.sendOtp(result);
+    return Responses.successResponse(
+      req,
+      res,
+      null,
+      messages.otpSentSuccess,
+      200
+    );
   } catch (error) {
-    console.log(error)
-    return res.status(400).json({
-      status: false,
-      msg: error.message,
-    });
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
   }
 };
 module.exports = {
