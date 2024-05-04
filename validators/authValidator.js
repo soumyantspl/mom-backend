@@ -1,6 +1,7 @@
 const Joi = require("joi");
+const Responses = require("../helpers/response");
 
-exports.sendOtpValidator = async (req, res, next) => {
+const sendOtpValidator = async (req, res, next) => {
   try {
     console.log(req.body);
     const schema = Joi.object({
@@ -11,6 +12,10 @@ exports.sendOtpValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
-    return res.status(400).json({ error: error.details[0].message });
+    return Responses.errorResponse(req, res, error);
   }
+};
+
+module.exports = {
+  sendOtpValidator,
 };
