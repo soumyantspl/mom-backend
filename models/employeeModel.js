@@ -5,12 +5,12 @@ const employeeSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      index: true
+      index: true,
     },
     empId: {
       type: String,
       required: true,
-      index: true
+      index: true,
     },
     empId: {
       type: String,
@@ -24,19 +24,16 @@ const employeeSchema = new mongoose.Schema(
       },
       default: null,
       required: true,
-      index: true
+      index: true,
     },
     designation: {
       type: mongoose.Schema.ObjectId,
-     
     },
     department: {
       type: mongoose.Schema.ObjectId,
-     
     },
     unit: {
       type: mongoose.Schema.ObjectId,
-      
     },
     organisationId: {
       type: mongoose.Schema.ObjectId,
@@ -46,12 +43,12 @@ const employeeSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
       index: true,
-      default:true
+      default: true,
     },
     isMeetingOrganiser: {
       type: Boolean,
       required: true,
-      default:false
+      default: false,
     },
     designation: {
       type: mongoose.Schema.ObjectId,
@@ -78,7 +75,7 @@ const employeeSchema = new mongoose.Schema(
       required: true,
     },
     password: {
-      type: String
+      type: String,
     },
     // otpData: [
     //   {
