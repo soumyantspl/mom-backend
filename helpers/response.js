@@ -36,6 +36,7 @@ const failResponse = (req, res, data, message, statusCode) => {
 //       statusCode
 //     });
 //   };
+
 /*FUNC- TO ERROR THE FAIL RESPONSE*/
 const errorResponse = (req, res, errorDesc, errorKey) => {
   console.log(">>>>>>>>>>>>>   ERROR\n", errorKey);

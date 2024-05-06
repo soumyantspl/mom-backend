@@ -12,10 +12,12 @@ const verifyEmail = async (email) => {
 };
 
 /**FUNC- TO SEND OTP TO EMAIL USER */
-const sendOtp = async (userData) => {
-  return await insertOtp(userData);
-  //return isOtpAdded;
-  //  return
+const sendOtp = async (email) => {
+  const userData = await verifyEmail(email);
+  if (userData) {
+    return await insertOtp(userData);
+  }
+  return false;
 };
 
 /**FUNC- TO INSERT OTP DETAILS IN OTP LOGS */
@@ -35,7 +37,7 @@ const insertOtp = async (userData, otp) => {
 /**FUNC- TO VERIFY VALID OTP OF USER */
 const verifyOtp = async (data) => {
   let fromTime = new Date();
-  fromTime.setMinutes(fromTime.getMinutes() - 3);
+  fromTime.setMinutes(fromTime.getMinutes() - 3); // CHECK OTP VALIDATION WITH IN 3 MINUTES
   console.log("NOW--------------", fromTime);
   console.log("CURRENT-----------", new Date());
 
@@ -78,6 +80,7 @@ const verifyOtp = async (data) => {
     const userData = otpLogsData[0].userDetail;
     const token = await authMiddleware.generatUserToken({
       userId: userData._id,
+      name: userData.name,
     });
     console.log(token);
     return {
@@ -85,10 +88,7 @@ const verifyOtp = async (data) => {
       userData,
     };
   }
-
   return false;
-
-  /// generate jwt token & store user data & send both in response
 };
 
 module.exports = {

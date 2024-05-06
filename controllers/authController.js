@@ -5,8 +5,8 @@ const messages = require("../constants/constantMessages");
 /**FUNC- TO SEND  OTP TO EMAIL USER */
 const sendOtp = async (req, res) => {
   try {
-    const result = await authService.verifyEmail(req.body.email);
-    console.log("userFound----------", result);
+    const result = await authService.sendOtp(req.body.email);
+    console.log("res----", result);
     if (!result) {
       return Responses.failResponse(
         req,
@@ -16,7 +16,7 @@ const sendOtp = async (req, res) => {
         404
       );
     }
-    await authService.sendOtp(result);
+
     return Responses.successResponse(
       req,
       res,
