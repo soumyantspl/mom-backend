@@ -16,6 +16,29 @@ const sendOtpValidator = async (req, res, next) => {
   }
 };
 
+const verifyOtpValidator = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    const schema = Joi.object({
+      email: Joi.string().email().required(),
+      otp: Joi.string()
+        .trim()
+        .length(6)
+        .pattern(/^[0-9]+$/)
+        .messages({ "string.pattern.base": `OTP must have 6 digits.` })
+        .required()
+        .strict(),
+    });
+
+    await schema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   sendOtpValidator,
+  verifyOtpValidator,
 };

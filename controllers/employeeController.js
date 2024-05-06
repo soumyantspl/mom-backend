@@ -1,15 +1,11 @@
-const { addEmployeeService } = require("../services/employeeService");
-
-const addEmployeeController = async (req, res) => {
+const viewEmployee = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const response = await addEmployeeService(name, email, password);
-    console.log(response)
-    res.status(201).json(response);
+    console.log(req.body);
+    res.status(201).json(req.body);
   } catch (error) {
     res.status(400).json({ message: error.message });
     console.log(error.message);
   }
 };
 
-module.exports = { addEmployeeController };
+module.exports = { viewEmployee };

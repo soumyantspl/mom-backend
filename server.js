@@ -5,7 +5,7 @@ const mainRouter = require("./routers/index");
 const PORT = process.env.PORT || 8000;
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const connectDB = require('./dbLayer/connection');
+const connectDB = require("./dbLayer/connection");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -39,3 +39,5 @@ app.use("/api", mainRouter);
 app.listen(PORT, () => {
   console.info(`Server is running on port.... ${PORT}`);
 });
+
+//"dev": "set NODE_TLS_REJECT_UNAUTHORIZED='0'&& nodemon server.js",
