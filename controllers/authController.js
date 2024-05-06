@@ -7,8 +7,8 @@ const messages = require("../constants/constantMessages");
 // Send Otp
 const sendOtp = async (req, res) => {
   try {
-    const result = await authService.verifyEmail(req.body.email);
-    console.log("userFound----------", result);
+    const result = await authService.sendOtp(req.body.email);
+    console.log("res----", result);
     if (!result) {
       return Responses.failResponse(
         req,
@@ -18,7 +18,7 @@ const sendOtp = async (req, res) => {
         404
       );
     }
-    await authService.sendOtp(result);
+
     return Responses.successResponse(
       req,
       res,
@@ -31,6 +31,30 @@ const sendOtp = async (req, res) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+
+/**FUNC- TO VERIFY OTP TO SIGN IN USER */
+const verifyOtp = async (req, res) => {
+  try {
+    const result = await authService.verifyOtp(req.body);
+    console.log("otpFound----------", result);
+    if (!result) {
+      return Responses.failResponse(req, res, null, messages.invaliOtp, 404);
+    }
+
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.otpVerifiedSuccess,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   sendOtp,
+  verifyOtp,
 };

@@ -18,7 +18,7 @@ router.post(
 );
 //VIEWING LIST OF ORGANIZATION
 router.get("/viewOrganization", viewOrganizationController);
-//EDDITING ORGANIZATION IF NEEDED
+//EDDITING ORGANIZATION 
 router.post(
   "/editOrganization",
   editOrganizationValidator,

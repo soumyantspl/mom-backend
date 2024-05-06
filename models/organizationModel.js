@@ -25,7 +25,6 @@ const organizationSchema = new mongoose.Schema(
     },
     address: {
       type: String,
-      required: true,
     },
     phone: {
       type: Number,

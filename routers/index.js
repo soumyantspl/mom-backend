@@ -12,5 +12,6 @@ app.use(`/${BASE_PATH}/meeting`, meetingRouter);
 app.use(`/${BASE_PATH}/employess`, employeeRouter);
 app.use(`/${BASE_PATH}/designation`, designationRouter);
 app.use(`/${BASE_PATH}/organization`, organizationRouter);
+app.use(`/${BASE_PATH}/employee`,employeeRouter);
 
 module.exports = app;

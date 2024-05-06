@@ -16,7 +16,7 @@ const createOrganizationController = async (req, res) => {
         res,
         null,
         messages.duplicateOrganizationFound,
-        200
+        404
       );
     }
     const result = await organizationService.createOrganizationService(
@@ -40,10 +40,7 @@ const createOrganizationController = async (req, res) => {
 };
 
 const viewOrganizationController = async (req, res) => {
-  const { name, email } = req.body;
-  console.log(name);
-  const { page, limit } = req.query;
-  console.log("page", page);
+  const { name, email,limit ,page} = req.body;
   let query = {};
   if (name && email) {
     query = { name, email };
@@ -81,7 +78,7 @@ const editOrganizationController = async (req, res) => {
         res,
         null,
         messages.idIsNotAvailabled,
-        200
+        404
       );
     }
     return Responses.successResponse(
