@@ -16,7 +16,7 @@ const verifyEmail = async (email) => {
 const sendOtp = async (email) => {
   const userData = await verifyEmail(email);
   if (userData) {
-    return await insertOtp(userData);
+    return await validateSendingOtp(userData);
   }
   return false;
 };
@@ -103,29 +103,32 @@ const reSendOtp = async (email) => {
   const userData = await verifyEmail(email);
   console.log("userData-------------", userData);
   if (userData) {
-    let otpResendTime;
-    let otpResendCount;
-    const rulesData = await checkReSendOtpRules(userData);
-    console.log("rulesData-----------------", rulesData);
-    if (rulesData?.isNewRecordCreated) {
-      otpResendTime = new Date();
-      otpResendCount = 1;
-      console.log("final user data-----------", userData);
-      return await insertOtp(userData, otpResendCount, otpResendTime);
-    }
+    return await validateSendingOtp(userData);
+  }
+  return false;
+};
 
-    if (rulesData?.isReSendOtpAllowed) {
-      otpResendTime = rulesData.otpResendTime;
-      otpResendCount = rulesData.otpResendCount;
-      console.log("final user data-----------", userData);
-      return await insertOtp(userData, otpResendCount, otpResendTime);
-    }
-    if (!rulesData.isReSendOtpAllowed) {
-      return rulesData;
-    }
+const validateSendingOtp = async (userData) => {
+  let otpResendTime;
+  let otpResendCount;
+  const rulesData = await checkReSendOtpRules(userData);
+  console.log("rulesData-----------------", rulesData);
+  if (rulesData?.isNewRecordCreated) {
+    otpResendTime = new Date();
+    otpResendCount = 1;
+    console.log("final user data-----------", userData);
+    return await insertOtp(userData, otpResendCount, otpResendTime);
   }
 
-  return false;
+  if (rulesData?.isReSendOtpAllowed) {
+    otpResendTime = rulesData.otpResendTime;
+    otpResendCount = rulesData.otpResendCount;
+    console.log("final user data-----------", userData);
+    return await insertOtp(userData, otpResendCount, otpResendTime);
+  }
+  if (!rulesData.isReSendOtpAllowed) {
+    return rulesData;
+  }
 };
 
 /**FUNC- TO VERIFY RESEND OTP RULES   */
@@ -146,8 +149,8 @@ const checkReSendOtpRules = async (userData) => {
       // if resend count is more than or equals to 3(max resend number)
       //&& time difference between current time & first resend attemt time is less than 3 hour
       if (
-        otpResendCount == process.env.OTP_RESENDCOUNT_RESTRCTION &&
-        timeDifference <= 180
+        otpResendCount == process.env.OTP_MAX_RESENDCOUNT &&
+        timeDifference <= process.env.OTP_MAX_RESEND_TIMEINMINUTES
       ) {
         console.log("--------111");
         return {
@@ -159,8 +162,8 @@ const checkReSendOtpRules = async (userData) => {
       // if resend count is less than  3(max resend number)
       //&& time difference between current time & first resend attemt time is less than 3 hour
       if (
-        otpResendCount < process.env.OTP_RESENDCOUNT_RESTRCTION &&
-        timeDifference <= 180
+        otpResendCount < process.env.OTP_MAX_RESENDCOUNT &&
+        timeDifference <= process.env.OTP_MAX_RESEND_TIMEINMINUTES
       ) {
         console.log("--------222");
 
@@ -175,8 +178,8 @@ const checkReSendOtpRules = async (userData) => {
       // if resend count is less than  3(max resend number)
       //&& time difference between current time & first resend attemt time is greater than 3 hour
       if (
-        otpResendCount <= process.env.OTP_RESENDCOUNT_RESTRCTION &&
-        timeDifference >= 180
+        otpResendCount <= process.env.OTP_MAX_RESENDCOUNT &&
+        timeDifference >= OTP_MAX_RESEND_TIMEINMINUTES
       ) {
         console.log("--------333");
         otpResendCount++;
