@@ -5,13 +5,20 @@ const generateOtp = () => {
 };
 
 /**FUNC- TO GENERATE OTP EXPIRY TIME*/
-function otpExpiryTime(minutes) {
+const otpExpiryTime= (minutes) => {
   let now = new Date();
   now.setMinutes(now.getMinutes() + minutes);
   return now;
 }
 
+const checkTimeDifference=(now,targetTime)=>{
+  var diff = Math.abs(now.getTime() - targetTime.getTime()) / 3600000;
+  console.log('diff---------------------',diff)
+  return diff
+}
+
 module.exports = {
   generateOtp,
   otpExpiryTime,
+  checkTimeDifference
 };
