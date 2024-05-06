@@ -9,6 +9,11 @@ const designationSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       required: true,
     },
+    isActive: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
   },
   {
     timestamps: true,

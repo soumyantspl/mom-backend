@@ -25,6 +25,7 @@ const meetingSchema = new mongoose.Schema(
         rsvp: {
           enum: ["YES", "NO", "WAITING"],
         },
+        
       },
     ],
     roomId: {

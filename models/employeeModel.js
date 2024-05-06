@@ -5,12 +5,12 @@ const employeeSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      index: true
+      index: true,
     },
     empId: {
       type: String,
       required: true,
-      index: true
+      index: true,
     },
     empId: {
       type: String,
@@ -36,7 +36,7 @@ const employeeSchema = new mongoose.Schema(
     unit: {
       type: mongoose.Schema.ObjectId
         },
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true
     },

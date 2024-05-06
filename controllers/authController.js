@@ -2,7 +2,9 @@ const authService = require("../services/authService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 
-/**FUNC- TO SEND  OTP TO EMAIL USER */
+// Send Otp
+
+// Send Otp
 const sendOtp = async (req, res) => {
   try {
     const result = await authService.sendOtp(req.body.email);
