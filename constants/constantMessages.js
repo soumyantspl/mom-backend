@@ -2,6 +2,8 @@ const otpSentSuccess = "Your otp has been sent on your email!";
 const userNotFound = "User not found!";
 const organizationCreated = "Organization Created successfully";
 const duplicateOrganizationFound = "This Email is already exist!!";
+const duplicateDepartment = "This department allready exist";
+const DepartmentCreated = "Department has been created";
 const idIsNotAvailabled = "Given id is Not availabled";
 const OrganizationUpdated = "Organization Data Updated";
 const invaliOtp =
@@ -17,6 +19,8 @@ module.exports = {
   userNotFound,
   organizationCreated,
   duplicateOrganizationFound,
+  duplicateDepartment,
+  DepartmentCreated,
   idIsNotAvailabled,
   OrganizationUpdated,
   invaliOtp,

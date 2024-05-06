@@ -12,6 +12,7 @@ const departmentModelSchema = new mongoose.Schema(
     isActive: {
       type: Boolean,
       required: true,
+      default: true,
     },
   },
   {
@@ -19,9 +20,9 @@ const departmentModelSchema = new mongoose.Schema(
   }
 );
 
-const departmentModel = mongoose.model(
+const Department = mongoose.model(
   "departmentModel",
   departmentModelSchema
 );
 
-module.exports = departmentModel;
+module.exports = Department;
