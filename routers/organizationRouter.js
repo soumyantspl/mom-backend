@@ -4,11 +4,11 @@ const {
   createOrganizationController,
   viewOrganizationController,
   editOrganizationController,
-} = require("../controllers/organsationController");
+} = require("../controllers/organzationController");
 const {
   createOrganisationValidator,
   editOrganizationValidator,
-} = require("../validators/organisationValidator");
+} = require("../validators/organizationValidator");
 
 //CREATING NEW ORGANIZATION
 router.post(
