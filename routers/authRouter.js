@@ -15,6 +15,8 @@ router.post("/reSendOtp", validator.sendOtpValidator, authController.reSendOtp);
 /* SET PASSWORD FOR SIGN IN */
 router.post("/setPassword", validator.setPasswordValidator, authController.setPassword);
 
+/* SIGN IN BY PASSWORD */
+router.post("/signInByPassword", validator.signInByPasswordValidator, authController.signInByPassword);
 
 
 
