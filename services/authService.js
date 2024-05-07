@@ -53,10 +53,10 @@ const getOtpLogs = async (data) => {
       $match: {
         email: data.email,
         otp: parseInt(data.otp),
-        // createdAt: {
-        //   $gte: fromTime,
-        //   $lt: new Date(),
-        // },
+        createdAt: {
+          $gte: fromTime,
+          $lt: new Date(),
+        },
       },
     },
     {
@@ -238,7 +238,7 @@ const setPassword = async (data) => {
 /**FUNC- FOR SIGN IN BY PASSWORD   */
 const signInByPassword = async (data) => {
   const userData = await Employee.findOne(
-    { email },
+    { email: data.email },
     { _id: 1, email: 1, organisationId: 1, name: 1, password: 1, isActive: 1 }
   );
   console.log("userData----------", userData);
@@ -251,14 +251,15 @@ const signInByPassword = async (data) => {
       isUserDeactivated: true,
     };
   }
-  const passwordIsValid = commonHelper.verifyPassword(
+  const passwordIsValid = await commonHelper.verifyPassword(
     data.password,
     userData.password
   );
-
+  console.log(passwordIsValid);
+  // Check correct password
   if (!passwordIsValid) {
     return {
-      isInvalidPassword: true,
+      incorrectPassword: true,
     };
   }
 
@@ -267,9 +268,15 @@ const signInByPassword = async (data) => {
     name: userData.name,
   });
   console.log(token);
+  delete userData.password;
   return {
     token,
-    userData,
+    userData: {
+      id: userData._id,
+      name: userData.name,
+      email: userData.email,
+      organizationId: userData.organisationId,
+    },
   };
 };
 

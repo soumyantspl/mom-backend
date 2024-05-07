@@ -122,14 +122,20 @@ const signInByPassword = async (req, res) => {
       return Responses.failResponse(req, res, null, messages.userNotFound, 404);
     }
     if (result?.incorrectPassword) {
-      return Responses.failResponse(req, res, null, messages.incorrectPassword, 404);
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.incorrectPassword,
+        404
+      );
     }
 
     return Responses.successResponse(
       req,
       res,
-      null,
-      messages.passwordResetSuccess,
+      result,
+      messages.signInSuccess,
       200
     );
   } catch (error) {

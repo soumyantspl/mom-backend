@@ -41,6 +41,7 @@ const invalidOtp =
 const expiredOtp =
   "The OTP you entered has been expired. Please use resend otp!";
 const otpVerifiedSuccess = "Your OTP has been verified successfully!";
+const signInSuccess = "Sign in successfully!";
 const invaliToken = "Invalid token";
 const invalidUser = "User is not valid user!";
 const otpResendMaxLimitCrossed =
@@ -55,4 +56,6 @@ module.exports = {
   invalidUser,
   otpResendMaxLimitCrossed,
   passwordResetSuccess,
+  signInSuccess,
+  incorrectPassword,
 };
