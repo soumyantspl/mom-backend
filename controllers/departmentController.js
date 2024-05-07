@@ -1,26 +1,12 @@
-const departmentServices = require("../services/departmentServices");
+const departmentService = require("../services/departmentService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 
 const createDepartmentController = async (req, res) => {
   try {
     const { name, organizationId } = req.body;
-    console.log(name,organizationId);
-    const duplicateResult = await departmentServices.existingDepartmentService(
-      organizationId
-    );
-    console.log("duplicateResult", duplicateResult);
 
-    if (duplicateResult) {
-      return Responses.failResponse(
-        req,
-        res,
-        null,
-        messages.duplicateDepartment,
-        404
-      );
-    }
-    const result = await departmentServices.createDepartmentService(
+    const result = await departmentService.createDepartmentService(
       name,
       organizationId
     );
@@ -29,12 +15,38 @@ const createDepartmentController = async (req, res) => {
       res,
       result,
       messages.DepartmentCreated,
-      200
+      200 //ok
     );
   } catch (error) {
-    console.log(error.message);
+    console.log("controller error", error);
     return Responses.errorResponse(req, res, error);
   }
 };
 
-module.exports = {createDepartmentController}
+const editDepartmentController = async (req, res) => {
+  const { id, name } = req.body;
+  try {
+    const result = await departmentService.editDepartmentService(id, name);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.idIsNotAvailabled,
+        404 // Not Found
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.DepartmentUpdated,
+      200 // OK
+    );
+  } catch (error) {
+    console.error("Controller error:", error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+module.exports = { createDepartmentController, editDepartmentController };

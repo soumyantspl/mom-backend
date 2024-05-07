@@ -6,6 +6,7 @@ const duplicateDepartment = "This department allready exist";
 const DepartmentCreated = "Department has been created";
 const idIsNotAvailabled = "Given id is Not availabled";
 const OrganizationUpdated = "Organization Data Updated";
+const DepartmentUpdated = "Department  Data Updated";
 const invaliOtp =
   "The OTP you entered does not match. Please make sure you have entered the correct otp!";
 const expiredOtp =
@@ -23,6 +24,7 @@ module.exports = {
   DepartmentCreated,
   idIsNotAvailabled,
   OrganizationUpdated,
+  DepartmentUpdated,
   invaliOtp,
   expiredOtp,
   otpVerifiedSuccess,
