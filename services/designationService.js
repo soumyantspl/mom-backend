@@ -1,15 +1,37 @@
-const Designation = require("../models/designationModel");
+const Designations = require("../models/designationModel");
 
-const createDesignation = async (name, organisationId) => {
-  const designation = await Designation.create({
+const createDesignationService = async (name, organizationId) => {
+  const newDesignation = new Designations({
     name,
-    organisationId,
+    organizationId,
   });
+  return await newDesignation.save();
+};
+
+const editDesignationService = async (id, name) => {
+  const existingDepartment = await Designation.findByIdAndUpdate(
+    id,
+    {
+      name: name,
+    },
+    {
+      new: true,
+    }
+  );
+  return existingDepartment;
+};
+
+const deleteDesignationService = async (id) => {
+  const deletedDepartment = await Designation.findByIdAndDelete(id);
+  return deletedDepartment;
+};
+const listDesignationService = async () => {
+  const designation = await Designations.find();
   return designation;
 };
-
-
 module.exports = {
-  createDesignation,
+  createDesignationService,
+  editDesignationService,
+  deleteDesignationService,
+  listDesignationService,
 };
-

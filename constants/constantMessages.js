@@ -45,6 +45,20 @@ const invaliToken = "Invalid token";
 const invalidUser = "User is not valid user!";
 const otpResendMaxLimitCrossed =
   "Sorry! You have attempted maximum limit of resend OTP!";
+//---------------------------------------------------------------------------------------//
+const organizationCreated = "Organization Created successfully";
+const duplicateOrganizationFound = "This Email is already exist!!";
+const duplicateDepartment = "This department allready exist";
+const DepartmentCreated = "Department has been created";
+const idIsNotAvailabled = "Given id is Not availabled";
+const OrganizationUpdated = "Organization Data Updated";
+const DepartmentUpdated = "Department Data Updated";
+const DepartmentDeleted = "Department has been Deleted";
+const DepartmentList = "Department list fetched";
+const DesignationCreated = "Designation has been created";
+const DesignationUpdated = "Designation has been Updated";
+const DesignationDeleted = "Designation has been Deleted";
+const DesignationList = "Fetched all Designations";
 module.exports = {
   otpSentSuccess,
   userNotFound,
@@ -55,4 +69,18 @@ module.exports = {
   invalidUser,
   otpResendMaxLimitCrossed,
   passwordRestSuccess,
+  //----------------------------//
+  organizationCreated,
+  duplicateOrganizationFound,
+  duplicateDepartment,
+  DepartmentCreated,
+  idIsNotAvailabled,
+  OrganizationUpdated,
+  DepartmentUpdated,
+  DepartmentDeleted,
+  DepartmentList,
+  DesignationCreated,
+  DesignationUpdated,
+  DesignationDeleted,
+  DesignationList,
 };

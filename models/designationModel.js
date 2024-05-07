@@ -5,7 +5,7 @@ const designationSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
     },
@@ -20,6 +20,6 @@ const designationSchema = new mongoose.Schema(
   }
 );
 
-const Designation = mongoose.model("Designation", designationSchema);
+const Designations = mongoose.model("Designation", designationSchema);
 
-module.exports = Designation;
+module.exports = Designations;

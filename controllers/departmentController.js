@@ -15,7 +15,7 @@ const createDepartmentController = async (req, res) => {
       res,
       result,
       messages.DepartmentCreated,
-      201 //ok
+      201 
     );
   } catch (error) {
     console.log("controller error", error);
@@ -24,8 +24,8 @@ const createDepartmentController = async (req, res) => {
 };
 
 const editDepartmentController = async (req, res) => {
-  const { id, name } = req.body;
   try {
+    const { id, name } = req.body;
     const result = await departmentService.editDepartmentService(id, name);
     if (!result) {
       return Responses.failResponse(
@@ -49,4 +49,52 @@ const editDepartmentController = async (req, res) => {
   }
 };
 
-module.exports = { createDepartmentController, editDepartmentController };
+const deleteDepartmentController = async (req, res) => {
+  try {
+    const id = req.body.id;
+    console.log(id);
+    const result = await departmentService.deleteDepartmentService(id);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.idIsNotAvailabled,
+        404
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.DepartmentDeleted,
+      201
+    );
+  } catch (error) {
+    console.error("Controller error:", error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+const listDepartmentController = async (req, res) => {
+  try {
+    const departments = await departmentService.listDepartmentService();
+    return Responses.successResponse(
+      req,
+      res,
+      departments,
+      messages.DepartmentList,
+      200
+    );
+  } catch (error) {
+    console.error("Controller error:", error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+module.exports = {
+  createDepartmentController,
+  editDepartmentController,
+  deleteDepartmentController,
+  listDepartmentController,
+};
