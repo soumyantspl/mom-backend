@@ -10,12 +10,12 @@ const viewEmployeeValidator = async (req, res, next) => {
         authorization: Joi.required(),
       }).unknown(true),
     });
-    const bodySchema = Joi.object({
-      name: Joi.string().required(),
-    });
+    // const bodySchema = Joi.object({
+    //   name: Joi.string().required(),
+    // });
 
     await headerSchema.validateAsync({ headers: req.headers });
-    await bodySchema.validateAsync(req.body);
+   // await bodySchema.validateAsync(req.body);
 
     next();
   } catch (error) {

@@ -102,7 +102,38 @@ const setPassword = async (req, res) => {
       req,
       res,
       null,
-      messages.passwordRestSuccess,
+      messages.passwordResetSuccess,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+/**FUNC- FOR SIGN IN BY PASSWORD**/
+const signInByPassword = async (req, res) => {
+  try {
+    const result = await authService.signInByPassword(req.body);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(req, res, null, messages.userNotFound, 404);
+    }
+    if (result?.incorrectPassword) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.incorrectPassword,
+        404
+      );
+    }
+
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.signInSuccess,
       200
     );
   } catch (error) {
@@ -116,4 +147,5 @@ module.exports = {
   verifyOtp,
   reSendOtp,
   setPassword,
+  signInByPassword,
 };
