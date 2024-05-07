@@ -23,12 +23,32 @@ const sendOtp = async (email) => {
 
 /**FUNC- TO VERIFY VALID OTP OF USER */
 const verifyOtp = async (data) => {
+  const otpLogsData = await getOtpLogs(data);
+  if (otpLogsData.length !== 0) {
+    const userData = otpLogsData[0].userDetail;
+    const token = authMiddleware.generatUserToken({
+      userId: userData._id,
+      name: userData.name,
+    });
+    console.log(token);
+    return {
+      token,
+      userData,
+    };
+  }
+  return false;
+};
+
+/**FUNC- TO VERIFY VALID OTP OF USER */
+const getOtpLogs = async (data) => {
   let fromTime = new Date();
-  fromTime.setMinutes(fromTime.getMinutes() - 3); // CHECK OTP VALIDATION WITH IN 3 MINUTES
+  fromTime.setMinutes(
+    fromTime.getMinutes() - process.env.CHECK_OTP_VALIDATION_TIME
+  ); // CHECK OTP VALIDATION WITH IN MINUTES
   console.log("NOW--------------", fromTime);
   console.log("CURRENT-----------", new Date());
 
-  const otpLogsData = await OtpLogs.aggregate([
+  return await OtpLogs.aggregate([
     {
       $match: {
         email: data.email,
@@ -61,21 +81,6 @@ const verifyOtp = async (data) => {
     },
     { $unwind: "$userDetail" },
   ]);
-
-  console.log("otpLogsData---------", otpLogsData);
-  if (otpLogsData.length !== 0) {
-    const userData = otpLogsData[0].userDetail;
-    const token = authMiddleware.generatUserToken({
-      userId: userData._id,
-      name: userData.name,
-    });
-    console.log(token);
-    return {
-      token,
-      userData,
-    };
-  }
-  return false;
 };
 
 /**FUNC- TO INSERT OTP DETAILS IN OTP LOGS */
@@ -107,7 +112,7 @@ const reSendOtp = async (email) => {
   }
   return false;
 };
-
+// FUNCTION TO VALIDATE SENDING OTP
 const validateSendingOtp = async (userData) => {
   let otpResendTime;
   let otpResendCount;
@@ -131,7 +136,7 @@ const validateSendingOtp = async (userData) => {
   }
 };
 
-/**FUNC- TO VERIFY RESEND OTP RULES   */
+/**FUNC- TO VERIFY SEND OTP RULES   */
 const checkReSendOtpRules = async (userData) => {
   const otpLogsData = await OtpLogs.findOne({ email: userData.email }).sort({
     createdAt: -1,
@@ -166,7 +171,6 @@ const checkReSendOtpRules = async (userData) => {
         timeDifference <= process.env.OTP_MAX_RESEND_TIMEINMINUTES
       ) {
         console.log("--------222");
-
         return {
           otpResendMaxTimeLimitCrossed: false,
           otpResendCount: otpResendCount + 1,
@@ -179,7 +183,7 @@ const checkReSendOtpRules = async (userData) => {
       //&& time difference between current time & first resend attemt time is greater than 3 hour
       if (
         otpResendCount <= process.env.OTP_MAX_RESENDCOUNT &&
-        timeDifference >= OTP_MAX_RESEND_TIMEINMINUTES
+        timeDifference >= process.env.OTP_MAX_RESEND_TIMEINMINUTES
       ) {
         console.log("--------333");
         otpResendCount++;
@@ -196,14 +200,39 @@ const checkReSendOtpRules = async (userData) => {
         isNewRecordCreated: true,
       };
     }
-  } else {
-    console.log("--------");
-    return {
-      isNewRecordCreated: true,
-    };
   }
+  console.log("--------");
+  return {
+    isNewRecordCreated: true,
+  };
+};
 
-  //return false;
+/**FUNC- TO SET PASSWORD   */
+const setPassword = async (data) => {
+  const userData = await verifyEmail(data.email);
+  console.log("userData-------------", userData);
+  if (userData) {
+    const otpData = {
+      email: data.email,
+      otp: data.otp,
+    };
+    const isOtpVeified = await getOtpLogs(otpData);
+    console.log("isOtpVeified------------", isOtpVeified);
+    if (isOtpVeified.length !== 0) {
+      const hashedPassword = await commonHelper.generetHashPassword(
+        data.password
+      );
+      return await Employee.updateOne(
+        { email: data.email },
+        { password: hashedPassword }
+      );
+    } else {
+      return {
+        isInValidOtp: true,
+      };
+    }
+  }
+  return false;
 };
 
 module.exports = {
@@ -211,4 +240,5 @@ module.exports = {
   sendOtp,
   verifyOtp,
   reSendOtp,
+  setPassword,
 };
