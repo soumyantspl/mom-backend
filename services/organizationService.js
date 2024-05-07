@@ -42,7 +42,7 @@ const viewOrganizationService = async (query, page, limit) => {
 const editOrganizationService = async (id, updateData) => {
   const findOrganizationData = await Organization.findById(id);
   if (!findOrganizationData) {
-    return { Success: false, message: "Organisation ID not found" };
+    return false;
   }
   Object.assign(id, updateData);
   const updateQuery = { $set: updateData };

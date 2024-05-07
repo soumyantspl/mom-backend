@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
-const departmentModelSchema = new mongoose.Schema(
+const departmentSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
     },
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
     },
     isActive: {
       type: Boolean,
       required: true,
+      default: true,
     },
   },
   {
@@ -19,9 +20,9 @@ const departmentModelSchema = new mongoose.Schema(
   }
 );
 
-const departmentModel = mongoose.model(
-  "departmentModel",
-  departmentModelSchema
+const Department = mongoose.model(
+  "departments",
+  departmentSchema
 );
 
-module.exports = departmentModel;
+module.exports = Department;
