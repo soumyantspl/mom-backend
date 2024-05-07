@@ -10,23 +10,27 @@ const createDepartmentService = async (name, organizationId) => {
 };
 const editDepartmentService = async (id, name) => {
   try {
-    const existingDepartment = await Department.findById(id);
-    if (!existingDepartment) {
-      return false; // Department with given ID not found
-    }
-
-    existingDepartment.name = name;
-    const updatedDepartment = await existingDepartment.save();
-    return updatedDepartment;
+    console.log(id, name);
+    const existingDepartment = await Department.findByIdAndUpdate(
+      id,
+      {
+        name: name,
+      },
+      {
+        new: true,
+      }
+    );
+    console.log("existingDepartment", existingDepartment);
+    return existingDepartment;
   } catch (error) {
     throw error;
   }
 };
-
 const existingDepartmentService = async (organizationId) => {
   const isExist = await Department.findById(organizationId);
-  return !!isExist;
+  return isExist;
 };
+
 module.exports = {
   createDepartmentService,
   editDepartmentService,

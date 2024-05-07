@@ -15,7 +15,7 @@ const createDepartmentController = async (req, res) => {
       res,
       result,
       messages.DepartmentCreated,
-      200 //ok
+      201 //ok
     );
   } catch (error) {
     console.log("controller error", error);
@@ -33,7 +33,7 @@ const editDepartmentController = async (req, res) => {
         res,
         null,
         messages.idIsNotAvailabled,
-        404 // Not Found
+        404
       );
     }
     return Responses.successResponse(
@@ -41,7 +41,7 @@ const editDepartmentController = async (req, res) => {
       res,
       result,
       messages.DepartmentUpdated,
-      200 // OK
+      201
     );
   } catch (error) {
     console.error("Controller error:", error);
