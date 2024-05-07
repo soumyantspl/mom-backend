@@ -88,8 +88,34 @@ const reSendOtp = async (req, res) => {
   }
 };
 
+/**FUNC- TO SET PASSWORD FOR SIGN IN*/
+const setPassword = async (req, res) => {
+  try {
+    const result = await authService.setPassword(req.body);
+
+    if (!result) {
+      return Responses.failResponse(req, res, null, messages.userNotFound, 404);
+    }
+    if (!result?.isInValidOtp) {
+      return Responses.failResponse(req, res, null, messages.invalidOtp, 404);
+    }
+
+    return Responses.successResponse(
+      req,
+      res,
+      null,
+      messages.passwordRestSuccess,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   sendOtp,
   verifyOtp,
   reSendOtp,
+  setPassword,
 };
