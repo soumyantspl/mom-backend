@@ -9,5 +9,13 @@ router.post("/sendOtp", validator.sendOtpValidator, authController.sendOtp);
 /* VERIFY OTP FOR SIGN IN  */
 router.post("/verifyOtp", validator.verifyOtpValidator, authController.verifyOtp);
 
+/* RESEND OTP TO USER BY EMAIL */
+router.post("/reSendOtp", validator.sendOtpValidator, authController.reSendOtp);
+
+/* SET PASSWORD FOR SIGN IN */
+router.post("/setPassword", validator.setPasswordValidator, authController.setPassword);
+
+
+
 
 module.exports = router;
