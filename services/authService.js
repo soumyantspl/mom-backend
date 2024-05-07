@@ -53,10 +53,10 @@ const getOtpLogs = async (data) => {
       $match: {
         email: data.email,
         otp: parseInt(data.otp),
-        createdAt: {
-          $gte: fromTime,
-          $lt: new Date(),
-        },
+        // createdAt: {
+        //   $gte: fromTime,
+        //   $lt: new Date(),
+        // },
       },
     },
     {
@@ -235,10 +235,49 @@ const setPassword = async (data) => {
   return false;
 };
 
+/**FUNC- FOR SIGN IN BY PASSWORD   */
+const signInByPassword = async (data) => {
+  const userData = await Employee.findOne(
+    { email },
+    { _id: 1, email: 1, organisationId: 1, name: 1, password: 1, isActive: 1 }
+  );
+  console.log("userData----------", userData);
+  if (!userData) {
+    return false;
+  }
+  // Based on user Status
+  if (!userData.isActive) {
+    return {
+      isUserDeactivated: true,
+    };
+  }
+  const passwordIsValid = commonHelper.verifyPassword(
+    data.password,
+    userData.password
+  );
+
+  if (!passwordIsValid) {
+    return {
+      isInvalidPassword: true,
+    };
+  }
+
+  const token = authMiddleware.generatUserToken({
+    userId: userData._id,
+    name: userData.name,
+  });
+  console.log(token);
+  return {
+    token,
+    userData,
+  };
+};
+
 module.exports = {
   verifyEmail,
   sendOtp,
   verifyOtp,
   reSendOtp,
   setPassword,
+  signInByPassword,
 };

@@ -19,7 +19,7 @@ const userNotFound = "User not found!";
 const incorrectPassword =
   "The password you entered does not match. Please make sure you have entered the correct password!";
 const userElredyExist = "user already exists!";
-const passwordRestSuccess = "Your password has been reset successfully!";
+const passwordResetSuccess = "Your password has been reset successfully!";
 const forgotPasswordSuccess = "Your password has been sent on your email!";
 const otpSentSuccess = "Your otp has been sent on your email!";
 const tokenVefificationFailed = "TokenVefificationFailed";
@@ -54,5 +54,5 @@ module.exports = {
   invaliToken,
   invalidUser,
   otpResendMaxLimitCrossed,
-  passwordRestSuccess,
+  passwordResetSuccess,
 };
