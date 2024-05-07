@@ -5,7 +5,7 @@ const sendOtpValidator = async (req, res, next) => {
   try {
     console.log(req.body);
     const schema = Joi.object({
-      email: Joi.string().email().required(),
+      email: Joi.string().email().required()
     });
 
     await schema.validateAsync(req.body);

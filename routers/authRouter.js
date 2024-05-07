@@ -9,5 +9,9 @@ router.post("/sendOtp", validator.sendOtpValidator, authController.sendOtp);
 /* VERIFY OTP FOR SIGN IN  */
 router.post("/verifyOtp", validator.verifyOtpValidator, authController.verifyOtp);
 
+/* RESEND OTP TO USER BY EMAIL */
+router.post("/reSendOtp", validator.sendOtpValidator, authController.reSendOtp);
+
+
 
 module.exports = router;
