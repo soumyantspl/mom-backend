@@ -92,11 +92,11 @@ const reSendOtp = async (req, res) => {
 const setPassword = async (req, res) => {
   try {
     const result = await authService.setPassword(req.body);
-
+console.log(result)
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 404);
     }
-    if (!result?.isInValidOtp) {
+    if (result?.isInValidOtp) {
       return Responses.failResponse(req, res, null, messages.invalidOtp, 404);
     }
 

@@ -171,7 +171,6 @@ const checkReSendOtpRules = async (userData) => {
         timeDifference <= process.env.OTP_MAX_RESEND_TIMEINMINUTES
       ) {
         console.log("--------222");
-
         return {
           otpResendMaxTimeLimitCrossed: false,
           otpResendCount: otpResendCount + 1,
