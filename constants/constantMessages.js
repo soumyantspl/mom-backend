@@ -56,7 +56,6 @@ module.exports = {
   invaliToken,
   invalidUser,
   otpResendMaxLimitCrossed,
-  passwordRestSuccess,
   duplicateEntry,
   creatSuccess,
   invalidId,
