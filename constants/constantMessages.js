@@ -62,5 +62,7 @@ module.exports = {
   updateSuccess,
   passwordResetSuccess,
   signInSuccess,
-  incorrectPassword
+  incorrectPassword,
+  recordsNotFound,
+  recordsFound
 };

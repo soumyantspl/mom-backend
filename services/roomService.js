@@ -41,7 +41,33 @@ const editRoom = async (data, id) => {
   return room;
 };
 
+
+/**FUNC- TO VIEW ROOMS */
+const viewRoom = async (bodyData, queryData) => {
+  const { order } = queryData
+  const { organizationId, searchKey } = bodyData
+  let query = searchKey ? {
+    organizationId, title: searchKey,isActive: true
+  } : {
+    organizationId,isActive: true
+  }
+  
+  var limit = parseInt(queryData.limit);
+  var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
+  const totalCount = await Rooms.countDocuments(query);
+  const roomsDatas=await Rooms.find(query)
+    .sort({ createdAt: parseInt(order) })
+    .limit(limit)
+    .skip(skip)
+
+  return {
+    totalCount,roomsDatas
+  }
+
+};
+
 module.exports = {
   createRoom,
   editRoom,
+  viewRoom
 };
