@@ -70,6 +70,7 @@ module.exports = {
   invaliToken,
   invalidUser,
   otpResendMaxLimitCrossed,
+<<<<<<< HEAD
   //----------------------------//
   organizationCreated,
   duplicateOrganizationFound,
@@ -84,11 +85,16 @@ module.exports = {
   designationUpdated,
   designationDeleted,
   designationList,
+=======
+>>>>>>> ee4e383697c07749c4e3696449ec852895806942
   duplicateEntry,
   creatSuccess,
   invalidId,
   updateSuccess,
   passwordResetSuccess,
   signInSuccess,
-  incorrectPassword
+  incorrectPassword,
+  recordsNotFound,
+  recordsFound,
+  deleteSuccess
 };

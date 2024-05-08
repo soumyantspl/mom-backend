@@ -20,7 +20,7 @@ const createRoomValidator = async (req, res, next) => {
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         })
         .strict(),
-      organizationId: Joi.string().trim().required(),
+      organizationId: Joi.string().trim().alphanum().required(),
     });
 
     await schema.validateAsync(req.body);
@@ -68,7 +68,63 @@ const editRoomValidator = async (req, res, next) => {
   }
 };
 
+
+// VIEW ROOM VALIDATOR
+const viewRoomValidator = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.params);
+    const schema = Joi.object({
+      searchKey: Joi.string()
+        .trim()
+        .pattern(/^[0-9a-zA-Z ,/-]+$/)
+        .messages({
+          "string.pattern.base": `HTML tags & Special letters are not allowed!`,
+        }),
+
+      organizationId: Joi.string().trim().alphanum().required(),
+
+    });
+    const paramsSchema = Joi.object({
+      limit: Joi.number().required(),
+      page: Joi.number().required(),
+      order: Joi.number().required(),
+    });
+
+    await paramsSchema.validateAsync(req.query);
+    await schema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+
+// DELETE ROOM VALIDATOR
+const deleteRoomValidator = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.params);
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+
+    await paramsSchema.validateAsync(req.params);
+    next();
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+
+
 module.exports = {
   createRoomValidator,
   editRoomValidator,
+  viewRoomValidator,
+  deleteRoomValidator
 };

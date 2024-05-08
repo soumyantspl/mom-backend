@@ -48,7 +48,7 @@ const setPasswordValidator = async (req, res, next) => {
     const schema = Joi.object({
       email: Joi.string().email().required(),
       password: Joi.string()
-        .pattern(regularExpression) 
+        .pattern(regularExpression)
         .messages({
           "string.pattern.base": `Password min 8 letter, with at least a symbol, upper and lower case letters and a number!`,
         })
@@ -80,7 +80,7 @@ const signInByPasswordValidator = async (req, res, next) => {
     const schema = Joi.object({
       email: Joi.string().email().required(),
       password: Joi.string()
-        .pattern(regularExpression) 
+        .pattern(regularExpression)
         .messages({
           "string.pattern.base": `Password min 8 letter, with at least a symbol, upper and lower case letters and a number!`,
         })
@@ -99,5 +99,6 @@ const signInByPasswordValidator = async (req, res, next) => {
 module.exports = {
   sendOtpValidator,
   verifyOtpValidator,
-  setPasswordValidator,signInByPasswordValidator
+  setPasswordValidator,
+  signInByPasswordValidator
 };
