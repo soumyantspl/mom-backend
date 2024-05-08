@@ -1,11 +1,11 @@
-const roomService = require("../services/roomService");
+const configService = require("../services/configService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 
-/**FUNC- TO CREATE NEW MEETING ROOM**/
-const createRoom = async (req, res) => {
+/**FUNC- TO CREATE CONFIGURATION**/
+const createConfig = async (req, res) => {
   try {
-    const result = await roomService.createRoom(req.body);
+    const result = await configService.createConfig(req.body);
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -29,13 +29,19 @@ const createRoom = async (req, res) => {
   }
 };
 
-/**FUNC- TO EDIT MEETING ROOM**/
-const editRoom = async (req, res) => {
+/**FUNC- TO EDIT CONFIGURATION**/
+const editConfig = async (req, res) => {
   try {
-    const result = await roomService.editRoom(req.body, req.params.id);
+    const result = await configService.editConfig(req.body, req.params.id);
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.updateFailedRecordNotFound, 409);
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.updateFailedRecordNotFound,
+        409
+      );
     }
     return Responses.successResponse(
       req,
@@ -50,15 +56,19 @@ const editRoom = async (req, res) => {
   }
 };
 
-
-
-/**FUNC- TO VIEW MEETING ROOM**/
-const viewRooms = async (req, res) => {
+/**FUNC- TO VIEW CONFIGURATION **/
+const viewConfig = async (req, res) => {
   try {
-    const result = await roomService.viewRoom(req.body,req.query);
+    const result = await configService.viewConfig(req.params.organizationId);
     console.log(result);
-    if (result.totalCount==0) {
-      return Responses.failResponse(req, res, null, messages.recordsNotFound, 409);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
     }
     return Responses.successResponse(
       req,
@@ -73,20 +83,26 @@ const viewRooms = async (req, res) => {
   }
 };
 
-/**FUNC- TO DELETE MEETING ROOM**/
-const deleteRoom = async (req, res) => {
+/**FUNC- TO DELETE CONFIGURATION **/
+const deleteConfig = async (req, res) => {
   try {
-    const result = await roomService.deleteRoom(req.params.id);
+    const result = await configService.deleteConfig(req.params.id);
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.deleteFailedRecordNotFound, 409);
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.deleteFailedRecordNotFound,
+        409
+      );
     }
     return Responses.successResponse(
       req,
       res,
       null,
       messages.deleteSuccess,
-      202
+      200
     );
   } catch (error) {
     console.log(error);
@@ -95,8 +111,8 @@ const deleteRoom = async (req, res) => {
 };
 
 module.exports = {
-  createRoom,
-  editRoom,
-  viewRooms,
-  deleteRoom
+  createConfig,
+  editConfig,
+  viewConfig,
+  deleteConfig,
 };

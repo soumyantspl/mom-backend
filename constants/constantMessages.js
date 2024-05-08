@@ -60,7 +60,7 @@ const designationCreated = "Designation has been created";
 const designationUpdated = "Designation has been Updated";
 const designationDeleted = "Designation has been Deleted";
 const designationList = "Fetched all Designations";
-  const invalidId="Invalid Id!"
+const invalidId = "Invalid Id!";
 module.exports = {
   otpSentSuccess,
   userNotFound,
@@ -93,5 +93,7 @@ module.exports = {
   incorrectPassword,
   recordsNotFound,
   recordsFound,
-  deleteSuccess
+  deleteSuccess,
+  updateFailedRecordNotFound,
+  deleteFailedRecordNotFound,
 };
