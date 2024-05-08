@@ -89,7 +89,7 @@ const listDepartmentController = async (req, res) => {
         res,
         null,
         messages.recordsNotFound,
-        409
+        404
       );
     }
     return Responses.successResponse(
