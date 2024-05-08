@@ -1,28 +1,30 @@
-const mongoose = require('mongoose');
-const roomSchema = new mongoose.Schema({
+const mongoose = require("mongoose");
+const roomSchema = new mongoose.Schema(
+  {
     title: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     location: {
-        type: String,
-        required: true
+      type: String,
+      default: null,
+      // required: true
     },
-    organisationId: {
-        type: mongoose.Schema.ObjectId,
-        required: true
+    organizationId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
     },
-    status: {
-        type: Boolean,
-        require: true,
-        default: true
+    isActive: {
+      type: Boolean,
+      require: true,
+      default: true,
     },
-},
-    {
-        timestamps: true
-    })
+  },
+  {
+    timestamps: true,
+  }
+);
 
+const Rooms = mongoose.model("meetingrooms", roomSchema);
 
-const Organisation = mongoose.model('Organisation', roomSchema)
-
-module.exports = Organisation;
+module.exports = Rooms;

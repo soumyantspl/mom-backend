@@ -46,6 +46,7 @@ const invaliToken = "Invalid token";
 const invalidUser = "User is not valid user!";
 const otpResendMaxLimitCrossed =
   "Sorry! You have attempted maximum limit of resend OTP!";
+  const invalidId="Invalid Id!"
 module.exports = {
   otpSentSuccess,
   userNotFound,
@@ -55,7 +56,12 @@ module.exports = {
   invaliToken,
   invalidUser,
   otpResendMaxLimitCrossed,
+  passwordRestSuccess,
+  duplicateEntry,
+  creatSuccess,
+  invalidId,
+  updateSuccess,
   passwordResetSuccess,
   signInSuccess,
-  incorrectPassword,
+  incorrectPassword
 };
