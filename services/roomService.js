@@ -66,8 +66,21 @@ const viewRoom = async (bodyData, queryData) => {
 
 };
 
+
+/**FUNC- DELETE ROOM */
+const deleteRoom = async (id) => {
+ 
+  console.log("----------------------33333", id);
+  const room = await Rooms.findByIdAndUpdate({ _id: id }, {isActive:false}, { new: true });
+  console.log("room-----------------------", room);
+  return room;
+};
+
+
+
 module.exports = {
   createRoom,
   editRoom,
-  viewRoom
+  viewRoom,
+  deleteRoom
 };

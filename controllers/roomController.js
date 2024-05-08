@@ -73,8 +73,30 @@ const viewRooms = async (req, res) => {
   }
 };
 
+/**FUNC- TO DELETE MEETING ROOM**/
+const deleteRoom = async (req, res) => {
+  try {
+    const result = await roomService.deleteRoom(req.params.id);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(req, res, null, messages.invalidId, 409);
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      null,
+      messages.deleteSuccess,
+      202
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   createRoom,
   editRoom,
-  viewRooms
+  viewRooms,
+  deleteRoom
 };
