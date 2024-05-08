@@ -7,13 +7,22 @@ const createConfig = async (req, res) => {
   try {
     const result = await configService.createConfig(req.body);
     console.log(result);
-    if (!result) {
-      return Responses.failResponse(
+    // if (result?.isUpdated) {
+    //   return Responses.failResponse(
+    //     req,
+    //     res,
+    //     null,
+    //     messages.duplicateEntry,
+    //     409
+    //   );
+    // }
+    if (result?.isUpdated) {
+      return Responses.successResponse(
         req,
         res,
         null,
-        messages.duplicateEntry,
-        409
+        messages.updateSuccess,
+        201
       );
     }
     return Responses.successResponse(

@@ -3,7 +3,16 @@ const Config = require("../models/configurationModel");
 /**FUNC- CREATE CONFIGURATION */
 const createConfig = async (data) => {
   console.log("----------------------33333", data);
-  const configDetails = await checkDuplicateEntry(data.organizationId);
+  //  const configDetails = await checkDuplicateEntry(data.organizationId);
+  //   User.findOneAndUpdate({age: {$gte:5} },
+  //     {name:"Anuj"}, null, function (err, docs) {
+  const configDetails = await Config.findOneAndUpdate(
+    { organizationId: data.organizationId },
+    data,
+    {
+      new: true,
+    }
+  );
   console.log("configDetails--------------", configDetails);
   if (!configDetails) {
     const inputData = {
@@ -17,10 +26,15 @@ const createConfig = async (data) => {
     const newConfig = await configData.save();
     console.log("newConfig----------------", newConfig);
 
-    return newConfig;
+    return {
+      data: newConfig,
+      isUpdated: false,
+    };
   }
-
-  return false;
+  return {
+    data: configDetails,
+    isUpdated: true,
+  };
 };
 
 /**FUNC- TO VERIFY DUPLICATE CONFIGURATION */
