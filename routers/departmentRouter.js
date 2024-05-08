@@ -10,6 +10,7 @@ const {
   createDepartmentValidator,
   editDepartmentValidator,
   deleteDepartmentValidator,
+  listDepartmentValidator,
 } = require("../validators/departmentValidator");
 
 //CREATING DEPARTMENT USING ORGANIZATION_ID
@@ -31,6 +32,10 @@ router.delete(
   deleteDepartmentController
 );
 
-router.get("/listDepartment",listDepartmentController)
+router.get(
+  "/listDepartment",
+  listDepartmentValidator,
+  listDepartmentController
+);
 
 module.exports = router;
