@@ -29,11 +29,7 @@ const listDesignationService = async (bodyData, queryData) => {
   const { order } = queryData;
   const { organizationId, searchKey } = bodyData;
   let query = searchKey
-    ? {
-        organizationId,
-        title: searchKey,
-        isActive: true,
-      }
+    ? { organizationId, name: searchKey, isActive: true }
     : {
         organizationId,
         isActive: true,

@@ -35,7 +35,7 @@ const listDepartmentService = async (bodyData, queryData) => {
   let query = searchKey
     ? {
         organizationId,
-        title: searchKey,
+        name: searchKey,
         isActive: true,
       }
     : {
