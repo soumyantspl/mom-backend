@@ -85,7 +85,7 @@ const editOrganizationController = async (req, res) => {
       req,
       res,
       result._id,
-      messages.OrganizationUpdated,
+      messages.organizationUpdated,
       200
     );
   } catch (error) {

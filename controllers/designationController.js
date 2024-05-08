@@ -13,7 +13,7 @@ const createDesignationController = async (req, res) => {
       req,
       res,
       result,
-      messages.DesignationCreated,
+      messages.designationCreated,
       201
     );
   } catch (error) {
@@ -39,7 +39,7 @@ const editDesignationController = async (req, res) => {
       req,
       res,
       result,
-      messages.DesignationUpdated,
+      messages.designationUpdated,
       201
     );
   } catch (error) {
@@ -65,8 +65,8 @@ const deleteDesignationController = async (req, res) => {
       req,
       res,
       result,
-      messages.DesignationDeleted,
-      201
+      messages.designationDeleted,
+      202
     );
   } catch (error) {
     console.error("Controller error:", error);
@@ -76,12 +76,17 @@ const deleteDesignationController = async (req, res) => {
 
 const listDesignationController = async (req, res) => {
   try {
-    const departments = await designationService.listDesignationService();
+    const { limit, page } = req.query;
+    const departments = await designationService.listDesignationService(
+      limit,
+      page,
+      { isActive: true }
+    );
     return Responses.successResponse(
       req,
       res,
       departments,
-      messages.DesignationList,
+      messages.designationList,
       200
     );
   } catch (error) {
@@ -93,5 +98,5 @@ module.exports = {
   createDesignationController,
   editDesignationController,
   deleteDesignationController,
-  listDesignationController
+  listDesignationController,
 };

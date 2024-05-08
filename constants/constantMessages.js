@@ -19,7 +19,7 @@ const userNotFound = "User not found!";
 const incorrectPassword =
   "The password you entered does not match. Please make sure you have entered the correct password!";
 const userElredyExist = "user already exists!";
-const passwordRestSuccess = "Your password has been reset successfully!";
+const passwordResetSuccess = "Your password has been reset successfully!";
 const forgotPasswordSuccess = "Your password has been sent on your email!";
 const otpSentSuccess = "Your otp has been sent on your email!";
 const tokenVefificationFailed = "TokenVefificationFailed";
@@ -41,6 +41,7 @@ const invalidOtp =
 const expiredOtp =
   "The OTP you entered has been expired. Please use resend otp!";
 const otpVerifiedSuccess = "Your OTP has been verified successfully!";
+const signInSuccess = "Sign in successfully!";
 const invaliToken = "Invalid token";
 const invalidUser = "User is not valid user!";
 const otpResendMaxLimitCrossed =
@@ -49,16 +50,17 @@ const otpResendMaxLimitCrossed =
 const organizationCreated = "Organization Created successfully";
 const duplicateOrganizationFound = "This Email is already exist!!";
 const duplicateDepartment = "This department allready exist";
-const DepartmentCreated = "Department has been created";
+const departmentCreated = "Department has been created";
 const idIsNotAvailabled = "Given id is Not availabled";
-const OrganizationUpdated = "Organization Data Updated";
-const DepartmentUpdated = "Department Data Updated";
-const DepartmentDeleted = "Department has been Deleted";
-const DepartmentList = "Department list fetched";
-const DesignationCreated = "Designation has been created";
-const DesignationUpdated = "Designation has been Updated";
-const DesignationDeleted = "Designation has been Deleted";
-const DesignationList = "Fetched all Designations";
+const organizationUpdated = "Organization Data Updated";
+const departmentUpdated = "Department Data Updated";
+const departmentDeleted = "Department has been Deleted";
+const departmentList = "Department list fetched";
+const designationCreated = "Designation has been created";
+const designationUpdated = "Designation has been Updated";
+const designationDeleted = "Designation has been Deleted";
+const designationList = "Fetched all Designations";
+  const invalidId="Invalid Id!"
 module.exports = {
   otpSentSuccess,
   userNotFound,
@@ -68,19 +70,25 @@ module.exports = {
   invaliToken,
   invalidUser,
   otpResendMaxLimitCrossed,
-  passwordRestSuccess,
   //----------------------------//
   organizationCreated,
   duplicateOrganizationFound,
   duplicateDepartment,
-  DepartmentCreated,
+  departmentCreated,
   idIsNotAvailabled,
-  OrganizationUpdated,
-  DepartmentUpdated,
-  DepartmentDeleted,
-  DepartmentList,
-  DesignationCreated,
-  DesignationUpdated,
-  DesignationDeleted,
-  DesignationList,
+  organizationUpdated,
+  departmentUpdated,
+  departmentDeleted,
+  departmentList,
+  designationCreated,
+  designationUpdated,
+  designationDeleted,
+  designationList,
+  duplicateEntry,
+  creatSuccess,
+  invalidId,
+  updateSuccess,
+  passwordResetSuccess,
+  signInSuccess,
+  incorrectPassword
 };

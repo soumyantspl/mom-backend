@@ -2,9 +2,7 @@ const authService = require("../services/authService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 
-// Send Otp
-
-// Send Otp
+/**FUNC- TO SEND OTP TO SIGN IN USER */
 const sendOtp = async (req, res) => {
   try {
     const result = await authService.sendOtp(req.body.email);
@@ -92,7 +90,7 @@ const reSendOtp = async (req, res) => {
 const setPassword = async (req, res) => {
   try {
     const result = await authService.setPassword(req.body);
-console.log(result)
+    
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 404);
     }
@@ -104,7 +102,38 @@ console.log(result)
       req,
       res,
       null,
-      messages.passwordRestSuccess,
+      messages.passwordResetSuccess,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+/**FUNC- FOR SIGN IN BY PASSWORD**/
+const signInByPassword = async (req, res) => {
+  try {
+    const result = await authService.signInByPassword(req.body);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(req, res, null, messages.userNotFound, 404);
+    }
+    if (result?.incorrectPassword) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.incorrectPassword,
+        404
+      );
+    }
+
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.signInSuccess,
       200
     );
   } catch (error) {
@@ -118,4 +147,5 @@ module.exports = {
   verifyOtp,
   reSendOtp,
   setPassword,
+  signInByPassword,
 };

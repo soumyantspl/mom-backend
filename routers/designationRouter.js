@@ -20,6 +20,6 @@ router.post(
   editDesignationValidator,
   editDesignationController
 );
-router.post("/deleteDesignation", deleteDesignationController);
+router.delete("/deleteDesignation", deleteDesignationController);
 router.get("/listDesignation", listDesignationController);
 module.exports = router;

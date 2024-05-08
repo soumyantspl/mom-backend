@@ -22,12 +22,14 @@ const editDesignationService = async (id, name) => {
 };
 
 const deleteDesignationService = async (id) => {
-  const deletedDepartment = await Designation.findByIdAndDelete(id);
+  const deletedDepartment = await Designations.findByIdAndDelete(id);
   return deletedDepartment;
 };
-const listDesignationService = async () => {
-  const designation = await Designations.find();
-  return designation;
+const listDesignationService = async (limit, page) => {
+  let designationData = await Designations.find({ isActive: true }).skip(
+    (page - 1) * limit
+  );
+  return designationData;
 };
 module.exports = {
   createDesignationService,

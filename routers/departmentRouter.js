@@ -25,7 +25,7 @@ router.post(
   editDepartmentController
 );
 //DELETE DEPARTMEMNT
-router.post(
+router.delete(
   "/deleteDepartment",
   deleteDepartmentValidator,
   deleteDepartmentController

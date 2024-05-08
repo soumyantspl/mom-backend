@@ -1,13 +1,14 @@
 const Joi = require("joi");
-const createDesignationSchema = Joi.object({
-  name: Joi.string().required(),
+exports.createDesignationSchema = Joi.object({
+  name: Joi.string().alphanum().min(3).max(30).required(),
   organizationId: Joi.string().required(),
 });
 
 exports.validateCreateDesignation = (req, res, next) => {
   const { error } = createDesignationSchema.validate(req.body);
   if (error) {
-    return res.status(400).json({ error: error.details[0].message });
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
   }
   next();
 };
@@ -21,7 +22,8 @@ exports.editDesignationValidator = async (req, res, next) => {
     await schema.validateAsync(req.body);
     next();
   } catch (error) {
-    return res.status(400).json({ error: error.message });
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
   }
 };
 
@@ -33,6 +35,7 @@ exports.deleteDesignationValidator = async (req, res, next) => {
     await schema.validateAsync(req.body);
     next();
   } catch (error) {
-    return res.status(400).json({ error: error.message });
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
   }
 };

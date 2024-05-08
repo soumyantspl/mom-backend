@@ -14,8 +14,8 @@ const createDepartmentController = async (req, res) => {
       req,
       res,
       result,
-      messages.DepartmentCreated,
-      201 
+      messages.departmentCreated,
+      201
     );
   } catch (error) {
     console.log("controller error", error);
@@ -40,7 +40,7 @@ const editDepartmentController = async (req, res) => {
       req,
       res,
       result,
-      messages.DepartmentUpdated,
+      messages.departmentUpdated,
       201
     );
   } catch (error) {
@@ -67,7 +67,7 @@ const deleteDepartmentController = async (req, res) => {
       req,
       res,
       result,
-      messages.DepartmentDeleted,
+      messages.departmentDeleted,
       201
     );
   } catch (error) {
@@ -83,7 +83,7 @@ const listDepartmentController = async (req, res) => {
       req,
       res,
       departments,
-      messages.DepartmentList,
+      messages.departmentList,
       200
     );
   } catch (error) {
