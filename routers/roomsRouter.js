@@ -9,5 +9,12 @@ router.post("/createRoom", validator.createRoomValidator, roomController.createR
 /* EDIT ROOM  */
 router.put("/editRoom/:id", validator.editRoomValidator, roomController.editRoom);
 
+/* VIEW ROOMS  */
+router.get("/viewRooms", validator.viewRoomValidator, roomController.viewRooms);
+
+/* DELETE ROOMS  */
+router.delete("/deleteRoom/:id", validator.deleteRoomValidator, roomController.deleteRoom);
+
+
 
 module.exports = router;

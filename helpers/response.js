@@ -5,9 +5,7 @@ const successResponse = (req, res, data, message, statusCode) => {
     error: false,
     success: true,
     message: message,
-    data: {
-      successResult: data,
-    }
+    data
   });
 };
 
@@ -17,9 +15,7 @@ const failResponse = (req, res, data, message, statusCode) => {
     error: false,
     success: false,
     message: message,
-    data: {
-      errorResult: data,
-    }
+    data
   });
 };
 
@@ -45,9 +41,7 @@ const errorResponse = (req, res, errorDesc, errorKey) => {
     error: true,
     success: false,
     message: errorDesc.message,
-    data: {
-      errorResult: null,
-    },
+    data: null
   });
 };
 module.exports = {
