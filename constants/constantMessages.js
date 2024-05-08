@@ -56,12 +56,14 @@ module.exports = {
   invaliToken,
   invalidUser,
   otpResendMaxLimitCrossed,
-  passwordRestSuccess,
   duplicateEntry,
   creatSuccess,
   invalidId,
   updateSuccess,
   passwordResetSuccess,
   signInSuccess,
-  incorrectPassword
+  incorrectPassword,
+  recordsNotFound,
+  recordsFound,
+  deleteSuccess
 };

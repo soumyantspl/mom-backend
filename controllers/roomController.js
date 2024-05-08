@@ -50,7 +50,53 @@ const editRoom = async (req, res) => {
   }
 };
 
+
+
+/**FUNC- TO VIEW MEETING ROOM**/
+const viewRooms = async (req, res) => {
+  try {
+    const result = await roomService.viewRoom(req.body,req.query);
+    console.log(result);
+    if (result.totalCount==0) {
+      return Responses.failResponse(req, res, null, messages.recordsNotFound, 409);
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+/**FUNC- TO DELETE MEETING ROOM**/
+const deleteRoom = async (req, res) => {
+  try {
+    const result = await roomService.deleteRoom(req.params.id);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(req, res, null, messages.invalidId, 409);
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      null,
+      messages.deleteSuccess,
+      202
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   createRoom,
   editRoom,
+  viewRooms,
+  deleteRoom
 };
