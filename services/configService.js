@@ -6,15 +6,15 @@ const createConfig = async (data) => {
   //  const configDetails = await checkDuplicateEntry(data.organizationId);
   //   User.findOneAndUpdate({age: {$gte:5} },
   //     {name:"Anuj"}, null, function (err, docs) {
-  const configDetails = await Config.findOneAndUpdate(
+  const isConfigDetailsExists = await Config.findOneAndUpdate(
     { organizationId: data.organizationId },
     data,
     {
       new: true,
     }
   );
-  console.log("configDetails--------------", configDetails);
-  if (!configDetails) {
+  console.log("isConfigDetailsExists--------------", isConfigDetailsExists);
+  if (!isConfigDetailsExists) {
     const inputData = {
       amendmentRequestTime: data.amendmentRequestTime,
       acceptanceRejectionEndtime: data.acceptanceRejectionEndtime,
@@ -32,7 +32,7 @@ const createConfig = async (data) => {
     };
   }
   return {
-    data: configDetails,
+    data: isConfigDetailsExists,
     isUpdated: true,
   };
 };

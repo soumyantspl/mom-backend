@@ -20,7 +20,7 @@ const createConfig = async (req, res) => {
       return Responses.successResponse(
         req,
         res,
-        null,
+        result.data,
         messages.updateSuccess,
         201
       );
@@ -28,7 +28,7 @@ const createConfig = async (req, res) => {
     return Responses.successResponse(
       req,
       res,
-      null,
+      result.data,
       messages.creatSuccess,
       201
     );
@@ -55,7 +55,7 @@ const editConfig = async (req, res) => {
     return Responses.successResponse(
       req,
       res,
-      null,
+      result,
       messages.updateSuccess,
       200
     );

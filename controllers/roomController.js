@@ -19,7 +19,7 @@ const createRoom = async (req, res) => {
     return Responses.successResponse(
       req,
       res,
-      null,
+      result,
       messages.creatSuccess,
       201
     );
@@ -40,7 +40,7 @@ const editRoom = async (req, res) => {
     return Responses.successResponse(
       req,
       res,
-      null,
+      result,
       messages.updateSuccess,
       200
     );
