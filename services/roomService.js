@@ -41,16 +41,20 @@ const editRoom = async (data, id) => {
   return room;
 };
 
-
 /**FUNC- TO VIEW ROOMS */
 const viewRoom = async (bodyData, queryData) => {
-  const { order } = queryData
-  const { organizationId, searchKey } = bodyData
-  let query = searchKey ? {
-    organizationId, title: searchKey, isActive: true
-  } : {
-    organizationId, isActive: true
-  }
+  const { order } = queryData;
+  const { organizationId, searchKey } = bodyData;
+  let query = searchKey
+    ? {
+        organizationId,
+        title: searchKey,
+        isActive: true,
+      }
+    : {
+        organizationId,
+        isActive: true,
+      };
 
   var limit = parseInt(queryData.limit);
   var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
@@ -58,29 +62,29 @@ const viewRoom = async (bodyData, queryData) => {
   const roomsDatas = await Rooms.find(query)
     .sort({ createdAt: parseInt(order) })
     .limit(limit)
-    .skip(skip)
+    .skip(skip);
 
   return {
-    totalCount, roomsDatas
-  }
-
+    totalCount,
+    roomsDatas,
+  };
 };
-
 
 /**FUNC- DELETE ROOM */
 const deleteRoom = async (id) => {
-
   console.log("----------------------33333", id);
-  const room = await Rooms.findByIdAndUpdate({ _id: id }, { isActive: false }, { new: true });
+  const room = await Rooms.findByIdAndUpdate(
+    { _id: id },
+    { isActive: false },
+    { new: true }
+  );
   console.log("room-----------------------", room);
   return room;
 };
-
-
 
 module.exports = {
   createRoom,
   editRoom,
   viewRoom,
-  deleteRoom
+  deleteRoom,
 };

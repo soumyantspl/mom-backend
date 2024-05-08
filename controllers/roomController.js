@@ -35,7 +35,7 @@ const editRoom = async (req, res) => {
     const result = await roomService.editRoom(req.body, req.params.id);
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.invalidId, 409);
+      return Responses.failResponse(req, res, null, messages.updateFailedRecordNotFound, 409);
     }
     return Responses.successResponse(
       req,
@@ -50,15 +50,19 @@ const editRoom = async (req, res) => {
   }
 };
 
-
-
 /**FUNC- TO VIEW MEETING ROOM**/
 const viewRooms = async (req, res) => {
   try {
-    const result = await roomService.viewRoom(req.body,req.query);
+    const result = await roomService.viewRoom(req.body, req.query);
     console.log(result);
-    if (result.totalCount==0) {
-      return Responses.failResponse(req, res, null, messages.recordsNotFound, 409);
+    if (result.totalCount == 0) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
     }
     return Responses.successResponse(
       req,
@@ -79,7 +83,7 @@ const deleteRoom = async (req, res) => {
     const result = await roomService.deleteRoom(req.params.id);
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.invalidId, 409);
+      return Responses.failResponse(req, res, null, messages.deleteFailedRecordNotFound, 409);
     }
     return Responses.successResponse(
       req,
@@ -98,5 +102,5 @@ module.exports = {
   createRoom,
   editRoom,
   viewRooms,
-  deleteRoom
+  deleteRoom,
 };
