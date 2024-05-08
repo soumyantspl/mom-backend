@@ -1,15 +1,41 @@
 const Joi = require("joi");
-const createDesignationSchema = Joi.object({
-  name: Joi.string().required(),
-  organisationId: Joi.string().required(),
+exports.createDesignationSchema = Joi.object({
+  name: Joi.string().alphanum().min(3).max(30).required(),
+  organizationId: Joi.string().required(),
 });
 
-const validateDesignation = (req, res, next) => {
+exports.validateCreateDesignation = (req, res, next) => {
   const { error } = createDesignationSchema.validate(req.body);
   if (error) {
-    return res.status(400).json({ error: error.details[0].message });
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
   }
   next();
 };
 
-module.exports = { validateDesignation };
+exports.editDesignationValidator = async (req, res, next) => {
+  try {
+    const schema = Joi.object({
+      name: Joi.string().alphanum().min(3).max(30),
+      id: Joi.string(),
+    });
+    await schema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+exports.deleteDesignationValidator = async (req, res, next) => {
+  try {
+    const schema = Joi.object({
+      id: Joi.string(),
+    });
+    await schema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};

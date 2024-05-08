@@ -20,7 +20,8 @@ exports.createOrganisationValidator = async (req, res, next) => {
     await schema.validateAsync(req.body);
     next();
   } catch (error) {
-    return res.status(400).json({ error: error.message });
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
   }
 };
 
@@ -43,11 +44,12 @@ exports.createOrganisationValidator = async (req, res, next) => {
 //     await schema.validateAsync(req.body);
 //     next();
 //   } catch (error) {
-//     return res.status(400).json({ error: error.message });
+//      console.log(error);
+// return Responses.errorResponse(req, res, error);
 //   }
 // };
 
-exports.editOrganizationValidator = async(req,res,next) => {
+exports.editOrganizationValidator = async (req, res, next) => {
   try {
     const schema = Joi.object({
       name: Joi.string().alphanum().min(3).max(30),
@@ -66,6 +68,7 @@ exports.editOrganizationValidator = async(req,res,next) => {
     await schema.validateAsync(req.body);
     next();
   } catch (error) {
-    return res.status(400).json({ error: error.message });
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
   }
 };
