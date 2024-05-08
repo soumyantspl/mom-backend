@@ -4,6 +4,7 @@ const employeeRouter = require("./employeeRouter");
 const designationRouter = require("./designationRouter");
 const organizationRouter = require("./organizationRouter");
 const departmentRouter = require("./departmentRouter");
+const unitRouter = require("./unitRouter");
 const roomsRouter = require("./roomsRouter");
 const express = require("express");
 const app = express();
@@ -17,5 +18,6 @@ app.use(`/${BASE_PATH}/organization`, organizationRouter);
 app.use(`/${BASE_PATH}/department`, departmentRouter);
 app.use(`/${BASE_PATH}/employee`, employeeRouter);
 app.use(`/${BASE_PATH}/rooms`, roomsRouter);
+app.use(`/${BASE_PATH}/unit`, unitRouter);
 
 module.exports = app;

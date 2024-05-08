@@ -9,7 +9,7 @@ const unitSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
     },
@@ -24,6 +24,6 @@ const unitSchema = new mongoose.Schema(
   }
 );
 
-const Unit = mongoose.model("Organisation", unitSchema);
+const Unit = mongoose.model("Unit", unitSchema);
 
 module.exports = Unit;
