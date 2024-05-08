@@ -47,21 +47,21 @@ const viewRoom = async (bodyData, queryData) => {
   const { order } = queryData
   const { organizationId, searchKey } = bodyData
   let query = searchKey ? {
-    organizationId, title: searchKey,isActive: true
+    organizationId, title: searchKey, isActive: true
   } : {
-    organizationId,isActive: true
+    organizationId, isActive: true
   }
-  
+
   var limit = parseInt(queryData.limit);
   var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
   const totalCount = await Rooms.countDocuments(query);
-  const roomsDatas=await Rooms.find(query)
+  const roomsDatas = await Rooms.find(query)
     .sort({ createdAt: parseInt(order) })
     .limit(limit)
     .skip(skip)
 
   return {
-    totalCount,roomsDatas
+    totalCount, roomsDatas
   }
 
 };
@@ -69,9 +69,9 @@ const viewRoom = async (bodyData, queryData) => {
 
 /**FUNC- DELETE ROOM */
 const deleteRoom = async (id) => {
- 
+
   console.log("----------------------33333", id);
-  const room = await Rooms.findByIdAndUpdate({ _id: id }, {isActive:false}, { new: true });
+  const room = await Rooms.findByIdAndUpdate({ _id: id }, { isActive: false }, { new: true });
   console.log("room-----------------------", room);
   return room;
 };
