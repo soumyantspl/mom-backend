@@ -25,11 +25,28 @@ const deleteDesignationService = async (id) => {
   const deletedDepartment = await Designations.findByIdAndDelete(id);
   return deletedDepartment;
 };
-const listDesignationService = async (limit, page) => {
-  let designationData = await Designations.find({ isActive: true }).skip(
-    (page - 1) * limit
-  );
-  return designationData;
+const listDesignationService = async (bodyData, queryData) => {
+  const { order } = queryData;
+  const { organizationId, searchKey } = bodyData;
+  let query = searchKey
+    ? { organizationId, name: searchKey, isActive: true }
+    : {
+        organizationId,
+        isActive: true,
+      };
+
+  var limit = parseInt(queryData.limit);
+  var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
+  const totalCount = await Designations.countDocuments(query);
+  const designationList = await Designations.find(query)
+    .sort({ createdAt: parseInt(order) })
+    .limit(limit)
+    .skip(skip);
+
+  return {
+    totalCount,
+    designationList,
+  };
 };
 module.exports = {
   createDesignationService,

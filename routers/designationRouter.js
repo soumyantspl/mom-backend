@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   validateCreateDesignation,
   editDesignationValidator,
+  listDesignationValidator,
 } = require("../validators/designationValidator");
 const {
   createDesignationController,
@@ -21,5 +22,9 @@ router.post(
   editDesignationController
 );
 router.delete("/deleteDesignation", deleteDesignationController);
-router.get("/listDesignation", listDesignationController);
+router.get(
+  "/listDesignation",
+  listDesignationValidator,
+  listDesignationController
+);
 module.exports = router;

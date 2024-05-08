@@ -76,21 +76,29 @@ const deleteDesignationController = async (req, res) => {
 
 const listDesignationController = async (req, res) => {
   try {
-    const { limit, page } = req.query;
-    const departments = await designationService.listDesignationService(
-      limit,
-      page,
-      { isActive: true }
+    const result = await designationService.listDesignationService(
+      req.body,
+      req.query
     );
+    console.log(result);
+    if (result.totalCount == 0) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
+    }
     return Responses.successResponse(
       req,
       res,
-      departments,
-      messages.designationList,
+      result,
+      messages.recordsFound,
       200
     );
   } catch (error) {
-    console.error("Controller error:", error);
+    console.log(error);
     return Responses.errorResponse(req, res, error);
   }
 };

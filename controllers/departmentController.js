@@ -78,16 +78,29 @@ const deleteDepartmentController = async (req, res) => {
 
 const listDepartmentController = async (req, res) => {
   try {
-    const departments = await departmentService.listDepartmentService();
+    const result = await departmentService.listDepartmentService(
+      req.body,
+      req.query
+    );
+    console.log(result);
+    if (result.totalCount == 0) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        404
+      );
+    }
     return Responses.successResponse(
       req,
       res,
-      departments,
-      messages.departmentList,
+      result,
+      messages.recordsFound,
       200
     );
   } catch (error) {
-    console.error("Controller error:", error);
+    console.log(error);
     return Responses.errorResponse(req, res, error);
   }
 };
