@@ -101,6 +101,22 @@ const editEmployeeValidator = async (req, res, next) => {
   }
 };
 
+const deleteEmployeValidator = async (req, res, next) => {
+  try {
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+
+    await paramsSchema.validateAsync(req.params);
+    next();
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
 module.exports = {
-  viewEmployeeValidator, createEmployeeValidator, editEmployeeValidator
+  viewEmployeeValidator,
+  createEmployeeValidator,
+  editEmployeeValidator,
+  deleteEmployeValidator,
 };
