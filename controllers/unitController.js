@@ -6,7 +6,6 @@ const createUnit = async (req, res) => {
   try {
     console.log("request body", req.body);
     const result = await unitService.createUnit(req.body);
-
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -58,4 +57,30 @@ const editUnit = async (req, res) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-module.exports = { createUnit, editUnit };
+
+const deleteUnit = async (req, res) => {
+  try {
+    console.log(req.params);
+    const result = await unitService.deleteUnit(req.params.id);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.deleteFailedRecordNotFound,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      null,
+      messages.deleteSuccess,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+module.exports = { createUnit, editUnit, deleteUnit };

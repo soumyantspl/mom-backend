@@ -15,5 +15,10 @@ router.put(
   unitValidator.editUnitValidator,
   unitController.editUnit
 );
-//
+//DELETE UNIT
+router.delete(
+  "/deleteUnit/:id",
+  unitValidator.deleteUnitValidator,
+  unitController.deleteUnit
+);
 module.exports = router;

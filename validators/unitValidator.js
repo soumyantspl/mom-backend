@@ -57,7 +57,22 @@ const editUnitValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+
+const deleteUnitValidator = async (req, res, next) => {
+  try {
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+
+    await paramsSchema.validateAsync(req.params);
+    next();
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
 module.exports = {
   createUnitValidator,
   editUnitValidator,
+  deleteUnitValidator,
 };
