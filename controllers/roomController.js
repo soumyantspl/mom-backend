@@ -19,7 +19,7 @@ const createRoom = async (req, res) => {
     return Responses.successResponse(
       req,
       res,
-      null,
+      result,
       messages.creatSuccess,
       201
     );
@@ -35,12 +35,12 @@ const editRoom = async (req, res) => {
     const result = await roomService.editRoom(req.body, req.params.id);
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.invalidId, 409);
+      return Responses.failResponse(req, res, null, messages.updateFailedRecordNotFound, 409);
     }
     return Responses.successResponse(
       req,
       res,
-      null,
+      result,
       messages.updateSuccess,
       200
     );
@@ -79,7 +79,7 @@ const deleteRoom = async (req, res) => {
     const result = await roomService.deleteRoom(req.params.id);
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.invalidId, 409);
+      return Responses.failResponse(req, res, null, messages.deleteFailedRecordNotFound, 409);
     }
     return Responses.successResponse(
       req,

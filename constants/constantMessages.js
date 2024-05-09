@@ -28,6 +28,8 @@ const tokenIsMissing = "TokenIsMissing";
 const unknownUser = "Unknown user type";
 const noToken = "NoToken";
 const duplicateEntry = "Duplicate entry found!";
+const duplicateEmpCode="Duplicate employee code found!"
+const duplicateEmail="Duplicate employee email found!"
 const uploadFileSuccess = "File uploaded successfully!";
 const uploadFileErroe = "Error while uploading a file!";
 const deleteFileSuccess = "File deleted successfully!";
@@ -60,7 +62,7 @@ const designationCreated = "Designation has been created";
 const designationUpdated = "Designation has been Updated";
 const designationDeleted = "Designation has been Deleted";
 const designationList = "Fetched all Designations";
-  const invalidId="Invalid Id!"
+const invalidId = "Invalid Id!";
 module.exports = {
   otpSentSuccess,
   userNotFound,
@@ -93,5 +95,9 @@ module.exports = {
   incorrectPassword,
   recordsNotFound,
   recordsFound,
-  deleteSuccess
+  deleteSuccess,
+  updateFailedRecordNotFound,
+  deleteFailedRecordNotFound,
+  duplicateEmpCode,
+  duplicateEmail
 };

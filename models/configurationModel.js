@@ -2,24 +2,37 @@ const mongoose = require("mongoose");
 const configurationSchema = new mongoose.Schema(
   {
     amendmentRequestTime: {
+      // IN HOURS
       type: Number,
       required: true,
+      default: 0,
     },
     acceptanceRejectionEndtime: {
+      // IN HOURS
       type: Number,
       required: true,
+      default: 0,
     },
     mettingReminders: {
-      hours: { type: number, required: true },
-      minutes: { type: number, required: true },
+      hours: { type: Number, required: true, default: 0 },
+      minutes: { type: Number, required: true, default: 0 },
     },
     chaseOfAction: {
+      // IN DAYS
       type: Number,
       required: true,
+      default: 0,
     },
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
+      index: true,
+    },
+    isActive: {
+      type: Boolean,
+      required: true,
+      index: true,
+      default: true,
     },
   },
   {
@@ -27,6 +40,6 @@ const configurationSchema = new mongoose.Schema(
   }
 );
 
-const Configuration = mongoose.model("Configuration", configurationSchema);
+const Configuration = mongoose.model("configurations", configurationSchema);
 
 module.exports = Configuration;
