@@ -38,7 +38,13 @@ const editUnit = async (req, res) => {
     // console.log("Query id", req.params.id);
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.invalidId, 409);
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.updateFailedRecordNotFound,
+        409
+      );
     }
     return Responses.successResponse(
       req,

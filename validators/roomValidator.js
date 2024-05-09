@@ -60,7 +60,6 @@ const editRoomValidator = async (req, res, next) => {
 
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
-
     next();
   } catch (error) {
     console.log(error);

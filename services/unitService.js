@@ -27,7 +27,7 @@ const editUnit = async (data, id) => {
 
 const checkDuplicate = async (organizationId, name) => {
   return await Units.findOne(
-    { organizationId, name },
+    { organizationId, name, isActive: true },
     { organizationId: 1, name: 1 }
   );
 };

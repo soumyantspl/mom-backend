@@ -10,6 +10,10 @@ router.post(
   unitController.createUnit
 );
 //EDIT UNIT
-router.put("/editUnit/:id", unitController.editUnit);
+router.put(
+  "/editUnit/:id",
+  unitValidator.editUnitValidator,
+  unitController.editUnit
+);
 //
 module.exports = router;
