@@ -11,10 +11,7 @@ const employeeSchema = new mongoose.Schema(
       type: String,
       required: true,
       index: true,
-    },
-    empId: {
-      type: String,
-      required: true,
+      unique: true
     },
     email: {
       type: String,
@@ -27,15 +24,18 @@ const employeeSchema = new mongoose.Schema(
       index: true,
       unique: true
     },
-    designation: {
-      type: mongoose.Schema.ObjectId
+    designationId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
     },
-    department: {
-      type: mongoose.Schema.ObjectId
+    departmentId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
     },
-    unit: {
-      type: mongoose.Schema.ObjectId
-        },
+    unitId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
     organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true
@@ -50,30 +50,6 @@ const employeeSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
       default: false
-    },
-    designation: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
-    department: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
-    unit: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
-    organisationId: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
-    status: {
-      type: Boolean,
-      required: true,
-    },
-    isMeetingOrganiser: {
-      type: Boolean,
-      required: true,
     },
     password: {
       type: String,
@@ -97,6 +73,6 @@ const employeeSchema = new mongoose.Schema(
   }
 );
 
-const Employee = mongoose.model("employee", employeeSchema);
+const Employee = mongoose.model("employees", employeeSchema);
 
 module.exports = Employee;
