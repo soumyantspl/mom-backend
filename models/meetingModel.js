@@ -6,24 +6,25 @@ const meetingSchema = new mongoose.Schema(
       required: true,
     },
     mode: {
+      type: String,
       enum: ["VIRTUAL", "PHYSICAL"],
-      required: true,
+      default: 'PHYSICAL'
     },
     locationDetails: {
       location: {
-        type: String
+        type: String,
+
       },
       isMeetingRoom: {
         type: Boolean,
         required: true,
       },
-      roomId:{
+      roomId: {
         type: mongoose.Schema.ObjectId
       }
     },
     link: {
-      type: String,
-      required: true,
+      type: String
     },
     date: {
       type: Date,
@@ -35,9 +36,10 @@ const meetingSchema = new mongoose.Schema(
     toTime: {
       type: String
     },
-    step:{
-      enum: [1,2,3],
-      required: true
+    step: {
+      type: Number,
+      enum: [1, 2, 3],
+      default: 1
     },
     attendees: [
       {
@@ -51,12 +53,20 @@ const meetingSchema = new mongoose.Schema(
 
       },
     ],
-    roomId: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
+    // roomId: {
+    //   type: mongoose.Schema.ObjectId,
+    //   required: true,
+    // },
     status: {
+
+      type: String,
       enum: ["closed", "sceduled", "rescheduled", "canceled", "due"],
+      default: 'due'
+    },
+    isActive: {
+      type: Boolean,
+      required: true,
+      default: true
     },
     logs: [
       {

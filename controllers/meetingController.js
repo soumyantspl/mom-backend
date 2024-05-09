@@ -2,7 +2,7 @@
 
 
 
-const employeeService = require("../services/employeeService");
+const meetingService = require("../services/meetingService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 
