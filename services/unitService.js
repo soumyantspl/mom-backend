@@ -1,17 +1,15 @@
-const Unit = require("../models/unitModel");
+const Units = require("../models/unitModel");
 
 const createUnit = async (data) => {
-  console.log("->>", data);
-  const unitDetails = await checkDuplicate(data.name, data.address, data.id);
-  console.log("unitDetails=>", unitDetails);
+  const unitDetails = await checkDuplicate(data.organizationId, data.name);
   if (!unitDetails) {
     const newData = {
-      name: data.title,
+      name: data.name,
       address: data.address,
-      _id: data.id,
+      organizationId: data.organizationId,
     };
     console.log("newData", newData);
-    const unitData = new Unit(newData);
+    const unitData = new Units(newData);
     const newUnit = await unitData.save();
     console.log("UnitData", newUnit);
 
@@ -20,11 +18,21 @@ const createUnit = async (data) => {
   return false;
 };
 
-const checkDuplicate = async (id) => {
-  console.log(id);
-  return await Unit.findOne({ id, isActive: true });
+const editUnit = async (data, id) => {
+  const unit = await Units.findByIdAndUpdate({ _id: id }, data, {
+    new: true,
+  });
+  return unit;
+};
+
+const checkDuplicate = async (organizationId, name) => {
+  return await Units.findOne(
+    { organizationId, name },
+    { organizationId: 1, name: 1 }
+  );
 };
 
 module.exports = {
   createUnit,
+  editUnit,
 };

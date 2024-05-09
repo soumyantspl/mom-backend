@@ -13,7 +13,7 @@ const unitSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       required: true,
     },
-    status: {
+    isActive: {
       type: Boolean,
       require: true,
       default: true,
@@ -24,6 +24,6 @@ const unitSchema = new mongoose.Schema(
   }
 );
 
-const Unit = mongoose.model("Unit", unitSchema);
+const Units = mongoose.model("Units", unitSchema);
 
-module.exports = Unit;
+module.exports = Units;

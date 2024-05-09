@@ -9,7 +9,7 @@ const createDesignationService = async (name, organizationId) => {
 };
 
 const editDesignationService = async (id, name) => {
-  const existingDepartment = await Designation.findByIdAndUpdate(
+  const existingDepartment = await Designations.findByIdAndUpdate(
     id,
     {
       name: name,

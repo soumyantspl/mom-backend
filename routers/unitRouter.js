@@ -3,9 +3,13 @@ const router = express.Router();
 const unitController = require("../controllers/unitController");
 const unitValidator = require("../validators/unitValidator");
 
+// CREATE UNIT
 router.post(
   "/createUnit",
   unitValidator.createUnitValidator,
-  unitController.createUnitController
+  unitController.createUnit
 );
+//EDIT UNIT
+router.put("/editUnit/:id", unitController.editUnit);
+//
 module.exports = router;

@@ -3,6 +3,7 @@ const Responses = require("../helpers/response");
 
 const createUnitValidator = async (req, res, next) => {
   try {
+    
     const schema = Joi.object({
       name: Joi.string()
         .trim()
@@ -14,12 +15,13 @@ const createUnitValidator = async (req, res, next) => {
       address: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
-        .message({
+        .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         })
         .required(),
-      id: Joi.string().trim().alphanum().required(),
+        organizationId: Joi.string().trim().alphanum().required(),
     });
+    
     await schema.validateAsync(req.body);
     next();
   } catch (error) {
