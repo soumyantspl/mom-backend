@@ -21,4 +21,10 @@ router.delete(
   unitValidator.deleteUnitValidator,
   unitController.deleteUnit
 );
+//LIST UNIT API
+router.get(
+  "/listUnit",
+  unitValidator.listUnitValidator,
+  unitController.listUnit
+);
 module.exports = router;
