@@ -1,19 +1,51 @@
-// View Meeting
 
-const view = async (req, res) => {
+
+
+
+const employeeService = require("../services/employeeService");
+const Responses = require("../helpers/response");
+const messages = require("../constants/constantMessages");
+
+/**FUNC- TO CREATE MEETING**/
+const createMeeting = async (req, res) => {
   try {
-    return res.status(200).json({
-      status: true,
-      msg: "Meeting Data Fetched Successfully",
-    });
+    const result = await meetingService.createMeeting(req.body);
+    console.log(result);
+    if (result?.isDuplicateEmail) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateEmail,
+        409
+      );
+    }
+
+    if (result?.isDuplicateEmpCode) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateEmpCode,
+        409
+      );
+    }
+
+    return Responses.successResponse(
+      req,
+      res,
+      result.data,
+      messages.creatSuccess,
+      201
+    );
   } catch (error) {
-    return res.status(400).json({
-      status: false,
-      msg: error.message,
-    });
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
   }
 };
 
 module.exports = {
-  view,
+  createMeeting,
 };
+
+
