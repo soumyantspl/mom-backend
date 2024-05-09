@@ -25,6 +25,12 @@ const editUnit = async (data, id) => {
   return unit;
 };
 
+const deleteUnit = async (id) => {
+  console.log("id--->>", id);
+  const deletedUnit = await Units.findByIdAndUpdate({ _id: id }, {isActive:false}, { new: true });
+  return deletedUnit;
+};
+
 const checkDuplicate = async (organizationId, name) => {
   return await Units.findOne(
     { organizationId, name, isActive: true },
@@ -35,4 +41,5 @@ const checkDuplicate = async (organizationId, name) => {
 module.exports = {
   createUnit,
   editUnit,
+  deleteUnit,
 };
