@@ -2,7 +2,7 @@ const employeeService = require("../services/employeeService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 
-/**FUNC- TO CREATE CONFIGURATION**/
+/**FUNC- TO CREATE EMPLOYEE**/
 const createEmployee = async (req, res) => {
   try {
     const result = await employeeService.createEmployee(req.body);
@@ -40,4 +40,48 @@ const createEmployee = async (req, res) => {
   }
 };
 
-module.exports = { createEmployee };
+/**FUNC- TO EDIT EMPLOYEE **/
+const editEmployee = async (req, res) => {
+  try {
+    const result = await employeeService.editEmployee(req.body, req.params.id);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(req, res, null, messages.updateFailedRecordNotFound, 409);
+    }
+
+    if (result?.isDuplicateEmail) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateEmail,
+        409
+      );
+    }
+
+    if (result?.isDuplicateEmpCode) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateEmpCode,
+        409
+      );
+    }
+
+
+
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.updateSuccess,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+module.exports = { createEmployee, editEmployee };

@@ -15,6 +15,4 @@ router.get("/viewRooms", validator.viewRoomValidator, roomController.viewRooms);
 /* DELETE ROOMS  */
 router.delete("/deleteRoom/:id", validator.deleteRoomValidator, roomController.deleteRoom);
 
-
-
 module.exports = router;

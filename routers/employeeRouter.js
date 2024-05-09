@@ -8,4 +8,7 @@ const authMiddleware=require('../middlewares/authMiddleware')
 /* CREATE EMPLOYEE  */
 router.post("/createEmployee", validator.createEmployeeValidator, employeeController.createEmployee);
 
+/* EDIT EMPLOYEE  */
+router.put("/editEmployee/:id", validator.editEmployeeValidator, employeeController.editEmployee);
+
 module.exports = router;

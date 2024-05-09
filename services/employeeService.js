@@ -61,7 +61,7 @@ const checkDuplicateEntry = async (email, organizationId, empId) => {
 };
 
 
-/**FUNC- TO VERIFY DUPLICATE EMPLOYEE */
+/**FUNC- TO VERIFY DUPLICATE EMPLOYEE EMAIL */
 const checkDuplicateEmail = async (email, organizationId) => {
   console.log("email---------------", email)
   console.log("organizationId---------------", organizationId)
@@ -73,7 +73,7 @@ const checkDuplicateEmail = async (email, organizationId) => {
 };
 
 
-/**FUNC- TO VERIFY DUPLICATE EMPLOYEE */
+/**FUNC- TO VERIFY DUPLICATE EMPLOYEE ID */
 const checkDuplicateEmpId = async (empId, organizationId) => {
   console.log("empid---------------", empId)
   console.log("organizationId---------------", organizationId)
@@ -97,10 +97,43 @@ const verifyEmployee = async (empId) => {
   );
 };
 
+/**FUNC- EDIT EMPLOYEE */
+const editEmployee = async (data, id) => {
+  console.log("----------------------3333344", data);
+  console.log("----------------------33333", id);
+
+
+  console.log("----------------------33333", data);
+  const [emailDetails, empCodeDetails] = await checkDuplicateEntry(
+    data.email,
+    data.organizationId,
+    data.empId
+  );;
+
+  console.log("emailDetails", emailDetails);
+  console.log("empCodeDetails", empCodeDetails);
+  if (emailDetails) {
+    return {
+      isDuplicateEmail: true
+    }
+  }
+
+  if (empCodeDetails) {
+    return {
+      isDuplicateEmpCode: true
+    }
+  }
+
+
+  const employee= await Employee.findByIdAndUpdate({ _id: id }, data, { new: true });
+  console.log("employee-----------------------", employee);
+  return employee;
+};
+
 
 
 module.exports = {
   createEmployee,
   viewEmployeeService,
-  verifyEmployee,
+  verifyEmployee,editEmployee
 };
