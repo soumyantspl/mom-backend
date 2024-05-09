@@ -40,7 +40,7 @@ const createOrganizationController = async (req, res) => {
 };
 
 const viewOrganizationController = async (req, res) => {
-  const { name, email,limit ,page} = req.body;
+  const { name, email, limit, page } = req.body;
   let query = {};
   if (name && email) {
     query = { name, email };

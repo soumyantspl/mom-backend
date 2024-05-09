@@ -60,14 +60,12 @@ const editRoomValidator = async (req, res, next) => {
 
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
-
     next();
   } catch (error) {
     console.log(error);
     return Responses.errorResponse(req, res, error);
   }
 };
-
 
 // VIEW ROOM VALIDATOR
 const viewRoomValidator = async (req, res, next) => {
@@ -84,7 +82,6 @@ const viewRoomValidator = async (req, res, next) => {
         }),
 
       organizationId: Joi.string().trim().alphanum().required(),
-
     });
     const paramsSchema = Joi.object({
       limit: Joi.number().required(),
@@ -100,7 +97,6 @@ const viewRoomValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-
 
 // DELETE ROOM VALIDATOR
 const deleteRoomValidator = async (req, res, next) => {
@@ -120,11 +116,9 @@ const deleteRoomValidator = async (req, res, next) => {
   }
 };
 
-
-
 module.exports = {
   createRoomValidator,
   editRoomValidator,
   viewRoomValidator,
-  deleteRoomValidator
+  deleteRoomValidator,
 };

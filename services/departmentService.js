@@ -56,7 +56,7 @@ const listDepartmentService = async (bodyData, queryData) => {
     departmentList,
   };
 };
-// };
+
 module.exports = {
   createDepartmentService,
   editDepartmentService,
