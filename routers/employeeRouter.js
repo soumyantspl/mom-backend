@@ -17,7 +17,7 @@ router.put(
   validator.editEmployeeValidator,
   employeeController.editEmployee
 );
-/* VIEW EMPLOYEE  */
+/* DELETE EMPLOYEE  */
 router.delete(
   "/deleteEmployee/:id",
   validator.deleteEmployeValidator,

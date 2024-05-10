@@ -148,15 +148,11 @@ const viewSingleEmployeeValidator = async (req, res, next) => {
   try {
     console.log(req.body);
     console.log(req.params);
-    const schema = Joi.object({
-      organizationId: Joi.string().trim().alphanum().required(),
-    });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
 
     await paramsSchema.validateAsync(req.params);
-    await schema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
