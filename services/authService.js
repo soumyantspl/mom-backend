@@ -3,6 +3,8 @@ const OtpLogs = require("../models/otpLogsModel");
 const commonHelper = require("../helpers/commomHelper");
 const emailService = require("./emailService");
 const authMiddleware = require("../middlewares/authMiddleware");
+const emailTemplates = require("../emailSetUp/emailTemplates");
+const emailConstants = require("../constants/emailConstants");
 /**FUNC- TO VERIFY VALID EMAIL USER */
 const verifyEmail = async (email) => {
   console.log("----------------------33333", email);
@@ -17,7 +19,7 @@ const sendOtp = async (email) => {
   const userData = await verifyEmail(email);
   console.log('userData------',userData)
   if (userData) {
-    return await validateSendingOtp(userData);
+    return await validateSendingOtp(userData,"Send OTP");
   }
   return false;
 };
@@ -40,7 +42,7 @@ const verifyOtp = async (data) => {
   return false;
 };
 
-/**FUNC- TO VERIFY VALID OTP OF USER */
+/**FUNC- TO OTP LOGS DETAILS */
 const getOtpLogs = async (data) => {
   let fromTime = new Date();
   fromTime.setMinutes(
@@ -88,7 +90,8 @@ const getOtpLogs = async (data) => {
 const insertOtp = async (
   userData,
   otpResendCount = 0,
-  otpResendTime = null
+  otpResendTime = null,
+  emailType
 ) => {
   const data = {
     otp: commonHelper.generateOtp(),
@@ -100,7 +103,10 @@ const insertOtp = async (
   };
   const otpData = new OtpLogs(data);
   await otpData.save();
-  await emailService.sendSignInOtpEmail(userData, data.otp);
+  console.log("-------------------------------1", userData, data.otp);
+  const mailData = await emailTemplates.signInByOtpEmail(userData, data.otp);
+  const emailSubject=emailConstants.signInOtpsubject;
+  await emailService.sendEmail(userData.email,emailType,emailSubject,mailData);
   return data.otp;
 };
 
@@ -109,12 +115,12 @@ const reSendOtp = async (email) => {
   const userData = await verifyEmail(email);
   console.log("userData-------------", userData);
   if (userData) {
-    return await validateSendingOtp(userData);
+    return await validateSendingOtp(userData,"Resend OTP");
   }
   return false;
 };
 // FUNCTION TO VALIDATE SENDING OTP
-const validateSendingOtp = async (userData) => {
+const validateSendingOtp = async (userData,emailType) => {
   let otpResendTime;
   let otpResendCount;
   const rulesData = await checkReSendOtpRules(userData);
@@ -123,14 +129,14 @@ const validateSendingOtp = async (userData) => {
     otpResendTime = new Date();
     otpResendCount = 1;
     console.log("final user data-----------", userData);
-    return await insertOtp(userData, otpResendCount, otpResendTime);
+    return await insertOtp(userData, otpResendCount, otpResendTime,emailType);
   }
 
   if (rulesData?.isReSendOtpAllowed) {
     otpResendTime = rulesData.otpResendTime;
     otpResendCount = rulesData.otpResendCount;
     console.log("final user data-----------", userData);
-    return await insertOtp(userData, otpResendCount, otpResendTime);
+    return await insertOtp(userData, otpResendCount, otpResendTime,emailType);
   }
   if (!rulesData.isReSendOtpAllowed) {
     return rulesData;
