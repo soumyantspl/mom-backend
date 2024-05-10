@@ -151,7 +151,7 @@ const viewSingleEmploye = async (req, res) => {
       req,
       res,
       result,
-      messages.recordsFound,
+      messages.recordsNotFound,
       200
     );
   } catch (error) {
