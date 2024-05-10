@@ -17,7 +17,7 @@ const otpLogsSchema = new mongoose.Schema(
       required: true,
       index: true,
     },
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
       index: true,
