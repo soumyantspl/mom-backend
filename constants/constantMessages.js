@@ -1,4 +1,4 @@
-const creatSuccess = "Created successfully!";
+const createdSuccess = "Created successfully!";
 const createError = "Error while creating!";
 const updateSuccess = "Updated successfully!";
 const updateFailedRecordNotFound = "Record not found. Update failed!";
@@ -28,8 +28,8 @@ const tokenIsMissing = "TokenIsMissing";
 const unknownUser = "Unknown user type";
 const noToken = "NoToken";
 const duplicateEntry = "Duplicate entry found!";
-const duplicateEmpCode="Duplicate employee code found!"
-const duplicateEmail="Duplicate employee email found!"
+const duplicateEmpCode = "Duplicate employee code found!";
+const duplicateEmail = "Duplicate employee email found!";
 const uploadFileSuccess = "File uploaded successfully!";
 const uploadFileErroe = "Error while uploading a file!";
 const deleteFileSuccess = "File deleted successfully!";
@@ -73,6 +73,7 @@ module.exports = {
   invalidUser,
   otpResendMaxLimitCrossed,
   //----------------------------//
+  createError,
   organizationCreated,
   duplicateOrganizationFound,
   duplicateDepartment,
@@ -87,7 +88,7 @@ module.exports = {
   designationDeleted,
   designationList,
   duplicateEntry,
-  creatSuccess,
+  createdSuccess,
   invalidId,
   updateSuccess,
   passwordResetSuccess,
@@ -99,5 +100,5 @@ module.exports = {
   updateFailedRecordNotFound,
   deleteFailedRecordNotFound,
   duplicateEmpCode,
-  duplicateEmail
+  duplicateEmail,
 };

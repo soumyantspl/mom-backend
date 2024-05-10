@@ -20,7 +20,7 @@ const createUnit = async (req, res) => {
       req,
       res,
       null,
-      messages.creatSuccess,
+      messages.createdSuccess,
       201
     );
   } catch (error) {
