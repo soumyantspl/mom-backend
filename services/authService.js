@@ -8,13 +8,14 @@ const verifyEmail = async (email) => {
   console.log("----------------------33333", email);
   return await Employee.findOne(
     { email, isActive: true },
-    { _id: 1, email: 1, organisationId: 1, name: 1 }
+    { _id: 1, email: 1, organizationId: 1, name: 1 }
   );
 };
 
 /**FUNC- TO SEND OTP TO EMAIL USER */
 const sendOtp = async (email) => {
   const userData = await verifyEmail(email);
+  console.log('userData------',userData)
   if (userData) {
     return await validateSendingOtp(userData);
   }
@@ -92,7 +93,7 @@ const insertOtp = async (
   const data = {
     otp: commonHelper.generateOtp(),
     email: userData.email,
-    organisationId: userData.organisationId,
+    organizationId: userData.organizationId,
     expiryTime: commonHelper.otpExpiryTime(2), // 10 minutes
     otpResendCount,
     otpResendTime,
@@ -239,7 +240,7 @@ const setPassword = async (data) => {
 const signInByPassword = async (data) => {
   const userData = await Employee.findOne(
     { email: data.email },
-    { _id: 1, email: 1, organisationId: 1, name: 1, password: 1, isActive: 1 }
+    { _id: 1, email: 1, organizationId: 1, name: 1, password: 1, isActive: 1 }
   );
   console.log("userData----------", userData);
   if (!userData) {
@@ -275,7 +276,7 @@ const signInByPassword = async (data) => {
       id: userData._id,
       name: userData.name,
       email: userData.email,
-      organizationId: userData.organisationId,
+      organizationId: userData.organizationId,
     },
   };
 };
