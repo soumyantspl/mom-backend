@@ -27,6 +27,6 @@ const agendaSchema = new mongoose.Schema(
   }
 );
 
-const Agenda = mongoose.model("Agenda", agendaSchema);
+const Agenda = mongoose.model("agenda", agendaSchema);
 
 module.exports = Agenda;
