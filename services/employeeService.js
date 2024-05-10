@@ -92,6 +92,7 @@ const checkDuplicateEmpId = async (empId, organizationId) => {
     { _id: 1, email: 1, organisationId: 1, name: 1, isActive: 1 }
   );
 };
+/**FUNC- TO SEE LIST OF EMPLOYEE */
 const listEmployee = async (bodyData, queryData) => {
   const { order } = queryData;
   const { organizationId, searchKey } = bodyData;
@@ -122,6 +123,16 @@ const listEmployee = async (bodyData, queryData) => {
     .skip(skip);
 
   return { totalCount, employeeData };
+};
+
+/**FUNC- TO SEE SINGLE EMPLOYE DETAILS */
+const viewSingleEmployee = async (id) => {
+  const singleEmployeDetails = await Employee.findById({
+    _id: id,
+    isActive: true,
+  });
+  console.log("single employee", singleEmployeDetails);
+  return singleEmployeDetails;
 };
 
 /**FUNC- TO VERIFY ACTIVE USER*/
@@ -173,4 +184,5 @@ module.exports = {
   editEmployee,
   deleteEmploye,
   listEmployee,
+  viewSingleEmployee,
 };
