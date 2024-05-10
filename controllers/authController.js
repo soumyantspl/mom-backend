@@ -76,8 +76,8 @@ const reSendOtp = async (req, res) => {
     return Responses.successResponse(
       req,
       res,
-      result,
-      messages.otpVerifiedSuccess,
+      null,
+      messages.otpSentSuccess,
       200
     );
   } catch (error) {

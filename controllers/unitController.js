@@ -83,4 +83,30 @@ const deleteUnit = async (req, res) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-module.exports = { createUnit, editUnit, deleteUnit };
+
+const listUnit = async (req, res) => {
+  try {
+    const result = await unitService.listUnit(req.body, req.query);
+    console.log(result);
+    if (result.totalCount == 0) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+module.exports = { createUnit, editUnit, deleteUnit,listUnit };

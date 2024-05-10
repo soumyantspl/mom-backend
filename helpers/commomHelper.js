@@ -14,9 +14,9 @@ const otpExpiryTime = (minutes) => {
 
 /**FUNC- TO GET TIME DIFFERENCE BETWEEN FROM & TO TIME*/
 const checkTimeDifference = (now, targetTime) => {
-  var diff = Math.abs(now.getTime() - targetTime.getTime()) / 3600000;
-  console.log("diff---------------------", diff);
-  return diff;
+  var diff = Math.abs(now.getTime() - targetTime.getTime()) / 3600000; //IN HOURS
+  console.log("diff---------------------", 60/diff);
+  return 60/diff;
 };
 
 /*FUNC TO GENERATE HASH PASSWORD*/
