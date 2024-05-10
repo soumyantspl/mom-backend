@@ -23,5 +23,6 @@ router.delete(
   validator.deleteEmployeValidator,
   employeeController.deleteEmploye
 );
+router.get("/listEmployee",validator.listEmployesValidator,employeeController.listEmployee)
 
 module.exports = router;

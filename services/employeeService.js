@@ -92,10 +92,36 @@ const checkDuplicateEmpId = async (empId, organizationId) => {
     { _id: 1, email: 1, organisationId: 1, name: 1, isActive: 1 }
   );
 };
+const listEmployee = async (bodyData, queryData) => {
+  const { order } = queryData;
+  const { organizationId, searchKey } = bodyData;
+  let query = searchKey
+    ? {
+        $and: [
+          {
+            $or: [{ name: searchKey }, { empId: searchKey }],
+          },
+          {
+            organizationId,
+            isActive: true,
+          },
+        ],
+      }
+    : {
+        organizationId,
+        isActive: true,
+      };
 
-const listEmployee = async (empId) => {
-  try {
-  } catch (error) {}
+  var limit = parseInt(queryData.limit);
+  var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
+
+  const totalCount = await Employee.countDocuments(query);
+  const employeeData = await Employee.find(query)
+    .sort({ createdAt: parseInt(order) })
+    .limit(limit)
+    .skip(skip);
+
+  return { totalCount, employeeData };
 };
 
 /**FUNC- TO VERIFY ACTIVE USER*/
@@ -146,4 +172,5 @@ module.exports = {
   verifyEmployee,
   editEmployee,
   deleteEmploye,
+  listEmployee,
 };
