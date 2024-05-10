@@ -150,22 +150,13 @@ const viewSingleEmployeeValidator = async (req, res, next) => {
     console.log(req.query);
     console.log(req.params);
     const schema = Joi.object({
-      searchKey: Joi.string()
-        .trim()
-        .pattern(/^[0-9a-zA-Z ,/-]+$/)
-        .messages({
-          "string.pattern.base": `HTML tags & Special letters are not allowed!`,
-        }),
-
       organizationId: Joi.string().trim().alphanum().required(),
     });
     const paramsSchema = Joi.object({
-      limit: Joi.number(),
-      page: Joi.number(),
-      order: Joi.number(),
+      id: Joi.string().trim().alphanum().required(),
     });
 
-    await paramsSchema.validateAsync(req.query);
+    await paramsSchema.validateAsync(req.params);
     await schema.validateAsync(req.body);
     next();
   } catch (error) {
@@ -179,5 +170,5 @@ module.exports = {
   editEmployeeValidator,
   deleteEmployeValidator,
   listEmployesValidator,
-  viewSingleEmployeeValidator
+  viewSingleEmployeeValidator,
 };
