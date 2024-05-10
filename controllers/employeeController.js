@@ -1,6 +1,7 @@
 const employeeService = require("../services/employeeService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
+const Employee = require("../models/employeeModel");
 
 /**FUNC- TO CREATE EMPLOYEE**/
 const createEmployee = async (req, res) => {
@@ -46,7 +47,13 @@ const editEmployee = async (req, res) => {
     const result = await employeeService.editEmployee(req.body, req.params.id);
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.updateFailedRecordNotFound, 409);
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.updateFailedRecordNotFound,
+        409
+      );
     }
 
     if (result?.isDuplicateEmail) {
@@ -69,8 +76,6 @@ const editEmployee = async (req, res) => {
       );
     }
 
-
-
     return Responses.successResponse(
       req,
       res,
@@ -84,4 +89,55 @@ const editEmployee = async (req, res) => {
   }
 };
 
-module.exports = { createEmployee, editEmployee };
+const deleteEmploye = async (req, res) => {
+  try {
+    console.log(req.params);
+    const result = await employeeService.deleteEmploye(req.params.id);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.deleteFailedRecordNotFound,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      null,
+      messages.deleteSuccess,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+const listEmployee = async (req, res) => {
+  try {
+    const result = await employeeService.listEmployee(req.body, req.query);
+    console.log(result);
+    if (result.totalCount == 0) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+module.exports = { createEmployee, editEmployee, deleteEmploye,listEmployee };

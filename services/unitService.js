@@ -27,10 +27,38 @@ const editUnit = async (data, id) => {
 
 const deleteUnit = async (id) => {
   console.log("id--->>", id);
-  const deletedUnit = await Units.findByIdAndUpdate({ _id: id }, {isActive:false}, { new: true });
+  const deletedUnit = await Units.findByIdAndUpdate(
+    { _id: id },
+    { isActive: false },
+    { new: true }
+  );
   return deletedUnit;
 };
+const listUnit = async (bodyData, queryData) => {
+  const { order } = queryData;
+  const { organizationId, searchKey } = bodyData;
+  let query = searchKey
+    ? {
+        organizationId,
+        name: searchKey,
+        isActive: true,
+      }
+    : {
+        organizationId,
+        isActive: true,
+      };
 
+  var limit = parseInt(queryData.limit);
+  var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
+
+  const totalCount = await Units.countDocuments(query);
+  const unitData = await Units.find(query)
+    .sort({ createdAt: parseInt(order) })
+    .limit(limit)
+    .skip(skip);
+
+  return { totalCount, unitData };
+};
 const checkDuplicate = async (organizationId, name) => {
   return await Units.findOne(
     { organizationId, name, isActive: true },
@@ -42,4 +70,5 @@ module.exports = {
   createUnit,
   editUnit,
   deleteUnit,
+  listUnit
 };
