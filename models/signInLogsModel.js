@@ -1,9 +1,15 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 const signInLogsSchema = new mongoose.Schema(
   {
     email: {
-      type: mongoose.SchemaTypes.Email,
+      type: String,
+      validate: {
+        validator: validator.isEmail,
+        message: "{VALUE} is not a valid email",
+      },
       required: true,
+      index: true
     },
     ipAddress: {
       type: String,
@@ -17,18 +23,18 @@ const signInLogsSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
-    looginAttempt: {
+    loginAttempt: {
       type: Number,
       required: true,
     },
-    looginAttemptTime: {
+    wrongLoginAttemptTime: {
       type: Date,
       required: true,
     },
-    organisationId: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
+    // organizationId: {
+    //   type: mongoose.Schema.ObjectId,
+    //   required: true,
+    // },
   },
   {
     timestamps: true,

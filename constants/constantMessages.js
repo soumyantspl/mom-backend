@@ -63,7 +63,9 @@ const designationUpdated = "Designation has been Updated";
 const designationDeleted = "Designation has been Deleted";
 const designationList = "Fetched all Designations";
 const invalidId = "Invalid Id!";
+const ipBlocked="Sorry, Your ip address is blocked!"
 module.exports = {
+  ipBlocked,
   otpSentSuccess,
   userNotFound,
   invalidOtp,

@@ -5,7 +5,8 @@ const messages = require("../constants/constantMessages");
 /**FUNC- TO SEND OTP TO SIGN IN USER */
 const sendOtp = async (req, res) => {
   try {
-    const result = await authService.sendOtp(req.body.email);
+    console.log('ip address--------',req.ip)
+    const result = await authService.sendOtp(req.body.email,req.ip);
     console.log("res----", result);
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 404);
@@ -114,11 +115,17 @@ const setPassword = async (req, res) => {
 /**FUNC- FOR SIGN IN BY PASSWORD**/
 const signInByPassword = async (req, res) => {
   try {
-    const result = await authService.signInByPassword(req.body);
+    const result = await authService.signInByPassword(req.body,req.ip);
     console.log(result);
+    
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 404);
     }
+
+if(result?.isIpBlocked){
+  return Responses.failResponse(req, res, null, messages.ipBlocked, 404);
+}
+
     if (result?.incorrectPassword) {
       return Responses.failResponse(
         req,

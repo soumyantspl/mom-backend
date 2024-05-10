@@ -1,4 +1,5 @@
 const Employee = require("../models/employeeModel");
+const SignInLogs = require("../models/signInLogsModel");
 const OtpLogs = require("../models/otpLogsModel");
 const commonHelper = require("../helpers/commomHelper");
 const emailService = require("./emailService");
@@ -15,11 +16,11 @@ const verifyEmail = async (email) => {
 };
 
 /**FUNC- TO SEND OTP TO EMAIL USER */
-const sendOtp = async (email) => {
+const sendOtp = async (email, ip) => {
   const userData = await verifyEmail(email);
-  console.log('userData------',userData)
+  console.log("userData------", userData);
   if (userData) {
-    return await validateSendingOtp(userData,"Send OTP");
+    return await validateSendingOtp(userData, "Send OTP");
   }
   return false;
 };
@@ -57,7 +58,7 @@ const getOtpLogs = async (data) => {
         email: data.email,
         otp: parseInt(data.otp),
         createdAt: {
-          $gte: fromTime,
+          $gte: fromTime, // IN MINUTES
           $lt: new Date(),
         },
       },
@@ -105,8 +106,13 @@ const insertOtp = async (
   await otpData.save();
   console.log("-------------------------------1", userData, data.otp);
   const mailData = await emailTemplates.signInByOtpEmail(userData, data.otp);
-  const emailSubject=emailConstants.signInOtpsubject;
-  await emailService.sendEmail(userData.email,emailType,emailSubject,mailData);
+  const emailSubject = emailConstants.signInOtpsubject;
+  await emailService.sendEmail(
+    userData.email,
+    emailType,
+    emailSubject,
+    mailData
+  );
   return data.otp;
 };
 
@@ -115,12 +121,12 @@ const reSendOtp = async (email) => {
   const userData = await verifyEmail(email);
   console.log("userData-------------", userData);
   if (userData) {
-    return await validateSendingOtp(userData,"Resend OTP");
+    return await validateSendingOtp(userData, "Resend OTP");
   }
   return false;
 };
 // FUNCTION TO VALIDATE SENDING OTP
-const validateSendingOtp = async (userData,emailType) => {
+const validateSendingOtp = async (userData, emailType) => {
   let otpResendTime;
   let otpResendCount;
   const rulesData = await checkReSendOtpRules(userData);
@@ -129,14 +135,14 @@ const validateSendingOtp = async (userData,emailType) => {
     otpResendTime = new Date();
     otpResendCount = 1;
     console.log("final user data-----------", userData);
-    return await insertOtp(userData, otpResendCount, otpResendTime,emailType);
+    return await insertOtp(userData, otpResendCount, otpResendTime, emailType);
   }
 
   if (rulesData?.isReSendOtpAllowed) {
     otpResendTime = rulesData.otpResendTime;
     otpResendCount = rulesData.otpResendCount;
     console.log("final user data-----------", userData);
-    return await insertOtp(userData, otpResendCount, otpResendTime,emailType);
+    return await insertOtp(userData, otpResendCount, otpResendTime, emailType);
   }
   if (!rulesData.isReSendOtpAllowed) {
     return rulesData;
@@ -158,7 +164,10 @@ const checkReSendOtpRules = async (userData) => {
         new Date(),
         otpResendTime
       );
-      console.log("=======================", timeDifference <= process.env.OTP_MAX_RESEND_TIMEINMINUTES)
+      console.log(
+        "=======================",
+        timeDifference <= process.env.OTP_MAX_RESEND_TIMEINMINUTES
+      );
       // if resend count is more than or equals to 3(max resend number)
       //&& time difference between current time & first resend attemt time is less than 3 hour
       if (
@@ -243,14 +252,73 @@ const setPassword = async (data) => {
   return false;
 };
 
+/**FUNC- TO CHECK SIGN IN LOGS DETAILS */
+const isIpBlocked = async (ipAddress) => {
+  let fromTime = new Date();
+  fromTime.setMinutes(
+    fromTime.getMinutes() - process.env.CHECK_SIGNIN_BLOCK_TIME
+  ); // CHECK OTP VALIDATION WITH IN MINUTES
+  console.log("NOW--------------", fromTime);
+  console.log("CURRENT-----------", new Date());
+  const signInLogsData = await SignInLogs.findOne({ ipAddress,
+    createdAt: {
+      $gte: fromTime, // IN MINUTES
+      $lt: new Date(),
+    },
+
+   }).sort({
+    createdAt: -1,
+  });
+  console.log("signInLogsData------", signInLogsData);
+
+  return signInLogsData;
+};
+// 1ST CHECK IS BLOCKED OR NOT -FALSE
+// 2ND CHECK LOGIN RESPONSE , IF SUCCESS JUST ADD DATA
+// 3.IF FAIL JUST UPDATE DATA
+// 4.IF looginAttempt == 3 ,THEN BLOCK THE IP FOR 24 HOURS
+// const inputData={
+//   email,
+//   ipAddress,
+//   isLoggedinSuccess:false,
+//   isIpAddressBlocked:false,
+//   looginAttempt:0,
+// //  organizationId
+// wrongLoginAttemptTime:new Date()
+// }
+
 /**FUNC- FOR SIGN IN BY PASSWORD   */
-const signInByPassword = async (data) => {
+const signInByPassword = async (data, ipAddress) => {
+  // CHECK IP ADDRESS IS BLOCKED OR NOT
+  const signInLogsData = await isIpBlocked(ipAddress);
+  console.log('signInLogsData------',signInLogsData)
+  console.log('ipAddress------',ipAddress)
+  if (signInLogsData?.isIpAddressBlocked) {
+    // IF BLOCKED RETURN WITH ERROR RESPONSE
+    return {
+      isIpBlocked: true,
+    };
+  }
   const userData = await Employee.findOne(
     { email: data.email },
     { _id: 1, email: 1, organizationId: 1, name: 1, password: 1, isActive: 1 }
   );
   console.log("userData----------", userData);
   if (!userData) {
+    // IF LOGIN ATTEMPT FAIL FOR WRONG USER NAME/EMAIL GET LAST LOGIN ATTEMPT DETAILS 
+
+    const loginAttempt = signInLogsData?parseInt(signInLogsData.loginAttempt)+1:1;
+   
+    const signInData = {
+      email:data.email,
+      ipAddress,
+      isLoggedinSuccess: false,
+      isIpAddressBlocked: loginAttempt == process.env.WRONG_SIGNIN_ATTEMPT_LIMIT ? true : false,
+      loginAttempt,
+      //  organizationId
+      wrongLoginAttemptTime: new Date(),
+    };
+    await saveSignInDetails(signInData);
     return false;
   }
   // Based on user Status
@@ -277,6 +345,17 @@ const signInByPassword = async (data) => {
   });
   console.log(token);
   delete userData.password;
+
+  const signInData = {
+    email:data.email,
+    ipAddress,
+    isLoggedinSuccess: true,
+    isIpAddressBlocked: false,
+    loginAttempt:0,
+    //  organizationId
+    wrongLoginAttemptTime: new Date(),
+  };
+  await saveSignInDetails(signInData);
   return {
     token,
     userData: {
@@ -287,6 +366,12 @@ const signInByPassword = async (data) => {
     },
   };
 };
+
+const saveSignInDetails=async (signInDetails)=>{
+  const signInData = new SignInLogs(signInDetails);
+  return await signInData.save();
+}
+
 
 module.exports = {
   verifyEmail,
