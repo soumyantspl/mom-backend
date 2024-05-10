@@ -147,7 +147,6 @@ const listEmployesValidator = async (req, res, next) => {
 const viewSingleEmployeeValidator = async (req, res, next) => {
   try {
     console.log(req.body);
-    console.log(req.query);
     console.log(req.params);
     const schema = Joi.object({
       organizationId: Joi.string().trim().alphanum().required(),
