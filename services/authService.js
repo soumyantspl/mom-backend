@@ -152,6 +152,7 @@ const checkReSendOtpRules = async (userData) => {
         new Date(),
         otpResendTime
       );
+      console.log("=======================", timeDifference <= process.env.OTP_MAX_RESEND_TIMEINMINUTES)
       // if resend count is more than or equals to 3(max resend number)
       //&& time difference between current time & first resend attemt time is less than 3 hour
       if (

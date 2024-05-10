@@ -1,5 +1,6 @@
 const { transporter, mailOptions } = require("../emailSetUp/mailSetup");
 const emailTemplates = require("../emailSetUp/emailTemplates");
+const emailConstants = require("../constants/emailConstants");
 const EmailLogs = require("../models/emailLogsModel");
 /**FUNC- TO SEND  OTP TO EMAIL USER */
 const sendSignInOtpEmail = async (userData, otp) => {
@@ -14,17 +15,17 @@ const sendSignInOtpEmail = async (userData, otp) => {
   console.log(mailOptionsInfo);
   const isSuccess = await transporter.sendMail(mailOptionsInfo);
   console.log("isSuccess-------------", isSuccess);
-  // const emailLogData = {
-  //   emailType: commonHelper.generateOtp(),
-  //   emailFrom: mailOptions.from,
-  //   emailTo: userData.email,
-  //   subject: emailConstants.signInOtpsubject,
-  //   body:maildata,
-  //   status:,
-  // };
-
-  // return  await saveEmailLogs()
-  return isSuccess;
+  const emailLogData = {
+    emailType: "SignIn OTP",
+    emailFrom: mailOptions.from,
+    emailTo: userData.email,
+    subject: emailConstants.signInOtpsubject,
+    body: maildata,
+    status: isSuccess.accepted.length !== 0 ? "SUCCESS" : "FAIL",
+  };
+  console.log("emailLogData----------", emailLogData);
+  return await saveEmailLogs();
+  //return isSuccess;
 };
 
 //  // Insert email log
@@ -40,9 +41,7 @@ const sendSignInOtpEmail = async (userData, otp) => {
 // });
 /**FUNC- TO SAVE EMAIL LOGS */
 const saveEmailLogs = async (emailData) => {
-  const emailLogData = new OtpLogs(emailData);
-  await otpData.save();
-  return await transporter.sendMail(mailOptionsInfo);
+  const emailLogData = new EmailLogs(emailData);
 };
 
 module.exports = {
