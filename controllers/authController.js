@@ -10,7 +10,7 @@ const sendOtp = async (req, res) => {
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 404);
     }
-    if (!result?.isReSendOtpAllowed) {
+    if (result?.isReSendOtpAllowed==false) {
       return Responses.failResponse(
         req,
         res,
@@ -63,7 +63,7 @@ const reSendOtp = async (req, res) => {
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 404);
     }
-    if (!result?.isReSendOtpAllowed) {
+    if (result?.isReSendOtpAllowed==false) {
       return Responses.failResponse(
         req,
         res,
