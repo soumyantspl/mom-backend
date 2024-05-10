@@ -17,12 +17,23 @@ router.put(
   validator.editEmployeeValidator,
   employeeController.editEmployee
 );
-
+/* DELETE EMPLOYEE  */
 router.delete(
   "/deleteEmployee/:id",
   validator.deleteEmployeValidator,
   employeeController.deleteEmploye
 );
-router.get("/listEmployee",validator.listEmployesValidator,employeeController.listEmployee)
+/* VIEW EMPLOYEE  */
+router.get(
+  "/listEmployee",
+  validator.listEmployesValidator,
+  employeeController.listEmployee
+);
+/* VIEW SINGLE EMPLOYEE  */
+router.get(
+  "/viewSingleEmployee/:id",
+  validator.viewSingleEmployeeValidator,
+  employeeController.viewSingleEmploye
+);
 
 module.exports = router;

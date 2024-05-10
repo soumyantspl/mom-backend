@@ -143,10 +143,27 @@ const listEmployesValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+
+const viewSingleEmployeeValidator = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    console.log(req.params);
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+
+    await paramsSchema.validateAsync(req.params);
+    next();
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
 module.exports = {
   viewEmployeeValidator,
   createEmployeeValidator,
   editEmployeeValidator,
   deleteEmployeValidator,
   listEmployesValidator,
+  viewSingleEmployeeValidator,
 };

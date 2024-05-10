@@ -140,4 +140,30 @@ const listEmployee = async (req, res) => {
   }
 };
 
-module.exports = { createEmployee, editEmployee, deleteEmploye,listEmployee };
+const viewSingleEmploye = async (req, res) => {
+  try {
+    const result = await employeeService.viewSingleEmployee(req.params.id);
+    console.log("viewSingleEmploye result", result);
+    if (!result) {
+      return Responses.failResponse(req, res, null, messages.recordsFound, 409);
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsNotFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+module.exports = {
+  createEmployee,
+  editEmployee,
+  deleteEmploye,
+  listEmployee,
+  viewSingleEmploye,
+};
