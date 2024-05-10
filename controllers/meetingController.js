@@ -44,8 +44,47 @@ const createMeeting = async (req, res) => {
   }
 };
 
+/**FUNC- TO UPDATE MEETING**/
+const updateMeeting = async (req, res) => {
+  try {
+    const result = await meetingService.createMeeting(req.body);
+    console.log(result);
+    if (result?.isDuplicateEmail) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateEmail,
+        409
+      );
+    }
+
+    if (result?.isDuplicateEmpCode) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateEmpCode,
+        409
+      );
+    }
+
+    return Responses.successResponse(
+      req,
+      res,
+      result.data,
+      messages.creatSuccess,
+      201
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+
 module.exports = {
-  createMeeting,
+  createMeeting,updateMeeting
 };
 
 

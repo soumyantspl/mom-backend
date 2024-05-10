@@ -63,22 +63,56 @@ const createMeetingValidator = async (req, res, next) => {
     }
 };
 
-const editUnitValidator = async (req, res, next) => {
+const updateMeetingValidator = async (req, res, next) => {
     try {
         const bodySchema = Joi.object({
-            name: Joi.string()
+            title: Joi.string()
                 .trim()
                 .pattern(/^[0-9a-zA-Z ,/-]+$/)
                 .messages({
                     "string.pattern.base": `HTML tags & Special letters are not allowed!`,
+                })
+                .required(),
+            organizationId: Joi.string().trim().alphanum().required(),
+            mode: Joi.string().valid('VIRTUAL', 'PHYSICAL').required(),
+            link: Joi.string().uri(),
+            date: Joi.string().trim().required(),
+            fromTime: Joi.number().required(),
+            toTime: Joi.number().required(),
+            locationDetails: Joi.object({
+                isMeetingRoom: Joi.boolean().required().strict(),
+                location: Joi.string()
+                    .trim()
+                    .pattern(/^[0-9a-zA-Z ,/-]+$/)
+                    .messages({
+                        "string.pattern.base": `HTML tags & Special letters are not allowed!`,
+                    }),
+                // roomId: Joi.when("isMeetingRoom.value", {
+                //     is: Joi.boolean().valid(true),
+                //     then: Joi.string().trim().alphanum().required()
+                // }),
+                location: Joi.when('isMeetingRoom', {
+                    is: Joi.boolean().valid(false),
+                    then: Joi.string()
+                    .trim()
+                    .pattern(/^[0-9a-zA-Z ,/-]+$/)
+                    .messages({
+                        "string.pattern.base": `HTML tags & Special letters are not allowed!`,
+                    }).required(),
+                    otherwise: Joi.string()
+                    .trim()
+                    .pattern(/^[0-9a-zA-Z ,/-]+$/)
+                    .messages({
+                        "string.pattern.base": `HTML tags & Special letters are not allowed!`,
+                    }),
                 }),
-            address: Joi.string()
-                .trim()
-                .pattern(/^[0-9a-zA-Z ,/-]+$/)
-                .messages({
-                    "string.pattern.base": `HTML tags & Special letters are not allowed!`,
+                roomId: Joi.when('isMeetingRoom', {
+                    is: Joi.boolean().valid(true),
+                    then: Joi.string().trim().alphanum().required(),
+                    otherwise: Joi.string().trim().alphanum(),
                 }),
-        });
+        })
+    });
         const paramsSchema = Joi.object({
             id: Joi.string().trim().alphanum().required(),
         });
@@ -107,6 +141,6 @@ const deleteUnitValidator = async (req, res, next) => {
 };
 module.exports = {
     createMeetingValidator,
-    editUnitValidator,
+    updateMeetingValidator,
     deleteUnitValidator,
 };
