@@ -28,6 +28,8 @@ const tokenIsMissing = "TokenIsMissing";
 const unknownUser = "Unknown user type";
 const noToken = "NoToken";
 const duplicateEntry = "Duplicate entry found!";
+const duplicateEmpCode="Duplicate employee code found!"
+const duplicateEmail="Duplicate employee email found!"
 const uploadFileSuccess = "File uploaded successfully!";
 const uploadFileErroe = "Error while uploading a file!";
 const deleteFileSuccess = "File deleted successfully!";
@@ -46,6 +48,21 @@ const invaliToken = "Invalid token";
 const invalidUser = "User is not valid user!";
 const otpResendMaxLimitCrossed =
   "Sorry! You have attempted maximum limit of resend OTP!";
+//---------------------------------------------------------------------------------------//
+const organizationCreated = "Organization Created successfully";
+const duplicateOrganizationFound = "This Email is already exist!!";
+const duplicateDepartment = "This department allready exist";
+const departmentCreated = "Department has been created";
+const idIsNotAvailabled = "Given id is Not availabled";
+const organizationUpdated = "Organization Data Updated";
+const departmentUpdated = "Department Data Updated";
+const departmentDeleted = "Department has been Deleted";
+const departmentList = "Department list fetched";
+const designationCreated = "Designation has been created";
+const designationUpdated = "Designation has been Updated";
+const designationDeleted = "Designation has been Deleted";
+const designationList = "Fetched all Designations";
+const invalidId = "Invalid Id!";
 module.exports = {
   otpSentSuccess,
   userNotFound,
@@ -55,7 +72,32 @@ module.exports = {
   invaliToken,
   invalidUser,
   otpResendMaxLimitCrossed,
+  //----------------------------//
+  organizationCreated,
+  duplicateOrganizationFound,
+  duplicateDepartment,
+  departmentCreated,
+  idIsNotAvailabled,
+  organizationUpdated,
+  departmentUpdated,
+  departmentDeleted,
+  departmentList,
+  designationCreated,
+  designationUpdated,
+  designationDeleted,
+  designationList,
+  duplicateEntry,
+  creatSuccess,
+  invalidId,
+  updateSuccess,
   passwordResetSuccess,
   signInSuccess,
   incorrectPassword,
+  recordsNotFound,
+  recordsFound,
+  deleteSuccess,
+  updateFailedRecordNotFound,
+  deleteFailedRecordNotFound,
+  duplicateEmpCode,
+  duplicateEmail
 };

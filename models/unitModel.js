@@ -9,11 +9,11 @@ const unitSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
     },
-    status: {
+    isActive: {
       type: Boolean,
       require: true,
       default: true,
@@ -24,6 +24,6 @@ const unitSchema = new mongoose.Schema(
   }
 );
 
-const Unit = mongoose.model("Organisation", unitSchema);
+const Units = mongoose.model("Units", unitSchema);
 
-module.exports = Unit;
+module.exports = Units;

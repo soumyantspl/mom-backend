@@ -14,8 +14,8 @@ const createDepartmentController = async (req, res) => {
       req,
       res,
       result,
-      messages.DepartmentCreated,
-      201 //ok
+      messages.departmentCreated,
+      201
     );
   } catch (error) {
     console.log("controller error", error);
@@ -24,8 +24,8 @@ const createDepartmentController = async (req, res) => {
 };
 
 const editDepartmentController = async (req, res) => {
-  const { id, name } = req.body;
   try {
+    const { id, name } = req.body;
     const result = await departmentService.editDepartmentService(id, name);
     if (!result) {
       return Responses.failResponse(
@@ -40,7 +40,7 @@ const editDepartmentController = async (req, res) => {
       req,
       res,
       result,
-      messages.DepartmentUpdated,
+      messages.departmentUpdated,
       201
     );
   } catch (error) {
@@ -49,4 +49,65 @@ const editDepartmentController = async (req, res) => {
   }
 };
 
-module.exports = { createDepartmentController, editDepartmentController };
+const deleteDepartmentController = async (req, res) => {
+  try {
+    const id = req.body.id;
+    console.log(id);
+    const result = await departmentService.deleteDepartmentService(id);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.idIsNotAvailabled,
+        404
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.departmentDeleted,
+      201
+    );
+  } catch (error) {
+    console.error("Controller error:", error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+const listDepartmentController = async (req, res) => {
+  try {
+    const result = await departmentService.listDepartmentService(
+      req.body,
+      req.query
+    );
+    console.log(result);
+    if (result.totalCount == 0) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        404
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+module.exports = {
+  createDepartmentController,
+  editDepartmentController,
+  deleteDepartmentController,
+  listDepartmentController,
+};

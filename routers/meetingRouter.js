@@ -1,5 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { view } = require("../controllers/meetingController");
-router.get("/view", view);
+const meetingController = require("../controllers/meetingController");
+const validator=require('../validators/meetingValidator')
+const authMiddleware=require('../middlewares/authMiddleware')
+
+/* CREATE MEETING  */
+router.post("/createMeeting", validator.createMeetingValidator, meetingController.createMeeting);
+
 module.exports = router;

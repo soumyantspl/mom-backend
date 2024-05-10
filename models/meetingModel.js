@@ -6,15 +6,40 @@ const meetingSchema = new mongoose.Schema(
       required: true,
     },
     mode: {
-      enum: ["VIRTUAL", "PHYSICAL"],
-    },
-    location: {
       type: String,
-      required: true,
+      enum: ["VIRTUAL", "PHYSICAL"],
+      default: 'PHYSICAL'
+    },
+    locationDetails: {
+      location: {
+        type: String,
+
+      },
+      isMeetingRoom: {
+        type: Boolean,
+        required: true,
+      },
+      roomId: {
+        type: mongoose.Schema.ObjectId
+      }
     },
     link: {
-      type: String,
-      required: true,
+      type: String
+    },
+    date: {
+      type: Date,
+      required: true
+    },
+    fromTime: {
+      type: String
+    },
+    toTime: {
+      type: String
+    },
+    step: {
+      type: Number,
+      enum: [1, 2, 3],
+      default: 1
     },
     attendees: [
       {
@@ -25,15 +50,23 @@ const meetingSchema = new mongoose.Schema(
         rsvp: {
           enum: ["YES", "NO", "WAITING"],
         },
-        
+
       },
     ],
-    roomId: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
+    // roomId: {
+    //   type: mongoose.Schema.ObjectId,
+    //   required: true,
+    // },
     status: {
+
+      type: String,
       enum: ["closed", "sceduled", "rescheduled", "canceled", "due"],
+      default: 'due'
+    },
+    isActive: {
+      type: Boolean,
+      required: true,
+      default: true
     },
     logs: [
       {
@@ -53,6 +86,6 @@ const meetingSchema = new mongoose.Schema(
   }
 );
 
-const Meetings = mongoose.model("Meetings", meetingSchema);
+const Meetings = mongoose.model("meetings", meetingSchema);
 
 module.exports = Meetings;

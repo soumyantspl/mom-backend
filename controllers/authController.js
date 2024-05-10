@@ -2,9 +2,7 @@ const authService = require("../services/authService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 
-// Send Otp
-
-// Send Otp
+/**FUNC- TO SEND OTP TO SIGN IN USER */
 const sendOtp = async (req, res) => {
   try {
     const result = await authService.sendOtp(req.body.email);
@@ -12,7 +10,7 @@ const sendOtp = async (req, res) => {
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 404);
     }
-    if (!result?.isReSendOtpAllowed) {
+    if (result?.isReSendOtpAllowed==false) {
       return Responses.failResponse(
         req,
         res,
@@ -65,7 +63,7 @@ const reSendOtp = async (req, res) => {
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 404);
     }
-    if (!result?.isReSendOtpAllowed) {
+    if (result?.isReSendOtpAllowed==false) {
       return Responses.failResponse(
         req,
         res,
@@ -92,7 +90,7 @@ const reSendOtp = async (req, res) => {
 const setPassword = async (req, res) => {
   try {
     const result = await authService.setPassword(req.body);
-    console.log(result);
+    
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 404);
     }

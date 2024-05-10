@@ -17,13 +17,13 @@ const otpLogsSchema = new mongoose.Schema(
       required: true,
       index: true,
     },
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
       index: true,
     },
     expiryTime: {
-      required: true,
+      required: false,
       type:Date
     },
     otpResendTime: {
