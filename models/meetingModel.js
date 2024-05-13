@@ -48,15 +48,17 @@ const meetingSchema = new mongoose.Schema(
           required: [true, "id is required"],
         },
         rsvp: {
+          type: String,
           enum: ["YES", "NO", "WAITING"],
+          default: "WAITING"
         },
 
       },
     ],
-    // roomId: {
-    //   type: mongoose.Schema.ObjectId,
-    //   required: true,
-    // },
+    organizationId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
     status: {
 
       type: String,

@@ -47,34 +47,28 @@ const createMeeting = async (req, res) => {
 /**FUNC- TO UPDATE MEETING**/
 const updateMeeting = async (req, res) => {
   try {
-    const result = await meetingService.updateMeeting(req.body);
+    const result = await meetingService.updateMeeting(req.body,req.params.id);
     console.log(result);
-    if (result?.isDuplicateEmail) {
+    if (!result) {
       return Responses.failResponse(
         req,
         res,
         null,
-        messages.duplicateEmail,
+        messages.updateFailedRecordNotFound,
         409
       );
     }
 
-    if (result?.isDuplicateEmpCode) {
-      return Responses.failResponse(
-        req,
-        res,
-        null,
-        messages.duplicateEmpCode,
-        409
-      );
-    }
+   
+
+   
 
     return Responses.successResponse(
       req,
       res,
-      result.data,
-      messages.creatSuccess,
-      201
+      result,
+      messages.updateSuccess,
+      200
     );
   } catch (error) {
     console.log(error);

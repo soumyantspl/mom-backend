@@ -71,14 +71,14 @@ const updateMeetingValidator = async (req, res, next) => {
                 .pattern(/^[0-9a-zA-Z ,/-]+$/)
                 .messages({
                     "string.pattern.base": `HTML tags & Special letters are not allowed!`,
-                })
-                .required(),
+                }),
+            
             organizationId: Joi.string().trim().alphanum().required(),
-            mode: Joi.string().valid('VIRTUAL', 'PHYSICAL').required(),
+            mode: Joi.string().valid('VIRTUAL', 'PHYSICAL'),
             link: Joi.string().uri(),
-            date: Joi.string().trim().required(),
-            fromTime: Joi.number().required(),
-            toTime: Joi.number().required(),
+            date: Joi.string().trim(),
+            fromTime: Joi.number(),
+            toTime: Joi.number(),
             locationDetails: Joi.object({
                 isMeetingRoom: Joi.boolean().required().strict(),
                 location: Joi.string()
@@ -113,20 +113,20 @@ const updateMeetingValidator = async (req, res, next) => {
                 }),
 
         }),
-        step: Joi.number().required(),
+        step: Joi.number().valid(1,2, 3).required(),
         attendees: Joi.when('step', {
             is: Joi.number().valid(2),
             then: Joi.array()
             .items({
               id: Joi.string()
                 .required(),
-              rsvp:Joi.string().valid("YES", "NO", "WAITING").required(),
+              rsvp:Joi.string().valid("YES", "NO", "WAITING"),
             }).required(),
             otherwise:  Joi.array()
             .items({
                 id: Joi.string()
                   .required(),
-                rsvp:Joi.string().valid("YES", "NO", "WAITING").required(),
+                rsvp:Joi.string().valid("YES", "NO", "WAITING")
               })
         }),
         agendas: Joi.when('step', {

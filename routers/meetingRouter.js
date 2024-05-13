@@ -8,6 +8,6 @@ const authMiddleware=require('../middlewares/authMiddleware')
 router.post("/createMeeting", validator.createMeetingValidator, meetingController.createMeeting);
 
 /* UPDATE MEETING  */
-router.post("/updateMeeting", validator.updateMeetingValidator, meetingController.updateMeeting);
+router.put("/updateMeeting/:id", validator.updateMeetingValidator, meetingController.updateMeeting);
 
 module.exports = router;
