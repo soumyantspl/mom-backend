@@ -1,6 +1,6 @@
 const Employee = require("../models/employeeModel");
 
-const createEmployee1 = async (data) => {
+const createEmployeeForMeeting = async (data) => {
   const newEmployee = new Employee({ name, email, password });
   return await newEmployee.save();
 };
