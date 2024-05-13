@@ -70,18 +70,18 @@ const meetingSchema = new mongoose.Schema(
       required: true,
       default: true
     },
-    logs: [
-      {
-        id: {
-          type: mongoose.Schema.ObjectId,
-          required: true,
-        },
-        action: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
+    // logs: [
+    //   {
+    //     id: {
+    //       type: mongoose.Schema.ObjectId,
+    //       required: true,
+    //     },
+    //     action: {
+    //       type: String,
+    //       required: true,
+    //     },
+    //   },
+    // ],
   },
   {
     timestamps: true,

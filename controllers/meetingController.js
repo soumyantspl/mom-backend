@@ -9,7 +9,7 @@ const messages = require("../constants/constantMessages");
 /**FUNC- TO CREATE MEETING**/
 const createMeeting = async (req, res) => {
   try {
-    const result = await meetingService.createMeeting(req.body);
+    const result = await meetingService.createMeeting(req.body,'req.userId',req.ip);
     console.log(result);
     if (result?.isDuplicateEmail) {
       return Responses.failResponse(

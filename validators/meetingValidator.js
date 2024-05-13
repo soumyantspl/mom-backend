@@ -117,12 +117,18 @@ const updateMeetingValidator = async (req, res, next) => {
         attendees: Joi.when('step', {
             is: Joi.number().valid(2),
             then: Joi.array()
+            .min(1).messages({
+                "attendees.min": "attendees can't be empty!"
+            })
             .items({
               id: Joi.string()
                 .required(),
               rsvp:Joi.string().valid("YES", "NO", "WAITING"),
             }).required(),
             otherwise:  Joi.array()
+            .min(1).messages({
+                "attendees.min": "attendees can't be empty!"
+            })
             .items({
                 id: Joi.string()
                   .required(),
@@ -132,6 +138,9 @@ const updateMeetingValidator = async (req, res, next) => {
         agendas: Joi.when('step', {
             is: Joi.number().valid(3),
             then: Joi.array()
+            .min(1).messages({
+                "agendas.min": "agendas can't be empty!"
+            })
             .items({
               title: Joi.string()
                 .required(),
@@ -139,6 +148,9 @@ const updateMeetingValidator = async (req, res, next) => {
               timeLine:Joi.string().required()
             }).required(),
             otherwise:  Joi.array()
+            .min(1).messages({
+                "agendas.min": "agendas can't be empty!"
+            })
             .items({
                 title: Joi.string()
                 .required(),
