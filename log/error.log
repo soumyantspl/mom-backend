@@ -1,0 +1,124 @@
+Date: 13/05/2024, Time: 13:06
+Error: Cannot read properties of undefined (reading 'body')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'body')
+    at createAgenda (D:\mom\mom-backend\controllers\agendaController.js:7:43)
+    at createAgenda (D:\mom\mom-backend\controllers\agendaController.js:7:26)
+    at createAgenda (D:\mom\mom-backend\controllers\agendaController.js:7:26)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at createAgendaValidator (D:\mom\mom-backend\validators\agendaValidator.js:17:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 13/05/2024, Time: 13:06
+Error: Cannot read properties of undefined (reading 'status')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'status')
+    at Object.errorResponse (D:\mom\mom-backend\helpers\response.js:40:14)
+    at createAgenda (D:\mom\mom-backend\controllers\agendaController.js:22:22)
+    at createAgenda (D:\mom\mom-backend\controllers\agendaController.js:7:26)
+    at createAgenda (D:\mom\mom-backend\controllers\agendaController.js:7:26)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at createAgendaValidator (D:\mom\mom-backend\validators\agendaValidator.js:17:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 13/05/2024, Time: 13:06
+Error: Cannot read properties of undefined (reading 'status')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'status')
+    at Object.errorResponse (D:\mom\mom-backend\helpers\response.js:40:14)
+    at createAgenda (D:\mom\mom-backend\controllers\agendaController.js:22:22)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createAgenda (D:\mom\mom-backend\controllers\agendaController.js:7:20)
+Date: 13/05/2024, Time: 13:07
+Error: departments validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError"
+Stack Trace: ValidationError: departments validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError"
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1463:12)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1117:16)
+    at model.Document (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:166:12)
+    at model.Model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4819:15)
+    at Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:5:25)
+    at createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:9:44)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+Date: 13/05/2024, Time: 16:34
+Error: req is not defined
+Stack Trace: ReferenceError: req is not defined
+    at Object.updateRsvp (D:\mom\mom-backend\services\meetingService.js:32:30)
+    at updateRsvp (D:\mom\mom-backend\controllers\meetingController.js:46:41)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 13/05/2024, Time: 16:36
+Error: Cannot destructure property '_id' of 'data.body' as it is undefined.
+Stack Trace: TypeError: Cannot destructure property '_id' of 'data.body' as it is undefined.
+    at Object.updateRsvp (D:\mom\mom-backend\services\meetingService.js:32:11)
+    at updateRsvp (D:\mom\mom-backend\controllers\meetingController.js:46:41)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 13/05/2024, Time: 16:39
+Error: Cannot destructure property 'id' of 'data.body' as it is undefined.
+Stack Trace: TypeError: Cannot destructure property 'id' of 'data.body' as it is undefined.
+    at Object.updateRsvp (D:\mom\mom-backend\services\meetingService.js:32:11)
+    at updateRsvp (D:\mom\mom-backend\controllers\meetingController.js:46:41)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 13/05/2024, Time: 16:56
+Error: userId is not defined
+Stack Trace: ReferenceError: userId is not defined
+    at Object.updateRsvp (D:\mom\mom-backend\services\meetingService.js:33:23)
+    at updateRsvp (D:\mom\mom-backend\controllers\meetingController.js:46:41)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 13/05/2024, Time: 16:56
+Error: id is not defined
+Stack Trace: ReferenceError: id is not defined
+    at Object.updateRsvp (D:\mom\mom-backend\services\meetingService.js:33:41)
+    at updateRsvp (D:\mom\mom-backend\controllers\meetingController.js:46:41)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 13/05/2024, Time: 16:59
+Error: Plan executor error during findAndModify :: caused by :: The positional operator did not find the match needed from the query.
+Stack Trace: MongoServerError: Plan executor error during findAndModify :: caused by :: The positional operator did not find the match needed from the query.
+    at Connection.sendCommand (D:\mom\mom-backend\node_modules\mongodb\lib\cmap\connection.js:281:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Connection.command (D:\mom\mom-backend\node_modules\mongodb\lib\cmap\connection.js:304:26)
+    at async Server.command (D:\mom\mom-backend\node_modules\mongodb\lib\sdam\server.js:169:24)
+    at async FindOneAndUpdateOperation.execute (D:\mom\mom-backend\node_modules\mongodb\lib\operations\find_and_modify.js:91:24)
+    at async executeOperation (D:\mom\mom-backend\node_modules\mongodb\lib\operations\execute_operation.js:126:16)
+    at async model.Query._findOneAndUpdate (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:3337:13)
+    at async model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:63)
+    at async Object.updateRsvp (D:\mom\mom-backend\services\meetingService.js:36:18)
+    at async updateRsvp (D:\mom\mom-backend\controllers\meetingController.js:46:20)
+Date: 13/05/2024, Time: 18:45
+Error: Responses is not defined
+Stack Trace: ReferenceError: Responses is not defined
+    at acceptRejectMinutes (D:\mom\mom-backend\controllers\minutesController.js:9:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
