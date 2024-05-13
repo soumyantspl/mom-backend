@@ -1,6 +1,6 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
-
+const { errorLog } = require("../middlewares/errorLog");
 exports.createDesignationSchema = Joi.object({
   name: Joi.string().alphanum().min(3).max(30).required(),
   organizationId: Joi.string().required(),
@@ -10,6 +10,7 @@ exports.validateCreateDesignation = (req, res, next) => {
   const { error } = createDesignationSchema.validate(req.body);
   if (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
   next();
@@ -25,6 +26,7 @@ exports.editDesignationValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -38,6 +40,7 @@ exports.deleteDesignationValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -68,6 +71,7 @@ exports.listDesignationValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

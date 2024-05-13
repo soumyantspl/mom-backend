@@ -1,5 +1,5 @@
 const Joi = require("joi");
-
+const { errorLog } = require("../middlewares/errorLog");
 exports.createOrganisationValidator = async (req, res, next) => {
   try {
     const schema = Joi.object({
@@ -21,6 +21,7 @@ exports.createOrganisationValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -45,6 +46,7 @@ exports.createOrganisationValidator = async (req, res, next) => {
 //     next();
 //   } catch (error) {
 //      console.log(error);
+// errorLog(error);
 // return Responses.errorResponse(req, res, error);
 //   }
 // };
@@ -69,6 +71,7 @@ exports.editOrganizationValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

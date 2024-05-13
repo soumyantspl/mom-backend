@@ -37,6 +37,7 @@ const createEmployee = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -111,6 +112,7 @@ const deleteEmploye = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -136,6 +138,7 @@ const listEmployee = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -156,6 +159,7 @@ const viewSingleEmploye = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

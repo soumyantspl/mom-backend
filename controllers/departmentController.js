@@ -1,7 +1,7 @@
 const departmentService = require("../services/departmentService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
-
+const { errorLog } = require("../middlewares/errorLog");
 const createDepartmentController = async (req, res) => {
   try {
     const { name, organizationId } = req.body;
@@ -19,6 +19,7 @@ const createDepartmentController = async (req, res) => {
     );
   } catch (error) {
     console.log("controller error", error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -45,6 +46,7 @@ const editDepartmentController = async (req, res) => {
     );
   } catch (error) {
     console.error("Controller error:", error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -72,6 +74,7 @@ const deleteDepartmentController = async (req, res) => {
     );
   } catch (error) {
     console.error("Controller error:", error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -101,6 +104,7 @@ const listDepartmentController = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

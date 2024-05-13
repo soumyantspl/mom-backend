@@ -10,6 +10,7 @@ exports.createDepartmentValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -23,6 +24,7 @@ exports.editDepartmentValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -36,6 +38,7 @@ exports.deleteDepartmentValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -66,6 +69,7 @@ exports.listDepartmentValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

@@ -1,7 +1,7 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
 var regularExpression = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-
+const { errorLog } = require("../middlewares/errorLog");
 // SEND OTP VALIDATOR
 const sendOtpValidator = async (req, res, next) => {
   try {
@@ -14,6 +14,7 @@ const sendOtpValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -37,6 +38,7 @@ const verifyOtpValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -68,10 +70,10 @@ const setPasswordValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
-
 
 // SET SIGN IN BY PASWORD VALIDATOR
 const signInByPasswordValidator = async (req, res, next) => {
@@ -86,13 +88,14 @@ const signInByPasswordValidator = async (req, res, next) => {
         })
         .min(8)
         .max(15)
-        .required()
+        .required(),
     });
 
     await schema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -100,5 +103,5 @@ module.exports = {
   sendOtpValidator,
   verifyOtpValidator,
   setPasswordValidator,
-  signInByPasswordValidator
+  signInByPasswordValidator,
 };

@@ -1,10 +1,10 @@
 const agendaService = require("../services/agendaService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
-
+const { errorLog } = require("../middlewares/errorLog");
 const createAgenda = async (req, res) => {
   try {
-    const result = await agendaService.createAgenda(req.body)
+    const result = await agendaService.createAgenda(req.body);
     console.log(result);
     if (!result) {
       return Responses.failResponse(req, res, null, messages.createError, 409);
@@ -18,6 +18,7 @@ const createAgenda = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
