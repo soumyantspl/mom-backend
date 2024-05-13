@@ -1,6 +1,7 @@
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 const unitService = require("../services/unitService");
+const { errorLog } = require("../middlewares/errorLog");
 
 const createUnit = async (req, res) => {
   try {
@@ -24,6 +25,7 @@ const createUnit = async (req, res) => {
       201
     );
   } catch (error) {
+    errorLog(error);
     console.log(error);
     return Responses.errorResponse(req, res, error);
   }
@@ -54,6 +56,7 @@ const editUnit = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -80,6 +83,7 @@ const deleteUnit = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -106,6 +110,7 @@ const listUnit = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

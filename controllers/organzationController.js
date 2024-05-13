@@ -1,6 +1,7 @@
 const organizationService = require("../services/organizationService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
+const { errorLog } = require("../middlewares/errorLog");
 
 const createOrganizationController = async (req, res) => {
   try {
@@ -35,6 +36,7 @@ const createOrganizationController = async (req, res) => {
     );
   } catch (error) {
     console.log(error.message);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -59,6 +61,7 @@ const viewOrganizationController = async (req, res) => {
     return Responses.successResponse(req, res, null, response, 200);
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -89,6 +92,8 @@ const editOrganizationController = async (req, res) => {
       200
     );
   } catch (error) {
+    console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

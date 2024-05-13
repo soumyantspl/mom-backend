@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 const employeeService = require("../services/employeeService");
+const { errorLog } = require("../middlewares/errorLog");
 /*FUNC TO GENERATE NEW TOKEN FOR USER*/
 const generatUserToken = (data) => {
   token = jwt.sign(data, process.env.JWT_USER_SECRET, {
@@ -32,7 +33,8 @@ const verifyUserToken = async (req, res, next) => {
       return Responses.failResponse(req, res, null, messages.invalidUser, 401);
     }
   } catch (error) {
-    // console.log(error)
+    console.log(error)
+    errorLog(error);
     return Responses.failResponse(req, res, null, messages.invaliToken, 401);
   }
 };

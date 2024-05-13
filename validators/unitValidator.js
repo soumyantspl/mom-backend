@@ -1,5 +1,6 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
+const { errorLog } = require("../middlewares/errorLog");
 
 const createUnitValidator = async (req, res, next) => {
   try {
@@ -25,6 +26,7 @@ const createUnitValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -54,6 +56,7 @@ const editUnitValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -68,9 +71,11 @@ const deleteUnitValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
+
 const listUnitValidator = async (req, res, next) => {
   try {
     console.log(req.body);
@@ -97,6 +102,7 @@ const listUnitValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -104,5 +110,5 @@ module.exports = {
   createUnitValidator,
   editUnitValidator,
   deleteUnitValidator,
-  listUnitValidator
+  listUnitValidator,
 };

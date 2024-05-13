@@ -1,5 +1,6 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
+const { errorLog } = require("../middlewares/errorLog");
 
 const createAgendaValidator = async (req, res, next) => {
   try {
@@ -16,6 +17,7 @@ const createAgendaValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

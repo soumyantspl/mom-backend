@@ -1,6 +1,7 @@
 const authService = require("../services/authService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
+const { errorLog } = require("../middlewares/errorLog");
 
 /**FUNC- TO SEND OTP TO SIGN IN USER */
 const sendOtp = async (req, res) => {
@@ -29,6 +30,7 @@ const sendOtp = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -51,6 +53,7 @@ const verifyOtp = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -82,6 +85,7 @@ const reSendOtp = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -107,6 +111,7 @@ const setPassword = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -138,6 +143,7 @@ const signInByPassword = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

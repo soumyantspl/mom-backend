@@ -1,11 +1,7 @@
-
-
-
-
 const meetingService = require("../services/meetingService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
-
+const { errorLog } = require("../middlewares/errorLog");
 /**FUNC- TO CREATE MEETING**/
 const createMeeting = async (req, res) => {
   try {
@@ -40,6 +36,7 @@ const createMeeting = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -80,5 +77,3 @@ const updateMeeting = async (req, res) => {
 module.exports = {
   createMeeting,updateMeeting
 };
-
-

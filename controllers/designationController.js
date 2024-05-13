@@ -1,6 +1,7 @@
 const designationService = require("../services/designationService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
+const { errorLog } = require("../middlewares/errorLog");
 
 const createDesignationController = async (req, res) => {
   try {
@@ -18,6 +19,7 @@ const createDesignationController = async (req, res) => {
     );
   } catch (error) {
     console.log("controller error", error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -44,6 +46,7 @@ const editDesignationController = async (req, res) => {
     );
   } catch (error) {
     console.error("Controller error:", error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -69,6 +72,7 @@ const deleteDesignationController = async (req, res) => {
       202
     );
   } catch (error) {
+    errorLog(error);
     console.error("Controller error:", error);
     return Responses.errorResponse(req, res, error);
   }
@@ -99,6 +103,7 @@ const listDesignationController = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
