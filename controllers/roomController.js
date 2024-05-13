@@ -1,7 +1,7 @@
 const roomService = require("../services/roomService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
-
+const { errorLog } = require("../middlewares/errorLog");
 /**FUNC- TO CREATE NEW MEETING ROOM**/
 const createRoom = async (req, res) => {
   try {
@@ -25,6 +25,7 @@ const createRoom = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -46,6 +47,7 @@ const editRoom = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -69,6 +71,7 @@ const viewRooms = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -90,6 +93,7 @@ const deleteRoom = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

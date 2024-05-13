@@ -1,5 +1,6 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
+const { errorLog } = require("../middlewares/errorLog");
 // SEND VIEW EMPLOYEE VALIDATOR
 const viewEmployeeValidator = async (req, res, next) => {
   try {
@@ -20,6 +21,7 @@ const viewEmployeeValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -56,6 +58,7 @@ const createEmployeeValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -97,6 +100,7 @@ const editEmployeeValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -111,6 +115,7 @@ const deleteEmployeValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -140,6 +145,7 @@ const listEmployesValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -156,6 +162,7 @@ const viewSingleEmployeeValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

@@ -1,6 +1,6 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
-
+const { errorLog } = require("../middlewares/errorLog");
 // CREATE CONFIGURATION VALIDATOR
 const createConfigValidator = async (req, res, next) => {
   try {
@@ -20,6 +20,7 @@ const createConfigValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -48,6 +49,7 @@ const updateConfigValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -65,6 +67,7 @@ const viewConfigValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -83,6 +86,7 @@ const deleteConfigValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
