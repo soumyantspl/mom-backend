@@ -47,7 +47,7 @@ const createMeeting = async (req, res) => {
 /**FUNC- TO UPDATE MEETING**/
 const updateMeeting = async (req, res) => {
   try {
-    const result = await meetingService.createMeeting(req.body);
+    const result = await meetingService.updateMeeting(req.body);
     console.log(result);
     if (result?.isDuplicateEmail) {
       return Responses.failResponse(

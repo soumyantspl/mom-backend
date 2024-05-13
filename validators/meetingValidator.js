@@ -111,7 +111,42 @@ const updateMeetingValidator = async (req, res, next) => {
                     then: Joi.string().trim().alphanum().required(),
                     otherwise: Joi.string().trim().alphanum(),
                 }),
+
+        }),
+        step: Joi.number().required(),
+        attendees: Joi.when('step', {
+            is: Joi.number().valid(2),
+            then: Joi.array()
+            .items({
+              id: Joi.string()
+                .required(),
+              rsvp:Joi.string().valid("YES", "NO", "WAITING").required(),
+            }).required(),
+            otherwise:  Joi.array()
+            .items({
+                id: Joi.string()
+                  .required(),
+                rsvp:Joi.string().valid("YES", "NO", "WAITING").required(),
+              })
+        }),
+        agendas: Joi.when('step', {
+            is: Joi.number().valid(3),
+            then: Joi.array()
+            .items({
+              title: Joi.string()
+                .required(),
+              topic:Joi.string(),
+              timeLine:Joi.string().required()
+            }).required(),
+            otherwise:  Joi.array()
+            .items({
+                title: Joi.string()
+                .required(),
+              topic:Joi.string(),
+              timeLine:Joi.string().required()
+              })
         })
+
     });
         const paramsSchema = Joi.object({
             id: Joi.string().trim().alphanum().required(),
