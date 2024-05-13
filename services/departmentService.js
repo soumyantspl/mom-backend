@@ -8,6 +8,7 @@ const createDepartmentService = async (name, organizationId) => {
   });
   return await newDepartment.save();
 };
+
 const editDepartmentService = async (id, name) => {
   const existingDepartment = await Department.findByIdAndUpdate(
     id,
