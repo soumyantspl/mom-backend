@@ -32,7 +32,7 @@ const createEmployee = async (req, res) => {
       req,
       res,
       result.data,
-      messages.creatSuccess,
+      messages.createdSuccess,
       201
     );
   } catch (error) {

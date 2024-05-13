@@ -20,7 +20,7 @@ const createRoom = async (req, res) => {
       req,
       res,
       result,
-      messages.creatSuccess,
+      messages.createdSuccess,
       201
     );
   } catch (error) {

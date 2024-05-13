@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const agendaSchema = new mongoose.Schema(
   {
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
     },
@@ -15,10 +15,10 @@ const agendaSchema = new mongoose.Schema(
     },
     topic: {
       type: String,
-      required: true,
+      // required: true,
     },
     timeLine: {
-      type: mongoose.Types.Decimal128,
+      type: Number,
       required: true,
     },
   },
