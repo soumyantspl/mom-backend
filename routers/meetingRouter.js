@@ -11,5 +11,10 @@ router.post(
   meetingController.createMeeting
 );
 router.put("/updateRsvp", meetingController.updateRsvp);
+router.put(
+  "/cancelMeeting",
+  validator.cancelMeetingValidator,
+  meetingController.cancelMeeting
+);
 
 module.exports = router;

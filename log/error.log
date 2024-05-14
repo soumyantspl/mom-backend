@@ -122,3 +122,6 @@ Error: Responses is not defined
 Stack Trace: ReferenceError: Responses is not defined
     at acceptRejectMinutes (D:\mom\mom-backend\controllers\minutesController.js:9:7)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 14/05/2024, Time: 11:54
+Error: "status" is required
+Stack Trace: ValidationError: "status" is required

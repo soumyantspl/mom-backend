@@ -1,6 +1,5 @@
 const Minutes = require("../models/minutesModel");
 
-
 const acceptRejectMinutes = async (data) => {
   const result = await Minutes.findOneAndUpdate(
     {
@@ -16,5 +15,5 @@ const acceptRejectMinutes = async (data) => {
 };
 
 module.exports = {
-    acceptRejectMinutes
-}
+  acceptRejectMinutes,
+};

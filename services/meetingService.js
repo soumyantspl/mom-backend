@@ -43,7 +43,26 @@ const updateRsvp = async (data) => {
   return result;
 };
 
+const cancelMeeting = async (data) => {
+  const remarks = data.remarks;
+  console.log("remarks",remarks);
+  const result = await Meeting.findOneAndUpdate(
+    {
+      _id: data.id,
+    },
+    {
+      $set: {
+        "meetingStatus.status": data.status,
+        "meetingStatus.remarks": data.remarks,
+      },
+    }
+  );
+  console.log(result);
+  return result;
+};
+
 module.exports = {
   createMeeting,
   updateRsvp,
+  cancelMeeting,
 };
