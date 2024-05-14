@@ -17,7 +17,7 @@ const viewLogs = async (bodyData, queryData) => {
   let query = searchKey
     ? {
         organizationId,
-        details: searchKey,
+        details: {$regex: searchKey, $options: 'i'},
       }
     : {
         organizationId,

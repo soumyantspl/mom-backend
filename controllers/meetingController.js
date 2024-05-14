@@ -40,7 +40,7 @@ const createMeeting = async (req, res) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-
+/**FUNC- TO UPDATE RSVP DATA**/
 const updateRsvp = async (req, res) => {
   try {
     const result = await meetingService.updateRsvp(req.body);
@@ -83,6 +83,7 @@ const updateMeeting = async (req, res) => {
     return Responses.errorResponse(req, res, error);
     }
   }
+  /**FUNC- TO CANCEL MEETING**/
 const cancelMeeting = async (req, res) => {
   try {
     const result = meetingService.cancelMeeting(req.body);
@@ -108,10 +109,61 @@ const cancelMeeting = async (req, res) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+
+
+
+
+/**FUNC- TO VIEW ALL MEETING DETAILS**/
+const viewAllMeetings = async (req, res) => {
+  try {
+    const result = await meetingService.viewAllMeetings(req.body,req.query,req.userId,req.userRole);
+    console.log(result);
+    if (result.totalCount==0) {
+      return Responses.failResponse(req, res, null, messages.recordsNotFound, 409);
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+   // errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+
+/**FUNC- TO VIEW SINGLE MEETING DETAILS**/
+const viewMeeting = async (req, res) => {
+  try {
+    const result = await meetingService.viewMeeting(req.params.id);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(req, res, null, messages.recordsNotFound, 409);
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   createMeeting,
   updateRsvp,
   cancelMeeting,
-  updateMeeting
+  updateMeeting,
+  viewMeeting,
+  viewAllMeetings
 
 }

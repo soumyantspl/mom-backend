@@ -74,6 +74,9 @@ const meetingSchema = new mongoose.Schema(
       required: true,
       default: true,
     },
+    agendaIds: [{
+      type:  mongoose.Schema.ObjectId
+  }]
     // logs: [
     //   {
     //     id: {

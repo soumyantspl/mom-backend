@@ -174,6 +174,10 @@ const updateMeetingValidator = async (req, res, next) => {
             timeLine: Joi.string().required(),
           }),
       }),
+      sendNotification: Joi.when("step", {
+        is: Joi.number().valid(3),
+        then: Joi.boolean().required().strict(),
+      }),
     });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
@@ -184,7 +188,59 @@ const updateMeetingValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
+    //   errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+const viewMeetingValidator = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.params);
+    const paramsSchema = Joi.object({
+      limit: Joi.number(),
+      page: Joi.number(),
+      order: Joi.number(),
+    });
+
+    await paramsSchema.validateAsync(req.query);
+    next();
+  } catch (error) {
+    console.log(error);
     errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+// VIEW ALL MEETING VALIDATOR
+const viewAllMeetingsValidator = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.params);
+    const schema = Joi.object({
+      searchKey: Joi.string()
+        .trim()
+        .pattern(/^[0-9a-zA-Z ,/-]+$/)
+        .messages({
+          "string.pattern.base": `HTML tags & Special letters are not allowed!`,
+        }),
+
+      organizationId: Joi.string().trim().alphanum().required(),
+    });
+    const paramsSchema = Joi.object({
+      limit: Joi.number().required(),
+      page: Joi.number().required(),
+      order: Joi.number().required(),
+    });
+
+    await paramsSchema.validateAsync(req.query);
+    await schema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    // errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -204,10 +260,11 @@ const updateRsvpValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-
 module.exports = {
   createMeetingValidator,
+  updateMeetingValidator,
+  viewMeetingValidator,
+  viewAllMeetingsValidator,
   updateRsvpValidator,
   cancelMeetingValidator,
-  updateMeetingValidator,
 };

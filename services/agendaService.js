@@ -1,6 +1,6 @@
 const Agenda = require("../models/agendaModel");
 
-const createAgenda = async (data) => {
+const createAgendaForMeeting = async (data) => {
   console.log('data--------------123',data)
   const inputData=data.map((item)=>{
     item.timeLine=parseFloat(item.timeLine).toFixed(2)
@@ -8,10 +8,16 @@ const createAgenda = async (data) => {
   })
   const newAgenda = await Agenda.insertMany(inputData);
   console.log("newAgenda--------------",newAgenda)
-  return {
-    data: newAgenda,
-  };
+  
+    const agendaIds=newAgenda.map((item)=>{
+return item._id;
+    })
+    console.log(agendaIds)
+  
+  console.log("newAgenda-------------22-",newAgenda)
+  return agendaIds
+  
 };
 module.exports = {
-  createAgenda,
+  createAgendaForMeeting,
 };
