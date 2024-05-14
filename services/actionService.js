@@ -1,5 +1,6 @@
-const actionComments = require("../models/commentsModel");
-
+const ActionComments = require("../models/commentsModel");
+const Action = require("../models/actionsModel");
+const ObjectId = require("mongoose").Types.ObjectId;
 const comments = async (data) => {
   const inputData = {
     actionId: data.actionId,
@@ -7,14 +8,28 @@ const comments = async (data) => {
     commentDescription: data.commentDescription,
   };
 
-  const commentData = new actionComments(inputData);
+  const commentData = new ActionComments(inputData);
   const newComments = await commentData.save();
   return {
     data: newComments,
   };
 };
 
-const viewActionComment = async(data)=>{
+const viewActionComment = async (data) => {};
+/**FUNC- ACTION REASSIGN REQUEST */
+const actionReassignRequest = async (data, id) => {
+  console.log(data, id);
+  const result = await Action.findOneAndUpdate(
+    {
+      _id: new ObjectId(id),
+    },
 
-}
-module.exports = { comments };
+    {
+      $push: { reassigneRequestDetails: data },
+    }
+  );
+  console.log(result);
+  return result;
+};
+
+module.exports = { comments, actionReassignRequest };
