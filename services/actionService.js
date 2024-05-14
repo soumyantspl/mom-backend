@@ -1,4 +1,4 @@
-const actionComments = require("../models/commentsModel");
+const ActionComments = require("../models/commentsModel");
 
 const comments = async (data) => {
   const inputData = {
@@ -14,7 +14,11 @@ const comments = async (data) => {
   };
 };
 
-const viewActionComment = async(data)=>{
+const viewActionComment = async (data) => {
+  const viewActionCommentList = await ActionComments.find(data);
+  return {
+    viewActionCommentList,
+  };
+};
 
-}
-module.exports = { comments };
+module.exports = { comments, viewActionComment };

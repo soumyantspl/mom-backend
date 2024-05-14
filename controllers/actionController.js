@@ -23,9 +23,31 @@ const actionComments = async (req, res) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-const viewActionComment = async () => {
+const viewActionComment = async (req, res) => {
   try {
-  } catch (error) {}
+    const result = await acttionService.viewActionComment(req.body);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordNotFound,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result.data,
+      messages.recordsFound,
+      201
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
 };
 
-module.exports = { actionComments };
+module.exports = { actionComments, viewActionComment };

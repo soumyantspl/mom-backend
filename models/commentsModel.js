@@ -19,6 +19,6 @@ const actionCommentsSchema = new mongoose.Schema(
   }
 );
 
-const actionComments = mongoose.model("actionComments", actionCommentsSchema);
+const ActionComments = mongoose.model("actionComments", actionCommentsSchema);
 
-module.exports = actionComments;
+module.exports = ActionComments;

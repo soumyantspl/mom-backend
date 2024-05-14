@@ -10,4 +10,6 @@ router.post(
   commentsController.actionComments
 );
 
+router.get("/viewActionComment", commentsController.viewActionComment);
+
 module.exports = router;
