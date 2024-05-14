@@ -48,7 +48,7 @@ const viewRoom = async (bodyData, queryData) => {
   let query = searchKey
     ? {
         organizationId,
-        title: searchKey,
+        title: {$regex: searchKey, $options: 'i'},
         isActive: true,
       }
     : {

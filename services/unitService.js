@@ -41,7 +41,7 @@ const listUnit = async (bodyData, queryData) => {
   let query = searchKey
     ? {
         organizationId,
-        name: searchKey,
+        name: {$regex: searchKey, $options: 'i'},
         isActive: true,
       }
     : {

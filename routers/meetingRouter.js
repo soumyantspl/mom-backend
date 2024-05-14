@@ -10,4 +10,12 @@ router.post("/createMeeting", validator.createMeetingValidator, meetingControlle
 /* UPDATE MEETING  */
 router.put("/updateMeeting/:id", validator.updateMeetingValidator, meetingController.updateMeeting);
 
+
+/* VIEW SINGLE MEETING  */
+router.get("/viewMeeting/:id", validator.viewMeetingValidator, meetingController.viewMeeting);
+
+/* VIEW ALL MEETINGS  */
+router.get("/viewAllMeetings", validator.viewAllMeetingsValidator, meetingController.viewAllMeetings);
+
+
 module.exports = router;

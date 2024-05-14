@@ -100,7 +100,7 @@ const listEmployee = async (bodyData, queryData) => {
     ? {
         $and: [
           {
-            $or: [{ name: searchKey }, { empId: searchKey }],
+            $or: [{ name: {$regex: searchKey, $options: 'i'} }, { empId: {$regex: searchKey, $options: 'i'} }],
           },
           {
             organizationId,
