@@ -125,3 +125,15 @@ Stack Trace: ReferenceError: Responses is not defined
 Date: 14/05/2024, Time: 11:54
 Error: "status" is required
 Stack Trace: ValidationError: "status" is required
+Date: 14/05/2024, Time: 13:00
+Error: "rsvp" is required
+Stack Trace: ValidationError: "rsvp" is required
+Date: 14/05/2024, Time: 14:56
+Error: "actionId" is not allowed to be empty
+Stack Trace: ValidationError: "actionId" is not allowed to be empty
+Date: 14/05/2024, Time: 14:56
+Error: "userId" is not allowed to be empty
+Stack Trace: ValidationError: "userId" is not allowed to be empty
+Date: 14/05/2024, Time: 14:56
+Error: "commentDescription" is not allowed to be empty
+Stack Trace: ValidationError: "commentDescription" is not allowed to be empty
