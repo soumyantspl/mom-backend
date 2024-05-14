@@ -7,7 +7,7 @@ const acceptOrRejectMinutesValidator = async (req, res, next) => {
     const schema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
       userId: Joi.string().trim().alphanum().required(),
-      rsvp: Joi.string().required(),
+      status: Joi.string().required(),
     }).required();
     await schema.validateAsync(req.body);
     next();
@@ -18,4 +18,4 @@ const acceptOrRejectMinutesValidator = async (req, res, next) => {
   }
 };
 
-module.exports = {acceptOrRejectMinutesValidator};
+module.exports = { acceptOrRejectMinutesValidator };
