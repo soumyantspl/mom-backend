@@ -1,13 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const commentsValidator = require("../validators/actionValidator");
+const actionValidator = require("../validators/actionValidator");
 
-const commentsController = require("../controllers/actionController");
+const actionController = require("../controllers/actionController");
 
 router.post(
   "/actionComment",
-  commentsValidator.actionCommentsValidator,
-  commentsController.actionComments
+  actionValidator.actionCommentsValidator,
+  actionController.actionComments
 );
+/* ACTION REASSIGN REQUEST  */
+router.put(
+  "/actionReAssignRequest/:id",
+  actionValidator.actionReassignRequestValidator,
+  actionController.actionReassignRequest
+);
+
+
+
 
 module.exports = router;

@@ -5,6 +5,7 @@ const { errorLog } = require("../middlewares/errorLog");
 const createMeetingValidator = async (req, res, next) => {
   try {
     const schema = Joi.object({
+      sendNotification: Joi.boolean(),
       title: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
@@ -80,6 +81,7 @@ const cancelMeetingValidator = async (req, res, next) => {
 const updateMeetingValidator = async (req, res, next) => {
   try {
     const bodySchema = Joi.object({
+      sendNotification: Joi.boolean(),
       title: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
@@ -174,10 +176,7 @@ const updateMeetingValidator = async (req, res, next) => {
             timeLine: Joi.string().required(),
           }),
       }),
-      sendNotification: Joi.when("step", {
-        is: Joi.number().valid(3),
-        then: Joi.boolean().required().strict(),
-      }),
+   
     });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
