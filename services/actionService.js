@@ -32,4 +32,6 @@ const actionReassignRequest = async (data, id) => {
   return result;
 };
 
-module.exports = { comments, actionReassignRequest };
+const viewSingleAction = async (data) => {};
+
+module.exports = { comments, actionReassignRequest, viewSingleAction };
