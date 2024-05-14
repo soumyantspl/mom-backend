@@ -163,3 +163,33 @@ Stack Trace: Error: Arguments must be aggregate pipeline operators
     at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
     at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
     at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+Date: 14/05/2024, Time: 18:17
+Error: Cannot read properties of undefined (reading 'meetingData')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'meetingData')
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:343:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:20)
+Date: 14/05/2024, Time: 18:17
+Error: Cannot read properties of undefined (reading 'meetingData')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'meetingData')
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:343:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:20)
+Date: 14/05/2024, Time: 18:19
+Error: Cannot read properties of undefined (reading 'meetingData')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'meetingData')
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:343:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:20)
+Date: 14/05/2024, Time: 18:20
+Error: Cannot read properties of undefined (reading 'map')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'map')
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:343:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:20)
+Date: 14/05/2024, Time: 18:20
+Error: Cannot read properties of undefined (reading 'meetingData')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'meetingData')
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:343:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:20)

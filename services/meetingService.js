@@ -340,9 +340,27 @@ const listAttendeesFromPreviousMeeting = async (data) => {
     },
   ]);
   console.log("meetingData---------", meetingData);
-  
+  const data0 = meetingData.map((meeting) => {
+    return meeting.attendeesDetail;
+  });
+
+  console.log("DATA-->", data0);
+  const data1 = [].concat(...data0);
+  console.log("DATA-->", data1);
+
+  // function removeDuplicate(data) {
+  //   return [...new Set(data)];
+  // }
+
+  const DATA = data1.filter((obj, index, self) =>
+    index === self.findIndex((o) =>
+      JSON.stringify(o) === JSON.stringify(obj)
+    )
+  );
+  console.log("DATA---==", DATA);
+
   return {
-    meetingData
+    meetingData,
   };
 };
 
