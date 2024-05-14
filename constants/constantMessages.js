@@ -62,7 +62,7 @@ const designationCreated = "Designation has been created";
 const designationUpdated = "Designation has been Updated";
 const designationDeleted = "Designation has been Deleted";
 const designationList = "Fetched all Designations";
-const canceledFailed = "Cancel Failed";
+const cancelFailed = "Cancel Failed";
 const canceled = "Canceled Successfuly";
 const invalidId = "Invalid Id!";
 module.exports = {
@@ -104,5 +104,5 @@ module.exports = {
   duplicateEmpCode,
   duplicateEmail,
   canceled,
-  canceledFailed,
+  cancelFailed,
 };
