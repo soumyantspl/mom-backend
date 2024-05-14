@@ -1,4 +1,4 @@
-const acttionService = require("../services/commentService");
+const acttionService = require("../services/actionService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 const { errorLog } = require("../middlewares/errorLog");
@@ -22,6 +22,10 @@ const actionComments = async (req, res) => {
     errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
+};
+const viewActionComment = async () => {
+  try {
+  } catch (error) {}
 };
 
 module.exports = { actionComments };

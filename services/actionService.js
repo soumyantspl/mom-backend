@@ -14,4 +14,7 @@ const comments = async (data) => {
   };
 };
 
+const viewActionComment = async(data)=>{
+
+}
 module.exports = { comments };
