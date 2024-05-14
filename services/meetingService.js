@@ -95,10 +95,15 @@ const updateMeeting = async (data, id) => {
     new: true,
   });
   console.log("meeting-----------------------", meeting);
-  
-  const mailData = await emailTemplates.createMeeting('Updated');
-  const emailSubject=emailConstants.updateMeetingSubject;
-  await emailService.sendEmail(userData.email,emailType,emailSubject,mailData);
+
+  const mailData = await emailTemplates.createMeeting("Updated");
+  const emailSubject = emailConstants.updateMeetingSubject;
+  await emailService.sendEmail(
+    userData.email,
+    emailType,
+    emailSubject,
+    mailData
+  );
   return meeting;
 
   //return false;
@@ -181,7 +186,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
   let query = searchKey
     ? {
         organizationId: new ObjectId(organizationId),
-        title:{$regex: searchKey, $options: 'i'} ,
+        title: { $regex: searchKey, $options: "i" },
         isActive: true,
       }
     : {
@@ -234,28 +239,29 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
     .sort({ createdAt: parseInt(order) })
     .limit(limit)
     .skip(skip);
-    console.log("meetingData---------", meetingData);
+  console.log("meetingData---------", meetingData);
   if (meetingData.length !== 0) {
     meetingData.map((meetingDataObject) => {
       console.log("meetingDataObject---------", meetingDataObject);
       meetingDataObject.attendees.map((item) => {
         console.log("item---------", item);
-        console.log("attendeesDetail----------", meetingDataObject.attendeesDetail)
+        console.log(
+          "attendeesDetail----------",
+          meetingDataObject.attendeesDetail
+        );
         const attendeeData = meetingDataObject.attendeesDetail.find(
           (attendee) => attendee._id == item.id.toString()
         );
         console.log("attendeeData---------", attendeeData);
-        if(item.id.toString()==userId){
-          meetingDataObject.rsvp=item.rsvp
+        if (item.id.toString() == userId) {
+          meetingDataObject.rsvp = item.rsvp;
         }
-        if(attendeeData){
+        if (attendeeData) {
           return (item.name = attendeeData.name);
         }
-       
       });
       delete meetingDataObject.attendeesDetail;
 
-    
       meetingDataObject.userRsvp = console.log(
         "meetingDataObject---------------",
         meetingDataObject
@@ -263,14 +269,13 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
     });
 
     // return meetingDataObject;
-
- 
   }
   return {
     totalCount,
     meetingData,
   };
-}
+};
+/**FUNC- TO UPDATE RSVP SECTION */
 const updateRsvp = async (data) => {
   const result = await Meeting.findOneAndUpdate(
     {
@@ -285,9 +290,10 @@ const updateRsvp = async (data) => {
   return result;
 };
 
+/**FUNC- TO CANCEL MEETING */
 const cancelMeeting = async (data) => {
   const remarks = data.remarks;
-  console.log("remarks",remarks);
+  console.log("remarks", remarks);
   const result = await Meeting.findOneAndUpdate(
     {
       _id: data.id,
@@ -303,6 +309,43 @@ const cancelMeeting = async (data) => {
   return result;
 };
 
+/**FUNC- TO VIEW LIST OF ATTENDEES FROM PREVIOUS MEETING */
+const listAttendeesFromPreviousMeeting = async (data) => {
+  const userId = data.userId;
+  // query["attendees.id"] = new ObjectId(userId);
+
+  console.log("userId---------", userId);
+
+  const meetingData = await Meeting.aggregate([
+    {
+      $match: { "attendees.id": new ObjectId(data.id) },
+    },
+    {
+      $lookup: {
+        from: "employees",
+        localField: "attendees.id",
+        foreignField: "_id",
+        as: "attendeesDetail",
+      },
+    },
+    {
+      $project: {
+        _id: 1,
+        attendeesDetail: {
+          email: 1,
+          _id: 1,
+          name: 1,
+        },
+      },
+    },
+  ]);
+  console.log("meetingData---------", meetingData);
+  
+  return {
+    meetingData
+  };
+};
+
 module.exports = {
   createMeeting,
   updateRsvp,
@@ -310,4 +353,5 @@ module.exports = {
   updateMeeting,
   viewMeeting,
   viewAllMeetings,
+  listAttendeesFromPreviousMeeting,
 };

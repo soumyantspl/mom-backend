@@ -137,3 +137,29 @@ Stack Trace: ValidationError: "userId" is not allowed to be empty
 Date: 14/05/2024, Time: 14:56
 Error: "commentDescription" is not allowed to be empty
 Stack Trace: ValidationError: "commentDescription" is not allowed to be empty
+Date: 14/05/2024, Time: 17:01
+Error: query is not defined
+Stack Trace: ReferenceError: query is not defined
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:318:24)
+    at listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:41)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 14/05/2024, Time: 17:11
+Error: Arguments must be aggregate pipeline operators
+Stack Trace: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (D:\mom\mom-backend\node_modules\mongoose\lib\aggregate.js:149:11)
+    at new Aggregate (D:\mom\mom-backend\node_modules\mongoose\lib\aggregate.js:59:17)
+    at Function.aggregate (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4173:21)
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:319:37)
+    at listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:41)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
