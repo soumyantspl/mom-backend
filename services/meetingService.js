@@ -3,6 +3,9 @@ const agendaService = require("./agendaService");
 const logService = require("./logsService");
 const logMessages = require("../constants/logsConstants");
 const ObjectId = require("mongoose").Types.ObjectId;
+const emailService = require("./emailService");
+const emailTemplates = require("../emailSetUp/emailTemplates");
+const emailConstants = require("../constants/emailConstants");
 /**FUNC- CREATE MEETING */
 const createMeeting = async (data, userId, ipAddress) => {
   console.log("----------------------33333", data);
@@ -46,7 +49,7 @@ const updateMeeting = async (data, id) => {
   console.log("----------------------33333", data, id);
   let updateData = {};
   if (data.step == 2) {
-    // CHECK IF NEW PEOPLE , IF THEN FIRST ADD THEN IN EMPLOYEED AND THEN ADD THEM IN ATTENDEES ARRAY
+    // CHECK IF NEW PEOPLE , IF THEN FIRST ADD THEM IN EMPLOYEED AND THEN ADD THEM IN ATTENDEES ARRAY
 
     if (data.isNewPeople) {
       const empData = {
@@ -91,7 +94,10 @@ const updateMeeting = async (data, id) => {
     new: true,
   });
   console.log("meeting-----------------------", meeting);
-
+  
+  const mailData = await emailTemplates.createMeeting('Updated');
+  const emailSubject=emailConstants.updateMeetingSubject;
+  await emailService.sendEmail(userData.email,emailType,emailSubject,mailData);
   return meeting;
 
   //return false;

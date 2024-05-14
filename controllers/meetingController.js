@@ -55,11 +55,6 @@ const updateMeeting = async (req, res) => {
         409
       );
     }
-
-   
-
-   
-
     return Responses.successResponse(
       req,
       res,

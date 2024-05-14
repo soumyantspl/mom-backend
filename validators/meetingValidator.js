@@ -159,6 +159,10 @@ const updateMeetingValidator = async (req, res, next) => {
             timeLine: Joi.string().required(),
           }),
       }),
+      sendNotification: Joi.when("step", {
+        is: Joi.number().valid(3),
+        then: Joi.boolean().required().strict()
+      }),
     });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
@@ -169,7 +173,7 @@ const updateMeetingValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
-    errorLog(error);
+ //   errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -193,7 +197,6 @@ const viewMeetingValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-
 
 // VIEW ALL MEETING VALIDATOR
 const viewAllMeetingsValidator = async (req, res, next) => {
@@ -222,12 +225,13 @@ const viewAllMeetingsValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
-   // errorLog(error);
+    // errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
 module.exports = {
   createMeetingValidator,
   updateMeetingValidator,
-  viewMeetingValidator,viewAllMeetingsValidator
+  viewMeetingValidator,
+  viewAllMeetingsValidator,
 };
