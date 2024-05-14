@@ -6,6 +6,7 @@ const minutesSchema = new mongoose.Schema(
       required: true,
     },
     priority: {
+      type: String,
       enum: ["HIGH", "NORMAL", "LOW"],
       required: true,
     },

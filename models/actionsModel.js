@@ -52,6 +52,6 @@ const actionSchema = new mongoose.Schema(
   }
 );
 
-const Action = mongoose.model("Employee", actionSchema);
+const Action = mongoose.model("Action", actionSchema);
 
 module.exports = Action;

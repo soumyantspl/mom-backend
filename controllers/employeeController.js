@@ -148,13 +148,19 @@ const viewSingleEmploye = async (req, res) => {
     const result = await employeeService.viewSingleEmployee(req.params.id);
     console.log("viewSingleEmploye result", result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.recordsFound, 409);
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
     }
     return Responses.successResponse(
       req,
       res,
       result,
-      messages.recordsNotFound,
+      messages.recordsFound,
       200
     );
   } catch (error) {

@@ -1,6 +1,7 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
 const { errorLog } = require("../middlewares/errorLog");
+
 const createMeetingValidator = async (req, res, next) => {
   try {
     const schema = Joi.object({
@@ -62,6 +63,20 @@ const createMeetingValidator = async (req, res, next) => {
   }
 };
 
+const cancelMeetingValidator = async (req, res, next) => {
+  try {
+    const schema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+      status: Joi.string().required(),
+      remarks: Joi.string(),
+    }).required();
+    await schema.validateAsync(req.body);
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
 const updateMeetingValidator = async (req, res, next) => {
   try {
     const bodySchema = Joi.object({
@@ -161,7 +176,7 @@ const updateMeetingValidator = async (req, res, next) => {
       }),
       sendNotification: Joi.when("step", {
         is: Joi.number().valid(3),
-        then: Joi.boolean().required().strict()
+        then: Joi.boolean().required().strict(),
       }),
     });
     const paramsSchema = Joi.object({
@@ -173,7 +188,7 @@ const updateMeetingValidator = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
- //   errorLog(error);
+    //   errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -229,9 +244,27 @@ const viewAllMeetingsValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+
+const updateRsvpValidator = async (req, res, next) => {
+  try {
+    const schema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+      userId: Joi.string().trim().alphanum().required(),
+      rsvp: Joi.string().required(),
+    }).required();
+    await schema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
 module.exports = {
   createMeetingValidator,
   updateMeetingValidator,
   viewMeetingValidator,
   viewAllMeetingsValidator,
+  updateRsvpValidator,
+  cancelMeetingValidator,
 };
