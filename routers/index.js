@@ -8,6 +8,8 @@ const unitRouter = require("./unitRouter");
 const roomsRouter = require("./roomsRouter");
 const configRouter = require("./configRouter");
 const agendaRouter = require("./agendaRouter");
+const minutesRouter = require("./minutesRouter");
+const commentsRouter = require("./commentsRouter")
 const logRouter = require("./logRouter");
 const express = require("express");
 const app = express();
@@ -23,6 +25,8 @@ app.use(`/${BASE_PATH}/room`, roomsRouter);
 app.use(`/${BASE_PATH}/unit`, unitRouter);
 app.use(`/${BASE_PATH}/configuration`, configRouter);
 app.use(`/${BASE_PATH}/agenda`, agendaRouter);
+app.use(`/${BASE_PATH}/minutes`, minutesRouter);
+app.use(`/${BASE_PATH}/comments`, commentsRouter);
 app.use(`/${BASE_PATH}/log`, logRouter);
 
 module.exports = app;

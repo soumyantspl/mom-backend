@@ -41,25 +41,9 @@ const createMeeting = async (req, res) => {
   }
 };
 
-/**FUNC- TO UPDATE MEETING**/
-const updateMeeting = async (req, res) => {
+const updateRsvp = async (req, res) => {
   try {
-    const result = await meetingService.updateMeeting(req.body,req.params.id);
-    console.log(result);
-    if (!result) {
-      return Responses.failResponse(
-        req,
-        res,
-        null,
-        messages.updateFailedRecordNotFound,
-        409
-      );
-    }
-
-   
-
-   
-
+    const result = await meetingService.updateRsvp(req.body);
     return Responses.successResponse(
       req,
       res,
@@ -72,8 +56,62 @@ const updateMeeting = async (req, res) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-
-
-module.exports = {
-  createMeeting,updateMeeting
+/**FUNC- TO UPDATE MEETING**/
+const updateMeeting = async (req, res) => {
+  try {
+    const result = await meetingService.updateMeeting(req.body,req.params.id);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result.data,
+      messages.updateSuccess,
+      201
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+    }
+  }
+const cancelMeeting = async (req, res) => {
+  try {
+    const result = meetingService.cancelMeeting(req.body);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.canceledFailed,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result.data,
+      messages.canceled,
+      201
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
 };
+module.exports = {
+  createMeeting,
+  updateRsvp,
+  cancelMeeting,
+  updateMeeting
+
+}

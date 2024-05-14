@@ -62,6 +62,8 @@ const designationCreated = "Designation has been created";
 const designationUpdated = "Designation has been Updated";
 const designationDeleted = "Designation has been Deleted";
 const designationList = "Fetched all Designations";
+const cancelFailed = "Cancel Failed";
+const canceled = "Canceled Successfuly";
 const invalidId = "Invalid Id!";
 module.exports = {
   otpSentSuccess,
@@ -101,4 +103,6 @@ module.exports = {
   deleteFailedRecordNotFound,
   duplicateEmpCode,
   duplicateEmail,
+  canceled,
+  cancelFailed,
 };
