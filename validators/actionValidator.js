@@ -48,4 +48,23 @@ const actionReassignRequestValidator = async (req, res, next) => {
   }
 };
 
-module.exports = { actionCommentsValidator,actionReassignRequestValidator };
+// VIEW SINGLE ACTION VALIDATOR
+const viewSingleActionValidator = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.params);
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+
+    await paramsSchema.validateAsync(req.params);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+module.exports = { actionCommentsValidator,actionReassignRequestValidator,viewSingleActionValidator };

@@ -16,7 +16,11 @@ router.put(
   actionController.actionReassignRequest
 );
 
-
-
+/* VIEW SINGLE ACTION DETAILS  */
+router.get(
+  "/viewSingleAction/:id",
+  actionValidator.viewSingleActionValidator,
+  actionController.viewSingleAction
+);
 
 module.exports = router;
