@@ -17,4 +17,7 @@ router.put(
   meetingController.cancelMeeting
 );
 
+/* UPDATE MEETING  */
+router.put("/updateMeeting/:id", validator.updateMeetingValidator, meetingController.updateMeeting);
+
 module.exports = router;

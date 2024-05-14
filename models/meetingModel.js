@@ -47,7 +47,9 @@ const meetingSchema = new mongoose.Schema(
           required: [true, "id is required"],
         },
         rsvp: {
+          type: String,
           enum: ["YES", "NO", "WAITING"],
+          default: "WAITING"
         },
       },
     ],
@@ -63,23 +65,27 @@ const meetingSchema = new mongoose.Schema(
       },
       remarks: { type: String, required: false },
     },
+    organizationId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
     isActive: {
       type: Boolean,
       required: true,
       default: true,
     },
-    logs: [
-      {
-        id: {
-          type: mongoose.Schema.ObjectId,
-          required: true,
-        },
-        action: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
+    // logs: [
+    //   {
+    //     id: {
+    //       type: mongoose.Schema.ObjectId,
+    //       required: true,
+    //     },
+    //     action: {
+    //       type: String,
+    //       required: true,
+    //     },
+    //   },
+    // ],
   },
   {
     timestamps: true,

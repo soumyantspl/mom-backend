@@ -5,7 +5,7 @@ const { errorLog } = require("../middlewares/errorLog");
 /**FUNC- TO CREATE MEETING**/
 const createMeeting = async (req, res) => {
   try {
-    const result = await meetingService.createMeeting(req.body);
+    const result = await meetingService.createMeeting(req.body,'req.userId',req.ip);
     console.log(result);
     if (result?.isDuplicateEmail) {
       return Responses.failResponse(
@@ -44,6 +44,22 @@ const createMeeting = async (req, res) => {
 const updateRsvp = async (req, res) => {
   try {
     const result = await meetingService.updateRsvp(req.body);
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.updateSuccess,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+/**FUNC- TO UPDATE MEETING**/
+const updateMeeting = async (req, res) => {
+  try {
+    const result = await meetingService.updateMeeting(req.body,req.params.id);
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -65,9 +81,8 @@ const updateRsvp = async (req, res) => {
     console.log(error);
     errorLog(error);
     return Responses.errorResponse(req, res, error);
+    }
   }
-};
-
 const cancelMeeting = async (req, res) => {
   try {
     const result = meetingService.cancelMeeting(req.body);
@@ -96,5 +111,7 @@ const cancelMeeting = async (req, res) => {
 module.exports = {
   createMeeting,
   updateRsvp,
-  cancelMeeting
-};
+  cancelMeeting,
+  updateMeeting
+
+}
