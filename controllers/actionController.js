@@ -39,7 +39,7 @@ const viewActionComment = async (req, res) => {
     return Responses.successResponse(
       req,
       res,
-      result.data,
+      result,
       messages.recordsFound,
       201
     );

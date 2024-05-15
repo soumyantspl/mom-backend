@@ -1,5 +1,6 @@
 const ActionComments = require("../models/commentsModel");
 
+
 const comments = async (data) => {
   const inputData = {
     actionId: data.actionId,
@@ -7,7 +8,7 @@ const comments = async (data) => {
     commentDescription: data.commentDescription,
   };
 
-  const commentData = new actionComments(inputData);
+  const commentData = new ActionComments(inputData);
   const newComments = await commentData.save();
   return {
     data: newComments,
