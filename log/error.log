@@ -193,3 +193,19 @@ Stack Trace: TypeError: Cannot read properties of undefined (reading 'meetingDat
     at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:343:33)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:20)
+Date: 15/05/2024, Time: 13:03
+Error: "userId" is required
+Stack Trace: ValidationError: "userId" is required
+Date: 15/05/2024, Time: 13:11
+Error: "dueDate" must be in ISO 8601 date format
+Stack Trace: ValidationError: "dueDate" must be in ISO 8601 date format
+Date: 15/05/2024, Time: 13:11
+Error: "dueDate" must be greater than or equal to "2024-05-15T07:41:48.547Z"
+Stack Trace: ValidationError: "dueDate" must be greater than or equal to "2024-05-15T07:41:48.547Z"
+Date: 15/05/2024, Time: 13:12
+Error: Minutes validation failed: organisationId: Path `organisationId` is required., meetingId: Path `meetingId` is required., agendaId: Path `agendaId` is required., reAssignedTo: Path `reAssignedTo` is required., title: Path `title` is required.
+Stack Trace: ValidationError: Minutes validation failed: organisationId: Path `organisationId` is required., meetingId: Path `meetingId` is required., agendaId: Path `agendaId` is required., reAssignedTo: Path `reAssignedTo` is required., title: Path `title` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)

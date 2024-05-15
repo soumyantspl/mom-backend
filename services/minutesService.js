@@ -14,12 +14,24 @@ const acceptRejectMinutes = async (data) => {
   return result;
 };
 
-const createMinutes = (data) => {
+const createMinutes = async (data) => {
   const inputData = {
+    userId: data.userId,
+    minutesDescription: data.commentDescription,
+    dueDate: data.dueDate,
+    priority: data.priority,
+    responsiblePerson: data.responsiblePerson,
+    isAction: data.isAction,
+  };
+  const minuteData = new Minutes(inputData);
+  const newMinutes = await minuteData.save();
 
+  return {
+    data: newMinutes,
   };
 };
 
 module.exports = {
   acceptRejectMinutes,
+  createMinutes,
 };

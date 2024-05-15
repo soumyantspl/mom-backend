@@ -58,6 +58,10 @@ const minutesSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       required: true,
     },
+    isAction: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
