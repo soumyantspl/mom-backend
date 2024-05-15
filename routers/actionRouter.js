@@ -23,6 +23,13 @@ router.get(
   actionController.viewSingleAction
 );
 
+/* VIEW ALL ACTION LIST  */
+router.get(
+  "/viewAllActions",
+  actionValidator.viewAllActionsValidator,
+  actionController.viewAllActions
+);
+
 
 
 /* REASSIGN ACTION  */

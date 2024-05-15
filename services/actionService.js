@@ -1,6 +1,8 @@
 const ActionComments = require("../models/commentsModel");
 const Action = require("../models/actionsModel");
+const Minutes = require("../models/minutesModel");
 const employeeService = require("./employeeService");
+const { Meeting } = require("../constants/logsConstants");
 const ObjectId = require("mongoose").Types.ObjectId;
 const comments = async (data) => {
   const inputData = {
@@ -20,7 +22,7 @@ const viewActionComment = async (data) => {};
 /**FUNC- ACTION REASSIGN REQUEST */
 const actionReassignRequest = async (data, id) => {
   console.log(data, id);
-  const result = await Action.findOneAndUpdate(
+  const result = await Minutes.findOneAndUpdate(
     {
       _id: new ObjectId(id),
     },
@@ -34,6 +36,40 @@ const actionReassignRequest = async (data, id) => {
 };
 
 const viewSingleAction = async (data) => {};
+
+/**FUNC- TO VIEW ALL ACTIONS */
+const viewAllAction = async (bodyData, queryData) => {
+  console.log('iiiiiiiiiiiiiiiiiiiiiiii',bodyData,queryData)
+  const { order } = queryData;
+  const { organizationId, searchKey } = bodyData;
+  let query = searchKey
+    ? {
+        organizationId:new ObjectId(organizationId),
+        title: { $regex: searchKey, $options: "i" },
+        isActive: true,
+        isAction:true
+      }
+    : {
+      organizationId:new ObjectId(organizationId),
+        isActive: true,
+        isAction:true
+      };
+console.log('query--------------',query)
+  var limit = parseInt(queryData.limit);
+  var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
+  const totalCount = await Minutes.countDocuments(query);
+  const minutesDatas = await Minutes.find(query)
+    .sort({ createdAt: parseInt(order) })
+    .limit(limit)
+    .skip(skip);
+
+  return {
+    totalCount,
+    minutesDatas,
+  };
+};
+
+const viewAllUserAction = async (data) => {};
 
 const reAssignAction = async (data, id) => {
   console.log(data);
@@ -57,7 +93,7 @@ const reAssignAction = async (data, id) => {
   console.log("reassignDetails------------", reassignDetails);
   console.log("userId------------", userId);
 
-  const result = await Action.findOneAndUpdate(
+  const result = await Minutes.findOneAndUpdate(
     {
       _id: new ObjectId(id),
     },
@@ -77,4 +113,5 @@ module.exports = {
   actionReassignRequest,
   viewSingleAction,
   reAssignAction,
+  viewAllAction,
 };

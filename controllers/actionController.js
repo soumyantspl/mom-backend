@@ -124,9 +124,37 @@ const reAssignAction = async (req, res) => {
   }
 };
 
+
+
+
+
+/**FUNC- TO VIEW ALL ACTIONS **/
+const viewAllActions = async (req, res) => {
+  try {
+    const result = await acttionService.viewAllAction(req.body,req.query);
+    console.log(result);
+    if (result.totalCount==0) {
+      return Responses.failResponse(req, res, null, messages.recordsNotFound, 409);
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+
 module.exports = {
   actionComments,
   actionReassignRequest,
   viewSingleAction,
   reAssignAction,
+  viewAllActions
 };
