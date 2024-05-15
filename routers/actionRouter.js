@@ -23,4 +23,13 @@ router.get(
   actionController.viewSingleAction
 );
 
+
+
+/* REASSIGN ACTION  */
+router.put(
+  "/reAssignAction/:id",
+  actionValidator.reAssignActionnValidator,
+  actionController.reAssignAction
+);
+
 module.exports = router;

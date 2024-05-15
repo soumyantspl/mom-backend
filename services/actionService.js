@@ -1,5 +1,6 @@
 const ActionComments = require("../models/commentsModel");
 const Action = require("../models/actionsModel");
+const employeeService = require("./employeeService");
 const ObjectId = require("mongoose").Types.ObjectId;
 const comments = async (data) => {
   const inputData = {
@@ -34,4 +35,46 @@ const actionReassignRequest = async (data, id) => {
 
 const viewSingleAction = async (data) => {};
 
-module.exports = { comments, actionReassignRequest, viewSingleAction };
+const reAssignAction = async (data, id) => {
+  console.log(data);
+  let userId = data.userId;
+  if (data.isNewUser) {
+    const empData = await employeeService.createAttendee(
+      data.name,
+      data.email,
+      data.organizationId
+    );
+    if (empData.isDuplicate) {
+      return empData;
+    }
+    userId = empData._id;
+  }
+
+  const reassignDetails = {
+    userId,
+    reAssignReason: data.reAssignReason,
+  };
+  console.log("reassignDetails------------", reassignDetails);
+  console.log("userId------------", userId);
+
+  const result = await Action.findOneAndUpdate(
+    {
+      _id: new ObjectId(id),
+    },
+
+    {
+      $push: { reassignDetails },
+      assignedUserId: new ObjectId(userId),
+      priority: data.priority,
+    }
+  );
+  console.log("result-------------", result);
+  return result;
+};
+
+module.exports = {
+  comments,
+  actionReassignRequest,
+  viewSingleAction,
+  reAssignAction,
+};

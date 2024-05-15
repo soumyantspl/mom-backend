@@ -28,24 +28,22 @@ const viewActionComment = async () => {
   } catch (error) {}
 };
 
-
-
-
-
-
-
-
-
-
-
-
 /**FUNC- TO ACTION REASSIGN REQUEST**/
 const actionReassignRequest = async (req, res) => {
   try {
-    const result = await acttionService.actionReassignRequest(req.body,req.params.id);
+    const result = await acttionService.actionReassignRequest(
+      req.body,
+      req.params.id
+    );
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.updateFailedRecordNotFound, 409);
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.updateFailedRecordNotFound,
+        409
+      );
     }
     return Responses.successResponse(
       req,
@@ -61,17 +59,19 @@ const actionReassignRequest = async (req, res) => {
   }
 };
 
-
-
-
-
 /**FUNC- TO VIEW SINGLE ACTION DETAILS**/
 const viewSingleAction = async (req, res) => {
   try {
     const result = await acttionService.viewSingleAction(req.params.id);
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.recordsNotFound, 409);
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
     }
     return Responses.successResponse(
       req,
@@ -87,6 +87,46 @@ const viewSingleAction = async (req, res) => {
   }
 };
 
+/**FUNC- TO REASSIGN ACTION **/
+const reAssignAction = async (req, res) => {
+  try {
+    const result = await acttionService.reAssignAction(req.body, req.params.id);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.updateFailedRecordNotFound,
+        409
+      );
+    }
+    if (result.isDuplicate) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateEmail,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.updateSuccess,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
 
-
-module.exports = { actionComments ,actionReassignRequest,viewSingleAction};
+module.exports = {
+  actionComments,
+  actionReassignRequest,
+  viewSingleAction,
+  reAssignAction,
+};

@@ -26,13 +26,13 @@ const actionCommentsValidator = async (req, res, next) => {
 const actionReassignRequestValidator = async (req, res, next) => {
   try {
     const bodySchema = Joi.object({
-        userId: Joi.string().required(),
-        requestDetails: Joi.string()
+      userId: Joi.string().required(),
+      requestDetails: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
-      })
+        })
     });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
@@ -67,4 +67,51 @@ const viewSingleActionValidator = async (req, res, next) => {
   }
 };
 
-module.exports = { actionCommentsValidator,actionReassignRequestValidator,viewSingleActionValidator };
+// ACTION REASSIGN VALIDATOR
+const reAssignActionnValidator = async (req, res, next) => {
+  try {
+    const bodySchema = Joi.object({
+      isNewUser: Joi.boolean().required(),
+      name: Joi.when("isNewUser", {
+        is: Joi.boolean().valid(true),
+        then: Joi.string().alphanum().required(),
+        otherwise: Joi.string().alphanum(),
+      }),
+      email: Joi.when("isNewUser", {
+        is: Joi.boolean().valid(true),
+        then: Joi.string().email().required(),
+        otherwise: Joi.string().email(),
+      }),
+      organizationId: Joi.string().trim().alphanum().required(),
+      reAssignReason: Joi.string()
+        .trim()
+        .pattern(/^[0-9a-zA-Z ,/-]+$/)
+        .messages({
+          "string.pattern.base": `HTML tags & Special letters are not allowed!`,
+        }),
+      userId: Joi.when("isNewUser", {
+        is: Joi.boolean().valid(false),
+        then: Joi.string().alphanum().required(),
+        otherwise: Joi.string().alphanum(),
+      }),
+    });
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+
+    await paramsSchema.validateAsync(req.params);
+    await bodySchema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+module.exports = {
+  actionCommentsValidator,
+  actionReassignRequestValidator,
+  viewSingleActionValidator,
+  reAssignActionnValidator,
+};
