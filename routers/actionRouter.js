@@ -25,4 +25,12 @@ router.get(
 
 router.get("/viewActionComment", actionController.viewActionComment);
 
+
+/* REASSIGN ACTION  */
+router.put(
+  "/reAssignAction/:id",
+  actionValidator.reAssignActionnValidator,
+  actionController.reAssignAction
+);
+
 module.exports = router;

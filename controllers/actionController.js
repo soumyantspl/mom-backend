@@ -109,9 +109,4 @@ const viewSingleAction = async (req, res) => {
   }
 };
 
-module.exports = {
-  actionComments,
-  actionReassignRequest,
-  viewSingleAction,
-  viewActionComment,
-};
+module.exports = { actionComments, actionReassignRequest, viewSingleAction,viewActionComment };

@@ -15,9 +15,25 @@ const acceptRejectMinutes = async (data) => {
 };
 
 const createMinutes = async (data) => {
+  let userId = data.userId;
+  if (data.isNewUser) {
+    const empData = await employeeService.createAttendee(
+      data.name,
+      data.email,
+      data.organizationId
+    );
+    if (empData.isDuplicate) {
+      return empData;
+    }
+    userId = empData._id;
+  }
+
+  
   const inputData = {
-    userId: data.userId,
-    minutesDescription: data.commentDescription,
+    userId: userId,
+    organisationId: data.organisationId,
+    meetingId: data.meetingId,
+    minutesDescription: data.minutesDescription,
     dueDate: data.dueDate,
     priority: data.priority,
     responsiblePerson: data.responsiblePerson,
