@@ -192,6 +192,29 @@ const viewUserAllActions = async (req, res) => {
 };
 
 
+/**FUNC- TO UPDATE ACTIONS **/
+const updateAction = async (req, res) => {
+  try {
+    const result = await actionService.updateAction(req.params.id,req.body);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(req, res, null, messages.updateFailedRecordNotFound, 409);
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.updateSuccess,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+
 
 
 
@@ -202,5 +225,6 @@ module.exports = {
   viewActionComment,
   reAssignAction,
   viewAllActions,
-  viewUserAllActions
+  viewUserAllActions,
+  updateAction
 };

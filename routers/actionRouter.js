@@ -49,5 +49,12 @@ router.get(
 );
 
 
+/* UPDATE ACTION   */
+router.put(
+  "/updateAction/:id",
+  actionValidator.updateActionValidator,
+  actionController.updateAction
+);
+
 
 module.exports = router;

@@ -83,7 +83,7 @@ const viewAllAction = async (bodyData, queryData) => {
       $project: {
         description: 1,
         isComplete: 1,
-        dueDate:1,
+        dueDate: 1,
         userDetail: {
           name: 1,
           _id: 1,
@@ -95,7 +95,6 @@ const viewAllAction = async (bodyData, queryData) => {
     .sort({ createdAt: parseInt(order) })
     .skip(skip)
     .limit(limit);
-
 
   return {
     totalCount,
@@ -143,7 +142,7 @@ const viewUserAllAction = async (bodyData, queryData, userId) => {
       $project: {
         description: 1,
         isComplete: 1,
-        dueDate:1,
+        dueDate: 1,
         userDetail: {
           name: 1,
           _id: 1,
@@ -199,8 +198,6 @@ const reAssignAction = async (data, id) => {
   return result;
 };
 
-
-
 /**FUNC- TO VIEW SINGLE ACTION DETAILS */
 const viewSingleAction = async (id) => {
   console.log("iiiiiiiiiiiiiiiiiiiiiiii", id);
@@ -208,10 +205,10 @@ const viewSingleAction = async (id) => {
   const actionData = await Minutes.aggregate([
     {
       $match: {
-        _id:new ObjectId(id),
+        _id: new ObjectId(id),
       },
     },
-    
+
     {
       $lookup: {
         from: "meetings",
@@ -232,27 +229,40 @@ const viewSingleAction = async (id) => {
       $project: {
         description: 1,
         isComplete: 1,
-        dueDate:1,
-        priority:1,
-        agendaDetail:{
+        dueDate: 1,
+        priority: 1,
+        agendaDetail: {
           title: 1,
-       //   date:1,
+          //   date:1,
           _id: 1,
         },
         meetingDetail: {
           title: 1,
-          date:1,
+          date: 1,
           _id: 1,
         },
       },
     },
     { $unwind: "$agendaDetail" },
     { $unwind: "$meetingDetail" },
-  ])
-   
+  ]);
 
   return actionData;
 };
+
+/**FUNC- UPDATE ACTION */
+const updateAction = async (id, data) => {
+  console.log("----------------------3333344", data);
+  console.log("----------------------33333", id);
+  const action = await Minutes.findByIdAndUpdate(
+    { _id: new ObjectId(id) },
+    data,
+    { new: true }
+  );
+  console.log("action-----------------------", action);
+  return action;
+};
+
 module.exports = {
   comments,
   actionReassignRequest,
@@ -260,5 +270,6 @@ module.exports = {
   viewActionComment,
   reAssignAction,
   viewAllAction,
-  viewUserAllAction
+  viewUserAllAction,
+  updateAction,
 };

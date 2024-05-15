@@ -143,11 +143,32 @@ const viewAllActionsValidator = async (req, res, next) => {
   }
 };
 
+// UPDATE SINGLE ACTION VALIDATOR
+const updateActionValidator = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.params);
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+    const bodySchema = Joi.object({
+      isComplete: Joi.boolean()
+    });
+    await paramsSchema.validateAsync(req.params);
+    await bodySchema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
 
 
 module.exports = {
   actionCommentsValidator,
   actionReassignRequestValidator,
   viewSingleActionValidator,
-  reAssignActionValidator,viewAllActionsValidator
+  reAssignActionValidator,viewAllActionsValidator,updateActionValidator
 };
