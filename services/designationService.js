@@ -25,6 +25,7 @@ const deleteDesignationService = async (id) => {
   const deletedDepartment = await Designations.findByIdAndDelete(id);
   return deletedDepartment;
 };
+
 const listDesignationService = async (bodyData, queryData) => {
   const { order } = queryData;
   const { organizationId, searchKey } = bodyData;

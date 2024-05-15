@@ -22,14 +22,14 @@ const minutesSchema = new mongoose.Schema(
         },
       },
     ],
-    responsiblePerson: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
-    reAssignedTo: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
+    // responsiblePerson: {
+    //   type: mongoose.Schema.ObjectId,
+    //   required: true,
+    // },
+    // reAssignedTo: {
+    //   type: mongoose.Schema.ObjectId,
+    //   // required: true,
+    // },
     amendmentDetails: [
       {
         createdById: {
@@ -48,7 +48,6 @@ const minutesSchema = new mongoose.Schema(
     ],
     agendaId: {
       type: mongoose.Schema.ObjectId,
-      required: true,
     },
     meetingId: {
       type: mongoose.Schema.ObjectId,
@@ -105,6 +104,11 @@ const minutesSchema = new mongoose.Schema(
     dueDate: {
       type: Date,
       required: true,
+    },
+    isAction: {
+      type: Boolean,
+      required: true,
+      default:false
     },
   },
   {

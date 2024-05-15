@@ -10,5 +10,11 @@ router.put(
   validator.acceptOrRejectMinutesValidator,
   minutesController.acceptRejectMinutes
 );
+/*CREATE  MEETING */
+router.post(
+  "/createMinutes",
+  validator.createMinutesValidator,
+  minutesController.createMinutes
+);
 
 module.exports = router;

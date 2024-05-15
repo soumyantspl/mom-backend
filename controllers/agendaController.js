@@ -4,7 +4,7 @@ const messages = require("../constants/constantMessages");
 const { errorLog } = require("../middlewares/errorLog");
 const createAgenda = async (req, res) => {
   try {
-    const result = await agendaService.createAgenda(req.body);
+    const result = await agendaService.createAgendaForMeeting(req.body);
     console.log(result);
     if (!result) {
       return Responses.failResponse(req, res, null, messages.createError, 409);

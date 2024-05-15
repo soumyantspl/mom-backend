@@ -137,3 +137,75 @@ Stack Trace: ValidationError: "userId" is not allowed to be empty
 Date: 14/05/2024, Time: 14:56
 Error: "commentDescription" is not allowed to be empty
 Stack Trace: ValidationError: "commentDescription" is not allowed to be empty
+Date: 14/05/2024, Time: 17:01
+Error: query is not defined
+Stack Trace: ReferenceError: query is not defined
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:318:24)
+    at listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:41)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 14/05/2024, Time: 17:11
+Error: Arguments must be aggregate pipeline operators
+Stack Trace: Error: Arguments must be aggregate pipeline operators
+    at Aggregate.append (D:\mom\mom-backend\node_modules\mongoose\lib\aggregate.js:149:11)
+    at new Aggregate (D:\mom\mom-backend\node_modules\mongoose\lib\aggregate.js:59:17)
+    at Function.aggregate (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4173:21)
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:319:37)
+    at listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:41)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+Date: 14/05/2024, Time: 18:17
+Error: Cannot read properties of undefined (reading 'meetingData')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'meetingData')
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:343:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:20)
+Date: 14/05/2024, Time: 18:17
+Error: Cannot read properties of undefined (reading 'meetingData')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'meetingData')
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:343:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:20)
+Date: 14/05/2024, Time: 18:19
+Error: Cannot read properties of undefined (reading 'meetingData')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'meetingData')
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:343:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:20)
+Date: 14/05/2024, Time: 18:20
+Error: Cannot read properties of undefined (reading 'map')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'map')
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:343:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:20)
+Date: 14/05/2024, Time: 18:20
+Error: Cannot read properties of undefined (reading 'meetingData')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'meetingData')
+    at Object.listAttendeesFromPreviousMeeting (D:\mom\mom-backend\services\meetingService.js:343:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listAttendeesFromPreviousMeeting (D:\mom\mom-backend\controllers\meetingController.js:181:20)
+Date: 15/05/2024, Time: 13:03
+Error: "userId" is required
+Stack Trace: ValidationError: "userId" is required
+Date: 15/05/2024, Time: 13:11
+Error: "dueDate" must be in ISO 8601 date format
+Stack Trace: ValidationError: "dueDate" must be in ISO 8601 date format
+Date: 15/05/2024, Time: 13:11
+Error: "dueDate" must be greater than or equal to "2024-05-15T07:41:48.547Z"
+Stack Trace: ValidationError: "dueDate" must be greater than or equal to "2024-05-15T07:41:48.547Z"
+Date: 15/05/2024, Time: 13:12
+Error: Minutes validation failed: organisationId: Path `organisationId` is required., meetingId: Path `meetingId` is required., agendaId: Path `agendaId` is required., reAssignedTo: Path `reAssignedTo` is required., title: Path `title` is required.
+Stack Trace: ValidationError: Minutes validation failed: organisationId: Path `organisationId` is required., meetingId: Path `meetingId` is required., agendaId: Path `agendaId` is required., reAssignedTo: Path `reAssignedTo` is required., title: Path `title` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)

@@ -1,9 +1,12 @@
 const ActionComments = require("../models/commentsModel");
+
 const Action = require("../models/actionsModel");
 const Minutes = require("../models/minutesModel");
 const employeeService = require("./employeeService");
 const { Meeting } = require("../constants/logsConstants");
 const ObjectId = require("mongoose").Types.ObjectId;
+
+//FUCNTION TO CREATE COMMENTS
 const comments = async (data) => {
   const inputData = {
     actionId: data.actionId,
@@ -18,7 +21,14 @@ const comments = async (data) => {
   };
 };
 
-const viewActionComment = async (data) => {};
+/**FUNC-VIEW ACTION COMMENT */
+const viewActionComment = async (data) => {
+  const viewActionCommentList = await ActionComments.find(data);
+  return {
+    viewActionCommentList,
+  };
+};
+
 /**FUNC- ACTION REASSIGN REQUEST */
 const actionReassignRequest = async (data, id) => {
   console.log(data, id);
@@ -33,10 +43,6 @@ const actionReassignRequest = async (data, id) => {
   );
   console.log(result);
   return result;
-};
-
-const viewSingleAction = async (data) => {
-  
 };
 
 /**FUNC- TO VIEW ALL ACTIONS */
@@ -68,7 +74,7 @@ const viewAllAction = async (bodyData, queryData) => {
     {
       $lookup: {
         from: "employees",
-        localField: "responsiblePerson",
+        localField: "assignedUserId",
         foreignField: "_id",
         as: "userDetail",
       },
@@ -98,7 +104,7 @@ const viewAllAction = async (bodyData, queryData) => {
 };
 
 /**FUNC- TO VIEW ALL USER ACTIONS */
-const viewAllUserAction = async (bodyData, queryData, userId) => {
+const viewUserAllAction = async (bodyData, queryData, userId) => {
   console.log("iiiiiiiiiiiiiiiiiiiiiiii", bodyData, queryData);
   const { order } = queryData;
   const { organizationId, searchKey } = bodyData;
@@ -108,13 +114,13 @@ const viewAllUserAction = async (bodyData, queryData, userId) => {
         description: { $regex: searchKey, $options: "i" },
         isActive: true,
         isAction: true,
-        responsiblePerson: new ObjectId(userId),
+        assignedUserId: new ObjectId(userId),
       }
     : {
         organizationId: new ObjectId(organizationId),
         isActive: true,
         isAction: true,
-        responsiblePerson: new ObjectId(userId),
+        assignedUserId: new ObjectId(userId),
       };
   console.log("query--------------", query);
   var limit = parseInt(queryData.limit);
@@ -128,7 +134,7 @@ const viewAllUserAction = async (bodyData, queryData, userId) => {
     {
       $lookup: {
         from: "employees",
-        localField: "responsiblePerson",
+        localField: "assignedUserId",
         foreignField: "_id",
         as: "userDetail",
       },
@@ -193,10 +199,66 @@ const reAssignAction = async (data, id) => {
   return result;
 };
 
+
+
+/**FUNC- TO VIEW SINGLE ACTION DETAILS */
+const viewSingleAction = async (id) => {
+  console.log("iiiiiiiiiiiiiiiiiiiiiiii", id);
+
+  const actionData = await Minutes.aggregate([
+    {
+      $match: {
+        _id:new ObjectId(id),
+      },
+    },
+    
+    {
+      $lookup: {
+        from: "meetings",
+        localField: "meetingId",
+        foreignField: "_id",
+        as: "meetingDetail",
+      },
+    },
+    {
+      $lookup: {
+        from: "agendas",
+        localField: "agendaId",
+        foreignField: "_id",
+        as: "agendaDetail",
+      },
+    },
+    {
+      $project: {
+        description: 1,
+        isComplete: 1,
+        dueDate:1,
+        priority:1,
+        agendaDetail:{
+          title: 1,
+       //   date:1,
+          _id: 1,
+        },
+        meetingDetail: {
+          title: 1,
+          date:1,
+          _id: 1,
+        },
+      },
+    },
+    { $unwind: "$agendaDetail" },
+    { $unwind: "$meetingDetail" },
+  ])
+   
+
+  return actionData;
+};
 module.exports = {
   comments,
   actionReassignRequest,
   viewSingleAction,
+  viewActionComment,
   reAssignAction,
   viewAllAction,
+  viewUserAllAction
 };
