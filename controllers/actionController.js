@@ -81,6 +81,43 @@ const actionReassignRequest = async (req, res) => {
   }
 };
 
+/**FUNC- TO REASSIGN ACTION **/
+const reAssignAction = async (req, res) => {
+  try {
+    const result = await actionService.reAssignAction(req.body, req.params.id);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.updateFailedRecordNotFound,
+        409
+      );
+    }
+    if (result.isDuplicate) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateEmail,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.updateSuccess,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 /**FUNC- TO VIEW SINGLE ACTION DETAILS**/
 const viewSingleAction = async (req, res) => {
   try {
@@ -109,4 +146,10 @@ const viewSingleAction = async (req, res) => {
   }
 };
 
-module.exports = { actionComments, actionReassignRequest, viewSingleAction,viewActionComment };
+module.exports = {
+  actionComments,
+  actionReassignRequest,
+  viewSingleAction,
+  viewActionComment,
+  reAssignAction,
+};

@@ -308,9 +308,6 @@ const cancelMeeting = async (data) => {
 
 /**FUNC- TO VIEW LIST OF ATTENDEES FROM PREVIOUS MEETING */
 const listAttendeesFromPreviousMeeting = async (data) => {
-  const userId = data.userId;
-  // query["attendees.id"] = new ObjectId(userId);
-
   console.log("userId---------", userId);
 
   const meetingData = await Meeting.aggregate([
@@ -349,10 +346,9 @@ const listAttendeesFromPreviousMeeting = async (data) => {
   //   return [...new Set(data)];
   // }
 
-  const DATA = data1.filter((obj, index, self) =>
-    index === self.findIndex((o) =>
-      JSON.stringify(o) === JSON.stringify(obj)
-    )
+  const DATA = data1.filter(
+    (obj, index, self) =>
+      index === self.findIndex((o) => JSON.stringify(o) === JSON.stringify(obj))
   );
   console.log("DATA---==", DATA);
 
