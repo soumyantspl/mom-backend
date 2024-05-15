@@ -7,6 +7,8 @@ const ObjectId = require("mongoose").Types.ObjectId;
 const emailService = require("./emailService");
 const emailTemplates = require("../emailSetUp/emailTemplates");
 const emailConstants = require("../constants/emailConstants");
+const { updateSearchIndex } = require("../models/commentsModel");
+
 /**FUNC- CREATE MEETING */
 const createMeeting = async (data, userId, ipAddress, email) => {
   console.log("----------------------33333", data);
@@ -307,12 +309,13 @@ const cancelMeeting = async (data) => {
 };
 
 /**FUNC- TO VIEW LIST OF ATTENDEES FROM PREVIOUS MEETING */
-const listAttendeesFromPreviousMeeting = async (data) => {
-  console.log("userId---------", userId);
-
+const listAttendeesFromPreviousMeeting = async (data, userId) => {
   const meetingData = await Meeting.aggregate([
     {
-      $match: { "attendees.id": new ObjectId(data.id) },
+      $match: {
+        "attendees.id": new ObjectId(userId),
+        organizationId: new ObjectId(data.organizationId),
+      },
     },
     {
       $lookup: {
@@ -333,28 +336,24 @@ const listAttendeesFromPreviousMeeting = async (data) => {
       },
     },
   ]);
-  console.log("meetingData---------", meetingData);
   const data0 = meetingData.map((meeting) => {
     return meeting.attendeesDetail;
   });
-
-  console.log("DATA-->", data0);
   const data1 = [].concat(...data0);
-  console.log("DATA-->", data1);
-
-  // function removeDuplicate(data) {
-  //   return [...new Set(data)];
-  // }
-
   const DATA = data1.filter(
     (obj, index, self) =>
       index === self.findIndex((o) => JSON.stringify(o) === JSON.stringify(obj))
   );
   console.log("DATA---==", DATA);
-
   return {
     meetingData,
   };
+};
+
+//FUNCTION TO GET ATTENDEES//
+const getAllAttendees = async (meetingId) => {
+  const result = await Meeting.findById(meetingId, { "attendees.id": 1 });
+  return result;
 };
 
 module.exports = {
@@ -365,4 +364,5 @@ module.exports = {
   viewMeeting,
   viewAllMeetings,
   listAttendeesFromPreviousMeeting,
+  getAllAttendees,
 };

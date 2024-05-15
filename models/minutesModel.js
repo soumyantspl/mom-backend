@@ -14,10 +14,11 @@ const minutesSchema = new mongoose.Schema(
       {
         createdById: {
           type: mongoose.Schema.ObjectId,
-          required: [true, ""],
+          // required: [true, ""],
         },
         status: {
-          type: Boolean,
+          type: String,
+          enum: ["ACCEPTED", "REJECT", "PENDING"],
           required: true,
         },
       },
