@@ -23,6 +23,7 @@ router.get(
   actionController.viewSingleAction
 );
 
+router.get("/viewActionComment", actionController.viewActionComment);
 
 
 /* REASSIGN ACTION  */

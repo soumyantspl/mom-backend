@@ -249,6 +249,22 @@ const updateRsvpValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+//LIST ATTENDEES FROM PREVIOUS MEETING//
+const listAttendeesFromPreviousMeetingValidator  = async (req, res, next) => {
+  try {
+    const schema = Joi.object({
+      organizationId: Joi.string().trim().alphanum().required(),
+      id: Joi.string().trim().alphanum().required(),
+    }).required();
+    await schema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   createMeetingValidator,
   updateMeetingValidator,
@@ -256,4 +272,5 @@ module.exports = {
   viewAllMeetingsValidator,
   updateRsvpValidator,
   cancelMeetingValidator,
+  listAttendeesFromPreviousMeetingValidator
 };

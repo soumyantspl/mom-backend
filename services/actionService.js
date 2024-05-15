@@ -1,7 +1,10 @@
 const ActionComments = require("../models/commentsModel");
+
 const Action = require("../models/actionsModel");
 const employeeService = require("./employeeService");
 const ObjectId = require("mongoose").Types.ObjectId;
+
+//FUCNTION TO CREATE COMMENTS
 const comments = async (data) => {
   const inputData = {
     actionId: data.actionId,
@@ -16,7 +19,14 @@ const comments = async (data) => {
   };
 };
 
-const viewActionComment = async (data) => {};
+/**FUNC-VIEW ACTION COMMENT */
+const viewActionComment = async (data) => {
+  const viewActionCommentList = await ActionComments.find(data);
+  return {
+    viewActionCommentList,
+  };
+};
+
 /**FUNC- ACTION REASSIGN REQUEST */
 const actionReassignRequest = async (data, id) => {
   console.log(data, id);
@@ -76,5 +86,6 @@ module.exports = {
   comments,
   actionReassignRequest,
   viewSingleAction,
+  viewActionComment,
   reAssignAction,
 };

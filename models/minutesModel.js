@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const minutesSchema = new mongoose.Schema(
   {
-    title: {
+    minutesDescription: {
       type: String,
       required: true,
     },
@@ -28,7 +28,7 @@ const minutesSchema = new mongoose.Schema(
     },
     reAssignedTo: {
       type: mongoose.Schema.ObjectId,
-      required: true,
+      // required: true,
     },
     amendmentDetails: [
       {
@@ -48,7 +48,6 @@ const minutesSchema = new mongoose.Schema(
     ],
     agendaId: {
       type: mongoose.Schema.ObjectId,
-      required: true,
     },
     meetingId: {
       type: mongoose.Schema.ObjectId,
@@ -57,6 +56,10 @@ const minutesSchema = new mongoose.Schema(
     organisationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
+    },
+    isAction: {
+      type: Boolean,
+      default: false,
     },
   },
   {

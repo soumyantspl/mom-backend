@@ -23,9 +23,31 @@ const actionComments = async (req, res) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-const viewActionComment = async () => {
+const viewActionComment = async (req, res) => {
   try {
-  } catch (error) {}
+    const result = await acttionService.viewActionComment(req.body);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordNotFound,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      201
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
 };
 
 /**FUNC- TO ACTION REASSIGN REQUEST**/
@@ -51,6 +73,43 @@ const actionReassignRequest = async (req, res) => {
       result.data,
       messages.updateSuccess,
       201
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+/**FUNC- TO REASSIGN ACTION **/
+const reAssignAction = async (req, res) => {
+  try {
+    const result = await actionService.reAssignAction(req.body, req.params.id);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.updateFailedRecordNotFound,
+        409
+      );
+    }
+    if (result.isDuplicate) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateEmail,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.updateSuccess,
+      200
     );
   } catch (error) {
     console.log(error);
@@ -87,46 +146,10 @@ const viewSingleAction = async (req, res) => {
   }
 };
 
-/**FUNC- TO REASSIGN ACTION **/
-const reAssignAction = async (req, res) => {
-  try {
-    const result = await acttionService.reAssignAction(req.body, req.params.id);
-    console.log(result);
-    if (!result) {
-      return Responses.failResponse(
-        req,
-        res,
-        null,
-        messages.updateFailedRecordNotFound,
-        409
-      );
-    }
-    if (result.isDuplicate) {
-      return Responses.failResponse(
-        req,
-        res,
-        null,
-        messages.duplicateEmail,
-        409
-      );
-    }
-    return Responses.successResponse(
-      req,
-      res,
-      result,
-      messages.updateSuccess,
-      200
-    );
-  } catch (error) {
-    console.log(error);
-    errorLog(error);
-    return Responses.errorResponse(req, res, error);
-  }
-};
-
 module.exports = {
   actionComments,
   actionReassignRequest,
   viewSingleAction,
+  viewActionComment,
   reAssignAction,
 };

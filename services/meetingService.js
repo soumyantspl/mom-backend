@@ -272,6 +272,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
     meetingData,
   };
 };
+/**FUNC- TO UPDATE RSVP SECTION */
 const updateRsvp = async (data) => {
   const result = await Meeting.findOneAndUpdate(
     {
@@ -286,6 +287,7 @@ const updateRsvp = async (data) => {
   return result;
 };
 
+/**FUNC- TO CANCEL MEETING */
 const cancelMeeting = async (data) => {
   const remarks = data.remarks;
   console.log("remarks", remarks);
@@ -304,6 +306,57 @@ const cancelMeeting = async (data) => {
   return result;
 };
 
+/**FUNC- TO VIEW LIST OF ATTENDEES FROM PREVIOUS MEETING */
+const listAttendeesFromPreviousMeeting = async (data) => {
+  console.log("userId---------", userId);
+
+  const meetingData = await Meeting.aggregate([
+    {
+      $match: { "attendees.id": new ObjectId(data.id) },
+    },
+    {
+      $lookup: {
+        from: "employees",
+        localField: "attendees.id",
+        foreignField: "_id",
+        as: "attendeesDetail",
+      },
+    },
+    {
+      $project: {
+        _id: 1,
+        attendeesDetail: {
+          email: 1,
+          _id: 1,
+          name: 1,
+        },
+      },
+    },
+  ]);
+  console.log("meetingData---------", meetingData);
+  const data0 = meetingData.map((meeting) => {
+    return meeting.attendeesDetail;
+  });
+
+  console.log("DATA-->", data0);
+  const data1 = [].concat(...data0);
+  console.log("DATA-->", data1);
+
+  // function removeDuplicate(data) {
+  //   return [...new Set(data)];
+  // }
+
+  const DATA = data1.filter(
+    (obj, index, self) =>
+      index === self.findIndex((o) => JSON.stringify(o) === JSON.stringify(obj))
+  );
+  console.log("DATA---==", DATA);
+
+  return {
+    meetingData,
+  };
+};
+
 module.exports = {
   createMeeting,
   updateRsvp,
@@ -311,4 +364,5 @@ module.exports = {
   updateMeeting,
   viewMeeting,
   viewAllMeetings,
+  listAttendeesFromPreviousMeeting,
 };
