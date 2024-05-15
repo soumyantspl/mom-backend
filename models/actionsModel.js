@@ -60,6 +60,22 @@ const actionSchema = new mongoose.Schema(
         },
       },
     ],
+    reassignDetails: [
+      {
+        userId: {
+          type: mongoose.Schema.ObjectId,
+          required: true,
+        },
+        dateTime: {
+          type: Date,
+          required: true,
+          default: Date.now(),
+        },
+        reAssignReason: {
+          type: String,
+        },
+      },
+    ],
   },
   {
     timestamps: true,

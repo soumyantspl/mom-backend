@@ -1,5 +1,5 @@
 const Employee = require("../models/employeeModel");
-
+const ObjectId = require("mongoose").Types.ObjectId;
 const createEmployeeForMeeting = async (data) => {
   const newEmployee = new Employee({ name, email, password });
   return await newEmployee.save();
@@ -78,7 +78,7 @@ const checkDuplicateEmail = async (email, organizationId) => {
   console.log("organizationId---------------", organizationId);
 
   return await Employee.findOne(
-    { email, organizationId, isActive: true },
+    { email, organizationId:new ObjectId(organizationId), isActive: true },
     { _id: 1, email: 1, organisationId: 1, name: 1, isActive: 1 }
   );
 };
@@ -88,7 +88,7 @@ const checkDuplicateEmpId = async (empId, organizationId) => {
   console.log("empid---------------", empId);
   console.log("organizationId---------------", organizationId);
   return await Employee.findOne(
-    { empId, organizationId, isActive: true },
+    { empId, organizationId:new ObjectId(organizationId), isActive: true },
     { _id: 1, email: 1, organisationId: 1, name: 1, isActive: 1 }
   );
 };
@@ -100,16 +100,19 @@ const listEmployee = async (bodyData, queryData) => {
     ? {
         $and: [
           {
-            $or: [{ name: {$regex: searchKey, $options: 'i'} }, { empId: {$regex: searchKey, $options: 'i'} }],
+            $or: [
+              { name: { $regex: searchKey, $options: "i" } },
+              { empId: { $regex: searchKey, $options: "i" } },
+            ],
           },
           {
-            organizationId,
+            organizationId:new ObjectId(organizationId),
             isActive: true,
           },
         ],
       }
     : {
-        organizationId,
+        organizationId:new ObjectId(organizationId),
         isActive: true,
       };
 
@@ -177,6 +180,28 @@ const editEmployee = async (data, id) => {
   return employee;
 };
 
+/**FUNC- ADD VISITOR AS ATTENDEE IN EMPLOYEE */
+const createAttendee = async ( name, email,organizationId) => {
+  console.log(organizationId)
+  const emailDetails = await checkDuplicateEmail(email, organizationId);
+console.log('emailDetails-------------',emailDetails)
+  if (!emailDetails) {
+    const inputData = {
+      name,
+      email,
+      organizationId:new ObjectId(organizationId),
+      isEmployee: false
+    };
+    const empData = new Employee(inputData);
+    const newEmp = await empData.save();
+    console.log("newEmp----------------", newEmp);
+    return newEmp;
+  }
+  return {
+    isDuplicate: true,
+  };
+};
+
 module.exports = {
   createEmployee,
   listEmployee,
@@ -185,4 +210,5 @@ module.exports = {
   deleteEmploye,
   listEmployee,
   viewSingleEmployee,
+  createAttendee,
 };
