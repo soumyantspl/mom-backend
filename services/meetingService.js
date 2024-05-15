@@ -8,14 +8,8 @@ const emailService = require("./emailService");
 const emailTemplates = require("../emailSetUp/emailTemplates");
 const emailConstants = require("../constants/emailConstants");
 /**FUNC- CREATE MEETING */
-const createMeeting = async (data, userId, ipAddress) => {
+const createMeeting = async (data, userId, ipAddress, email) => {
   console.log("----------------------33333", data);
-  //   const roomDetails = await checkDuplicateEntry(
-  //     data.title,
-  //     data.organizationId
-  //   );
-  //   console.log("roomDetails--------------", roomDetails);
-  // if (!roomDetails) {
   const inputData = {
     title: data.title,
     mode: data.mode,
@@ -32,13 +26,23 @@ const createMeeting = async (data, userId, ipAddress) => {
   console.log("newMeeting----------------", newMeeting);
   const logData = {
     moduleName: logMessages.Meeting.moduleName,
-    userId: "6634ba12814c325112885ed3",
+    userId,
     action: logMessages.Meeting.createMeeting,
     ipAddress,
     details: logMessages.Meeting.createMeetingDetails,
     organizationId: data.organizationId,
   };
   await logService.createLog(logData);
+  if (data.sendNotification) {
+    const mailData = await emailTemplates.createMeeting("Created");
+    const emailSubject = emailConstants.createMeetingSubject;
+    await emailService.sendEmail(
+      email,
+      "Create Meeting",
+      emailSubject,
+      mailData
+    );
+  }
   return newMeeting;
   // }
 
@@ -46,19 +50,19 @@ const createMeeting = async (data, userId, ipAddress) => {
 };
 
 /**FUNC- UPDATE MEETING */
-const updateMeeting = async (data, id) => {
+const updateMeeting = async (data, id, email) => {
   console.log("----------------------33333", data, id);
   let updateData = {};
   if (data.step == 2) {
     // CHECK IF NEW PEOPLE , IF THEN FIRST ADD THEM IN EMPLOYEED AND THEN ADD THEM IN ATTENDEES ARRAY
-
-    if (data.isNewPeople) {
-      const empData = {
-        email: data.email,
-        name: data.name,
-      };
-      const newEmployee = await employeeService.createEmployee(empData);
-    }
+    // PENDING
+    // if (data.isNewPeople) {
+    //   const empData = {
+    //     email: data.email,
+    //     name: data.name,
+    //   };
+    //   const newEmployee = await employeeService.createEmployee(empData);
+    // }
 
     updateData = {
       attendees: data.attendees,
@@ -78,12 +82,6 @@ const updateMeeting = async (data, id) => {
     updateData.agendaIds = agendaIds;
   }
 
-  //   const roomDetails = await checkDuplicateEntry(
-  //     data.title,
-  //     data.organizationId
-  //   );
-  //   console.log("roomDetails--------------", roomDetails);
-  // if (!roomDetails) {
   if (data.step == 1) {
     updateData = data;
     if (data.date) {
@@ -95,18 +93,17 @@ const updateMeeting = async (data, id) => {
     new: true,
   });
   console.log("meeting-----------------------", meeting);
-
-  const mailData = await emailTemplates.createMeeting("Updated");
-  const emailSubject = emailConstants.updateMeetingSubject;
-  await emailService.sendEmail(
-    userData.email,
-    emailType,
-    emailSubject,
-    mailData
-  );
+  if (data.sendNotification) {
+    const mailData = await emailTemplates.createMeeting("Updated");
+    const emailSubject = emailConstants.updateMeetingSubject;
+    await emailService.sendEmail(
+      email,
+      "Meeting Updated",
+      emailSubject,
+      mailData
+    );
+  }
   return meeting;
-
-  //return false;
 };
 
 /**FUNC- TO VIEW SINGLE MEETING DETAILS */

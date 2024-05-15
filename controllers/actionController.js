@@ -50,4 +50,68 @@ const viewActionComment = async (req, res) => {
   }
 };
 
-module.exports = { actionComments, viewActionComment };
+/**FUNC- TO ACTION REASSIGN REQUEST**/
+const actionReassignRequest = async (req, res) => {
+  try {
+    const result = await acttionService.actionReassignRequest(
+      req.body,
+      req.params.id
+    );
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.updateFailedRecordNotFound,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result.data,
+      messages.updateSuccess,
+      201
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+/**FUNC- TO VIEW SINGLE ACTION DETAILS**/
+const viewSingleAction = async (req, res) => {
+  try {
+    const result = await acttionService.viewSingleAction(req.params.id);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+module.exports = {
+  actionComments,
+  actionReassignRequest,
+  viewSingleAction,
+  viewActionComment,
+};

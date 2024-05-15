@@ -14,6 +14,12 @@ const acceptRejectMinutes = async (data) => {
   return result;
 };
 
+const createMinutes = (data) => {
+  const inputData = {
+
+  };
+};
+
 module.exports = {
   acceptRejectMinutes,
 };

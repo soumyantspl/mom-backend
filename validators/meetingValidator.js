@@ -1,10 +1,11 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
 const { errorLog } = require("../middlewares/errorLog");
-
+// CREATE MEETING VALIDATOR
 const createMeetingValidator = async (req, res, next) => {
   try {
     const schema = Joi.object({
+      sendNotification: Joi.boolean(),
       title: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
@@ -26,10 +27,6 @@ const createMeetingValidator = async (req, res, next) => {
           .messages({
             "string.pattern.base": `HTML tags & Special letters are not allowed!`,
           }),
-        // roomId: Joi.when("isMeetingRoom.value", {
-        //     is: Joi.boolean().valid(true),
-        //     then: Joi.string().trim().alphanum().required()
-        // }),
         location: Joi.when("isMeetingRoom", {
           is: Joi.boolean().valid(false),
           then: Joi.string()
@@ -62,7 +59,7 @@ const createMeetingValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-
+// CANCEL MEETING VALIDATOR
 const cancelMeetingValidator = async (req, res, next) => {
   try {
     const schema = Joi.object({
@@ -77,9 +74,11 @@ const cancelMeetingValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+//UPDATE MEETING VALIDATOR
 const updateMeetingValidator = async (req, res, next) => {
   try {
     const bodySchema = Joi.object({
+      sendNotification: Joi.boolean(),
       title: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
@@ -101,10 +100,6 @@ const updateMeetingValidator = async (req, res, next) => {
           .messages({
             "string.pattern.base": `HTML tags & Special letters are not allowed!`,
           }),
-        // roomId: Joi.when("isMeetingRoom.value", {
-        //     is: Joi.boolean().valid(true),
-        //     then: Joi.string().trim().alphanum().required()
-        // }),
         location: Joi.when("isMeetingRoom", {
           is: Joi.boolean().valid(false),
           then: Joi.string()
@@ -174,10 +169,6 @@ const updateMeetingValidator = async (req, res, next) => {
             timeLine: Joi.string().required(),
           }),
       }),
-      sendNotification: Joi.when("step", {
-        is: Joi.number().valid(3),
-        then: Joi.boolean().required().strict(),
-      }),
     });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
@@ -192,19 +183,17 @@ const updateMeetingValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-
+// VIEW SINGLE MEETING VALIDATOR
 const viewMeetingValidator = async (req, res, next) => {
   try {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
     const paramsSchema = Joi.object({
-      limit: Joi.number(),
-      page: Joi.number(),
-      order: Joi.number(),
+      id: Joi.string().trim().alphanum().required(),
     });
 
-    await paramsSchema.validateAsync(req.query);
+    await paramsSchema.validateAsync(req.params);
     next();
   } catch (error) {
     console.log(error);
@@ -244,7 +233,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-
+// UPDATE USER RSVP FOR MEETING VALIDATOR
 const updateRsvpValidator = async (req, res, next) => {
   try {
     const schema = Joi.object({

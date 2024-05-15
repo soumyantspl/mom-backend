@@ -17,9 +17,11 @@ const actionSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+
     priority: {
+      type: String,
       enum: ["HIGH", "NORMAL", "LOW"],
-      required: true,
+      default: "NORMAL",
     },
     actionActivities: [],
     organisationId: {
@@ -42,10 +44,22 @@ const actionSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       required: true,
     },
-    reassigneRequestDetails: {
-      type: String,
-      required: true,
-    },
+    reassigneRequestDetails: [
+      {
+        userId: {
+          type: mongoose.Schema.ObjectId,
+          required: true,
+        },
+        dateTime: {
+          type: Date,
+          required: true,
+          default: Date.now(),
+        },
+        requestDetails: {
+          type: String,
+        },
+      },
+    ],
   },
   {
     timestamps: true,
