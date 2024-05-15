@@ -35,7 +35,7 @@ router.get(
 /* REASSIGN ACTION  */
 router.put(
   "/reAssignAction/:id",
-  actionValidator.reAssignActionnValidator,
+  actionValidator.reAssignActionValidator,
   actionController.reAssignAction
 );
 

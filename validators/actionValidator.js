@@ -68,7 +68,7 @@ const viewSingleActionValidator = async (req, res, next) => {
 };
 
 // ACTION REASSIGN VALIDATOR
-const reAssignActionnValidator = async (req, res, next) => {
+const reAssignActionValidator = async (req, res, next) => {
   try {
     const bodySchema = Joi.object({
       isNewUser: Joi.boolean().required(),
@@ -149,5 +149,5 @@ module.exports = {
   actionCommentsValidator,
   actionReassignRequestValidator,
   viewSingleActionValidator,
-  reAssignActionnValidator,viewAllActionsValidator
+  reAssignActionValidator,viewAllActionsValidator
 };

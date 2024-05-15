@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const minutesSchema = new mongoose.Schema(
   {
-    title: {
+    description : {
       type: String,
       required: true,
     },
@@ -56,6 +56,54 @@ const minutesSchema = new mongoose.Schema(
     },
     organisationId: {
       type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    assignedUserId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    reassignedUserId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    reassigneRequestDetails: [
+      {
+        userId: {
+          type: mongoose.Schema.ObjectId,
+          required: true,
+        },
+        dateTime: {
+          type: Date,
+          required: true,
+          default: Date.now(),
+        },
+        requestDetails: {
+          type: String,
+        },
+      },
+    ],
+    reassignDetails: [
+      {
+        userId: {
+          type: mongoose.Schema.ObjectId,
+          required: true,
+        },
+        dateTime: {
+          type: Date,
+          required: true,
+          default: Date.now(),
+        },
+        reAssignReason: {
+          type: String,
+        },
+      },
+    ],
+    isComplete: {
+      type: Boolean,
+      //required: true,
+    },
+    dueDate: {
+      type: Date,
       required: true,
     },
   },

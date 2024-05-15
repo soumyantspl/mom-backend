@@ -35,41 +35,126 @@ const actionReassignRequest = async (data, id) => {
   return result;
 };
 
-const viewSingleAction = async (data) => {};
+const viewSingleAction = async (data) => {
+  
+};
 
 /**FUNC- TO VIEW ALL ACTIONS */
 const viewAllAction = async (bodyData, queryData) => {
-  console.log('iiiiiiiiiiiiiiiiiiiiiiii',bodyData,queryData)
+  console.log("iiiiiiiiiiiiiiiiiiiiiiii", bodyData, queryData);
   const { order } = queryData;
   const { organizationId, searchKey } = bodyData;
   let query = searchKey
     ? {
-        organizationId:new ObjectId(organizationId),
-        title: { $regex: searchKey, $options: "i" },
+        organizationId: new ObjectId(organizationId),
+        description: { $regex: searchKey, $options: "i" },
         isActive: true,
-        isAction:true
+        isAction: true,
       }
     : {
-      organizationId:new ObjectId(organizationId),
+        organizationId: new ObjectId(organizationId),
         isActive: true,
-        isAction:true
+        isAction: true,
       };
-console.log('query--------------',query)
+  console.log("query--------------", query);
   var limit = parseInt(queryData.limit);
   var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
   const totalCount = await Minutes.countDocuments(query);
-  const minutesDatas = await Minutes.find(query)
+  const actionDatas = await Minutes.aggregate([
+    {
+      $match: query,
+    },
+
+    {
+      $lookup: {
+        from: "employees",
+        localField: "responsiblePerson",
+        foreignField: "_id",
+        as: "userDetail",
+      },
+    },
+    {
+      $project: {
+        description: 1,
+        isComplete: 1,
+        dueDate:1,
+        userDetail: {
+          name: 1,
+          _id: 1,
+        },
+      },
+    },
+    { $unwind: "$userDetail" },
+  ])
     .sort({ createdAt: parseInt(order) })
-    .limit(limit)
-    .skip(skip);
+    .skip(skip)
+    .limit(limit);
+
 
   return {
     totalCount,
-    minutesDatas,
+    actionDatas,
   };
 };
 
-const viewAllUserAction = async (data) => {};
+/**FUNC- TO VIEW ALL USER ACTIONS */
+const viewAllUserAction = async (bodyData, queryData, userId) => {
+  console.log("iiiiiiiiiiiiiiiiiiiiiiii", bodyData, queryData);
+  const { order } = queryData;
+  const { organizationId, searchKey } = bodyData;
+  let query = searchKey
+    ? {
+        organizationId: new ObjectId(organizationId),
+        description: { $regex: searchKey, $options: "i" },
+        isActive: true,
+        isAction: true,
+        responsiblePerson: new ObjectId(userId),
+      }
+    : {
+        organizationId: new ObjectId(organizationId),
+        isActive: true,
+        isAction: true,
+        responsiblePerson: new ObjectId(userId),
+      };
+  console.log("query--------------", query);
+  var limit = parseInt(queryData.limit);
+  var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
+  const totalCount = await Minutes.countDocuments(query);
+  const actionDatas = await Minutes.aggregate([
+    {
+      $match: query,
+    },
+
+    {
+      $lookup: {
+        from: "employees",
+        localField: "responsiblePerson",
+        foreignField: "_id",
+        as: "userDetail",
+      },
+    },
+    {
+      $project: {
+        description: 1,
+        isComplete: 1,
+        dueDate:1,
+        userDetail: {
+          name: 1,
+          _id: 1,
+        },
+      },
+    },
+    { $unwind: "$userDetail" },
+  ])
+    .sort({ createdAt: parseInt(order) })
+    .skip(skip)
+    .limit(limit);
+
+  return {
+    totalCount,
+    actionDatas,
+  };
+};
 
 const reAssignAction = async (data, id) => {
   console.log(data);
