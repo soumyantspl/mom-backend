@@ -308,7 +308,7 @@ const cancelMeeting = async (data) => {
   return result;
 };
 
-/**FUNC- TO VIEW LIST OF ATTENDEES FROM PREVIOUS MEETING */
+// /**FUNC- TO VIEW LIST OF ATTENDEES FROM PREVIOUS MEETING */
 const listAttendeesFromPreviousMeeting = async (data, userId) => {
   const meetingData = await Meeting.aggregate([
     {
