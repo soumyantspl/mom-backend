@@ -205,6 +205,34 @@ const listAttendeesFromPreviousMeeting = async (req, res) => {
   }
 };
 
+const meetingActivities = async (req, res) => {
+  try {
+    // const result = aw(
+    //   req.body,
+    // )
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   createMeeting,
   updateRsvp,
@@ -213,4 +241,5 @@ module.exports = {
   viewMeeting,
   viewAllMeetings,
   listAttendeesFromPreviousMeeting,
+  meetingActivities
 };

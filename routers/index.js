@@ -25,7 +25,7 @@ app.use(`/${BASE_PATH}/room`, roomsRouter);
 app.use(`/${BASE_PATH}/unit`, unitRouter);
 app.use(`/${BASE_PATH}/configuration`, configRouter);
 app.use(`/${BASE_PATH}/agenda`, agendaRouter);
-app.use(`/${BASE_PATH}/minute`, minutesRouter);
+app.use(`/${BASE_PATH}/minutes`, minutesRouter);
 app.use(`/${BASE_PATH}/action`, actionRouter);
 app.use(`/${BASE_PATH}/log`, logRouter);
 

@@ -64,11 +64,9 @@ const minutesSchema = new mongoose.Schema(
     },
     assignedUserId: {
       type: mongoose.Schema.ObjectId,
-      required: true,
     },
     reassignedUserId: {
       type: mongoose.Schema.ObjectId,
-      required: true,
     },
     reassigneRequestDetails: [
       {

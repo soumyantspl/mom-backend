@@ -1,4 +1,5 @@
 const Meeting = require("../models/meetingModel");
+const MeetingActivities = require("../models/meetingActivitiesModel");
 const agendaService = require("./agendaService");
 const logService = require("./logsService");
 const logMessages = require("../constants/logsConstants");
@@ -312,7 +313,7 @@ const listAttendeesFromPreviousMeeting = async (data, userId) => {
   const meetingData = await Meeting.aggregate([
     {
       $match: {
-        "attendees.id": new ObjectId("663dbc52c6d385847217c4b0"),
+        "attendees.id": new ObjectId(userId),
         organizationId: new ObjectId(data.organizationId),
       },
     },
@@ -354,6 +355,20 @@ const getAllAttendees = async (meetingId) => {
   return result;
 };
 
+const meetingActivities = async (data, userId) => {
+  const inputData = {
+    activitiesDetails: data.activitiesDetails,
+    meetingId: data.meetingId,
+    userId: userId,
+    actionDetails: data.actionDetails,
+  };
+
+  const meetingActivitiesData = new MeetingActivities(inputData);
+  const newMeetingActivities = await meetingActivitiesData.save();
+  return newMeetingActivities;
+};
+
+
 module.exports = {
   createMeeting,
   updateRsvp,
@@ -363,4 +378,5 @@ module.exports = {
   viewAllMeetings,
   listAttendeesFromPreviousMeeting,
   getAllAttendees,
+  meetingActivities,
 };
