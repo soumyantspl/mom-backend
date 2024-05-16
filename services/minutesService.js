@@ -1,14 +1,14 @@
 const Minutes = require("../models/minutesModel");
 const employeeService = require("./employeeService");
 const { getAllAttendees } = require("./meetingService");
-const { meetingActivities } = require("./meetingService");
+const { createMeetingActivities } = require("./meetingService");
 
 //FUNCTION TO ACCEPT OR REJECT MINUTES
 const acceptRejectMinutes = async (data, userId) => {
   const result = await Minutes.findOneAndUpdate(
     {
-      "attendees.id": userId,
-      _id: data.id,
+      "attendees.id": new ObjectId(userId),
+      _id: new ObjectId(data.id),
     },
     {
       $set: { "attendees.$.status": data.status },
@@ -40,7 +40,7 @@ const createMinutes = async (data, userId) => {
     if (empData.isDuplicate) {
       return empData;
     }
-    userId = empData._id;
+    userId = new ObjectId(empData._id);
   }
   //
   const attendeesData = await getAllAttendees(data.meetingId);
@@ -72,10 +72,10 @@ const createMinutes = async (data, userId) => {
     activityDetails: newMinutes.description,
     activityTitle: "MINUTES CREATED",
     meetingId: data.meetingId,
-    userId: newMinutes.createdById.id,
+    userId,
   };
   console.log("activityObject-->", activityObject);
-  const meetingActivitiesResult = await meetingActivities(activityObject);
+  const meetingActivitiesResult = await createMeetingActivities(activityObject);
   console.log("meetingActivities------------", meetingActivitiesResult);
 
   return {

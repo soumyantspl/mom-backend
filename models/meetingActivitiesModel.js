@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const MeetingActivitiesSchema = new mongoose.Schema(
   {
-    activityDetails: {
+    activityTitle: {
       type: String,
       required: true,
     },
@@ -11,9 +11,9 @@ const MeetingActivitiesSchema = new mongoose.Schema(
     },
     userId: {
       type: mongoose.Schema.ObjectId,
-      // required: true,
+      required: true,
     },
-    activityTitle: {
+    activityDetails: {
       type: String,
     },
   },

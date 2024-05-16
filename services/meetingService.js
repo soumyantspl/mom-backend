@@ -356,7 +356,7 @@ const getAllAttendees = async (meetingId) => {
 };
 
 //FUNCTION TO STORE MEETING ACTIVITES 
-const meetingActivities = async (data, userId) => {
+const createMeetingActivities = async (data, userId) => {
   const inputData = {
     activityDetails: data.activityDetails,
     meetingId: data.meetingId,
@@ -380,5 +380,5 @@ module.exports = {
   viewAllMeetings,
   listAttendeesFromPreviousMeeting,
   getAllAttendees,
-  meetingActivities,
+  createMeetingActivities,
 };
