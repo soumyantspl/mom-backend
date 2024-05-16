@@ -7,6 +7,7 @@ const acceptOrRejectMinutesValidator = async (req, res, next) => {
     const enumValues = ["ACCEPTED", "REJECT", "PENDING"];
     const schema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
+      meetingId: Joi.string().trim().alphanum().required(),
       status: Joi.string().required(),
       status: Joi.string()
         .valid(...enumValues)

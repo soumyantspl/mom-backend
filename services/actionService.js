@@ -1,9 +1,6 @@
 const ActionComments = require("../models/commentsModel");
-
-const Action = require("../models/actionsModel");
 const Minutes = require("../models/minutesModel");
 const employeeService = require("./employeeService");
-const { Meeting } = require("../constants/logsConstants");
 const ObjectId = require("mongoose").Types.ObjectId;
 
 //FUCNTION TO CREATE COMMENTS

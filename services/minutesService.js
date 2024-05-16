@@ -3,10 +3,11 @@ const employeeService = require("./employeeService");
 const { getAllAttendees } = require("./meetingService");
 const { meetingActivities } = require("./meetingService");
 
-const acceptRejectMinutes = async (data) => {
+//FUNCTION TO ACCEPT OR REJECT MINUTES
+const acceptRejectMinutes = async (data, userId) => {
   const result = await Minutes.findOneAndUpdate(
     {
-      "attendees.id": "663dbb0bcf8ec14b66687081",
+      "attendees.id": userId,
       _id: data.id,
     },
     {
@@ -14,17 +15,22 @@ const acceptRejectMinutes = async (data) => {
     }
   );
   console.log("RESULT DATA", result);
-  // 663dbb0bcf8ec14b66687084
   const activityObject = {
-    activitiesDetails: data.status,
+    activityDetails: data.status,
+    activityTitle:
+      data.status == "ACCEPTED" ? "Minute accepted" : "Minute Rejected",
+    meetingId: data.meetingId,
+    userId,
   };
   console.log("activityObject-->", activityObject);
   const meetingActivitiesResult = await meetingActivities(activityObject);
+  console.log("meetingActivities------------", meetingActivitiesResult);
   return result;
 };
 
-const createMinutes = async (data) => {
-  let userId = "663dbc52c6d385847217c4b0";
+//FUNCTION RO CREATE MINUTES
+
+const createMinutes = async (data, userId) => {
   if (data.isNewUser) {
     const empData = await employeeService.createAttendee(
       data.name,
@@ -60,6 +66,17 @@ const createMinutes = async (data) => {
 
   const minuteData = new Minutes(inputData);
   const newMinutes = await minuteData.save();
+
+  console.log("createdBy---", newMinutes.description);
+  const activityObject = {
+    activityDetails: newMinutes.description,
+    activityTitle: "MINUTES CREATED",
+    meetingId: data.meetingId,
+    userId: newMinutes.createdById.id,
+  };
+  console.log("activityObject-->", activityObject);
+  const meetingActivitiesResult = await meetingActivities(activityObject);
+  console.log("meetingActivities------------", meetingActivitiesResult);
 
   return {
     data: newMinutes,

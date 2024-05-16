@@ -355,12 +355,13 @@ const getAllAttendees = async (meetingId) => {
   return result;
 };
 
+//FUNCTION TO STORE MEETING ACTIVITES 
 const meetingActivities = async (data, userId) => {
   const inputData = {
-    activitiesDetails: data.activitiesDetails,
+    activityDetails: data.activityDetails,
     meetingId: data.meetingId,
     userId: userId,
-    actionDetails: data.actionDetails,
+    activityTitle: data.activityTitle,
   };
   console.log('inputData-----------------',inputData)
 
