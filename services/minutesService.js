@@ -39,7 +39,7 @@ const createMinutes = async (data) => {
   });
   console.log("attendeeResult-->", attendeeResult);
   const inputData = {
-    userId: userId,
+    createdById: userId,
     organisationId: data.organisationId,
     meetingId: data.meetingId,
     minutesDescription: data.minutesDescription,

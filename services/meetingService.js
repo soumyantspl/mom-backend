@@ -1,4 +1,3 @@
-const { find, findOne } = require("../models/agendaModel");
 const Meeting = require("../models/meetingModel");
 const agendaService = require("./agendaService");
 const logService = require("./logsService");
@@ -7,7 +6,6 @@ const ObjectId = require("mongoose").Types.ObjectId;
 const emailService = require("./emailService");
 const emailTemplates = require("../emailSetUp/emailTemplates");
 const emailConstants = require("../constants/emailConstants");
-const { updateSearchIndex } = require("../models/commentsModel");
 
 /**FUNC- CREATE MEETING */
 const createMeeting = async (data, userId, ipAddress, email) => {
@@ -23,6 +21,7 @@ const createMeeting = async (data, userId, ipAddress, email) => {
     toTime: data.toTime,
     fromTime: data.fromTime,
   };
+
   const meetingData = new Meeting(inputData);
   const newMeeting = await meetingData.save();
   console.log("newMeeting----------------", newMeeting);
@@ -313,7 +312,7 @@ const listAttendeesFromPreviousMeeting = async (data, userId) => {
   const meetingData = await Meeting.aggregate([
     {
       $match: {
-        "attendees.id": new ObjectId(userId),
+        "attendees.id": new ObjectId("663dbc52c6d385847217c4b0"),
         organizationId: new ObjectId(data.organizationId),
       },
     },
@@ -336,18 +335,17 @@ const listAttendeesFromPreviousMeeting = async (data, userId) => {
       },
     },
   ]);
-  const data0 = meetingData.map((meeting) => {
+  const attendeeData = meetingData.map((meeting) => {
     return meeting.attendeesDetail;
   });
-  const data1 = [].concat(...data0);
-  const DATA = data1.filter(
+  console.log(attendeeData);
+  const uniqueAttendeeData = [].concat(...attendeeData);
+  const filetrData = uniqueAttendeeData.filter(
     (obj, index, self) =>
       index === self.findIndex((o) => JSON.stringify(o) === JSON.stringify(obj))
   );
-  console.log("DATA---==", DATA);
-  return {
-    meetingData,
-  };
+  console.log("DATA---==", filetrData);
+  return filetrData;
 };
 
 //FUNCTION TO GET ATTENDEES//
