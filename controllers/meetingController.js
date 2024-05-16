@@ -179,7 +179,8 @@ const viewMeeting = async (req, res) => {
 const listAttendeesFromPreviousMeeting = async (req, res) => {
   try {
     const result = await meetingService.listAttendeesFromPreviousMeeting(
-      req.body
+      req.body,
+      req.userId
     );
     if (!result) {
       return Responses.failResponse(

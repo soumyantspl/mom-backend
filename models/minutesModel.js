@@ -5,6 +5,10 @@ const minutesSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    createdById: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
     priority: {
       type: String,
       enum: ["HIGH", "NORMAL", "LOW"],
@@ -12,12 +16,13 @@ const minutesSchema = new mongoose.Schema(
     },
     attendees: [
       {
-        createdById: {
+        id: {
           type: mongoose.Schema.ObjectId,
-          required: [true, ""],
+          required: true,
         },
         status: {
-          type: Boolean,
+          type: String,
+          enum: ["ACCEPTED", "REJECT", "PENDING"],
           required: true,
         },
       },
