@@ -36,17 +36,22 @@ const checkDuplicateEntry = async (title, organizationId) => {
 const editRoom = async (data, id) => {
   console.log("----------------------3333344", data);
   console.log("----------------------33333", id);
+  let roomDetails;
+  if(data.name){
   const roomDetails = await checkDuplicateEntry(
     data.title,
     data.organizationId
   );
   console.log("roomDetails--------------", roomDetails);
+}
   if (!roomDetails) {
   const room = await Rooms.findByIdAndUpdate({ _id: id }, data, { new: true });
   console.log("room-----------------------", room);
   return room;
   }
-  return false
+  return  {
+    isDuplicateName:true
+  }
 };
 
 /**FUNC- TO VIEW ROOMS */
