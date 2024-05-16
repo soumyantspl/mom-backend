@@ -28,7 +28,7 @@ const createRoom = async (data) => {
 const checkDuplicateEntry = async (title, organizationId) => {
   return await Rooms.findOne(
     { title, organizationId, isActive: true },
-    { _id: 1, title: 1, organisationId: 1 }
+    { _id: 1, title: 1, organizationId: 1 }
   );
 };
 
@@ -36,9 +36,17 @@ const checkDuplicateEntry = async (title, organizationId) => {
 const editRoom = async (data, id) => {
   console.log("----------------------3333344", data);
   console.log("----------------------33333", id);
+  const roomDetails = await checkDuplicateEntry(
+    data.title,
+    data.organizationId
+  );
+  console.log("roomDetails--------------", roomDetails);
+  if (!roomDetails) {
   const room = await Rooms.findByIdAndUpdate({ _id: id }, data, { new: true });
   console.log("room-----------------------", room);
   return room;
+  }
+  return false
 };
 
 /**FUNC- TO VIEW ROOMS */

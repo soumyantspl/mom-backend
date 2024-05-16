@@ -11,6 +11,7 @@ const agendaRouter = require("./agendaRouter");
 const minutesRouter = require("./minutesRouter");
 const actionRouter = require("./actionRouter")
 const logRouter = require("./logRouter");
+const roleRouter= require("./roleRouter");
 const express = require("express");
 const app = express();
 const BASE_PATH = "V1";
@@ -28,5 +29,6 @@ app.use(`/${BASE_PATH}/agenda`, agendaRouter);
 app.use(`/${BASE_PATH}/minute`, minutesRouter);
 app.use(`/${BASE_PATH}/action`, actionRouter);
 app.use(`/${BASE_PATH}/log`, logRouter);
+app.use(`/${BASE_PATH}/role`, roleRouter);
 
 module.exports = app;

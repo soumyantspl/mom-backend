@@ -5,26 +5,30 @@ const rolesSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
     },
     isActive: {
       type: Boolean,
       required: true,
+      default:true
     },
-    amendmentDetails: {
+    permission: {
       read: {
         type: Boolean,
         required: true,
+        default: true,
       },
       write: {
         type: Boolean,
         required: true,
+        default: false,
       },
       edit: {
         type: Boolean,
         required: true,
+        default: false,
       },
     },
   },
@@ -33,6 +37,6 @@ const rolesSchema = new mongoose.Schema(
   }
 );
 
-const Roles = mongoose.model("Roles", rolesSchema);
+const Roles = mongoose.model("roles", rolesSchema);
 
 module.exports = Roles;
