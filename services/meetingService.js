@@ -1,3 +1,4 @@
+const { find, findOne } = require("../models/agendaModel");
 const Meeting = require("../models/meetingModel");
 const agendaService = require("./agendaService");
 const logService = require("./logsService");
@@ -6,7 +7,6 @@ const ObjectId = require("mongoose").Types.ObjectId;
 const emailService = require("./emailService");
 const emailTemplates = require("../emailSetUp/emailTemplates");
 const emailConstants = require("../constants/emailConstants");
-
 /**FUNC- CREATE MEETING */
 const createMeeting = async (data, userId, ipAddress, email) => {
   console.log("----------------------33333", data);
@@ -21,7 +21,6 @@ const createMeeting = async (data, userId, ipAddress, email) => {
     toTime: data.toTime,
     fromTime: data.fromTime,
   };
-
   const meetingData = new Meeting(inputData);
   const newMeeting = await meetingData.save();
   console.log("newMeeting----------------", newMeeting);
@@ -308,13 +307,12 @@ const cancelMeeting = async (data) => {
 };
 
 /**FUNC- TO VIEW LIST OF ATTENDEES FROM PREVIOUS MEETING */
-const listAttendeesFromPreviousMeeting = async (data, userId) => {
+const listAttendeesFromPreviousMeeting = async (data) => {
+  console.log("userId---------", userId);
+
   const meetingData = await Meeting.aggregate([
     {
-      $match: {
-        "attendees.id": new ObjectId("663dbc52c6d385847217c4b0"),
-        organizationId: new ObjectId(data.organizationId),
-      },
+      $match: { "attendees.id": new ObjectId(data.id) },
     },
     {
       $lookup: {
@@ -335,23 +333,28 @@ const listAttendeesFromPreviousMeeting = async (data, userId) => {
       },
     },
   ]);
-  const attendeeData = meetingData.map((meeting) => {
+  console.log("meetingData---------", meetingData);
+  const data0 = meetingData.map((meeting) => {
     return meeting.attendeesDetail;
   });
-  console.log(attendeeData);
-  const uniqueAttendeeData = [].concat(...attendeeData);
-  const filetrData = uniqueAttendeeData.filter(
+
+  console.log("DATA-->", data0);
+  const data1 = [].concat(...data0);
+  console.log("DATA-->", data1);
+
+  // function removeDuplicate(data) {
+  //   return [...new Set(data)];
+  // }
+
+  const DATA = data1.filter(
     (obj, index, self) =>
       index === self.findIndex((o) => JSON.stringify(o) === JSON.stringify(obj))
   );
-  console.log("DATA---==", filetrData);
-  return filetrData;
-};
+  console.log("DATA---==", DATA);
 
-//FUNCTION TO GET ATTENDEES//
-const getAllAttendees = async (meetingId) => {
-  const result = await Meeting.findById(meetingId, { "attendees.id": 1 });
-  return result;
+  return {
+    meetingData,
+  };
 };
 
 module.exports = {
@@ -362,5 +365,4 @@ module.exports = {
   viewMeeting,
   viewAllMeetings,
   listAttendeesFromPreviousMeeting,
-  getAllAttendees,
 };

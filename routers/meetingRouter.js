@@ -3,6 +3,7 @@ const router = express.Router();
 const meetingController = require("../controllers/meetingController");
 const validator = require("../validators/meetingValidator");
 const authMiddleware = require("../middlewares/authMiddleware");
+const agendaController = require("../controllers/agendaController");
 
 /* CREATE MEETING  */
 router.post(
@@ -42,6 +43,14 @@ router.get(
   "/listAttendeesFromPreviousMeeting",
   validator.listAttendeesFromPreviousMeetingValidator,
   meetingController.listAttendeesFromPreviousMeeting
+);
+
+
+/* VIEW SINGLE MEETING ALL AGENDA WITH MINUTES  */
+router.get(
+  "/viewMeetingAgendaWithMinutes/:id",
+  validator.viewMeetingValidator,
+  agendaController.viewAgendas
 );
 
 module.exports = router;
