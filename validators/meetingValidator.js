@@ -273,5 +273,4 @@ module.exports = {
   updateRsvpValidator,
   cancelMeetingValidator,
   listAttendeesFromPreviousMeetingValidator,
-  MeetingActivitiesValidator,
 };

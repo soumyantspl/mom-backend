@@ -205,7 +205,6 @@ const listAttendeesFromPreviousMeeting = async (req, res) => {
   }
 };
 
-
 module.exports = {
   createMeeting,
   updateRsvp,
@@ -214,5 +213,4 @@ module.exports = {
   viewMeeting,
   viewAllMeetings,
   listAttendeesFromPreviousMeeting,
-  meetingActivities
 };
