@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const minutesSchema = new mongoose.Schema(
   {
-    minutesDescription: {
+    description : {
       type: String,
       required: true,
     },
@@ -27,14 +27,14 @@ const minutesSchema = new mongoose.Schema(
         },
       },
     ],
-    responsiblePerson: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
-    reAssignedTo: {
-      type: mongoose.Schema.ObjectId,
-      // required: true,
-    },
+    // responsiblePerson: {
+    //   type: mongoose.Schema.ObjectId,
+    //   required: true,
+    // },
+    // reAssignedTo: {
+    //   type: mongoose.Schema.ObjectId,
+    //   // required: true,
+    // },
     amendmentDetails: [
       {
         createdById: {
@@ -62,9 +62,58 @@ const minutesSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       required: true,
     },
+    assignedUserId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    reassignedUserId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    reassigneRequestDetails: [
+      {
+        userId: {
+          type: mongoose.Schema.ObjectId,
+          required: true,
+        },
+        dateTime: {
+          type: Date,
+          required: true,
+          default: Date.now(),
+        },
+        requestDetails: {
+          type: String,
+        },
+      },
+    ],
+    reassignDetails: [
+      {
+        userId: {
+          type: mongoose.Schema.ObjectId,
+          required: true,
+        },
+        dateTime: {
+          type: Date,
+          required: true,
+          default: Date.now(),
+        },
+        reAssignReason: {
+          type: String,
+        },
+      },
+    ],
+    isComplete: {
+      type: Boolean,
+      //required: true,
+    },
+    dueDate: {
+      type: Date,
+      required: true,
+    },
     isAction: {
       type: Boolean,
-      default: false,
+      required: true,
+      default:false
     },
   },
   {

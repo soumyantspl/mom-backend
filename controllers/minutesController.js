@@ -50,6 +50,10 @@ const createMinutes = async (req, res) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+
+
+
+
 module.exports = {
   acceptRejectMinutes,
   createMinutes,

@@ -68,7 +68,7 @@ const viewSingleActionValidator = async (req, res, next) => {
 };
 
 // ACTION REASSIGN VALIDATOR
-const reAssignActionnValidator = async (req, res, next) => {
+const reAssignActionValidator = async (req, res, next) => {
   try {
     const bodySchema = Joi.object({
       isNewUser: Joi.boolean().required(),
@@ -109,9 +109,66 @@ const reAssignActionnValidator = async (req, res, next) => {
   }
 };
 
+
+
+// VIEW ALL ACTION LIST VALIDATOR
+const viewAllActionsValidator = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.params);
+    const schema = Joi.object({
+      searchKey: Joi.string()
+        .trim()
+        .pattern(/^[0-9a-zA-Z ,/-]+$/)
+        .messages({
+          "string.pattern.base": `HTML tags & Special letters are not allowed!`,
+        }),
+
+      organizationId: Joi.string().trim().alphanum().required(),
+    });
+    const paramsSchema = Joi.object({
+      limit: Joi.number().required(),
+      page: Joi.number().required(),
+      order: Joi.number().required(),
+    });
+
+    await paramsSchema.validateAsync(req.query);
+    await schema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+// UPDATE SINGLE ACTION VALIDATOR
+const updateActionValidator = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.params);
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+    const bodySchema = Joi.object({
+      isComplete: Joi.boolean()
+    });
+    await paramsSchema.validateAsync(req.params);
+    await bodySchema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+
 module.exports = {
   actionCommentsValidator,
   actionReassignRequestValidator,
   viewSingleActionValidator,
-  reAssignActionnValidator,
+  reAssignActionValidator,viewAllActionsValidator,updateActionValidator
 };
