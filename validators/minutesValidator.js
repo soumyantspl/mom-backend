@@ -4,10 +4,13 @@ const { errorLog } = require("../middlewares/errorLog");
 
 const acceptOrRejectMinutesValidator = async (req, res, next) => {
   try {
+    const enumValues = ["ACCEPTED", "REJECT", "PENDING"];
     const schema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
-      userId: Joi.string().trim().alphanum().required(),
-      status: Joi.string().required(),
+      meetingId: Joi.string().trim().alphanum().required(),
+      status: Joi.string()
+        .valid(...enumValues)
+        .required(),
     }).required();
     await schema.validateAsync(req.body);
     next();
@@ -24,7 +27,7 @@ const createMinutesValidator = async (req, res, next) => {
       userId: Joi.string().trim().alphanum().required(),
       organisationId: Joi.string().trim().alphanum().required(),
       meetingId: Joi.string().trim().alphanum().required(),
-      minutesDescription: Joi.string()
+      description: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
         .messages({
