@@ -5,7 +5,7 @@ const { errorLog } = require("../middlewares/errorLog");
 
 const acceptRejectMinutes = async (req, res) => {
   try {
-    const result = await minutesService.acceptRejectMinutes(req.body);
+    const result = await minutesService.acceptRejectMinutes(req.body, req.userId);
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -32,7 +32,7 @@ const acceptRejectMinutes = async (req, res) => {
 
 const createMinutes = async (req, res) => {
   try {
-    const result = await minutesService.createMinutes(req.body);
+    const result = await minutesService.createMinutes(req.body,req.userId);
     console.log(result);
     if (!result) {
       return Responses.failResponse(req, res, null, messages.createError, 409);
@@ -50,9 +50,6 @@ const createMinutes = async (req, res) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-
-
-
 
 module.exports = {
   acceptRejectMinutes,

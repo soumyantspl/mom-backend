@@ -362,6 +362,7 @@ const meetingActivities = async (data, userId) => {
     userId: userId,
     actionDetails: data.actionDetails,
   };
+  console.log('inputData-----------------',inputData)
 
   const meetingActivitiesData = new MeetingActivities(inputData);
   const newMeetingActivities = await meetingActivitiesData.save();
