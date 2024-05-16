@@ -250,11 +250,10 @@ const updateRsvpValidator = async (req, res, next) => {
   }
 };
 //LIST ATTENDEES FROM PREVIOUS MEETING//
-const listAttendeesFromPreviousMeetingValidator  = async (req, res, next) => {
+const listAttendeesFromPreviousMeetingValidator = async (req, res, next) => {
   try {
     const schema = Joi.object({
       organizationId: Joi.string().trim().alphanum().required(),
-      id: Joi.string().trim().alphanum().required(),
     }).required();
     await schema.validateAsync(req.body);
     next();
@@ -272,5 +271,5 @@ module.exports = {
   viewAllMeetingsValidator,
   updateRsvpValidator,
   cancelMeetingValidator,
-  listAttendeesFromPreviousMeetingValidator
+  listAttendeesFromPreviousMeetingValidator,
 };

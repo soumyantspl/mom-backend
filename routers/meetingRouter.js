@@ -40,6 +40,7 @@ router.get(
 
 router.get(
   "/listAttendeesFromPreviousMeeting",
+  validator.listAttendeesFromPreviousMeetingValidator,
   meetingController.listAttendeesFromPreviousMeeting
 );
 
