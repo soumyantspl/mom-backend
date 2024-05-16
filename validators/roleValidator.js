@@ -69,28 +69,3 @@ module.exports = {
   createRoleValidator,
   updateRoleValidator,
 };
-
-
-
-// {
-//     "_id": {
-//       "$oid": "6645e0b870a089d7c1aede54"
-//     },
-//     "name": "ABC1",
-//     "organizationId": {
-//       "$oid": "6634ba12814c325112885ed3"
-//     },
-//     "isActive": true,
-//     "permission": {
-//       "read": true,
-//       "write": false,
-//       "edit": true
-//     },
-//     "createdAt": {
-//       "$date": "2024-05-16T10:32:24.224Z"
-//     },
-//     "updatedAt": {
-//       "$date": "2024-05-16T11:13:34.483Z"
-//     },
-//     "__v": 0
-//   }

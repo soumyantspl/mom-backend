@@ -1,6 +1,5 @@
 // const { Meeting } = require("../constants/logsConstants");
 const Agenda = require("../models/agendaModel");
-const Meeting = require("../models/meetingModel");
 const ObjectId = require("mongoose").Types.ObjectId;
 const createAgendaForMeeting = async (data) => {
   console.log("data--------------123", data);
