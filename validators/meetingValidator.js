@@ -264,6 +264,7 @@ const listAttendeesFromPreviousMeetingValidator = async (req, res, next) => {
   }
 };
 
+
 module.exports = {
   createMeetingValidator,
   updateMeetingValidator,

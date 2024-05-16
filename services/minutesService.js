@@ -1,22 +1,36 @@
 const Minutes = require("../models/minutesModel");
 const employeeService = require("./employeeService");
 const { getAllAttendees } = require("./meetingService");
-const acceptRejectMinutes = async (data) => {
+const { createMeetingActivities } = require("./meetingService");
+
+//FUNCTION TO ACCEPT OR REJECT MINUTES
+const acceptRejectMinutes = async (data, userId) => {
   const result = await Minutes.findOneAndUpdate(
     {
-      "attendees.id": data.userId,
-      _id: data.id,
+      "attendees.id": new ObjectId(userId),
+      _id: new ObjectId(data.id),
     },
     {
       $set: { "attendees.$.status": data.status },
     }
   );
-  console.log(result);
+  console.log("RESULT DATA", result);
+  const activityObject = {
+    activityDetails: data.status,
+    activityTitle:
+      data.status == "ACCEPTED" ? "Minute accepted" : "Minute Rejected",
+    meetingId: data.meetingId,
+    userId,
+  };
+  console.log("activityObject-->", activityObject);
+  const meetingActivitiesResult = await meetingActivities(activityObject);
+  console.log("meetingActivities------------", meetingActivitiesResult);
   return result;
 };
 
-const createMinutes = async (data) => {
-  let userId = data.userId;
+//FUNCTION RO CREATE MINUTES
+
+const createMinutes = async (data, userId) => {
   if (data.isNewUser) {
     const empData = await employeeService.createAttendee(
       data.name,
@@ -26,7 +40,7 @@ const createMinutes = async (data) => {
     if (empData.isDuplicate) {
       return empData;
     }
-    userId = empData._id;
+    userId = new ObjectId(empData._id);
   }
   //
   const attendeesData = await getAllAttendees(data.meetingId);
@@ -42,7 +56,7 @@ const createMinutes = async (data) => {
     createdById: userId,
     organisationId: data.organisationId,
     meetingId: data.meetingId,
-    minutesDescription: data.minutesDescription,
+    description: data.description,
     dueDate: data.dueDate,
     priority: data.priority,
     responsiblePerson: data.responsiblePerson,
@@ -52,6 +66,17 @@ const createMinutes = async (data) => {
 
   const minuteData = new Minutes(inputData);
   const newMinutes = await minuteData.save();
+
+  console.log("createdBy---", newMinutes.description);
+  const activityObject = {
+    activityDetails: newMinutes.description,
+    activityTitle: "MINUTES CREATED",
+    meetingId: data.meetingId,
+    userId,
+  };
+  console.log("activityObject-->", activityObject);
+  const meetingActivitiesResult = await createMeetingActivities(activityObject);
+  console.log("meetingActivities------------", meetingActivitiesResult);
 
   return {
     data: newMinutes,

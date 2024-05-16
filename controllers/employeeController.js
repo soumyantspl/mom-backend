@@ -147,7 +147,7 @@ const viewSingleEmploye = async (req, res) => {
   try {
     const result = await employeeService.viewSingleEmployee(req.params.id);
     console.log("viewSingleEmploye result", result);
-    if (!result) {
+    if (result.length == 0) {
       return Responses.failResponse(
         req,
         res,
