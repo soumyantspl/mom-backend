@@ -5,7 +5,7 @@ const minutesSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    //
+    ///
     createdById: {
       type: mongoose.Schema.ObjectId,
       required: true,
@@ -59,7 +59,7 @@ const minutesSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       required: true,
     },
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
     },

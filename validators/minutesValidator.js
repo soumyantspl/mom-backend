@@ -60,10 +60,15 @@ const createMinutesValidator = async (req, res, next) => {
 
 const downloadMinutesValidator = async (req, res, next) => {
   try {
-    const schema = Joi.object({
-      meetingId: Joi.string().trim().alphanum().required(),
-    }).required();
-    await schema.validateAsync(req.body);
+    // const schema = Joi.object({
+    //   meetingId: Joi.string().trim().alphanum().required(),
+    // }).required();
+    // await schema.validateAsync(req.body);
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+
+    await paramsSchema.validateAsync(req.params);
     next();
   } catch (error) {
     console.log(error);

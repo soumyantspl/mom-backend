@@ -20,8 +20,8 @@ router.post(
 
 
 /*DOWNLOAD MINUTE */
-router.post(
-  "/downloadMinutes",
+router.get(
+  "/downloadMinutes/:id",
   validator.downloadMinutesValidator,
   minutesController.downloadMinutes
 );

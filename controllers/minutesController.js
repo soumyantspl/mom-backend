@@ -54,18 +54,19 @@ const createMinutes = async (req, res) => {
 
 const downloadMinutes = async (req, res) => {
   try {
-    const result = await minutesService.downLoadMinutes(req.body);
+    const result = await minutesService.downLoadMinutes(req.params.id);
     console.log(result);
     if (!result) {
       return Responses.failResponse(req, res, null, messages.createError, 409);
     }
-    return Responses.successResponse(
-      req,
-      res,
-      result.data,
-      messages.createdSuccess,
-      201
-    );
+    // return Responses.successResponse(
+    //   req,
+    //   res,
+    //   result.data,
+    //   messages.createdSuccess,
+    //   201
+    // );
+    res.download(result);
   } catch (error) {
     console.log(error);
     errorLog(error);
