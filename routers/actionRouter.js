@@ -32,14 +32,12 @@ router.get(
 
 router.get("/viewActionComment", actionController.viewActionComment);
 
-
 /* REASSIGN ACTION  */
 router.put(
   "/reAssignAction/:id",
   actionValidator.reAssignActionValidator,
   actionController.reAssignAction
 );
-
 
 /* VIEW USER ALL ACTION LIST  */
 router.get(
@@ -48,7 +46,6 @@ router.get(
   actionController.viewUserAllActions
 );
 
-
 /* UPDATE ACTION   */
 router.put(
   "/updateAction/:id",
@@ -56,5 +53,9 @@ router.put(
   actionController.updateAction
 );
 
-
+router.get(
+  "/viewActionActivities/:id",
+  actionValidator.viewActionActivities,
+  actionController.viewActionActivities
+);
 module.exports = router;

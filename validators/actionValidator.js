@@ -164,10 +164,8 @@ const updateActionValidator = async (req, res, next) => {
 };
 
 // UPDATE SINGLE ACTION VALIDATOR
-const actionActivitiesList = async (req, res, next) => {
+const viewActionActivities = async (req, res, next) => {
   try {
-    console.log(req.body);
-    console.log(req.query);
     console.log(req.params);
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
@@ -189,5 +187,5 @@ module.exports = {
   reAssignActionValidator,
   viewAllActionsValidator,
   updateActionValidator,
-  actionActivitiesList,
+  viewActionActivities,
 };
