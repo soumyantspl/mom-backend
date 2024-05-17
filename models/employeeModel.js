@@ -12,7 +12,7 @@ const employeeSchema = new mongoose.Schema(
    //   required: true,
       index: true,
     //  unique: true,
-      default: null
+      // default: null
     },
     email: {
       type: String,

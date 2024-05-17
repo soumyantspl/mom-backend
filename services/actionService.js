@@ -1,5 +1,6 @@
 const ActionComments = require("../models/commentsModel");
 const Minutes = require("../models/minutesModel");
+const ActionActivities = require("../models/actionActivitiesModel");
 const employeeService = require("./employeeService");
 const ObjectId = require("mongoose").Types.ObjectId;
 
@@ -191,7 +192,19 @@ const reAssignAction = async (data, id) => {
       priority: data.priority,
     }
   );
-  console.log("result-------------", result);
+  console.log("result----&&&>>>", result);
+
+  const actionActivityObject = {
+    activityTitle: "Action Reassigned",
+    minuteId: id,
+    userId,
+  };
+  console.log("activityObject-->", actionActivityObject);
+  const actionActivitiesResult = await createActionActivity(
+    actionActivityObject
+  );
+  console.log("actionActivitiesResult------------", actionActivitiesResult);
+
   return result;
 };
 
@@ -261,17 +274,24 @@ const updateAction = async (id, data) => {
 };
 
 /**FUNC- ACTION ACTIVITY CREATE FUNCTION*/
-const createActionActivity = async (data, userId) => {
+const createActionActivity = async (data) => {
   const inputData = {
-    activityDetails: data.activityDetails,
+    activityTitle: data.activityTitle,
     minuteId: data.minuteId,
-    userId: userId,
+    userId: data.userId,
   };
   console.log("inputData-----------------", inputData);
 
   const actionActivitiesData = new ActionActivities(inputData);
   const newMinutesActivities = await actionActivitiesData.save();
   return newMinutesActivities;
+};
+
+//FUNCTION TO FETCH ACTION ACTIVITIES LIST
+const viewActionActivity = async (id) => {
+  const result = await ActionActivities.find({ minuteId: id });
+  console.log(result);
+  return result;
 };
 
 module.exports = {
@@ -284,9 +304,8 @@ module.exports = {
   viewUserAllAction,
   updateAction,
   createActionActivity,
+  viewActionActivity,
 };
-
-
 
 // const pdfmake = require('pdfmake');
 // const fs = require('fs');

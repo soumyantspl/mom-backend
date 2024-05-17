@@ -214,7 +214,34 @@ const updateAction = async (req, res) => {
   }
 };
 
+/**FUNC- TO VIEW LIST ATTENDEES FROM PREVIOUS MEETING**/
+const viewActionActivities = async (req, res) => {
+  try {
+    const result = await actionService.viewActionActivity(req.params.id);
+    console.log(result);
 
+    if (result.length == 0) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
 
 
 
@@ -226,5 +253,6 @@ module.exports = {
   reAssignAction,
   viewAllActions,
   viewUserAllActions,
-  updateAction
+  updateAction,
+  viewActionActivities
 };
