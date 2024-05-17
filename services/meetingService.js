@@ -355,7 +355,7 @@ const getAllAttendees = async (meetingId) => {
   return result;
 };
 
-//FUNCTION TO STORE MEETING ACTIVITES 
+//FUNCTION TO STORE MEETING ACTIVITES
 const createMeetingActivities = async (data, userId) => {
   const inputData = {
     activityDetails: data.activityDetails,
@@ -363,13 +363,19 @@ const createMeetingActivities = async (data, userId) => {
     userId: userId,
     activityTitle: data.activityTitle,
   };
-  console.log('inputData-----------------',inputData)
+  console.log("inputData-----------------", inputData);
 
   const meetingActivitiesData = new MeetingActivities(inputData);
   const newMeetingActivities = await meetingActivitiesData.save();
   return newMeetingActivities;
 };
 
+//FUNCTION TO FETCH MEETING ACTIVITIES LIST
+const viewMeetingActivities = async (id) => {
+  const result = await MeetingActivities.find({ meetingId: id });
+  console.log(result);
+  return result;
+};
 
 module.exports = {
   createMeeting,
@@ -381,4 +387,5 @@ module.exports = {
   listAttendeesFromPreviousMeeting,
   getAllAttendees,
   createMeetingActivities,
+  viewMeetingActivities,
 };

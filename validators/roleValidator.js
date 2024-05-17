@@ -65,7 +65,41 @@ const updateRoleValidator = async (req, res, next) => {
   }
 };
 
+// VIEW ROLE VALIDATOR
+const viewRoleValidator = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    const bodySchema = Joi.object({
+      organizationId: Joi.string().trim().alphanum().required(),
+    });
+    await bodySchema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    //   errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+// DELETE ROLE VALIDATOR
+const deleteRoleValidator = async (req, res, next) => {
+  try {
+    console.log(req.params);
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+    await paramsSchema.validateAsync(req.params);
+    next();
+  } catch (error) {
+    console.log(error);
+    //   errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   createRoleValidator,
   updateRoleValidator,
+  viewRoleValidator,
+  deleteRoleValidator,
 };
