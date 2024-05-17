@@ -65,7 +65,7 @@ const downloadMinutesValidator = async (req, res, next) => {
     // }).required();
     // await schema.validateAsync(req.body);
     const paramsSchema = Joi.object({
-      id: Joi.string().trim().alphanum().required(),
+      meetingId: Joi.string().trim().alphanum().required(),
     });
 
     await paramsSchema.validateAsync(req.params);

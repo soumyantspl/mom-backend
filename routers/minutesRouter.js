@@ -21,7 +21,7 @@ router.post(
 
 /*DOWNLOAD MINUTE */
 router.get(
-  "/downloadMinutes/:id",
+  "/downloadMinutes/:meetingId",
   validator.downloadMinutesValidator,
   minutesController.downloadMinutes
 );

@@ -19,6 +19,13 @@ const failResponse = (req, res, data, message, statusCode) => {
   });
 };
 
+/*FUNC- TO SEND THE SUCCESS RESPONSE WITH DOWNLOAD FILE*/
+const successDownloadResponse = (req, res, data, message, statusCode) => {
+  console.log("message---------", message);
+  return res.status(statusCode).download(data);
+};
+
+
 /*FUNC- TO ERROR THE FAIL RESPONSE*/
 //  const errorResponse = (req, res, errorDesc, errorKey) => {
 //     console.log('>>>>>>>>>>>>>   ERROR\n', errorKey);
@@ -47,5 +54,5 @@ const errorResponse = (req, res, errorDesc, errorKey) => {
 module.exports = {
   errorResponse,
   failResponse,
-  successResponse,
+  successResponse,successDownloadResponse
 };

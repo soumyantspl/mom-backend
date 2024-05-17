@@ -54,19 +54,19 @@ const createMinutes = async (req, res) => {
 
 const downloadMinutes = async (req, res) => {
   try {
-    const result = await minutesService.downLoadMinutes(req.params.id);
+    const result = await minutesService.downLoadMinutes(req.params.meetingId);
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.createError, 409);
+      return Responses.failResponse(req, res, null, messages.recordsNotFound, 409);
     }
-    // return Responses.successResponse(
-    //   req,
-    //   res,
-    //   result.data,
-    //   messages.createdSuccess,
-    //   201
-    // );
-    res.download(result);
+    return Responses.successDownloadResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+   
   } catch (error) {
     console.log(error);
     errorLog(error);
