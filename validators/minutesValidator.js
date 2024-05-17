@@ -57,4 +57,18 @@ const createMinutesValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-module.exports = { acceptOrRejectMinutesValidator, createMinutesValidator };
+
+const downloadMinutesValidator = async (req, res, next) => {
+  try {
+    const schema = Joi.object({
+      meetingId: Joi.string().trim().alphanum().required(),
+    }).required();
+    await schema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+   // errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+module.exports = { acceptOrRejectMinutesValidator, createMinutesValidator ,downloadMinutesValidator};

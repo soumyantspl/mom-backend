@@ -83,7 +83,77 @@ const createMinutes = async (data, userId) => {
   };
 };
 
+//FUNCTION TO DOWNLOAD MINUTES
+const downLoadMinutes= async (data) => {
+ 
+  const minutesData = await Minutes.aggregate([
+    {
+      $match: {
+        meetingId:new ObjectId(data.meetingId),
+        isAction:false,
+
+      },
+    },
+    {
+      $lookup: {
+        from: "employees",
+        localField: "attendees.id",
+        foreignField: "_id",
+        as: "attendeesDetail",
+      },
+    },
+    {
+      $lookup: {
+        from: "employees",
+        localField: "createdById",
+        foreignField: "_id",
+        as: "createdByDetails",
+      },
+    },
+    {
+      $lookup: {
+        from: "employees",
+        localField: "amendmentDetails.id",
+        foreignField: "_id",
+        as: "amendmentDetails",
+      },
+    },
+    {
+      $lookup: {
+        from: "organization",
+        localField: "organizationId",
+        foreignField: "_id",
+        as: "organizationDetail",
+      },
+    },
+    {
+      $project: {
+        _id: 1,
+        attendees: 1,
+        title: 1,
+        // mode: 1,
+        // link: 1,
+        // date: 1,
+        // fromTime: 1,
+        // toTime: 1,
+       // locationDetails: 1,
+        attendeesDetail: {
+          email: 1,
+          _id: 1,
+          name: 1,
+        },
+      },
+    },
+  ])
+  console.log('minutesData--------------',minutesData)
+  return minutesData;
+};
+
+
+
+
 module.exports = {
   acceptRejectMinutes,
   createMinutes,
+  downLoadMinutes
 };
