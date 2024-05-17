@@ -32,7 +32,7 @@ const actionReassignRequestValidator = async (req, res, next) => {
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
-        })
+        }),
     });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
@@ -109,8 +109,6 @@ const reAssignActionValidator = async (req, res, next) => {
   }
 };
 
-
-
 // VIEW ALL ACTION LIST VALIDATOR
 const viewAllActionsValidator = async (req, res, next) => {
   try {
@@ -153,7 +151,7 @@ const updateActionValidator = async (req, res, next) => {
       id: Joi.string().trim().alphanum().required(),
     });
     const bodySchema = Joi.object({
-      isComplete: Joi.boolean()
+      isComplete: Joi.boolean(),
     });
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
@@ -165,10 +163,31 @@ const updateActionValidator = async (req, res, next) => {
   }
 };
 
+// UPDATE SINGLE ACTION VALIDATOR
+const actionActivitiesList = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.params);
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+  
+    await paramsSchema.validateAsync(req.params);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
 
 module.exports = {
   actionCommentsValidator,
   actionReassignRequestValidator,
   viewSingleActionValidator,
-  reAssignActionValidator,viewAllActionsValidator,updateActionValidator
+  reAssignActionValidator,
+  viewAllActionsValidator,
+  updateActionValidator,
+  actionActivitiesList,
 };
