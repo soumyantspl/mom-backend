@@ -45,12 +45,18 @@ router.get(
   meetingController.listAttendeesFromPreviousMeeting
 );
 
-
 /* VIEW SINGLE MEETING ALL AGENDA WITH MINUTES  */
 router.get(
   "/viewMeetingAgendaWithMinutes/:id",
   validator.viewMeetingValidator,
   agendaController.viewAgendas
+);
+
+/* VIEW MEETING ACTIVITIES LIST   */
+router.get(
+  "/viewMeetingActivities/:id",
+  validator.meetingActivitieslist,
+  meetingController.viewMeetingActivities
 );
 
 module.exports = router;

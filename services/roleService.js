@@ -59,12 +59,14 @@ const viewRole = async (data) => {
   return result;
 };
 
-const deleteRole = async (data) => {
+const deleteRole = async (id) => {
+  console.log("IDDDDDDDDD", id);
   const result = await Roles.findByIdAndUpdate(
-    { _id: new ObjectId(data.id) },
-    { new: false }
+    { _id: id },
+    { isActive: false },
+    { new: true }
   );
-  console.log("role--->", data);
+  console.log("role--->", result);
   return result;
 };
 

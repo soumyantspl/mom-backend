@@ -264,7 +264,20 @@ const listAttendeesFromPreviousMeetingValidator = async (req, res, next) => {
   }
 };
 
-
+// FUCNTION TO LIST MEETING ACTIVITIES
+const meetingActivitieslist = async (req, res, next) => {
+  try {
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    }).required();
+    await paramsSchema.validateAsync(req.params);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
 module.exports = {
   createMeetingValidator,
   updateMeetingValidator,
@@ -273,4 +286,5 @@ module.exports = {
   updateRsvpValidator,
   cancelMeetingValidator,
   listAttendeesFromPreviousMeetingValidator,
+  meetingActivitieslist,
 };

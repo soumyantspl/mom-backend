@@ -96,7 +96,7 @@ const viewRole = async (req, res) => {
 /**FUNC- TO DELETE ROLE **/
 const deleteRole = async (req, res) => {
   try {
-    const result = await roleService.updateRole(req.body, req.params.id);
+    const result = await roleService.deleteRole(req.params.id);
     console.log(result);
     if (!result) {
       return Responses.failResponse(
