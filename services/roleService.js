@@ -40,7 +40,11 @@ const updateRole = async (data, id) => {
   }
  
   if (!roleDetails) {
-  const role = await Role.findByIdAndUpdate({ _id: id }, data, { new: true });
+    const updateData = {
+      name: data.name,
+      permission: data.permission,
+    };
+  const role = await Role.findByIdAndUpdate({ _id: id }, updateData, { new: true });
   console.log("role-----------------------", role);
   return role;
   }
