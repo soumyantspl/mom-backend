@@ -1,8 +1,11 @@
 const Minutes = require("../models/minutesModel");
+const Agenda = require("../models/agendaModel");
 const employeeService = require("./employeeService");
+const Rooms = require("../models/roomModel");
 const { getAllAttendees } = require("./meetingService");
 const { createMeetingActivities } = require("./meetingService");
 const fileService = require("./fileService");
+const Meetings = require("../models/meetingModel");
 const ObjectId = require("mongoose").Types.ObjectId;
 //FUNCTION TO ACCEPT OR REJECT MINUTES
 const acceptRejectMinutes = async (data, userId) => {
@@ -85,7 +88,7 @@ const createMinutes = async (data, userId) => {
 };
 
 //FUNCTION TO DOWNLOAD MINUTES
-const downLoadMinutes = async (meetingId) => {
+const downLoadMinutes1 = async (meetingId) => {
   const minutesData = await Minutes.aggregate([
     {
       $match: {
@@ -172,7 +175,7 @@ const downLoadMinutes = async (meetingId) => {
           email: 1,
           _id: 1,
           name: 1,
-          status:1
+          status: 1,
         },
         amendmentDetail: {
           name: 1,
@@ -215,14 +218,16 @@ const downLoadMinutes = async (meetingId) => {
   let pendingUsers = [];
   let rejectedBy = [];
   let acceptedBy = [];
-  const newData = minutesData.map((item,index) => {
+  const newData = minutesData.map((item, index) => {
     console.log("attendeesDetails---------------", item.attendeesDetails);
     item.attendeesDetails.map((attendee) => {
-      console.log('item.attendees--------',item.attendees)
-      console.log('attendees--------',attendee)
-      const currentAttendee=item.attendees.find((i)=>i.id.toString()==attendee._id);
+      console.log("item.attendees--------", item.attendees);
+      console.log("attendees--------", attendee);
+      const currentAttendee = item.attendees.find(
+        (i) => i.id.toString() == attendee._id
+      );
 
-      console.log('currentAttendee--------',currentAttendee)
+      console.log("currentAttendee--------", currentAttendee);
       if (currentAttendee.status == "ACCEPTED") {
         acceptedBy.push(attendee.name);
       }
@@ -232,18 +237,144 @@ const downLoadMinutes = async (meetingId) => {
       if (currentAttendee.status == "PENDING") {
         pendingUsers.push(attendee.name);
       }
-      const actionData={
-        pendingUsers,rejectedBy,acceptedBy
-
-      }
-      console.log('actionData---------------',actionData)
-      minutesData[index]["actionData"]=actionData
+      const actionData = {
+        pendingUsers,
+        rejectedBy,
+        acceptedBy,
+      };
+      console.log("actionData---------------", actionData);
+      minutesData[index]["actionData"] = actionData;
       return item;
     });
   });
-  console.log(rejectedBy)
-  console.log("newData--------------------",minutesData[0].actionData)
+  console.log(rejectedBy);
+  console.log("newData--------------------", minutesData[0].actionData);
   return await fileService.generatePdf(minutesData);
+};
+
+//FUNCTION TO DOWNLOAD MINUTES
+const downLoadMinutes = async (meetingId) => {
+  console.log("meetingId", meetingId);
+  const pipeLine = [
+    {
+      $match: {
+        meetingId: new ObjectId(meetingId),
+        //   isActive: true,
+      },
+    },
+    {
+      $lookup: {
+        from: "meetings",
+        localField: "meetingId",
+        foreignField: "_id",
+        as: "meetingDetail",
+      },
+    },
+
+    {
+      $unwind: {
+        path: "$meetingDetail",
+      },
+    },
+
+    {
+      $lookup: {
+        from: "minutes",
+        localField: "_id",
+        foreignField: "agendaId",
+        as: "minutesDetail",
+      },
+    },
+    {
+      $lookup: {
+        from: "employees",
+        localField:  "meetingDetail.attendees.id",
+        foreignField: "_id",
+        as: "attendeesDetails",
+      },
+    },
+    {
+      $project: {
+        _id: 1,
+        title: 1,
+        timeLine: 1,
+        topic: 1,
+        meetingDetail: {
+          title: 1,
+          _id: 1,
+          link:1,
+          attendees: 1,
+          title: 1,
+          mode: 1,
+          link: 1,
+          date: 1,
+          fromTime: 1,
+          toTime: 1,
+          locationDetails: 1,
+        },
+        minutesDetail: {
+          _id: 1,
+          description: 1,
+          isAction: 1,
+          assignedUserId: 1,
+          reassignedUserId: 1,
+          dueDate: 1,
+          isComplete: 1,
+          priority: 1,
+          amendmentDetails: 1,
+          attendees: 1,
+          createdById: 1,
+        },
+        attendeesDetails: {
+          // email: 1,
+          // _id: 1,
+          name: 1,
+        },
+        // locationDetails: {
+        //   location: 1,
+        // },
+      },
+    },
+    // { $unwind: "$locationDetails" },
+  ];
+  const meetingData = await Agenda.aggregate(pipeLine).limit(1);
+console.log("meetingData-------------",meetingData)
+  if (meetingData.length !== 0) {
+    if (meetingData[0].meetingDetail.locationDetails.roomId) {
+      console.log(
+        "meetingData[0]--------------",
+        meetingData[0].meetingDetail.locationDetails.roomId
+      );
+      const roomId =
+        meetingData[0].meetingDetail.locationDetails.roomId.toString();
+      console.log("roomId", roomId);
+      var roomsData = await Rooms.findById(roomId, {
+        _id: 1,
+        title: 1,
+        location: 1,
+      });
+      console.log("roomsData-----------", roomsData);
+    }
+    const meetingDataObject = {
+      agendaDetails: [],
+    };
+    meetingData.map((item) => {
+      if (!meetingDataObject.meetingDetail) {
+        meetingDataObject.meetingDetail = item.meetingDetail;
+      }
+      delete item.meetingDetail;
+      meetingDataObject.agendaDetails.push(item);
+      meetingDataObject.meetingDetail.attendeesDetails=item.attendeesDetails
+    });
+    meetingDataObject.meetingDetail.location = roomsData
+      ? roomsData.location
+      : meetingDataObject.meetingDetail.locationDetails.location;
+    console.log("meetingDataObject---------------------", meetingDataObject);
+    return await fileService.generatePdf(meetingDataObject);
+    // return meetingDataObject;
+  }
+
+  return false;
 };
 
 module.exports = {
