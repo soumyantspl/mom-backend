@@ -8,12 +8,14 @@ const agendaController = require("../controllers/agendaController");
 /* CREATE MEETING  */
 router.post(
   "/createMeeting",
+  authMiddleware.verifyUserToken,
   validator.createMeetingValidator,
   meetingController.createMeeting
 );
 router.put("/updateRsvp", meetingController.updateRsvp);
 router.put(
   "/cancelMeeting",
+  authMiddleware.verifyUserToken,
   validator.cancelMeetingValidator,
   meetingController.cancelMeeting
 );
@@ -21,6 +23,7 @@ router.put(
 /* UPDATE MEETING  */
 router.put(
   "/updateMeeting/:id",
+  authMiddleware.verifyUserToken,
   validator.updateMeetingValidator,
   meetingController.updateMeeting
 );
@@ -28,6 +31,7 @@ router.put(
 /* VIEW SINGLE MEETING  */
 router.get(
   "/viewMeeting/:id",
+  authMiddleware.verifyUserToken,
   validator.viewMeetingValidator,
   meetingController.viewMeeting
 );
@@ -35,12 +39,14 @@ router.get(
 /* VIEW ALL MEETINGS  */
 router.get(
   "/viewAllMeetings",
+  authMiddleware.verifyUserToken,
   validator.viewAllMeetingsValidator,
   meetingController.viewAllMeetings
 );
 
 router.get(
   "/listAttendeesFromPreviousMeeting",
+  authMiddleware.verifyUserToken,
   validator.listAttendeesFromPreviousMeetingValidator,
   meetingController.listAttendeesFromPreviousMeeting
 );
@@ -48,6 +54,7 @@ router.get(
 /* VIEW SINGLE MEETING ALL AGENDA WITH MINUTES  */
 router.get(
   "/viewMeetingAgendaWithMinutes/:id",
+  authMiddleware.verifyUserToken,
   validator.viewMeetingValidator,
   agendaController.viewAgendas
 );
@@ -55,6 +62,7 @@ router.get(
 /* VIEW MEETING ACTIVITIES LIST   */
 router.get(
   "/viewMeetingActivities/:id",
+  authMiddleware.verifyUserToken,
   validator.meetingActivitieslist,
   meetingController.viewMeetingActivities
 );

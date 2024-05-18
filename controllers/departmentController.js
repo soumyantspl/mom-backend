@@ -53,7 +53,7 @@ const editDepartmentController = async (req, res) => {
 
 const deleteDepartmentController = async (req, res) => {
   try {
-    const id = req.body.id;
+    const id = req.body.organizationId;
     console.log(id);
     const result = await departmentService.deleteDepartmentService(id);
     if (!result) {

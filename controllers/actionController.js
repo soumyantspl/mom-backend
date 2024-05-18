@@ -25,7 +25,7 @@ const actionComments = async (req, res) => {
 };
 const viewActionComment = async (req, res) => {
   try {
-    const result = await acttionService.viewActionComment(req.body);
+    const result = await actionService.viewActionComment(req.body);
     console.log(result);
     if (!result) {
       return Responses.failResponse(

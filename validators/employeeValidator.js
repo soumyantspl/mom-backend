@@ -30,11 +30,11 @@ const createEmployeeValidator = async (req, res, next) => {
   try {
     console.log(req.body);
     console.log(req.headers);
-    // const headerSchema = Joi.object({
-    //   headers: Joi.object({
-    //     authorization: Joi.required(),
-    //   }).unknown(true),
-    // });
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const bodySchema = Joi.object({
       name: Joi.string().alphanum().required(),
       email: Joi.string().email().required(),
@@ -52,7 +52,7 @@ const createEmployeeValidator = async (req, res, next) => {
         .strict(),
     });
 
-    // await headerSchema.validateAsync({ headers: req.headers });
+    await headerSchema.validateAsync({ headers: req.headers });
     await bodySchema.validateAsync(req.body);
 
     next();
@@ -69,11 +69,11 @@ const editEmployeeValidator = async (req, res, next) => {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
-    // const headerSchema = Joi.object({
-    //   headers: Joi.object({
-    //     authorization: Joi.required(),
-    //   }).unknown(true),
-    // });
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const bodySchema = Joi.object({
       name: Joi.string().alphanum(),
       email: Joi.string().email(),
@@ -93,7 +93,7 @@ const editEmployeeValidator = async (req, res, next) => {
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
-    // await headerSchema.validateAsync({ headers: req.headers });
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
 
@@ -107,11 +107,16 @@ const editEmployeeValidator = async (req, res, next) => {
 
 const deleteEmployeValidator = async (req, res, next) => {
   try {
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
-
     await paramsSchema.validateAsync(req.params);
+    await headerSchema.validateAsync({ headers: req.headers });
     next();
   } catch (error) {
     console.log(error);
@@ -124,7 +129,13 @@ const listEmployesValidator = async (req, res, next) => {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
-    const schema = Joi.object({
+
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const bodySchema = Joi.object({
       searchKey: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
@@ -140,8 +151,10 @@ const listEmployesValidator = async (req, res, next) => {
       order: Joi.number(),
     });
 
+    await headerSchema.validateAsync({ headers: req.headers });
+    await bodySchema.validateAsync(req.body);
     await paramsSchema.validateAsync(req.query);
-    await schema.validateAsync(req.body);
+
     next();
   } catch (error) {
     console.log(error);

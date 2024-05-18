@@ -1,30 +1,30 @@
 const express = require("express");
 const router = express.Router();
-const {
-  validateCreateDesignation,
-  editDesignationValidator,
-  listDesignationValidator,
-} = require("../validators/designationValidator");
-const {
-  createDesignationController,
-  editDesignationController,
-  deleteDesignationController,
-  listDesignationController,
-} = require("../controllers/designationController");
+const authMiddleware = require("../middlewares/authMiddleware");
+const designationValidator = require("../validators/designationValidator");
+const designationController = require("../controllers/designationController");
+
 router.post(
   "/createDesignation",
-  validateCreateDesignation,
-  createDesignationController
+  authMiddleware.verifyUserToken,
+  designationValidator.validateCreateDesignation,
+  designationController.createDesignationController
 );
 router.post(
   "/editDesignation",
-  editDesignationValidator,
-  editDesignationController
+  authMiddleware.verifyUserToken,
+  designationValidator.editDesignationValidator,
+  designationController.editDesignationController
 );
-router.delete("/deleteDesignation", deleteDesignationController);
+router.delete(
+  "/deleteDesignation",
+  authMiddleware.verifyUserToken,
+  designationController.deleteDesignationController
+);
 router.get(
   "/listDesignation",
-  listDesignationValidator,
-  listDesignationController
+  authMiddleware.verifyUserToken,
+  designationValidator.listDesignationValidator,
+  designationController.listDesignationController
 );
 module.exports = router;

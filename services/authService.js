@@ -29,7 +29,7 @@ const verifyOtp = async (data) => {
   const otpLogsData = await getOtpLogs(data);
   if (otpLogsData.length !== 0) {
     const userData = otpLogsData[0].userDetail;
-    const token = authMiddleware.generatUserToken({
+    const token = authMiddleware.generateUserToken({
       userId: userData._id,
       name: userData.name,
     });
@@ -104,9 +104,9 @@ const insertOtp = async (
   const otpData = new OtpLogs(data);
   await otpData.save();
   console.log("-------------------------------1", userData, data.otp);
-  const mailData = await emailTemplates.signInByOtpEmail(userData, data.otp);
-  const emailSubject=emailConstants.signInOtpsubject;
-  await emailService.sendEmail(userData.email,emailType,emailSubject,mailData);
+  // const mailData = await emailTemplates.signInByOtpEmail(userData, data.otp);
+  // const emailSubject=emailConstants.signInOtpsubject;
+  // await emailService.sendEmail(userData.email,emailType,emailSubject,mailData);
   return data.otp;
 };
 

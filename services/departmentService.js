@@ -27,7 +27,11 @@ const existingDepartmentService = async (organizationId) => {
 };
 
 const deleteDepartmentService = async (id) => {
-  const deletedDepartment = await Department.findByIdAndDelete(id);
+  const deletedDepartment = await Department.findByIdAndUpdate(
+    { _id: id },
+    { isActive: false },
+    { new: true }
+  );
   return deletedDepartment;
 };
 const listDepartmentService = async (bodyData, queryData) => {
@@ -36,7 +40,7 @@ const listDepartmentService = async (bodyData, queryData) => {
   let query = searchKey
     ? {
         organizationId,
-        name: {$regex: searchKey, $options: 'i'},
+        name: { $regex: searchKey, $options: "i" },
         isActive: true,
       }
     : {

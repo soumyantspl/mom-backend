@@ -1,41 +1,36 @@
 const express = require("express");
 const router = express.Router();
-const {
-  createDepartmentController,
-  editDepartmentController,
-  deleteDepartmentController,
-  listDepartmentController,
-} = require("../controllers/departmentController");
-const {
-  createDepartmentValidator,
-  editDepartmentValidator,
-  deleteDepartmentValidator,
-  listDepartmentValidator,
-} = require("../validators/departmentValidator");
+const authMiddleware = require("../middlewares/authMiddleware");
+const departmentController = require("../controllers/departmentController");
+const departmentValidator = require("../validators/departmentValidator");
 
 //CREATING DEPARTMENT USING ORGANIZATION_ID
 router.post(
   "/createDepartment",
-  createDepartmentValidator,
-  createDepartmentController
+  authMiddleware.verifyUserToken,
+  departmentValidator.createDepartmentValidator,
+  departmentController.createDepartmentController
 );
 //EDIT  DEPARTMENT USING ORGANIZATION_ID
 router.post(
   "/editDepartment",
-  editDepartmentValidator,
-  editDepartmentController
+  authMiddleware.verifyUserToken,
+  departmentValidator.editDepartmentValidator,
+  departmentController.editDepartmentController
 );
 //DELETE DEPARTMEMNT
 router.delete(
   "/deleteDepartment",
-  deleteDepartmentValidator,
-  deleteDepartmentController
+  authMiddleware.verifyUserToken,
+  departmentValidator.deleteDepartmentValidator,
+  departmentController.deleteDepartmentController
 );
-
+//LIST DEPARTMENT
 router.get(
   "/listDepartment",
-  listDepartmentValidator,
-  listDepartmentController
+  authMiddleware.verifyUserToken,
+  departmentValidator.listDepartmentValidator,
+  departmentController.listDepartmentController
 );
 
 module.exports = router;

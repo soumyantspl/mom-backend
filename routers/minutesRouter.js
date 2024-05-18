@@ -7,12 +7,14 @@ const authMiddleware = require("../middlewares/authMiddleware");
 /* MEETING ACCEPTANCE  */
 router.put(
   "/acceptOrRejectMinutes",
+  authMiddleware.verifyUserToken,
   validator.acceptOrRejectMinutesValidator,
   minutesController.acceptRejectMinutes
 );
 /*CREATE  MEETING */
 router.post(
   "/createMinutes",
+  authMiddleware.verifyUserToken,
   validator.createMinutesValidator,
   minutesController.createMinutes
 );
