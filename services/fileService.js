@@ -12,7 +12,7 @@ const fs = require("fs");
 const { ObjectId } = require("mongodb");
 
 const printer = new pdfmake(fonts);
-const generatePdf = (minutesData) => {
+const generateMinutesPdf = (minutesData) => {
   console.log(
     "minutesData-------------------22222222",
     minutesData.agendaDetails[0]
@@ -23,6 +23,33 @@ const generatePdf = (minutesData) => {
 
     let docDefinition = {
       content: [
+        {
+          fontSize: 16,
+          table: {
+            widths: ["20%", "60%","20%"],
+            body: [
+              [
+                {
+                  text: "",
+                  border: [false, false, false, true],
+                  margin: [-5, 0, 0, 10],
+                },
+                {
+                  text: "Minutes Details",
+                  alignment: "center",
+                  border: [false, false, false, true],
+                  margin: [0, 0, 0, 10],
+                },
+                {
+                  text: "",
+                  alignment: "right",
+                  border: [false, false, false, true],
+                  margin: [0, 0, 0, 10],
+                },
+              ],
+            ],
+          },
+        },
         {
           fontSize: 11,
           table: {
@@ -95,7 +122,7 @@ const generatePdf = (minutesData) => {
                 },
               ],
               [
-                { text: "Attendees", margin: [0, 10, 0, 0] },
+                { text: "Attendees", margin: [0, 10, 0, 0],  border: [false, false, false, true], },
                 {
                   text: minutesData.meetingDetail.attendeesDetails
                     .map((item) => {
@@ -104,6 +131,7 @@ const generatePdf = (minutesData) => {
                     .join(),
                   alignment: "left",
                   margin: [0, 10, 0, 0],
+                  border: [false, false, false, true]
                 },
               ],
               ["", ""],
@@ -128,7 +156,7 @@ const generatePdf = (minutesData) => {
       },
     };
 
-    minutesData.agendaDetails.map((item) => {
+    minutesData.agendaDetails.map((item,agendaIndex) => {
       console.log("item-----------------", item);
 
       const agendaHeader = {
@@ -147,6 +175,19 @@ const generatePdf = (minutesData) => {
                 alignment: "right",
                 border: [false, false, false, true],
                 margin: [0, 0, 0, 10],
+              },
+            ],
+            [
+              {
+                text: `Agenda ${agendaIndex + 1} :`,
+                border: [false, false, false, false],
+                margin: [-5, 0, 0, 10],
+              },
+              {
+                text: "",
+                alignment: "left",
+                border: [false, false, false, false],
+                margin: [0, 10, 0, 0],
               },
             ],
           ],
@@ -313,28 +354,49 @@ const generatePdf = (minutesData) => {
                 ],
                 [
                   {
+                    text: "",
+                    margin: [0, 10, 0, 0],
+                    border: [false, false, false, false],
+                  },
+
+                  {
+                    text:`Accepted By ${minuteItem.actionData.acceptedBy.length}/${minutesData.meetingDetail.attendeesDetails.length}  attendants`,
+                    alignment: "left",
+                    margin: [0, 10, 0, 0],
+                    border: [false, false, false, false],
+                  },
+                  
+                ],
+                [
+                  {
                     text: " Rejected By",
                     margin: [0, 10, 0, 0],
-                    border: [false, false, false, true],
+                    border: [false, false, false, false],
                   },
 
                   {
                     text:minuteItem.actionData.rejectedBy.join(" , "),
                     alignment: "left",
                     margin: [0, 10, 0, 0],
+                    border: [false, false, false, false],
+                  },
+                  
+                ],
+                [
+                  {
+                    text: "",
+                    margin: [0, 10, 0, 0],
                     border: [false, false, false, true],
                   },
+
+                  {
+                    text:`Rejected By ${minuteItem.actionData.rejectedBy.length}/${minutesData.meetingDetail.attendeesDetails.length}  attendants`,
+                    alignment: "left",
+                    margin: [0, 10, 0, 0],
+                    border: [false, false, false, true],
+                  },
+                  
                 ],
-                
-                
-               
-                //  [{text:'Link',margin:[0,10,0,0]},{text:minutesData.meetingDetail.link, alignment:'left',margin:[0,10,0,0]}],
-                //  [{text:'Date & Time',margin:[0,10,0,0]},{text:`${new Date(minutesData.meetingDetail.date).toLocaleDateString()},${minutesData.meetingDetail.fromTime} to ${minutesData.meetingDetail.toTime}`, alignment:'left',margin:[0,10,0,0]}],
-                //  [{text:'Attendees',margin:[0,10,0,0]},{text:minutesData.meetingDetail.attendeesDetails.map((item)=>{return item.name}).join(), alignment:'left',margin:[0,10,0,0]}],
-                // ["", ""],
-                // ["", ""],
-                // ["", ""],
-                // ["", ""],
               ],
             },
           };
@@ -409,5 +471,5 @@ const generatePdf = (minutesData) => {
 //   })
 //   .flat(),
 module.exports = {
-  generatePdf,
+  generateMinutesPdf,
 };

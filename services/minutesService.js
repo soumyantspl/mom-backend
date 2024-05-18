@@ -524,7 +524,7 @@ const downLoadMinutes = async (meetingId) => {
 
 
 
-    return await fileService.generatePdf(meetingDataObject);
+    return await fileService.generateMinutesPdf(meetingDataObject);
     // return meetingDataObject;
   }
 
