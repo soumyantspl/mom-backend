@@ -288,11 +288,35 @@ const downLoadMinutes = async (meetingId) => {
     {
       $lookup: {
         from: "employees",
-        localField:  "meetingDetail.attendees.id",
+        localField: "meetingDetail.attendees.id",
         foreignField: "_id",
         as: "attendeesDetails",
       },
     },
+    {
+      $lookup: {
+        from: "employees",
+        localField: "minutesDetail.assignedUserId",
+        foreignField: "_id",
+        as: "assignedUserDetail",
+      },
+    },
+    {
+      $lookup: {
+        from: "employees",
+        localField: "minutesDetail.reassignedUserId",
+        foreignField: "_id",
+        as: "reAssignedUserDetail",
+      },
+    },
+    // {
+    //   $lookup: {
+    //     from: "employees",
+    //     localField: "createdById",
+    //     foreignField: "_id",
+    //     as: "createdByDetails",
+    //   },
+    // },
     {
       $project: {
         _id: 1,
@@ -302,7 +326,7 @@ const downLoadMinutes = async (meetingId) => {
         meetingDetail: {
           title: 1,
           _id: 1,
-          link:1,
+          link: 1,
           attendees: 1,
           title: 1,
           mode: 1,
@@ -327,18 +351,29 @@ const downLoadMinutes = async (meetingId) => {
         },
         attendeesDetails: {
           // email: 1,
-          // _id: 1,
+           _id: 1,
+          name: 1,
+          status: 1,
+        },
+        assignedUserDetail: {
+          _id: 1,
           name: 1,
         },
+        reAssignedUserDetail: {
+          _id: 1,
+          name: 1,
+        },
+        
         // locationDetails: {
         //   location: 1,
         // },
       },
     },
-    // { $unwind: "$locationDetails" },
+    //  { $unwind: "$assignedUserDetail" },
   ];
   const meetingData = await Agenda.aggregate(pipeLine).limit(1);
-console.log("meetingData-------------",meetingData)
+  console.log("meetingData-------------", meetingData[0]);
+  
   if (meetingData.length !== 0) {
     if (meetingData[0].meetingDetail.locationDetails.roomId) {
       console.log(
@@ -364,12 +399,131 @@ console.log("meetingData-------------",meetingData)
       }
       delete item.meetingDetail;
       meetingDataObject.agendaDetails.push(item);
-      meetingDataObject.meetingDetail.attendeesDetails=item.attendeesDetails
+      meetingDataObject.meetingDetail.attendeesDetails = item.attendeesDetails;
+
+      item.minute;
     });
     meetingDataObject.meetingDetail.location = roomsData
       ? roomsData.location
       : meetingDataObject.meetingDetail.locationDetails.location;
     console.log("meetingDataObject---------------------", meetingDataObject);
+
+    meetingDataObject.agendaDetails.map((item) => {
+      item.minutesDetail.map((minutesItem) => {
+        const assignedUserDetails = item.assignedUserDetail.find(
+          (i) => i._id.toString() == minutesItem.assignedUserId
+        );
+
+        const reAssignedUserDetails = item.reAssignedUserDetail.find(
+          (i) => i._id.toString() == minutesItem.reassignedUserId
+        );
+
+        
+        console.log("assignedUserDetails--------", assignedUserDetails);
+        console.log("reAssignedUserDetails--------", reAssignedUserDetails);
+        minutesItem.reassignedUserName = reAssignedUserDetails?.name
+       
+        minutesItem.assignedUserName = assignedUserDetails?.name;
+
+        return minutesItem;
+       
+      });
+    });
+
+    // const newData = minutesData.map((item, index) => {
+    //   console.log("attendeesDetails---------------", item.attendeesDetails);
+    //   item.attendeesDetails.map((attendee) => {
+    //     console.log("item.attendees--------", item.attendees);
+    //     console.log("attendees--------", attendee);
+    //     const currentAttendee = item.attendees.find(
+    //       (i) => i.id.toString() == attendee._id
+    //     );
+
+    //     console.log("currentAttendee--------", currentAttendee);
+    //     if (currentAttendee.status == "ACCEPTED") {
+    //       acceptedBy.push(attendee.name);
+    //     }
+    //     if (currentAttendee.status == "REJECTED") {
+    //       rejectedBy.push(attendee.name);
+    //     }
+    //     if (currentAttendee.status == "PENDING") {
+    //       pendingUsers.push(attendee.name);
+    //     }
+    //     const actionData = {
+    //       pendingUsers,
+    //       rejectedBy,
+    //       acceptedBy,
+    //     };
+    //     console.log("actionData---------------", actionData);
+    //     minutesData[index]["actionData"] = actionData;
+    //     return item;
+    //   });
+    // });
+
+
+
+    meetingDataObject.agendaDetails.map((mainItem)=>{
+
+      console.log('--------7777777777777777777777---------',mainItem)
+      mainItem.minutesDetail.map((minuteItem)=>{
+        console.log('--------88888888888888---------',minuteItem)
+
+
+        let pendingUsers = [];
+        let rejectedBy = [];
+        let acceptedBy = [];
+      //  minuteItem.attendees?.map((attendeeItem)=>{
+
+  // console.log('--------attendeeItem---------',attendeeItem)
+          
+
+
+
+          // const currentAttendee = meetingDataObject.meetingDetail.attendeesDetails?.find(
+          //   (i) => i._id.toString() == attendeeItem.id.toString()
+          // );
+
+        
+          meetingDataObject.meetingDetail.attendeesDetails.map((attendeeItem)=>{
+         
+            const currentAttendee =  minuteItem.attendees?.find(
+              (i) => i.id.toString() == attendeeItem._id.toString()
+            );
+          
+
+                 console.log("currentAttendee--------", currentAttendee);
+        if (currentAttendee?.status == "ACCEPTED") {
+          acceptedBy.push(attendeeItem.name);
+        }
+        if (currentAttendee?.status == "REJECTED") {
+          rejectedBy.push(attendeeItem.name);
+        }
+        if (currentAttendee?.status == "PENDING") {
+          pendingUsers.push(attendeeItem.name);
+        }
+        const actionData = {
+          pendingUsers,
+          rejectedBy,
+          acceptedBy,
+        };
+        console.log("actionData---------------", actionData);
+        minuteItem["actionData"] = actionData;
+        return minuteItem;
+          
+        //   console.log('--------attendeeItem---------',attendeeItem)
+        //   console.log("meetingData-----------4444444",meetingDataObject.meetingDetail.attendeesDetails)
+        //   const currentAttendee = meetingDataObject.meetingDetail.attendeesDetails       attendeeItem.find(
+        //           (i) => i._id.toString() == attendeeItem.id.toString()
+        //         );
+        //         console.log('--------99999999999999---------',currentAttendee)
+        })
+
+      })
+      })
+      console.log('meetingDataObject.agendaDetails--------------------------------------@@@@@@@',meetingDataObject.agendaDetails[0].minutesDetail)
+
+
+
     return await fileService.generatePdf(meetingDataObject);
     // return meetingDataObject;
   }
