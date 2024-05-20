@@ -7,8 +7,8 @@ const authMiddleware = require("../middlewares/authMiddleware");
 /* VIEW LOG LIST  */
 router.get(
   "/viewLogs",
-  authMiddleware.verifyUserToken,
   validator.viewLogsValidator,
+  authMiddleware.verifyUserToken,
   logController.viewLogs
 );
 

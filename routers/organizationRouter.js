@@ -12,15 +12,15 @@ router.post(
 //VIEWING LIST OF ORGANIZATION
 router.get(
   "/viewOrganization",
-  authMiddleware.verifyUserToken,
   organizationValidator.viewOrganizationValidator,
+  authMiddleware.verifyUserToken,
   organzationController.viewOrganizationController
 );
 //EDDITING ORGANIZATION
 router.post(
   "/editOrganization",
-  authMiddleware.verifyUserToken,
   organizationValidator.editOrganizationValidator,
+  authMiddleware.verifyUserToken,
   organzationController.editOrganizationController
 );
 module.exports = router;

@@ -7,29 +7,29 @@ const departmentValidator = require("../validators/departmentValidator");
 //CREATING DEPARTMENT USING ORGANIZATION_ID
 router.post(
   "/createDepartment",
-  authMiddleware.verifyUserToken,
   departmentValidator.createDepartmentValidator,
+  authMiddleware.verifyUserToken,
   departmentController.createDepartmentController
 );
 //EDIT  DEPARTMENT USING ORGANIZATION_ID
 router.post(
   "/editDepartment",
-  authMiddleware.verifyUserToken,
   departmentValidator.editDepartmentValidator,
+  authMiddleware.verifyUserToken,
   departmentController.editDepartmentController
 );
 //DELETE DEPARTMEMNT
 router.delete(
   "/deleteDepartment/:id",
-  authMiddleware.verifyUserToken,
   departmentValidator.deleteDepartmentValidator,
+  authMiddleware.verifyUserToken,
   departmentController.deleteDepartmentController
 );
 //LIST DEPARTMENT
 router.get(
   "/listDepartment",
-  authMiddleware.verifyUserToken,
   departmentValidator.listDepartmentValidator,
+  authMiddleware.verifyUserToken,
   departmentController.listDepartmentController
 );
 

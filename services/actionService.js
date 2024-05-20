@@ -21,7 +21,7 @@ const comments = async (data) => {
 
 /**FUNC-VIEW ACTION COMMENT */
 const viewActionComment = async (id) => {
-  const viewActionCommentList = await ActionComments.find(data);
+  const viewActionCommentList = await ActionComments.findById(id);
   return {
     viewActionCommentList,
   };

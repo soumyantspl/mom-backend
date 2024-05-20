@@ -37,6 +37,7 @@ router.get(
 /* VIEW ACTION COMMENT  */
 router.get(
   "/viewActionComment",
+  actionValidator.viewActionCommentValidator,
   authMiddleware.verifyUserToken,
   actionController.viewActionComment
 );

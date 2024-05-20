@@ -1,19 +1,26 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
 const { errorLog } = require("../middlewares/errorLog");
-exports.createDesignationSchema = Joi.object({
-  name: Joi.string().alphanum().min(3).max(30).required(),
-  organizationId: Joi.string().required(),
-});
 
-exports.validateCreateDesignation = (req, res, next) => {
-  const { error } = createDesignationSchema.validate(req.body);
-  if (error) {
+exports.validateCreateDesignation = async (req, res, next) => {
+  try {
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const bodySchema = Joi.object({
+      name: Joi.string().alphanum().min(3).max(30).required(),
+      organizationId: Joi.string().required(),
+    });
+    await headerSchema.validateAsync({ headers: req.headers });
+    await bodySchema.validateAsync(req.body);
+    next();
+  } catch (error) {
     console.log(error);
     errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
-  next();
 };
 
 exports.editDesignationValidator = async (req, res, next) => {

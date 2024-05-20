@@ -7,37 +7,37 @@ const authMiddleware = require("../middlewares/authMiddleware");
 /* CREATE EMPLOYEE  */
 router.post(
   "/createEmployee",
-  authMiddleware.verifyUserToken,
   validator.createEmployeeValidator,
+  authMiddleware.verifyUserToken,
   employeeController.createEmployee
 );
 
 /* EDIT EMPLOYEE  */
 router.put(
   "/editEmployee/:id",
-  authMiddleware.verifyUserToken,
   validator.editEmployeeValidator,
+  authMiddleware.verifyUserToken,
   employeeController.editEmployee
 );
 /* DELETE EMPLOYEE  */
 router.delete(
   "/deleteEmployee/:id",
-  authMiddleware.verifyUserToken,
   validator.deleteEmployeValidator,
+  authMiddleware.verifyUserToken,
   employeeController.deleteEmploye
 );
 /* VIEW EMPLOYEE  */
 router.get(
   "/listEmployee",
-  authMiddleware.verifyUserToken,
   validator.listEmployesValidator,
+  authMiddleware.verifyUserToken,
   employeeController.listEmployee
 );
 /* VIEW SINGLE EMPLOYEE  */
 router.get(
   "/viewSingleEmployee/:id",
-  authMiddleware.verifyUserToken,
   validator.viewSingleEmployeeValidator,
+  authMiddleware.verifyUserToken,
   employeeController.viewSingleEmploye
 );
 
