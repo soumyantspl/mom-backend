@@ -51,7 +51,32 @@ const createMinutes = async (req, res) => {
   }
 };
 
+
+const downloadMinutes = async (req, res) => {
+  try {
+    const result = await minutesService.downLoadMinutes(req.params.meetingId);
+    console.log(result);
+    if (!result) {
+      return Responses.failResponse(req, res, null, messages.recordsNotFound, 409);
+    }
+    return Responses.successDownloadResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+   
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+
+
 module.exports = {
   acceptRejectMinutes,
-  createMinutes,
+  createMinutes,downloadMinutes
 };

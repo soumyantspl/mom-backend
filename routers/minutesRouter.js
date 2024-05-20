@@ -4,17 +4,26 @@ const minutesController = require("../controllers/minutesController");
 const validator = require("../validators/minutesValidator");
 const authMiddleware = require("../middlewares/authMiddleware");
 
-/* MEETING ACCEPTANCE  */
+/* MEETING MINUTE  */
 router.put(
   "/acceptOrRejectMinutes",
   validator.acceptOrRejectMinutesValidator,
   minutesController.acceptRejectMinutes
 );
-/*CREATE  MEETING */
+/*CREATE MINUTE */
 router.post(
   "/createMinutes",
   validator.createMinutesValidator,
   minutesController.createMinutes
+);
+
+
+
+/*DOWNLOAD MINUTE */
+router.get(
+  "/downloadMinutes/:meetingId",
+  validator.downloadMinutesValidator,
+  minutesController.downloadMinutes
 );
 
 module.exports = router;
