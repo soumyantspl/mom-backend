@@ -7,32 +7,34 @@ const authMiddleware = require("../middlewares/authMiddleware");
 /* CREATE ROLE */
 router.post(
   "/createRole",
-  authMiddleware.verifyUserToken,
   validator.createRoleValidator,
+  authMiddleware.verifyUserToken,
   roleController.createRole
 );
 
 /* EDIT ROLE  */
 router.put(
   "/updateRole/:id",
-  authMiddleware.verifyUserToken,
   validator.updateRoleValidator,
+  authMiddleware.verifyUserToken,
   roleController.editRole
 );
 
 /* VIEW ROLE  */
 router.get(
   "/viewRole",
-  authMiddleware.verifyUserToken,
+  
   validator.viewRoleValidator,
+  authMiddleware.verifyUserToken,
   roleController.viewRole
 );
 
 /* DELETE ROLE  */
 router.delete(
   "/deleteRole/:id",
-  authMiddleware.verifyUserToken,
+
   validator.deleteRoleValidator,
+  authMiddleware.verifyUserToken,
   roleController.deleteRole
 );
 module.exports = router;

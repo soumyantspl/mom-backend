@@ -4,6 +4,7 @@ const actionValidator = require("../validators/actionValidator");
 const authMiddleware = require("../middlewares/authMiddleware");
 const actionController = require("../controllers/actionController");
 
+/* ACTION COMMENT  */
 router.post(
   "/actionComment",
   actionValidator.actionCommentsValidator,

@@ -7,29 +7,29 @@ const authMiddleware = require("../middlewares/authMiddleware");
 // CREATE UNIT
 router.post(
   "/createUnit",
-  authMiddleware.verifyUserToken,
   unitValidator.createUnitValidator,
+  authMiddleware.verifyUserToken,
   unitController.createUnit
 );
 //EDIT UNIT
 router.put(
   "/editUnit/:id",
-  authMiddleware.verifyUserToken,
   unitValidator.editUnitValidator,
+  authMiddleware.verifyUserToken,
   unitController.editUnit
 );
 //DELETE UNIT
 router.delete(
   "/deleteUnit/:id",
-  authMiddleware.verifyUserToken,
   unitValidator.deleteUnitValidator,
+  authMiddleware.verifyUserToken,
   unitController.deleteUnit
 );
 //LIST UNIT API
 router.get(
   "/listUnit",
-  authMiddleware.verifyUserToken,
   unitValidator.listUnitValidator,
+  authMiddleware.verifyUserToken,
   unitController.listUnit
 );
 module.exports = router;

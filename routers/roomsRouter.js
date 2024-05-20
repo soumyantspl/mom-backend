@@ -7,32 +7,32 @@ const authMiddleware = require("../middlewares/authMiddleware");
 /* CREATE ROOM  */
 router.post(
   "/createRoom",
-  authMiddleware.verifyUserToken,
   validator.createRoomValidator,
+  authMiddleware.verifyUserToken,
   roomController.createRoom
 );
 
 /* EDIT ROOM  */
 router.put(
   "/editRoom/:id",
-  authMiddleware.verifyUserToken,
   validator.editRoomValidator,
+  authMiddleware.verifyUserToken,
   roomController.editRoom
 );
 
 /* VIEW ROOMS  */
 router.get(
   "/viewRooms",
-  authMiddleware.verifyUserToken,
   validator.viewRoomValidator,
+  authMiddleware.verifyUserToken,
   roomController.viewRooms
 );
 
 /* DELETE ROOMS  */
 router.delete(
   "/deleteRoom/:id",
-  authMiddleware.verifyUserToken,
   validator.deleteRoomValidator,
+  authMiddleware.verifyUserToken,
   roomController.deleteRoom
 );
 
