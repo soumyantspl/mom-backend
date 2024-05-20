@@ -29,7 +29,6 @@ router.put(
 /* UPDATE MEETING  */
 router.put(
   "/updateMeeting/:id",
-
   meetingValidator.updateMeetingValidator,
   authMiddleware.verifyUserToken,
   meetingController.updateMeeting
