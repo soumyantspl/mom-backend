@@ -51,7 +51,7 @@ exports.deleteDepartmentValidator = async (req, res, next) => {
       }).unknown(true),
     });
     const bosySchema = Joi.object({
-      organizationId: Joi.string(),
+      id: Joi.string(),
     });
     await bosySchema.validateAsync(req.body);
     await headerSchema.validateAsync({ headers: req.headers });

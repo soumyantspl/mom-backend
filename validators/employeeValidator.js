@@ -25,7 +25,7 @@ const viewEmployeeValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-// SEND CREATE EMPLOYEE VALIDATOR
+//CREATE EMPLOYEE VALIDATOR
 const createEmployeeValidator = async (req, res, next) => {
   try {
     console.log(req.body);
@@ -63,7 +63,7 @@ const createEmployeeValidator = async (req, res, next) => {
   }
 };
 
-// SEND EDIT EMPLOYEE VALIDATOR
+// EDIT EMPLOYEE VALIDATOR
 const editEmployeeValidator = async (req, res, next) => {
   try {
     console.log(req.body);
@@ -105,6 +105,7 @@ const editEmployeeValidator = async (req, res, next) => {
   }
 };
 
+//DELETE EMPLOYEE VALIDATOR
 const deleteEmployeValidator = async (req, res, next) => {
   try {
     const headerSchema = Joi.object({
@@ -124,6 +125,7 @@ const deleteEmployeValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+//LSIT EMPLOYEE VALIDATOR
 const listEmployesValidator = async (req, res, next) => {
   try {
     console.log(req.body);
@@ -162,15 +164,20 @@ const listEmployesValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-
+//VIEW EMPLOYEE VALIDATOR
 const viewSingleEmployeeValidator = async (req, res, next) => {
   try {
     console.log(req.body);
     console.log(req.params);
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
-
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     next();
   } catch (error) {

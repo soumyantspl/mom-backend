@@ -4,8 +4,12 @@ const { errorLog } = require("../middlewares/errorLog");
 // CREATE ROOM VALIDATOR
 const createRoomValidator = async (req, res, next) => {
   try {
-    console.log(req.body);
-    const schema = Joi.object({
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const bodyschema = Joi.object({
       title: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
@@ -22,8 +26,8 @@ const createRoomValidator = async (req, res, next) => {
         .strict(),
       organizationId: Joi.string().trim().alphanum().required(),
     });
-
-    await schema.validateAsync(req.body);
+    await headerSchema.validateAsync({ headers: req.headers });
+    await bodyschema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
@@ -38,6 +42,11 @@ const editRoomValidator = async (req, res, next) => {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const bodySchema = Joi.object({
       title: Joi.string()
         .trim()
@@ -58,7 +67,7 @@ const editRoomValidator = async (req, res, next) => {
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
-
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
     next();
@@ -75,14 +84,18 @@ const viewRoomValidator = async (req, res, next) => {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
-    const schema = Joi.object({
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const bodyschema = Joi.object({
       searchKey: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
-
       organizationId: Joi.string().trim().alphanum().required(),
     });
     const paramsSchema = Joi.object({
@@ -90,9 +103,9 @@ const viewRoomValidator = async (req, res, next) => {
       page: Joi.number().required(),
       order: Joi.number().required(),
     });
-
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.query);
-    await schema.validateAsync(req.body);
+    await bodyschema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
@@ -107,10 +120,15 @@ const deleteRoomValidator = async (req, res, next) => {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
-
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     next();
   } catch (error) {

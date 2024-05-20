@@ -1,6 +1,7 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
 const { errorLog } = require("../middlewares/errorLog");
+
 // CREATE MEETING VALIDATOR
 const createMeetingValidator = async (req, res, next) => {
   try {
@@ -233,6 +234,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+
 // UPDATE USER RSVP FOR MEETING VALIDATOR
 const updateRsvpValidator = async (req, res, next) => {
   try {

@@ -4,15 +4,21 @@ const { errorLog } = require("../middlewares/errorLog");
 
 const acceptOrRejectMinutesValidator = async (req, res, next) => {
   try {
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const enumValues = ["ACCEPTED", "REJECT", "PENDING"];
-    const schema = Joi.object({
+    const bodySchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
       meetingId: Joi.string().trim().alphanum().required(),
       status: Joi.string()
         .valid(...enumValues)
         .required(),
     }).required();
-    await schema.validateAsync(req.body);
+    await headerSchema.validateAsync({ headers: req.headers });
+    await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
@@ -23,7 +29,12 @@ const acceptOrRejectMinutesValidator = async (req, res, next) => {
 
 const createMinutesValidator = async (req, res, next) => {
   try {
-    const schema = Joi.object({
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const bodySchema = Joi.object({
       userId: Joi.string().trim().alphanum().required(),
       organisationId: Joi.string().trim().alphanum().required(),
       meetingId: Joi.string().trim().alphanum().required(),
@@ -49,7 +60,8 @@ const createMinutesValidator = async (req, res, next) => {
         otherwise: Joi.string().email(),
       }),
     }).required();
-    await schema.validateAsync(req.body);
+    await headerSchema.validateAsync({ headers: req.headers });
+    await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);

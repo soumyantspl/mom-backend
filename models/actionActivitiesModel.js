@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const ActionActivitiesSchema = new mongoose.Schema(
   {
+    activityDetails: {
+      type: String,
+    },
     activityTitle: {
       type: String,
       required: true,
@@ -11,7 +14,7 @@ const ActionActivitiesSchema = new mongoose.Schema(
     },
     userId: {
       type: mongoose.Schema.ObjectId,
-      required:   true,
+      required: true,
     },
   },
   {

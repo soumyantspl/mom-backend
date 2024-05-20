@@ -60,9 +60,15 @@ const viewConfigValidator = async (req, res, next) => {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const paramsSchema = Joi.object({
       organizationId: Joi.string().trim().alphanum().required(),
     });
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     next();
   } catch (error) {

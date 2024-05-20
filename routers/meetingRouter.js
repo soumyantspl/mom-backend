@@ -12,14 +12,15 @@ router.post(
   validator.createMeetingValidator,
   meetingController.createMeeting
 );
+/*UPDATE RSVP */
 router.put("/updateRsvp", meetingController.updateRsvp);
+/* CANCEL MEETING */
 router.put(
   "/cancelMeeting",
   authMiddleware.verifyUserToken,
   validator.cancelMeetingValidator,
   meetingController.cancelMeeting
 );
-
 /* UPDATE MEETING  */
 router.put(
   "/updateMeeting/:id",
@@ -27,7 +28,6 @@ router.put(
   validator.updateMeetingValidator,
   meetingController.updateMeeting
 );
-
 /* VIEW SINGLE MEETING  */
 router.get(
   "/viewMeeting/:id",
@@ -35,7 +35,6 @@ router.get(
   validator.viewMeetingValidator,
   meetingController.viewMeeting
 );
-
 /* VIEW ALL MEETINGS  */
 router.get(
   "/viewAllMeetings",
@@ -43,14 +42,13 @@ router.get(
   validator.viewAllMeetingsValidator,
   meetingController.viewAllMeetings
 );
-
+/* LIST ATTENDEES FROM PREVIOOUS MEETING */
 router.get(
   "/listAttendeesFromPreviousMeeting",
   authMiddleware.verifyUserToken,
   validator.listAttendeesFromPreviousMeetingValidator,
   meetingController.listAttendeesFromPreviousMeeting
 );
-
 /* VIEW SINGLE MEETING ALL AGENDA WITH MINUTES  */
 router.get(
   "/viewMeetingAgendaWithMinutes/:id",
@@ -58,7 +56,6 @@ router.get(
   validator.viewMeetingValidator,
   agendaController.viewAgendas
 );
-
 /* VIEW MEETING ACTIVITIES LIST   */
 router.get(
   "/viewMeetingActivities/:id",

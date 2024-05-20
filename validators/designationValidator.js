@@ -18,11 +18,17 @@ exports.validateCreateDesignation = (req, res, next) => {
 
 exports.editDesignationValidator = async (req, res, next) => {
   try {
-    const schema = Joi.object({
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const bodySchema = Joi.object({
       name: Joi.string().alphanum().min(3).max(30),
       id: Joi.string(),
     });
-    await schema.validateAsync(req.body);
+    await headerSchema.validateAsync({ headers: req.headers });
+    await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
@@ -33,10 +39,16 @@ exports.editDesignationValidator = async (req, res, next) => {
 
 exports.deleteDesignationValidator = async (req, res, next) => {
   try {
-    const schema = Joi.object({
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const bodySchema = Joi.object({
       id: Joi.string(),
     });
-    await schema.validateAsync(req.body);
+    await bodySchema.validateAsync(req.body);
+    await headerSchema.validateAsync({ headers: req.headers });
     next();
   } catch (error) {
     console.log(error);
@@ -50,7 +62,12 @@ exports.listDesignationValidator = async (req, res, next) => {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
-    const schema = Joi.object({
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const bodySchema = Joi.object({
       searchKey: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
@@ -67,7 +84,8 @@ exports.listDesignationValidator = async (req, res, next) => {
     });
 
     await paramsSchema.validateAsync(req.query);
-    await schema.validateAsync(req.body);
+    await headerSchema.validateAsync({ headers: req.headers });
+    await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);

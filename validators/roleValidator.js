@@ -4,6 +4,11 @@ const Responses = require("../helpers/response");
 // CREATE ROLE VALIDATOR
 const createRoleValidator = async (req, res, next) => {
   try {
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const bodySchema = Joi.object({
       name: Joi.string()
         .trim()
@@ -19,7 +24,7 @@ const createRoleValidator = async (req, res, next) => {
         edit: Joi.boolean().required(),
       }).required(),
     });
-    // await headerSchema.validateAsync({ headers: req.headers });
+    await headerSchema.validateAsync({ headers: req.headers });
     // await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
     next();
@@ -36,6 +41,11 @@ const updateRoleValidator = async (req, res, next) => {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const bodySchema = Joi.object({
       organizationId: Joi.string().trim().alphanum().required(),
       name: Joi.string()
@@ -54,7 +64,7 @@ const updateRoleValidator = async (req, res, next) => {
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
-
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
     next();
@@ -69,9 +79,15 @@ const updateRoleValidator = async (req, res, next) => {
 const viewRoleValidator = async (req, res, next) => {
   try {
     console.log(req.body);
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const bodySchema = Joi.object({
       organizationId: Joi.string().trim().alphanum().required(),
     });
+    await headerSchema.validateAsync({ headers: req.headers });
     await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {
@@ -84,10 +100,15 @@ const viewRoleValidator = async (req, res, next) => {
 // DELETE ROLE VALIDATOR
 const deleteRoleValidator = async (req, res, next) => {
   try {
-    console.log(req.params);
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     next();
   } catch (error) {

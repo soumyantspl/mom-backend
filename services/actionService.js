@@ -20,7 +20,7 @@ const comments = async (data) => {
 };
 
 /**FUNC-VIEW ACTION COMMENT */
-const viewActionComment = async (data) => {
+const viewActionComment = async (id) => {
   const viewActionCommentList = await ActionComments.find(data);
   return {
     viewActionCommentList,
@@ -158,7 +158,7 @@ const viewUserAllAction = async (bodyData, queryData, userId) => {
     actionDatas,
   };
 };
-
+/**FUNC- TO RE-ASSIGN ACTIONS */
 const reAssignAction = async (data, id) => {
   console.log(data);
   let userId = data.userId;
@@ -195,6 +195,7 @@ const reAssignAction = async (data, id) => {
   console.log("result----&&&>>>", result);
 
   const actionActivityObject = {
+    activityDetails: data.activityDetails,
     activityTitle: "Action Reassigned",
     minuteId: id,
     userId,
@@ -277,6 +278,7 @@ const updateAction = async (id, data) => {
 const createActionActivity = async (data) => {
   const inputData = {
     activityTitle: data.activityTitle,
+    activityDetails: data.activityDetails,
     minuteId: data.minuteId,
     userId: data.userId,
   };
@@ -306,4 +308,3 @@ module.exports = {
   createActionActivity,
   viewActionActivity,
 };
-

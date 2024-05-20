@@ -4,27 +4,33 @@ const authMiddleware = require("../middlewares/authMiddleware");
 const designationValidator = require("../validators/designationValidator");
 const designationController = require("../controllers/designationController");
 
+
+//FUNCTION TO CREATING DESIGNATION 
 router.post(
   "/createDesignation",
-  authMiddleware.verifyUserToken,
   designationValidator.validateCreateDesignation,
+  authMiddleware.verifyUserToken,
   designationController.createDesignationController
 );
+//FUNCTION TO EDIT DESIGNATION 
 router.post(
   "/editDesignation",
-  authMiddleware.verifyUserToken,
   designationValidator.editDesignationValidator,
+  authMiddleware.verifyUserToken,
   designationController.editDesignationController
 );
+//FUNCTION TO DELETE DESIGNATION 
 router.delete(
   "/deleteDesignation",
+  designationValidator.deleteDesignationValidator,
   authMiddleware.verifyUserToken,
   designationController.deleteDesignationController
 );
+//FUNCTION GET TO LIST DESIGNATION 
 router.get(
   "/listDesignation",
-  authMiddleware.verifyUserToken,
   designationValidator.listDesignationValidator,
+  authMiddleware.verifyUserToken,
   designationController.listDesignationController
 );
 module.exports = router;

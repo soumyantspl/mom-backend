@@ -4,11 +4,11 @@ const Responses = require("../helpers/response");
 
 exports.createOrganisationValidator = async (req, res, next) => {
   try {
-    const headerSchema = Joi.object({
-      headers: Joi.object({
-        authorization: Joi.required(),
-      }).unknown(true),
-    });
+    // const headerSchema = Joi.object({
+    //   headers: Joi.object({
+    //     authorization: Joi.required(),
+    //   }).unknown(true),
+    // });
     const bodySchema = Joi.object({
       name: Joi.string().alphanum().min(3).max(30).required(),
       details: Joi.string().alphanum().min(3).max(50),
@@ -24,7 +24,7 @@ exports.createOrganisationValidator = async (req, res, next) => {
           "number.max": "Mobile number should be 10 digit",
         }),
     });
-    await headerSchema.validateAsync({ headers: req.headers });
+    // await headerSchema.validateAsync({ headers: req.headers });
     await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {

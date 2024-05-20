@@ -20,7 +20,7 @@ router.post(
 );
 //DELETE DEPARTMEMNT
 router.delete(
-  "/deleteDepartment",
+  "/deleteDepartment/:id",
   authMiddleware.verifyUserToken,
   departmentValidator.deleteDepartmentValidator,
   departmentController.deleteDepartmentController
