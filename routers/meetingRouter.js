@@ -14,9 +14,9 @@ router.post(
 );
 /*UPDATE RSVP */
 router.put(
-  "/updateRsvp",
-  meetingValidator.updateRsvpValidator,
-  authMiddleware.verifyUserToken,
+  "/updateRsvp/:id",
+ // meetingValidator.updateRsvpValidator,
+  // authMiddleware.verifyUserToken,
   meetingController.updateRsvp
 );
 /* CANCEL MEETING */

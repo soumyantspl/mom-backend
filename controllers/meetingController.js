@@ -7,7 +7,7 @@ const createMeeting = async (req, res) => {
   try {
     const result = await meetingService.createMeeting(
       req.body,
-      "req.userId",
+      req.userId,
       req.ip
     );
     console.log(result);
@@ -47,7 +47,7 @@ const createMeeting = async (req, res) => {
 /**FUNC- TO UPDATE RSVP DATA**/
 const updateRsvp = async (req, res) => {
   try {
-    const result = await meetingService.updateRsvp(req.body);
+    const result = await meetingService.updateRsvp(req.params.id,"663dbc52c6d385847217c4b0",req.body);
     return Responses.successResponse(
       req,
       res,
@@ -63,7 +63,12 @@ const updateRsvp = async (req, res) => {
 /**FUNC- TO UPDATE MEETING**/
 const updateMeeting = async (req, res) => {
   try {
-    const result = await meetingService.updateMeeting(req.body, req.params.id);
+    const result = await meetingService.updateMeeting(
+      req.body,
+      req.params.id,
+      req.userId,
+      req.ip
+    );
     console.log(result);
     if (!result) {
       return Responses.failResponse(
