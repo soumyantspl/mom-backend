@@ -8,12 +8,14 @@ const authMiddleware = require("../middlewares/authMiddleware");
 router.put(
   "/acceptOrRejectMinutes",
   validator.acceptOrRejectMinutesValidator,
+  authMiddleware.verifyUserToken,
   minutesController.acceptRejectMinutes
 );
 /*CREATE MINUTE */
 router.post(
   "/createMinutes",
   validator.createMinutesValidator,
+  authMiddleware.verifyUserToken,
   minutesController.createMinutes
 );
 

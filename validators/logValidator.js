@@ -8,7 +8,7 @@ const viewLogsValidator = async (req, res, next) => {
       console.log(req.body);
       console.log(req.query);
       console.log(req.params);
-      const schema = Joi.object({
+      const bodySchema = Joi.object({
         searchKey: Joi.string()
           .trim()
           .pattern(/^[0-9a-zA-Z ,/-]+$/)
@@ -25,7 +25,7 @@ const viewLogsValidator = async (req, res, next) => {
       });
   
       await paramsSchema.validateAsync(req.query);
-      await schema.validateAsync(req.body);
+      await bodySchema.validateAsync(req.body);
       next();
     } catch (error) {
       console.log(error);

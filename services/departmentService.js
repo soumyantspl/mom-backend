@@ -1,6 +1,7 @@
 const Department = require("../models/departmentModel");
 const mongoose = require("mongoose");
 
+//FUCNTION TO CREATE DEPARTMENT
 const createDepartmentService = async (name, organizationId) => {
   const newDepartment = new Department({
     name,
@@ -8,7 +9,7 @@ const createDepartmentService = async (name, organizationId) => {
   });
   return await newDepartment.save();
 };
-
+//FUCNTION TO EDIT DEPARTMENT
 const editDepartmentService = async (id, name) => {
   const existingDepartment = await Department.findByIdAndUpdate(
     id,
@@ -21,22 +22,28 @@ const editDepartmentService = async (id, name) => {
   );
   return existingDepartment;
 };
+//FUCNTION TO CHECK
 const existingDepartmentService = async (organizationId) => {
   const isExist = await Department.findById(organizationId);
   return isExist;
 };
-
+////FUCNTION TO DELETE DEPARTMENT
 const deleteDepartmentService = async (id) => {
-  const deletedDepartment = await Department.findByIdAndDelete(id);
+  const deletedDepartment = await Department.findByIdAndUpdate(
+    { _id: id },
+    { isActive: false },
+    { new: true }
+  );
   return deletedDepartment;
 };
+//FUCNTION TO LIST DEPARTMENT
 const listDepartmentService = async (bodyData, queryData) => {
   const { order } = queryData;
   const { organizationId, searchKey } = bodyData;
   let query = searchKey
     ? {
         organizationId,
-        name: {$regex: searchKey, $options: 'i'},
+        name: { $regex: searchKey, $options: "i" },
         isActive: true,
       }
     : {

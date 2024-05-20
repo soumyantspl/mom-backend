@@ -1,6 +1,7 @@
 // const { Meeting } = require("../constants/logsConstants");
 const Agenda = require("../models/agendaModel");
 const ObjectId = require("mongoose").Types.ObjectId;
+/**FUNC- TO CREATE AGENDA FOR MEETING**/
 const createAgendaForMeeting = async (data) => {
   console.log("data--------------123", data);
   const inputData = data.map((item) => {
