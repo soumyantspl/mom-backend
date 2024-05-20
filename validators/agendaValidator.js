@@ -11,7 +11,7 @@ const createAgendaValidator = async (req, res, next) => {
     });
     const bodySchema = Joi.object({
       organizationId: Joi.string().trim().alphanum().required(),
-      meetingId: Joi.string().trim().alphanum(),
+      meetingId: Joi.string().trim().alphanum().required(),
       title: Joi.string().required(),
       topic: Joi.string(),
       timeLine: Joi.number().required(),

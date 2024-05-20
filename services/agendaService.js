@@ -86,7 +86,7 @@ const pipeLine=[
     },
   },
 ]
-  const meetingData = await Agenda.aggregate(pipeLine).limit(3);
+  const meetingData = await Agenda.aggregate(pipeLine).limit(1);
   console.log("meetingData-----------", meetingData);
   if (meetingData.length !== 0) {
     const meetingDataObject = {
