@@ -531,8 +531,20 @@ const downLoadMinutes = async (meetingId) => {
   return false;
 };
 
+
+
+const testPdf=async ()=>{
+
+  return await fileService.generateMinutesPdf();
+  // return meetingDataObject;
+}
+
+
+
+
+
 module.exports = {
   acceptRejectMinutes,
   createMinutes,
-  downLoadMinutes,
+  downLoadMinutes,testPdf
 };
