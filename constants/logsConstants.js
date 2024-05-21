@@ -30,8 +30,20 @@ const Designation = {
   details: "Designation deleted succesfully",
 };
 
+const Action = {
+  moduleName: "Action",
+  createComment: "Commented",
+  createDesignationDetails: "A new Designation created",
+  updateDesignation: "Designation Updated",
+  updateDesignationDetails: "The Designation has been updated",
+  editDesignation: "Designation has been edited",
+  deleteDesignation: "Designation has been deleted",
+  details: "Designation deleted succesfully",
+};
+
 module.exports = {
   Meeting,
   Department,
   Designation,
+  Action
 };
