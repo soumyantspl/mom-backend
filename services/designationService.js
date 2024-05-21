@@ -71,6 +71,7 @@ const editDesignationService = async (userId, id, data, ipAddress = "1000") => {
 
 //FUCNTION TO DELETE DESIGNATION
 const deleteDesignationService = async (userId, data, ipAddress = "1000") => {
+  
   const result = await Designations.findByIdAndUpdate(
     { _id: data.id },
     { isActive: false },

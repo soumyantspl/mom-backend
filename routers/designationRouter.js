@@ -21,8 +21,8 @@ router.put(
 //FUNCTION TO DELETE DESIGNATION
 router.delete(
   "/deleteDesignation/:id",
-  // designationValidator.deleteDesignationValidator,
-  // authMiddleware.verifyUserToken,
+  designationValidator.deleteDesignationValidator,
+  authMiddleware.verifyUserToken,
   designationController.deleteDesignationController
 );
 //FUNCTION GET TO LIST DESIGNATION
