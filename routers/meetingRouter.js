@@ -14,16 +14,16 @@ router.post(
 );
 /*UPDATE RSVP */
 router.put(
-  "/updateRsvp",
-  meetingValidator.updateRsvpValidator,
-  authMiddleware.verifyUserToken,
+  "/updateRsvp/:id",
+ // meetingValidator.updateRsvpValidator,
+  // authMiddleware.verifyUserToken,
   meetingController.updateRsvp
 );
 /* CANCEL MEETING */
 router.put(
-  "/cancelMeeting",
-  meetingValidator.cancelMeetingValidator,
-  authMiddleware.verifyUserToken,
+  "/cancelMeeting/:id",
+  // meetingValidator.cancelMeetingValidator,
+  // authMiddleware.verifyUserToken,
   meetingController.cancelMeeting
 );
 /* UPDATE MEETING  */

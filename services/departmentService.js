@@ -1,5 +1,6 @@
 const Department = require("../models/departmentModel");
 const mongoose = require("mongoose");
+const meetingService = require("./meetingService");
 
 //FUCNTION TO CREATE DEPARTMENT
 const createDepartmentService = async (name, organizationId) => {
@@ -10,17 +11,45 @@ const createDepartmentService = async (name, organizationId) => {
   return await newDepartment.save();
 };
 //FUCNTION TO EDIT DEPARTMENT
-const editDepartmentService = async (id, name) => {
-  const existingDepartment = await Department.findByIdAndUpdate(
+const editDepartmentService = async (id, userId, data, ipAddress = "1000") => {
+  console.log(id, userId, data);
+  const result = await Department.findByIdAndUpdate(
     id,
     {
-      name: name,
+      name: data.name,
     },
     {
-      new: true,
+      new: false,
     }
   );
-  return existingDepartment;
+
+  /////////////////////////////////////////////////
+  console.log("result------------>", result);
+  const inputKeys = Object.keys(data);
+  console.log("inputKeys---------------", inputKeys);
+
+  ////////////////////LOGER START
+  const details = await meetingService.generateLogObject(
+    inputKeys,
+    result,
+    userId,
+    data
+  );
+
+  const logData = {
+    moduleName: 'logMessages.Meeting.moduleName',
+    userId,
+    action: 'logMessages.Meeting.updateAttendees',
+    ipAddress,
+    details: details.join(" , "),
+    organizationId: result.organizationId,
+  };
+  console.log("logData-------------------", logData);
+//  await logService.createLog(logData);
+
+  ///////////////////// LOGER END
+
+  return result;
 };
 //FUCNTION TO CHECK
 const existingDepartmentService = async (organizationId) => {

@@ -15,8 +15,8 @@ const otpExpiryTime = (minutes) => {
 /**FUNC- TO GET TIME DIFFERENCE BETWEEN FROM & TO TIME*/
 const checkTimeDifference = (now, targetTime) => {
   var diff = Math.abs(now.getTime() - targetTime.getTime()) / 3600000; //IN HOURS
-  console.log("diff---------------------", 60/diff);
-  return 60/diff;
+  console.log("diff---------------------", 60 / diff);
+  return 60 / diff;
 };
 
 /*FUNC TO GENERATE HASH PASSWORD*/
@@ -29,10 +29,44 @@ const verifyPassword = async (plianPassword, hashPass) => {
   return bcrypt.compareSync(plianPassword, hashPass);
 };
 
+const generateLogObject = async (inputKeys, result, userId, data) => {
+  let details = [];
+  let finalObject = {};
+  inputKeys.map((key) => {
+    finalObject[key] = {
+      oldValue: null,
+      newValue: null,
+    };
+    console.log("finalObject--->>", finalObject);
+    console.log("KEY---------------------", key);
+    if (key == "rsvp") {
+      // console.log(result.attendees.find((item) => item.id == userId).rsvp);
+      finalObject[key].oldValue = result.attendees.find(
+        (item) => item.id.toString() == userId
+      ).rsvp;
+    } else {
+      finalObject[key].oldValue = result[key];
+    }
+
+    console.log(" finalObject[key]---->>>>>>>", finalObject[key]);
+    console.log("data key------------->", data);
+    finalObject[key].newValue = data[key];
+    console.log("finalObject--->>", finalObject);
+    details.push(
+      `${key} changed from ${finalObject[key].oldValue} to ${finalObject[key].newValue}`
+    );
+    delete finalObject[key];
+    console.log("finalObject--->>", finalObject);
+  });
+  console.log("finalObject--------------", finalObject);
+  return details;
+};
+
 module.exports = {
   generateOtp,
   otpExpiryTime,
   checkTimeDifference,
   generetHashPassword,
   verifyPassword,
+  generateLogObject
 };

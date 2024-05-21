@@ -74,9 +74,10 @@ const cancelMeetingValidator = async (req, res, next) => {
         authorization: Joi.required(),
       }).unknown(true),
     });
-    const bodySchema = Joi.object({
+    const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
-      status: Joi.string().required(),
+    });
+    const bodySchema = Joi.object({
       remarks: Joi.string(),
     }).required();
     await bodySchema.validateAsync(req.body);
@@ -265,18 +266,18 @@ const viewAllMeetingsValidator = async (req, res, next) => {
 // UPDATE USER RSVP FOR MEETING VALIDATOR
 const updateRsvpValidator = async (req, res, next) => {
   try {
-    const headerSchema = Joi.object({
-      headers: Joi.object({
-        authorization: Joi.required(),
-      }).unknown(true),
-    });
+    // const headerSchema = Joi.object({
+    //   headers: Joi.object({
+    //     authorization: Joi.required(),
+    //   }).unknown(true),
+    // });
     const bodySchema = Joi.object({
-      id: Joi.string().trim().alphanum().required(),
-      userId: Joi.string().trim().alphanum().required(),
+      //  id: Joi.string().trim().alphanum().required(),
+      //  userId: Joi.string().trim().alphanum().required(),
       rsvp: Joi.string().required(),
     }).required();
     await bodySchema.validateAsync(req.body);
-    await headerSchema.validateAsync({ headers: req.headers });
+    // await headerSchema.validateAsync({ headers: req.headers });
     next();
   } catch (error) {
     console.log(error);
@@ -316,7 +317,7 @@ const meetingActivitieslist = async (req, res, next) => {
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     }).required();
-    
+
     await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     next();

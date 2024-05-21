@@ -7,7 +7,7 @@ const ObjectId = require("mongoose").Types.ObjectId;
 const emailService = require("./emailService");
 const emailTemplates = require("../emailSetUp/emailTemplates");
 const emailConstants = require("../constants/emailConstants");
-
+const commomHelper = require("../helpers/commomHelper");
 /**FUNC- CREATE MEETING */
 const createMeeting = async (data, userId, ipAddress, email) => {
   console.log("----------------------33333", data);
@@ -26,15 +26,7 @@ const createMeeting = async (data, userId, ipAddress, email) => {
   const meetingData = new Meeting(inputData);
   const newMeeting = await meetingData.save();
   console.log("newMeeting----------------", newMeeting);
-  const logData = {
-    moduleName: logMessages.Meeting.moduleName,
-    userId,
-    action: logMessages.Meeting.createMeeting,
-    ipAddress,
-    details: logMessages.Meeting.createMeetingDetails,
-    organizationId: data.organizationId,
-  };
-  await logService.createLog(logData);
+
   if (data.sendNotification) {
     const mailData = await emailTemplates.createMeeting("Created");
     const emailSubject = emailConstants.createMeetingSubject;
@@ -45,10 +37,22 @@ const createMeeting = async (data, userId, ipAddress, email) => {
       mailData
     );
   }
-  return newMeeting;
-  // }
 
-  //return false;
+  ////////////////////LOGER START
+
+  const logData = {
+    moduleName: logMessages.Meeting.moduleName,
+    userId,
+    action: logMessages.Meeting.createMeeting,
+    ipAddress,
+    details: logMessages.Meeting.createMeetingDetails,
+    organizationId: data.organizationId,
+  };
+  await logService.createLog(logData);
+
+  ///////////////////// LOGER END
+
+  return newMeeting;
 };
 
 /**FUNC- UPDATE MEETING */
@@ -105,6 +109,19 @@ const updateMeeting = async (data, id, email) => {
       mailData
     );
   }
+
+  ////////////////////LOGER START
+
+  const logData = {
+    moduleName: logMessages.Meeting.moduleName,
+    userId,
+    action: logMessages.Meeting.updateMeeting,
+    ipAddress,
+    details: logMessages.Meeting.updateMeetingDetails,
+    organizationId: data.organizationId,
+  };
+  await logService.createLog(logData);
+  /////////////////////LOGER END
   return meeting;
 };
 
@@ -269,42 +286,76 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
 
     // return meetingDataObject;
   }
+
   return {
     totalCount,
     meetingData,
   };
 };
 /**FUNC- TO UPDATE RSVP SECTION */
-const updateRsvp = async (data) => {
+const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
+  console.log("data----------------------------", data, id, userId);
   const result = await Meeting.findOneAndUpdate(
     {
-      "attendees.id": data.userId,
-      _id: data.id,
+      "attendees.id": userId,
+      _id: id,
     },
     {
-      $set: { "attendees.$.rsvp": data.rsvp },
+      $set: { "attendees.$.rsvp": data.rsvp, title: data.title },
     }
   );
   console.log(result);
+  const inputKeys = Object.keys(data);
+  console.log("inputKeys---------------", inputKeys);
+
+  ////////////////////LOGER START
+  const details = await commomHelper.generateLogObject(
+    inputKeys.id,
+    result.status,
+    userId,
+    data
+  );
+  const logData = {
+    moduleName: logMessages.Meeting.moduleName,
+    userId,
+    action: logMessages.Meeting.updateRSVP,
+    ipAddress,
+    details: details.join(" , "),
+    organizationId: result.organizationId,
+  };
+  console.log("logData--->", logData);
+  await logService.createLog(logData);
+  ///////////////////// LOGER END
   return result;
 };
 
 /**FUNC- TO CANCEL MEETING */
-const cancelMeeting = async (data) => {
-  const remarks = data.remarks;
-  console.log("remarks", remarks);
+const cancelMeeting = async (id, userId, data, ipAddress) => {
   const result = await Meeting.findOneAndUpdate(
     {
-      _id: data.id,
+      _id: new ObjectId(id),
     },
     {
       $set: {
-        "meetingStatus.status": data.status,
+        "meetingStatus.status": "cancel",
         "meetingStatus.remarks": data.remarks,
       },
     }
   );
-  console.log(result);
+  console.log("result", result);
+  console.log("remarks ", data.remarks);
+  const logData = {
+    moduleName: logMessages.Meeting.moduleName,
+    userId,
+    action: logMessages.Meeting.cancelMeeting,
+    ipAddress,
+    details: data.remarks,
+    organizationId: result.organizationId,
+  };
+  console.log("logData--->", logData);
+  await logService.createLog(logData);
+  ///////////////////// LOGER END
+
   return result;
 };
 
