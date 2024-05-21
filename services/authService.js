@@ -1,6 +1,6 @@
 const Employee = require("../models/employeeModel");
 const OtpLogs = require("../models/otpLogsModel");
-const commonHelper = require("../helpers/commomHelper");
+const commonHelper = require("../helpers/commonHelper");
 const emailService = require("./emailService");
 const authMiddleware = require("../middlewares/authMiddleware");
 const emailTemplates = require("../emailSetUp/emailTemplates");

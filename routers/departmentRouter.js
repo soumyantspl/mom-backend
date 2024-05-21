@@ -14,8 +14,8 @@ router.post(
 //EDIT  DEPARTMENT USING ORGANIZATION_ID
 router.post(
   "/editDepartment/:id",
-  // departmentValidator.editDepartmentValidator,
-  // authMiddleware.verifyUserToken,
+  departmentValidator.editDepartmentValidator,
+  authMiddleware.verifyUserToken,
   departmentController.editDepartmentController
 );
 //DELETE DEPARTMEMNT

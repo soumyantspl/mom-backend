@@ -5,10 +5,10 @@ const { errorLog } = require("../middlewares/errorLog");
 
 const createDesignationController = async (req, res) => {
   try {
-    const { name, organizationId } = req.body;
     const result = await designationService.createDesignationService(
-      name,
-      organizationId
+      req.userId,
+      req.body,
+      req.ip
     );
     return Responses.successResponse(
       req,
@@ -26,8 +26,12 @@ const createDesignationController = async (req, res) => {
 
 const editDesignationController = async (req, res) => {
   try {
-    const { id, name } = req.body;
-    const result = await designationService.editDesignationService(id, name);
+    const result = await designationService.editDesignationService(
+      req.userId,
+      req.params.id,
+      req.body,
+      req.ip
+    );
     if (!result) {
       return Responses.failResponse(
         req,
@@ -53,8 +57,11 @@ const editDesignationController = async (req, res) => {
 
 const deleteDesignationController = async (req, res) => {
   try {
-    const id = req.body.id;
-    const result = await designationService.deleteDesignationService(id);
+    const result = await designationService.deleteDesignationService(
+      req.userId,
+      req.params,
+      req.ip
+    );
     if (!result) {
       return Responses.failResponse(
         req,

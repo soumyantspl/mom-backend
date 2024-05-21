@@ -7,7 +7,7 @@ const ObjectId = require("mongoose").Types.ObjectId;
 const emailService = require("./emailService");
 const emailTemplates = require("../emailSetUp/emailTemplates");
 const emailConstants = require("../constants/emailConstants");
-const commomHelper = require("../helpers/commomHelper");
+const commonHelper = require("../helpers/commonHelper");
 /**FUNC- CREATE MEETING */
 const createMeeting = async (data, userId, ipAddress, email) => {
   console.log("----------------------33333", data);
@@ -292,13 +292,14 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
     meetingData,
   };
 };
+
 /**FUNC- TO UPDATE RSVP SECTION */
 const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
   console.log("data----------------------------", data, id, userId);
   const result = await Meeting.findOneAndUpdate(
     {
-      "attendees.id": userId,
-      _id: id,
+      "attendees.id": new ObjectId(userId),
+      _id: new ObjectId(id),
     },
     {
       $set: { "attendees.$.rsvp": data.rsvp, title: data.title },
@@ -309,7 +310,7 @@ const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
   console.log("inputKeys---------------", inputKeys);
 
   ////////////////////LOGER START
-  const details = await commomHelper.generateLogObject(
+  const details = await commonHelper.generateLogObject(
     inputKeys.id,
     result.status,
     userId,
@@ -337,7 +338,7 @@ const cancelMeeting = async (id, userId, data, ipAddress) => {
     },
     {
       $set: {
-        "meetingStatus.status": "cancel",
+        "meetingStatus.status": "canceled",
         "meetingStatus.remarks": data.remarks,
       },
     }

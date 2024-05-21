@@ -4,11 +4,10 @@ const messages = require("../constants/constantMessages");
 const { errorLog } = require("../middlewares/errorLog");
 const createDepartmentController = async (req, res) => {
   try {
-    const { name, organizationId } = req.body;
-
     const result = await departmentService.createDepartmentService(
-      name,
-      organizationId
+      req.userId,
+      req.body,
+      req.ip
     );
     return Responses.successResponse(
       req,
@@ -26,8 +25,11 @@ const createDepartmentController = async (req, res) => {
 
 const editDepartmentController = async (req, res) => {
   try {
-    // const { id, name } = req.body;
-    const result = await departmentService.editDepartmentService(req.params.id,"663dbc52c6d385847217c4b0",req.body,req.ip);
+    const result = await departmentService.editDepartmentService(
+      req.userId,
+      req.body,
+      req.ip
+    );
     if (!result) {
       return Responses.failResponse(
         req,
@@ -53,8 +55,11 @@ const editDepartmentController = async (req, res) => {
 
 const deleteDepartmentController = async (req, res) => {
   try {
-    console.log(id);
-    const result = await departmentService.deleteDepartmentService(req.params.id);
+    const result = await departmentService.deleteDepartmentService(
+      req.userId,
+      req.params,
+      req.ip
+    );
     if (!result) {
       return Responses.failResponse(
         req,
