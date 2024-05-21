@@ -27,7 +27,7 @@ const editDepartmentController = async (req, res) => {
   try {
     const result = await departmentService.editDepartmentService(
       req.userId,
-      req.body,
+      req.params.id,
       req.ip
     );
     if (!result) {

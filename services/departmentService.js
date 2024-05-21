@@ -31,10 +31,10 @@ const createDepartmentService = async (userId, data, ipAddress = "1000") => {
 };
 
 //FUCNTION TO EDIT DEPARTMENT
-const editDepartmentService = async (userId, data, ipAddress = "1000") => {
+const editDepartmentService = async (userId, id, data, ipAddress = "1000") => {
   console.log(userId, data);
   const result = await Department.findByIdAndUpdate(
-    data.id,
+    id,
     {
       name: data.name,
     },
