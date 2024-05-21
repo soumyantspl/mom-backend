@@ -117,7 +117,7 @@ const updateMeeting = async (data, id, email) => {
     userId,
     action: logMessages.Meeting.updateMeeting,
     ipAddress,
-    details: logMessages.Meeting.updateMeetingDetails,
+    details: details.join(" , "),
     organizationId: data.organizationId,
   };
   await logService.createLog(logData);

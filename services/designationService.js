@@ -2,6 +2,8 @@ const Designations = require("../models/designationModel");
 const logService = require("./logsService");
 const logMessages = require("../constants/logsConstants");
 const commonHelper = require("../helpers/commonHelper");
+const ObjectId = require("mongoose").Types.ObjectId;
+
 //FUCNTION TO CREATE DESIGNATION
 const createDesignationService = async (userId, data, ipAddress = "1000") => {
   const result = new Designations({
@@ -23,7 +25,7 @@ const createDesignationService = async (userId, data, ipAddress = "1000") => {
     userId,
     action: logMessages.Designation.createDesignation,
     ipAddress,
-    details: details.join(" , "),
+    details: "N/A",
     organizationId: result.organizationId,
   };
   console.log("logData-------------------", logData);
@@ -71,7 +73,6 @@ const editDesignationService = async (userId, id, data, ipAddress = "1000") => {
 
 //FUCNTION TO DELETE DESIGNATION
 const deleteDesignationService = async (userId, data, ipAddress = "1000") => {
-  
   const result = await Designations.findByIdAndUpdate(
     { _id: data.id },
     { isActive: false },
@@ -92,7 +93,7 @@ const deleteDesignationService = async (userId, data, ipAddress = "1000") => {
     userId,
     action: logMessages.Designation.deleteDesignation,
     ipAddress,
-    details: details.join(" , "),
+    details: "N/A",
     organizationId: result.organizationId,
   };
   console.log("logData-------------------", logData);

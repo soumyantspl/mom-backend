@@ -16,6 +16,7 @@ const Department = {
   updateDepartmentDetails: "The Department has been updated",
   editDepartment: "Department has been edited",
   deleteDepartment: "Department has been deleted",
+  details: "Department deleted succesfully",
 };
 
 const Designation = {
@@ -26,10 +27,11 @@ const Designation = {
   updateDesignationDetails: "The Designation has been updated",
   editDesignation: "Designation has been edited",
   deleteDesignation: "Designation has been deleted",
+  details: "Designation deleted succesfully",
 };
 
 module.exports = {
   Meeting,
   Department,
-  Designation
+  Designation,
 };

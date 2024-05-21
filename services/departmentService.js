@@ -4,6 +4,7 @@ const meetingService = require("./meetingService");
 const logService = require("./logsService");
 const logMessages = require("../constants/logsConstants");
 const commonHelper = require("../helpers/commonHelper");
+const ObjectId = require("mongoose").Types.ObjectId;
 
 //FUCNTION TO CREATE DEPARTMENT
 const createDepartmentService = async (userId, data, ipAddress = "1000") => {
@@ -97,7 +98,7 @@ const deleteDepartmentService = async (userId, data, ipAddress = "1000") => {
     userId,
     action: logMessages.Department.deleteDepartment,
     ipAddress,
-    details: details.join(" , "),
+    details: logMessages.Department.details,
     organizationId: result.organizationId,
   };
   console.log("logData-------------------", logData);
