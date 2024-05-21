@@ -208,6 +208,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
+    const enumValues = ["closed", "sceduled", "rescheduled", "canceled", "due"];
     const schema = Joi.object({
       searchKey: Joi.string()
         .trim()
@@ -215,7 +216,15 @@ const viewAllMeetingsValidator = async (req, res, next) => {
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
-
+      meetingStatus: Joi.string().valid(...enumValues),
+      fromDate: Joi.date().iso(),
+      toDate: Joi.date().iso(),
+      // toDate: Joi.when("fromDate", {
+      //   is: Joi.date().iso().valid(),
+      //   then: Joi.date(),
+      //   otherwise: Joi.date().iso(),
+      // }),
+      attendeeId: Joi.string().trim().alphanum(),
       organizationId: Joi.string().trim().alphanum().required(),
     });
     const paramsSchema = Joi.object({
@@ -263,7 +272,6 @@ const listAttendeesFromPreviousMeetingValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-
 
 module.exports = {
   createMeetingValidator,

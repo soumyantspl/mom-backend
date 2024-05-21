@@ -192,12 +192,25 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         organizationId: new ObjectId(organizationId),
         isActive: true,
       };
+
+  if (bodyData.fromDate && bodyData.toDate) {
+    query.date = {
+      $gte: new Date(bodyData.fromDate),
+      $lt: new Date(bodyData.toDate),
+    };
+  }
+
   console.log("roleType---------", roleType);
   console.log("userId---------", userId);
   if (roleType == "USER") {
     query["attendees.id"] = new ObjectId(userId);
   }
-
+  if (bodyData.attendeeId) {
+    query["attendees.id"] = new ObjectId(bodyData.attendeeId);
+  }
+  if (bodyData.meetingStatus) {
+    query["status"] = bodyData.meetingStatus
+  }
   console.log("query", query);
 
   var limit = parseInt(queryData.limit);
@@ -226,6 +239,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         date: 1,
         fromTime: 1,
         toTime: 1,
+        status:1,
         locationDetails: 1,
         attendeesDetail: {
           email: 1,
@@ -355,7 +369,7 @@ const getAllAttendees = async (meetingId) => {
   return result;
 };
 
-//FUNCTION TO STORE MEETING ACTIVITES 
+//FUNCTION TO STORE MEETING ACTIVITES
 const createMeetingActivities = async (data, userId) => {
   const inputData = {
     activityDetails: data.activityDetails,
@@ -363,13 +377,12 @@ const createMeetingActivities = async (data, userId) => {
     userId: userId,
     activityTitle: data.activityTitle,
   };
-  console.log('inputData-----------------',inputData)
+  console.log("inputData-----------------", inputData);
 
   const meetingActivitiesData = new MeetingActivities(inputData);
   const newMeetingActivities = await meetingActivitiesData.save();
   return newMeetingActivities;
 };
-
 
 module.exports = {
   createMeeting,
