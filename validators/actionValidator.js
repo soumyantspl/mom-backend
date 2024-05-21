@@ -32,7 +32,7 @@ const actionReassignRequestValidator = async (req, res, next) => {
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
-        })
+        }),
     });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
@@ -109,14 +109,13 @@ const reAssignActionValidator = async (req, res, next) => {
   }
 };
 
-
-
 // VIEW ALL ACTION LIST VALIDATOR
 const viewAllActionsValidator = async (req, res, next) => {
   try {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
+    const enumValues = ["scheduled", "rescheduled", "closed", "canceled"];
     const schema = Joi.object({
       searchKey: Joi.string()
         .trim()
@@ -124,7 +123,11 @@ const viewAllActionsValidator = async (req, res, next) => {
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
-
+      createdById: Joi.string().trim().alphanum(),
+      meetingId: Joi.string().trim().alphanum(),
+      actionStatus: Joi.string().valid(...enumValues),
+      fromDate: Joi.date().iso(),
+      toDate: Joi.date().iso(),
       organizationId: Joi.string().trim().alphanum().required(),
     });
     const paramsSchema = Joi.object({
@@ -153,7 +156,7 @@ const updateActionValidator = async (req, res, next) => {
       id: Joi.string().trim().alphanum().required(),
     });
     const bodySchema = Joi.object({
-      isComplete: Joi.boolean()
+      isComplete: Joi.boolean(),
     });
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
@@ -165,10 +168,11 @@ const updateActionValidator = async (req, res, next) => {
   }
 };
 
-
 module.exports = {
   actionCommentsValidator,
   actionReassignRequestValidator,
   viewSingleActionValidator,
-  reAssignActionValidator,viewAllActionsValidator,updateActionValidator
+  reAssignActionValidator,
+  viewAllActionsValidator,
+  updateActionValidator,
 };
