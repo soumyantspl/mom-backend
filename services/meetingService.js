@@ -7,7 +7,7 @@ const ObjectId = require("mongoose").Types.ObjectId;
 const emailService = require("./emailService");
 const emailTemplates = require("../emailSetUp/emailTemplates");
 const emailConstants = require("../constants/emailConstants");
-
+const commomHelper = require("../helpers/commomHelper");
 /**FUNC- CREATE MEETING */
 const createMeeting = async (data, userId, ipAddress, email) => {
   console.log("----------------------33333", data);
@@ -286,6 +286,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
 
     // return meetingDataObject;
   }
+
   return {
     totalCount,
     meetingData,
@@ -307,67 +308,54 @@ const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
   const inputKeys = Object.keys(data);
   console.log("inputKeys---------------", inputKeys);
 
-  let details = [];
-  let finalObject = {};
-  inputKeys.map((key) => {
-    finalObject[key] = {
-      oldValue: null,
-      newValue: null,
-    };
-    console.log("finalObject--->>", finalObject);
-    console.log("KEY---------------------", key);
-    if (key == "rsvp") {
-      console.log(result.attendees.find((item) => item.id == userId).rsvp);
-      finalObject[key].oldValue = result.attendees.find(
-        (item) => item.id.toString() == userId
-      ).rsvp;
-    } else {
-      finalObject[key].oldValue = result[key];
-    }
-
-    finalObject[key].newValue = data[key];
-    console.log("finalObject--->>", finalObject);
-    details.push(
-      `${key} changed from ${finalObject[key].oldValue} to ${finalObject[key].newValue}`
-    );
-    delete finalObject[key];
-    console.log("finalObject--->>", finalObject);
-  });
-  console.log("finalObject--------------", finalObject);
-
   ////////////////////LOGER START
-
+  const details = await commomHelper.generateLogObject(
+    inputKeys.id,
+    result.status,
+    userId,
+    data
+  );
   const logData = {
     moduleName: logMessages.Meeting.moduleName,
     userId,
-    action: logMessages.Meeting.createMeeting,
+    action: logMessages.Meeting.updateRSVP,
     ipAddress,
     details: details.join(" , "),
     organizationId: result.organizationId,
   };
-  console.log("logData-------------------", logData);
+  console.log("logData--->", logData);
   await logService.createLog(logData);
-
   ///////////////////// LOGER END
   return result;
 };
 
 /**FUNC- TO CANCEL MEETING */
-const cancelMeeting = async (data) => {
-  const remarks = data.remarks;
-  console.log("remarks", remarks);
+const cancelMeeting = async (id, userId, data, ipAddress) => {
   const result = await Meeting.findOneAndUpdate(
     {
-      _id: data.id,
+      _id: new ObjectId(id),
     },
     {
       $set: {
-        "meetingStatus.status": data.status,
+        "meetingStatus.status": "cancel",
         "meetingStatus.remarks": data.remarks,
       },
     }
   );
-  console.log(result);
+  console.log("result", result);
+  console.log("remarks ", data.remarks);
+  const logData = {
+    moduleName: logMessages.Meeting.moduleName,
+    userId,
+    action: logMessages.Meeting.cancelMeeting,
+    ipAddress,
+    details: data.remarks,
+    organizationId: result.organizationId,
+  };
+  console.log("logData--->", logData);
+  await logService.createLog(logData);
+  ///////////////////// LOGER END
+
   return result;
 };
 

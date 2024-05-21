@@ -74,9 +74,10 @@ const cancelMeetingValidator = async (req, res, next) => {
         authorization: Joi.required(),
       }).unknown(true),
     });
-    const bodySchema = Joi.object({
+    const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
-      status: Joi.string().required(),
+    });
+    const bodySchema = Joi.object({
       remarks: Joi.string(),
     }).required();
     await bodySchema.validateAsync(req.body);
@@ -271,8 +272,8 @@ const updateRsvpValidator = async (req, res, next) => {
     //   }).unknown(true),
     // });
     const bodySchema = Joi.object({
-    //  id: Joi.string().trim().alphanum().required(),
-    //  userId: Joi.string().trim().alphanum().required(),
+      //  id: Joi.string().trim().alphanum().required(),
+      //  userId: Joi.string().trim().alphanum().required(),
       rsvp: Joi.string().required(),
     }).required();
     await bodySchema.validateAsync(req.body);

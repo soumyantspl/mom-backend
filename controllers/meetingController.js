@@ -47,7 +47,12 @@ const createMeeting = async (req, res) => {
 /**FUNC- TO UPDATE RSVP DATA**/
 const updateRsvp = async (req, res) => {
   try {
-    const result = await meetingService.updateRsvp(req.params.id,"663dbc52c6d385847217c4b0",req.body);
+    const result = await meetingService.updateRsvp(
+      req.params.id,
+      "663dbc52c6d385847217c4b0",
+      req.body,
+      req.ip
+    );
     return Responses.successResponse(
       req,
       res,
@@ -95,15 +100,14 @@ const updateMeeting = async (req, res) => {
 /**FUNC- TO CANCEL MEETING**/
 const cancelMeeting = async (req, res) => {
   try {
-    const result = meetingService.cancelMeeting(req.body);
+    const result = meetingService.cancelMeeting(
+      req.params.id,
+      "663dbc52c6d385847217c4b0",
+      req.body,
+      req.ip
+    );
     if (!result) {
-      return Responses.failResponse(
-        req,
-        res,
-        null,
-        messages.canceledFailed,
-        409
-      );
+      return Responses.failResponse(req, res, null, messages.cancelFailed, 409);
     }
     return Responses.successResponse(
       req,

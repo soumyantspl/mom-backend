@@ -21,9 +21,9 @@ router.put(
 );
 /* CANCEL MEETING */
 router.put(
-  "/cancelMeeting",
-  meetingValidator.cancelMeetingValidator,
-  authMiddleware.verifyUserToken,
+  "/cancelMeeting/:id",
+  // meetingValidator.cancelMeetingValidator,
+  // authMiddleware.verifyUserToken,
   meetingController.cancelMeeting
 );
 /* UPDATE MEETING  */

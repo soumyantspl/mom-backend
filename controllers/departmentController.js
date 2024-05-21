@@ -26,8 +26,8 @@ const createDepartmentController = async (req, res) => {
 
 const editDepartmentController = async (req, res) => {
   try {
-    const { id, name } = req.body;
-    const result = await departmentService.editDepartmentService(id, name);
+    // const { id, name } = req.body;
+    const result = await departmentService.editDepartmentService(req.params.id,"663dbc52c6d385847217c4b0",req.body,req.ip);
     if (!result) {
       return Responses.failResponse(
         req,
