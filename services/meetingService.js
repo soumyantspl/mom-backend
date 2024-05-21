@@ -194,9 +194,11 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
       };
 
   if (bodyData.fromDate && bodyData.toDate) {
+    const fromDate=new Date(bodyData.fromDate)
+    const toDate=new Date(bodyData.toDate)
     query.date = {
-      $gte: new Date(bodyData.fromDate),
-      $lt: new Date(bodyData.toDate),
+      $gte:new Date(fromDate.setDate(fromDate.getDate() - 1)),
+      $lt: new Date(toDate.setDate(toDate.getDate() + 1))
     };
   }
 
