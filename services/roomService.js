@@ -57,7 +57,7 @@ const editRoom = async (userId, id, data, ipAddress = "1000") => {
   console.log("roomDetails--------------", roomDetails);
   if (!roomDetails) {
     const result = await Rooms.findByIdAndUpdate({ _id: id }, data, {
-      new: true,
+      new: false,
     });
     console.log("room-----------------------", result);
 
@@ -116,15 +116,29 @@ const viewRoom = async (bodyData, queryData) => {
 };
 
 /**FUNC- DELETE ROOM */
-const deleteRoom = async (id) => {
+const deleteRoom = async (userId, id, ipAddress = "1000") => {
   console.log("----------------------33333", id);
-  const room = await Rooms.findByIdAndUpdate(
+  const result = await Rooms.findByIdAndUpdate(
     { _id: id },
     { isActive: false },
     { new: true }
   );
-  console.log("room-----------------------", room);
-  return room;
+  console.log("result->", result);
+  ////////////////////LOGER START
+  console.log("result------------>", result);
+  const logData = {
+    moduleName: logMessages.Room.moduleName,
+    userId,
+    action: logMessages.Room.deleteRoom,
+    ipAddress,
+    details: result.title.concat(logMessages.Room.details),
+    organizationId: result.organizationId,
+  };
+  console.log("logData-------------------", logData);
+  await logService.createLog(logData);
+  ///////////////////// LOGER END
+
+  return result;
 };
 
 module.exports = {

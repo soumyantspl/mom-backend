@@ -15,8 +15,8 @@ router.post(
 /* EDIT ROOM  */
 router.put(
   "/editRoom/:id",
-  // validator.editRoomValidator,
-  // authMiddleware.verifyUserToken,
+  validator.editRoomValidator,
+  authMiddleware.verifyUserToken,
   roomController.editRoom
 );
 

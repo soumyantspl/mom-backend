@@ -67,15 +67,13 @@ const viewOrganizationController = async (req, res) => {
 };
 
 const editOrganizationController = async (req, res) => {
-  // const id = req.query.id;
-  // const updateData = req.body;
-  console.log("body-->", req.body);
-  console.log("userId-->", req.userId);
   try {
     //Checking given ID is availabled or Not
     const result = await organizationService.editOrganizationService(
       req.userId,
-      req.body
+      req.params.id,
+      req.body,
+      req.ip
     );
     if (!result) {
       return Responses.failResponse(

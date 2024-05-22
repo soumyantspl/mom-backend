@@ -351,7 +351,7 @@ const downLoadMinutes = async (meetingId) => {
         },
         attendeesDetails: {
           // email: 1,
-           _id: 1,
+          _id: 1,
           name: 1,
           status: 1,
         },
@@ -363,7 +363,7 @@ const downLoadMinutes = async (meetingId) => {
           _id: 1,
           name: 1,
         },
-        
+
         // locationDetails: {
         //   location: 1,
         // },
@@ -373,7 +373,7 @@ const downLoadMinutes = async (meetingId) => {
   ];
   const meetingData = await Agenda.aggregate(pipeLine).limit(1);
   console.log("meetingData-------------", meetingData[0]);
-  
+
   if (meetingData.length !== 0) {
     if (meetingData[0].meetingDetail.locationDetails.roomId) {
       console.log(
@@ -418,15 +418,13 @@ const downLoadMinutes = async (meetingId) => {
           (i) => i._id.toString() == minutesItem.reassignedUserId
         );
 
-        
         console.log("assignedUserDetails--------", assignedUserDetails);
         console.log("reAssignedUserDetails--------", reAssignedUserDetails);
-        minutesItem.reassignedUserName = reAssignedUserDetails?.name
-       
+        minutesItem.reassignedUserName = reAssignedUserDetails?.name;
+
         minutesItem.assignedUserName = assignedUserDetails?.name;
 
         return minutesItem;
-       
       });
     });
 
@@ -460,69 +458,59 @@ const downLoadMinutes = async (meetingId) => {
     //   });
     // });
 
-
-
-    meetingDataObject.agendaDetails.map((mainItem)=>{
-
-      console.log('--------7777777777777777777777---------',mainItem)
-      mainItem.minutesDetail.map((minuteItem)=>{
-        console.log('--------88888888888888---------',minuteItem)
-
+    meetingDataObject.agendaDetails.map((mainItem) => {
+      console.log("--------7777777777777777777777---------", mainItem);
+      mainItem.minutesDetail.map((minuteItem) => {
+        console.log("--------88888888888888---------", minuteItem);
 
         let pendingUsers = [];
         let rejectedBy = [];
         let acceptedBy = [];
-      //  minuteItem.attendees?.map((attendeeItem)=>{
+        //  minuteItem.attendees?.map((attendeeItem)=>{
 
-  // console.log('--------attendeeItem---------',attendeeItem)
-          
+        // console.log('--------attendeeItem---------',attendeeItem)
 
+        // const currentAttendee = meetingDataObject.meetingDetail.attendeesDetails?.find(
+        //   (i) => i._id.toString() == attendeeItem.id.toString()
+        // );
 
+        meetingDataObject.meetingDetail.attendeesDetails.map((attendeeItem) => {
+          const currentAttendee = minuteItem.attendees?.find(
+            (i) => i.id.toString() == attendeeItem._id.toString()
+          );
 
-          // const currentAttendee = meetingDataObject.meetingDetail.attendeesDetails?.find(
-          //   (i) => i._id.toString() == attendeeItem.id.toString()
-          // );
+          console.log("currentAttendee--------", currentAttendee);
+          if (currentAttendee?.status == "ACCEPTED") {
+            acceptedBy.push(attendeeItem.name);
+          }
+          if (currentAttendee?.status == "REJECTED") {
+            rejectedBy.push(attendeeItem.name);
+          }
+          if (currentAttendee?.status == "PENDING") {
+            pendingUsers.push(attendeeItem.name);
+          }
+          const actionData = {
+            pendingUsers,
+            rejectedBy,
+            acceptedBy,
+          };
+          console.log("actionData---------------", actionData);
+          minuteItem["actionData"] = actionData;
+          return minuteItem;
 
-        
-          meetingDataObject.meetingDetail.attendeesDetails.map((attendeeItem)=>{
-         
-            const currentAttendee =  minuteItem.attendees?.find(
-              (i) => i.id.toString() == attendeeItem._id.toString()
-            );
-          
-
-                 console.log("currentAttendee--------", currentAttendee);
-        if (currentAttendee?.status == "ACCEPTED") {
-          acceptedBy.push(attendeeItem.name);
-        }
-        if (currentAttendee?.status == "REJECTED") {
-          rejectedBy.push(attendeeItem.name);
-        }
-        if (currentAttendee?.status == "PENDING") {
-          pendingUsers.push(attendeeItem.name);
-        }
-        const actionData = {
-          pendingUsers,
-          rejectedBy,
-          acceptedBy,
-        };
-        console.log("actionData---------------", actionData);
-        minuteItem["actionData"] = actionData;
-        return minuteItem;
-          
-        //   console.log('--------attendeeItem---------',attendeeItem)
-        //   console.log("meetingData-----------4444444",meetingDataObject.meetingDetail.attendeesDetails)
-        //   const currentAttendee = meetingDataObject.meetingDetail.attendeesDetails       attendeeItem.find(
-        //           (i) => i._id.toString() == attendeeItem.id.toString()
-        //         );
-        //         console.log('--------99999999999999---------',currentAttendee)
-        })
-
-      })
-      })
-      console.log('meetingDataObject.agendaDetails--------------------------------------@@@@@@@',meetingDataObject.agendaDetails[0].minutesDetail)
-
-
+          //   console.log('--------attendeeItem---------',attendeeItem)
+          //   console.log("meetingData-----------4444444",meetingDataObject.meetingDetail.attendeesDetails)
+          //   const currentAttendee = meetingDataObject.meetingDetail.attendeesDetails       attendeeItem.find(
+          //           (i) => i._id.toString() == attendeeItem.id.toString()
+          //         );
+          //         console.log('--------99999999999999---------',currentAttendee)
+        });
+      });
+    });
+    console.log(
+      "meetingDataObject.agendaDetails--------------------------------------@@@@@@@",
+      meetingDataObject.agendaDetails[0].minutesDetail
+    );
 
     return await fileService.generateMinutesPdf(meetingDataObject);
     // return meetingDataObject;

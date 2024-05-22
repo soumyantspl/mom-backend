@@ -1,4 +1,7 @@
 const Organization = require("../models/organizationModel");
+const logService = require("./logsService");
+const logMessages = require("../constants/logsConstants");
+const commonHelper = require("../helpers/commonHelper");
 
 const existingOrganization = async (email) => {
   console.log("email-->", email);
@@ -39,15 +42,38 @@ const viewOrganizationService = async (query, page, limit) => {
   return organisationData;
 };
 
-const editOrganizationService = async (id, updateData) => {
-  console.log("id-->", id);
+const editOrganizationService = async (
+  userId,
+  id,
+  data,
+  ipAddress = "1000"
+) => {
+  const result = await Organization.findByIdAndUpdate(id, updateData, {
+    new: false,
+  });
 
-  const updatedOrganization = await Organization.findByIdAndUpdate(
-    id,
-    updateData,
-    { new: true }
+  ////////////////////LOGER START
+  const inputKeys = Object.keys(result);
+  const details = await commonHelper.generateLogObject(
+    inputKeys,
+    result,
+    userId,
+    data
   );
-  return updatedOrganization;
+
+  const logData = {
+    moduleName: logMessages.Organization.moduleName,
+    userId,
+    action: logMessages.Organization.editOrganization,
+    ipAddress,
+    details: details.join(" , "),
+    organizationId: result.organizationId,
+  };
+  console.log("logData-------------------", logData);
+  await logService.createLog(logData);
+
+  ///////////////////// LOGER END
+  return result;
 };
 
 module.exports = {

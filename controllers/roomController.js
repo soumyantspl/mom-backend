@@ -34,7 +34,7 @@ const createRoom = async (req, res) => {
 const editRoom = async (req, res) => {
   try {
     const result = await roomService.editRoom(
-      "663dbc52c6d385847217c4b0",
+      req.userId,
       req.params.id,
       req.body,
       req.ip
@@ -94,7 +94,11 @@ const viewRooms = async (req, res) => {
 /**FUNC- TO DELETE MEETING ROOM**/
 const deleteRoom = async (req, res) => {
   try {
-    const result = await roomService.deleteRoom(req.params.id);
+    const result = await roomService.deleteRoom(
+      req.userId,
+      req.params.id,
+      req.ip
+    );
     console.log(result);
     if (!result) {
       return Responses.failResponse(

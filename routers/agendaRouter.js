@@ -6,8 +6,8 @@ const authMiddleware = require("../middlewares/authMiddleware");
 
 router.post(
   "/createAgenda",
-  // agendaValidator.createAgendaValidator,
-  // authMiddleware.verifyUserToken,
+  agendaValidator.createAgendaValidator,
+  authMiddleware.verifyUserToken,
   agendaController.createAgenda
 );
 

@@ -43,7 +43,7 @@ const viewActionComment = async (id) => {
 };
 
 /**FUNC- ACTION REASSIGN REQUEST */
-const actionReassignRequest = async (data, id) => {
+const actionReassignRequest = async (userId, id, data, ipAddress = "1000") => {
   console.log(data, id);
   const result = await Minutes.findOneAndUpdate(
     {

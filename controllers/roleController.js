@@ -5,7 +5,7 @@ const { errorLog } = require("../middlewares/errorLog");
 /**FUNC- TO CREATE NEW ROLE**/
 const createRole = async (req, res) => {
   try {
-    const result = await roleService.createRole(req.body);
+    const result = await roleService.createRole(userId, req.body, req.ip);
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -33,7 +33,12 @@ const createRole = async (req, res) => {
 /**FUNC- TO EDIT ROLE **/
 const editRole = async (req, res) => {
   try {
-    const result = await roleService.updateRole(req.body, req.params.id);
+    const result = await roleService.updateRole(
+      req.userId,
+      req.params.id,
+      req.body,
+      req.ip
+    );
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -96,14 +101,18 @@ const viewRole = async (req, res) => {
 /**FUNC- TO DELETE ROLE **/
 const deleteRole = async (req, res) => {
   try {
-    const result = await roleService.deleteRole(req.params.id);
+    const result = await roleService.deleteRole(
+      req.userId,
+      req.params.id,
+      req.ip
+    );
     console.log(result);
     if (!result) {
       return Responses.failResponse(
         req,
         res,
         null,
-        messages.updateFailedRecordNotFound,
+        messages.recordNotFound,
         409
       );
     }
@@ -120,7 +129,7 @@ const deleteRole = async (req, res) => {
       req,
       res,
       result,
-      messages.updateSuccess,
+      messages.deleteSuccess,
       200
     );
   } catch (error) {

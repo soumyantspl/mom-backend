@@ -96,7 +96,7 @@ const updateMeeting = async (data, id, email) => {
   }
   console.log("----------------------updateData", updateData);
   const meeting = await Meeting.findByIdAndUpdate({ _id: id }, updateData, {
-    new: true,
+    new: false,
   });
   console.log("meeting-----------------------", meeting);
   if (data.sendNotification) {

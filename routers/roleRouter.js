@@ -23,7 +23,6 @@ router.put(
 /* VIEW ROLE  */
 router.get(
   "/viewRole",
-  
   validator.viewRoleValidator,
   authMiddleware.verifyUserToken,
   roleController.viewRole
@@ -32,7 +31,6 @@ router.get(
 /* DELETE ROLE  */
 router.delete(
   "/deleteRole/:id",
-
   validator.deleteRoleValidator,
   authMiddleware.verifyUserToken,
   roleController.deleteRole
