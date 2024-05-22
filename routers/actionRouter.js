@@ -7,9 +7,9 @@ const actionController = require("../controllers/actionController");
 /* ACTION COMMENT  */
 router.post(
   "/actionComment/:id",
-  // actionValidator.actionCommentsValidator,
-  // authMiddleware.verifyUserToken,
-  actionController.actionComments
+  actionValidator.actionCommentsValidator,
+  authMiddleware.verifyUserToken,
+  actionController.actionCommentsCreate
 );
 /* ACTION REASSIGN REQUEST  */
 router.put(
