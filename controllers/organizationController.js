@@ -70,7 +70,7 @@ const editOrganizationController = async (req, res) => {
   try {
     //Checking given ID is availabled or Not
     const result = await organizationService.editOrganizationService(
-      req.userId,
+     "663dbc52c6d385847217c4b0",
       req.params.id,
       req.body,
       req.ip
