@@ -11,7 +11,7 @@ exports.createDepartmentValidator = async (req, res, next) => {
     });
     const bodySchema = Joi.object({
       name: Joi.string().alphanum().min(3).max(30).required(),
-      organizationId: Joi.string(),
+      id: Joi.string(),
     });
     await headerSchema.validateAsync({ headers: req.headers });
     await bodySchema.validateAsync(req.body);

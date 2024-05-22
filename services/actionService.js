@@ -3,20 +3,35 @@ const Minutes = require("../models/minutesModel");
 const ActionActivities = require("../models/actionActivitiesModel");
 const employeeService = require("./employeeService");
 const ObjectId = require("mongoose").Types.ObjectId;
+const logMessages = require("../constants/logsConstants");
+const logService = require("./logsService");
+const commonHelper = require("../helpers/commonHelper");
 
 //FUCNTION TO CREATE COMMENTS
-const comments = async (data) => {
+const comments = async (userId, id, data, ipAddress = "1000") => {
   const inputData = {
-    actionId: data.actionId,
-    userId: data.userId,
+    actionId: id,
+    userId: userId,
     commentDescription: data.commentDescription,
   };
+  //Orgization id will comes from where?
 
   const commentData = new ActionComments(inputData);
-  const newComments = await commentData.save();
-  return {
-    data: newComments,
+  const result = await commentData.save();
+  ////////////////////LOGER START
+  const logData = {
+    moduleName: logMessages.Action.moduleName,
+    userId,
+    action: logMessages.Action.createComment,
+    ipAddress,
+    details: "N/A",
+    organizationId: ,
   };
+  console.log("logData--->", logData);
+  await logService.createLog(logData);
+  ///////////////////// LOGER END
+
+  return result;
 };
 
 /**FUNC-VIEW ACTION COMMENT */
@@ -40,6 +55,27 @@ const actionReassignRequest = async (data, id) => {
     }
   );
   console.log(result);
+  ////////////////////LOGER START
+  const inputKeys = Object.keys(data);
+  const details = await commonHelper.generateLogObject(
+    inputKeys,
+    result,
+    userId,
+    data
+  );
+
+  const logData = {
+    moduleName: logMessages.Designation.moduleName,
+    userId,
+    action: logMessages.Designation.editDesignation,
+    ipAddress,
+    details: details.join(" , "),
+    organizationId: result.organizationId,
+  };
+  console.log("logData-------------------", logData);
+  await logService.createLog(logData);
+
+  ///////////////////// LOGER END
   return result;
 };
 

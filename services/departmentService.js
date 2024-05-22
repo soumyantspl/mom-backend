@@ -1,18 +1,39 @@
 const Department = require("../models/departmentModel");
 const mongoose = require("mongoose");
 const meetingService = require("./meetingService");
+const logService = require("./logsService");
+const logMessages = require("../constants/logsConstants");
+const commonHelper = require("../helpers/commonHelper");
+const ObjectId = require("mongoose").Types.ObjectId;
 
 //FUCNTION TO CREATE DEPARTMENT
-const createDepartmentService = async (name, organizationId) => {
+const createDepartmentService = async (userId, data, ipAddress = "1000") => {
   const newDepartment = new Department({
-    name,
-    organizationId,
+    name: data.name,
+    organizationId: data.id,
   });
+  console.log("name---", data.name);
+  console.log("id---", data.id);
+  ////////////////////LOGER START
+  const inputKeys = Object.keys(newDepartment);
+  console.log("inputKeys", inputKeys);
+  const logData = {
+    moduleName: logMessages.Department.moduleName,
+    userId,
+    action: logMessages.Department.createDepartment,
+    ipAddress,
+    details: "N/A",
+    organizationId: data.id,
+  };
+  console.log("logData--->", logData);
+  await logService.createLog(logData);
+  ///////////////////// LOGER END
   return await newDepartment.save();
 };
+
 //FUCNTION TO EDIT DEPARTMENT
-const editDepartmentService = async (id, userId, data, ipAddress = "1000") => {
-  console.log(id, userId, data);
+const editDepartmentService = async (userId, id, data, ipAddress = "1000") => {
+  console.log(userId, data);
   const result = await Department.findByIdAndUpdate(
     id,
     {
@@ -22,14 +43,50 @@ const editDepartmentService = async (id, userId, data, ipAddress = "1000") => {
       new: false,
     }
   );
-
-  /////////////////////////////////////////////////
+  ////////////////////LOGER START
   console.log("result------------>", result);
   const inputKeys = Object.keys(data);
   console.log("inputKeys---------------", inputKeys);
+  const details = await commonHelper.generateLogObject(
+    inputKeys,
+    result,
+    userId,
+    data
+  );
+
+  console.log("details", details);
+  const logData = {
+    moduleName: logMessages.Department.moduleName,
+    userId,
+    action: logMessages.Department.editDepartment,
+    ipAddress,
+    details: details.join(" , "),
+    organizationId: result.organizationId,
+  };
+  console.log("logData-------------------", logData);
+  await logService.createLog(logData);
+
+  ///////////////////// LOGER END
+
+  return result;
+};
+
+//FUCNTION TO CHECK
+const existingDepartmentService = async (organizationId) => {
+  const isExist = await Department.findById(organizationId);
+  return isExist;
+};
+////FUCNTION TO DELETE DEPARTMENT
+const deleteDepartmentService = async (userId, data, ipAddress = "1000") => {
+  const result = await Department.findByIdAndUpdate(
+    { _id: data.id },
+    { isActive: false },
+    { new: true }
+  );
 
   ////////////////////LOGER START
-  const details = await meetingService.generateLogObject(
+  const inputKeys = Object.keys(result);
+  const details = await commonHelper.generateLogObject(
     inputKeys,
     result,
     userId,
@@ -37,33 +94,19 @@ const editDepartmentService = async (id, userId, data, ipAddress = "1000") => {
   );
 
   const logData = {
-    moduleName: 'logMessages.Meeting.moduleName',
+    moduleName: logMessages.Department.moduleName,
     userId,
-    action: 'logMessages.Meeting.updateAttendees',
+    action: logMessages.Department.deleteDepartment,
     ipAddress,
-    details: details.join(" , "),
+    details: logMessages.Department.details,
     organizationId: result.organizationId,
   };
   console.log("logData-------------------", logData);
-//  await logService.createLog(logData);
+  await logService.createLog(logData);
 
   ///////////////////// LOGER END
 
   return result;
-};
-//FUCNTION TO CHECK
-const existingDepartmentService = async (organizationId) => {
-  const isExist = await Department.findById(organizationId);
-  return isExist;
-};
-////FUCNTION TO DELETE DEPARTMENT
-const deleteDepartmentService = async (id) => {
-  const deletedDepartment = await Department.findByIdAndUpdate(
-    { _id: id },
-    { isActive: false },
-    { new: true }
-  );
-  return deletedDepartment;
 };
 //FUCNTION TO LIST DEPARTMENT
 const listDepartmentService = async (bodyData, queryData) => {

@@ -6,10 +6,10 @@ const actionController = require("../controllers/actionController");
 
 /* ACTION COMMENT  */
 router.post(
-  "/actionComment",
+  "/actionComment/:id",
   actionValidator.actionCommentsValidator,
   authMiddleware.verifyUserToken,
-  actionController.actionComments
+  actionController.actionCommentsCreate
 );
 /* ACTION REASSIGN REQUEST  */
 router.put(

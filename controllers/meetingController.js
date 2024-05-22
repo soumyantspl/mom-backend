@@ -49,7 +49,7 @@ const updateRsvp = async (req, res) => {
   try {
     const result = await meetingService.updateRsvp(
       req.params.id,
-      "663dbc52c6d385847217c4b0",
+      req.userId,
       req.body,
       req.ip
     );
@@ -102,7 +102,7 @@ const cancelMeeting = async (req, res) => {
   try {
     const result = meetingService.cancelMeeting(
       req.params.id,
-      "663dbc52c6d385847217c4b0",
+      req.userId,
       req.body,
       req.ip
     );

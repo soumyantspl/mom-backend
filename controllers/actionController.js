@@ -4,9 +4,15 @@ const messages = require("../constants/constantMessages");
 const { errorLog } = require("../middlewares/errorLog");
 
 /**FUNC- FOR ACTION COMMENT**/
-const actionComments = async (req, res) => {
+const actionCommentsCreate = async (req, res) => {
   try {
-    const result = await actionService.comments(req.body);
+    const result = await actionService.comments(
+      req.userId,
+      // "663dbb0bcf8ec14b66687084",
+      req.params.id,
+      req.body,
+      req.ip
+    );
     console.log(result);
     if (!result) {
       return Responses.failResponse(req, res, null, messages.createError, 409);
@@ -56,8 +62,10 @@ const viewActionComment = async (req, res) => {
 const actionReassignRequest = async (req, res) => {
   try {
     const result = await actionService.actionReassignRequest(
+      req.userId,
+      req.params.id,
       req.body,
-      req.params.id
+      req.ip
     );
     console.log(result);
     if (!result) {
@@ -266,7 +274,7 @@ const viewActionActivities = async (req, res) => {
 };
 
 module.exports = {
-  actionComments,
+  actionCommentsCreate,
   actionReassignRequest,
   viewSingleAction,
   viewActionComment,
