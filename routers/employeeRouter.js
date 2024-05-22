@@ -22,8 +22,8 @@ router.put(
 /* DELETE EMPLOYEE  */
 router.delete(
   "/deleteEmployee/:id",
-  validator.deleteEmployeValidator,
-  authMiddleware.verifyUserToken,
+  // validator.deleteEmployeValidator,
+  // authMiddleware.verifyUserToken,
   employeeController.deleteEmploye
 );
 /* VIEW EMPLOYEE  */

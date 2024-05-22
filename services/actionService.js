@@ -25,7 +25,7 @@ const comments = async (userId, id, data, ipAddress = "1000") => {
     action: logMessages.Action.createComment,
     ipAddress,
     details: "N/A",
-    organizationId: ,
+    organizationId: "",
   };
   console.log("logData--->", logData);
   await logService.createLog(logData);

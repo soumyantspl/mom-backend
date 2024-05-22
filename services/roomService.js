@@ -1,7 +1,10 @@
 const Rooms = require("../models/roomModel");
+const logService = require("./logsService");
+const logMessages = require("../constants/logsConstants");
+const commonHelper = require("../helpers/commonHelper");
 
 /**FUNC- CREATE ROOM */
-const createRoom = async (data) => {
+const createRoom = async (userId, data, ipAddress = "1000") => {
   console.log("----------------------33333", data);
   const roomDetails = await checkDuplicateEntry(
     data.title,
@@ -15,10 +18,22 @@ const createRoom = async (data) => {
       location: data.location,
     };
     const roomData = new Rooms(inputData);
-    const newRoom = await roomData.save();
-    console.log("newRoom----------------", newRoom);
+    const result = await roomData.save();
 
-    return newRoom;
+    ////////////////////LOGER START
+    console.log("result------------>", result);
+    const logData = {
+      moduleName: logMessages.Room.moduleName,
+      userId,
+      action: logMessages.Room.createRoom,
+      ipAddress,
+      details: "N/A",
+      organizationId: result.organizationId,
+    };
+    console.log("logData-------------------", logData);
+    await logService.createLog(logData);
+    ///////////////////// LOGER END
+    return result;
   }
 
   return false;
@@ -33,20 +48,42 @@ const checkDuplicateEntry = async (title, organizationId) => {
 };
 
 /**FUNC- EDIT ROOM */
-const editRoom = async (data, id) => {
-  console.log("----------------------3333344", data);
-  console.log("----------------------33333", id);
+const editRoom = async (userId, id, data, ipAddress = "1000") => {
+  console.log("data.title------------->", data.title);
   const roomDetails = await checkDuplicateEntry(
     data.title,
     data.organizationId
   );
   console.log("roomDetails--------------", roomDetails);
   if (!roomDetails) {
-  const room = await Rooms.findByIdAndUpdate({ _id: id }, data, { new: true });
-  console.log("room-----------------------", room);
-  return room;
+    const result = await Rooms.findByIdAndUpdate({ _id: id }, data, {
+      new: true,
+    });
+    console.log("room-----------------------", result);
+
+    ////////////////////LOGER START
+    const inputKeys = Object.keys(data);
+    const details = await commonHelper.generateLogObject(
+      inputKeys,
+      result,
+      userId,
+      data
+    );
+    const logData = {
+      moduleName: logMessages.Room.moduleName,
+      userId,
+      action: logMessages.Room.editRoom,
+      ipAddress,
+      details: details.join(" , "),
+      organizationId: result.organizationId,
+    };
+    console.log("logData-------------------", logData);
+    await logService.createLog(logData);
+    ///////////////////// LOGER END
+
+    return result;
   }
-  return false
+  return false;
 };
 
 /**FUNC- TO VIEW ROOMS */
@@ -56,7 +93,7 @@ const viewRoom = async (bodyData, queryData) => {
   let query = searchKey
     ? {
         organizationId,
-        title: {$regex: searchKey, $options: 'i'},
+        title: { $regex: searchKey, $options: "i" },
         isActive: true,
       }
     : {
