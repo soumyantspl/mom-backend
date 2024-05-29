@@ -7,7 +7,7 @@ const createMeeting = async (req, res) => {
   try {
     const result = await meetingService.createMeeting(
       req.body,
-      "req.userId",
+      req.userId,
       req.ip
     );
     console.log(result);
@@ -47,7 +47,12 @@ const createMeeting = async (req, res) => {
 /**FUNC- TO UPDATE RSVP DATA**/
 const updateRsvp = async (req, res) => {
   try {
-    const result = await meetingService.updateRsvp(req.body);
+    const result = await meetingService.updateRsvp(
+      req.params.id,
+      req.userId,
+      req.body,
+      req.ip
+    );
     return Responses.successResponse(
       req,
       res,
@@ -63,7 +68,12 @@ const updateRsvp = async (req, res) => {
 /**FUNC- TO UPDATE MEETING**/
 const updateMeeting = async (req, res) => {
   try {
-    const result = await meetingService.updateMeeting(req.body, req.params.id);
+    const result = await meetingService.updateMeeting(
+      req.body,
+      req.params.id,
+      req.userId,
+      req.ip
+    );
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -90,15 +100,14 @@ const updateMeeting = async (req, res) => {
 /**FUNC- TO CANCEL MEETING**/
 const cancelMeeting = async (req, res) => {
   try {
-    const result = meetingService.cancelMeeting(req.body);
+    const result = meetingService.cancelMeeting(
+      req.params.id,
+      req.userId,
+      req.body,
+      req.ip
+    );
     if (!result) {
-      return Responses.failResponse(
-        req,
-        res,
-        null,
-        messages.canceledFailed,
-        409
-      );
+      return Responses.failResponse(req, res, null, messages.cancelFailed, 409);
     }
     return Responses.successResponse(
       req,
@@ -205,6 +214,35 @@ const listAttendeesFromPreviousMeeting = async (req, res) => {
   }
 };
 
+/**FUNC- TO VIEW LIST ATTENDEES FROM PREVIOUS MEETING**/
+const viewMeetingActivities = async (req, res) => {
+  try {
+    const result = await meetingService.viewMeetingActivities(req.params.id);
+    console.log(result);
+
+    if (result.length == 0) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   createMeeting,
   updateRsvp,
@@ -213,4 +251,5 @@ module.exports = {
   viewMeeting,
   viewAllMeetings,
   listAttendeesFromPreviousMeeting,
+  viewMeetingActivities,
 };

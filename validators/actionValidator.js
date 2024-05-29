@@ -4,6 +4,11 @@ const { errorLog } = require("../middlewares/errorLog");
 
 const actionCommentsValidator = async (req, res, next) => {
   try {
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const bodySchema = Joi.object({
       actionId: Joi.string().trim().alphanum().required(),
       userId: Joi.string().trim().alphanum().required(),
@@ -14,6 +19,7 @@ const actionCommentsValidator = async (req, res, next) => {
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
     });
+    await headerSchema.validateAsync({ headers: req.headers });
     await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {
@@ -25,6 +31,11 @@ const actionCommentsValidator = async (req, res, next) => {
 // ACTION REASSIGN REQUEST VALIDATOR
 const actionReassignRequestValidator = async (req, res, next) => {
   try {
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const bodySchema = Joi.object({
       userId: Joi.string().required(),
       requestDetails: Joi.string()
@@ -38,6 +49,7 @@ const actionReassignRequestValidator = async (req, res, next) => {
       id: Joi.string().trim().alphanum().required(),
     });
 
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
     next();
@@ -52,12 +64,19 @@ const actionReassignRequestValidator = async (req, res, next) => {
 const viewSingleActionValidator = async (req, res, next) => {
   try {
     console.log(req.body);
-    console.log(req.query);
+    // console.log(req.query);
     console.log(req.params);
+
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
 
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     next();
   } catch (error) {
@@ -70,6 +89,11 @@ const viewSingleActionValidator = async (req, res, next) => {
 // ACTION REASSIGN VALIDATOR
 const reAssignActionValidator = async (req, res, next) => {
   try {
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const bodySchema = Joi.object({
       isNewUser: Joi.boolean().required(),
       name: Joi.when("isNewUser", {
@@ -99,6 +123,7 @@ const reAssignActionValidator = async (req, res, next) => {
       id: Joi.string().trim().alphanum().required(),
     });
 
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
     next();
@@ -115,8 +140,12 @@ const viewAllActionsValidator = async (req, res, next) => {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
-    const enumValues = ["scheduled", "rescheduled", "closed", "canceled"];
-    const schema = Joi.object({
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const bodySchema = Joi.object({
       searchKey: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
@@ -135,9 +164,9 @@ const viewAllActionsValidator = async (req, res, next) => {
       page: Joi.number().required(),
       order: Joi.number().required(),
     });
-
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.query);
-    await schema.validateAsync(req.body);
+    await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
@@ -152,14 +181,63 @@ const updateActionValidator = async (req, res, next) => {
     console.log(req.body);
     console.log(req.query);
     console.log(req.params);
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
     const bodySchema = Joi.object({
       isComplete: Joi.boolean(),
     });
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+// UPDATE SINGLE ACTION ACTIVITIES VALIDATOR
+const viewActionActivities = async (req, res, next) => {
+  try {
+    console.log(req.params);
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+    await headerSchema.validateAsync({ headers: req.headers });
+    await paramsSchema.validateAsync(req.params);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+const viewActionCommentValidator = async (req, res, next) => {
+  try {
+    console.log(req.params);
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+    await headerSchema.validateAsync({ headers: req.headers });
+    await paramsSchema.validateAsync(req.params);
     next();
   } catch (error) {
     console.log(error);
@@ -175,4 +253,6 @@ module.exports = {
   reAssignActionValidator,
   viewAllActionsValidator,
   updateActionValidator,
+  viewActionActivities,
+  viewActionCommentValidator,
 };

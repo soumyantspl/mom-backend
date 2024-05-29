@@ -65,7 +65,7 @@ const designationList = "Fetched all Designations";
 const cancelFailed = "Cancel Failed";
 const canceled = "Canceled Successfuly";
 const invalidId = "Invalid Id!";
-const duplicateName="This Name is already exist!!"
+const duplicateName = "This Name is already exist!!";
 module.exports = {
   duplicateName,
   otpSentSuccess,
@@ -77,6 +77,7 @@ module.exports = {
   invalidUser,
   otpResendMaxLimitCrossed,
   //----------------------------//
+  recordNotFound,
   createError,
   organizationCreated,
   duplicateOrganizationFound,

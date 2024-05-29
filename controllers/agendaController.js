@@ -2,6 +2,8 @@ const agendaService = require("../services/agendaService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 const { errorLog } = require("../middlewares/errorLog");
+
+/**FUNC- TO CREATE AGENDA **/
 const createAgenda = async (req, res) => {
   try {
     const result = await agendaService.createAgendaForMeeting(req.body);
@@ -23,11 +25,11 @@ const createAgenda = async (req, res) => {
   }
 };
 
-/**FUNC- TO VIEW ALL AGENDA WITH MINUTES OF SINGLE MEETING DETAILS**/
+/**FUNC- TO VIEW AGENDA **/
 const viewAgendas = async (req, res) => {
   try {
     const result = await agendaService.viewAgendas(req.params.id);
-    console.log('result---------------',result);
+    console.log("result---------------", result);
     if (!result) {
       return Responses.failResponse(
         req,
@@ -52,5 +54,6 @@ const viewAgendas = async (req, res) => {
 };
 
 module.exports = {
-  createAgenda,viewAgendas
+  createAgenda,
+  viewAgendas,
 };
