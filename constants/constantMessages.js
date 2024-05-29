@@ -47,7 +47,7 @@ const signInSuccess = "Sign in successfully!";
 const invaliToken = "Invalid token";
 const invalidUser = "User is not valid user!";
 const otpResendMaxLimitCrossed =
-  "Sorry! You have attempted maximum limit of resend OTP!";
+  `Sorry! You have attempted maximum limit of resend OTP!, Please try after ${process.env.OTP_MAX_RESEND_TIMEINMINUTES} minutes`;
 //---------------------------------------------------------------------------------------//
 const organizationCreated = "Organization Created successfully";
 const duplicateOrganizationFound = "This Email is already exist!!";

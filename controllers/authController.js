@@ -9,8 +9,10 @@ const sendOtp = async (req, res) => {
     const result = await authService.sendOtp(req.body.email);
     console.log("res----", result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.userNotFound, 404);
+      return Responses.failResponse(req, res, null, messages.userNotFound, 200);
     }
+
+    // OTP RESEND ALLOWED MAXLIMIT IS 3 & TIME LIMIT IS 10 MINUTES
     if (result?.isReSendOtpAllowed==false) {
       return Responses.failResponse(
         req,
@@ -41,7 +43,7 @@ const verifyOtp = async (req, res) => {
     const result = await authService.verifyOtp(req.body);
     console.log("otpFound----------", result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.invalidOtp, 404);
+      return Responses.failResponse(req, res, null, messages.invalidOtp, 200);
     }
 
     return Responses.successResponse(
@@ -64,7 +66,7 @@ const reSendOtp = async (req, res) => {
     const result = await authService.reSendOtp(req.body.email);
 
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.userNotFound, 404);
+      return Responses.failResponse(req, res, null, messages.userNotFound, 200);
     }
     if (result?.isReSendOtpAllowed==false) {
       return Responses.failResponse(
@@ -72,7 +74,7 @@ const reSendOtp = async (req, res) => {
         res,
         null,
         messages.otpResendMaxLimitCrossed,
-        404
+        200
       );
     }
 
