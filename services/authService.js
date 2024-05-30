@@ -104,8 +104,11 @@ const insertOtp = async (
   const otpData = new OtpLogs(data);
   await otpData.save();
   console.log("-------------------------------1", userData, data.otp);
-  const mailData = await emailTemplates.signInByOtpEmail(userData, data.otp);
+  
+  const mailData = await emailTemplates.sendOtpEmailTemplate(userData, data.otp,process.env.CHECK_OTP_VALIDATION_TIME,"support@ntspl.co.in");
+  //const mailData = await emailTemplates.signInByOtpEmail(userData, data.otp);
   const emailSubject=emailConstants.signInOtpsubject;
+  console.log("sendOtpEmailTemplate-----------------------maildata",mailData)
   await emailService.sendEmail(userData.email,emailType,emailSubject,mailData);
   return data.otp;
 };

@@ -5,7 +5,7 @@ const EmailLogs = require("../models/emailLogsModel");
 /**FUNC- TO SEND  OTP TO EMAIL USER */
 const sendSignInOtpEmail = async (userData, otp, emailType) => {
   console.log("-------------------------------1", userData, otp);
-  const maildata = await emailTemplates.signInByOtpEmail(userData, otp);
+  const maildata = await emailTemplates.sendOtpEmailTemplate(userData, otp);
   const mailOptionsInfo = {
     from: mailOptions.from,
     to: userData.email,

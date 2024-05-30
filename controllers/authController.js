@@ -98,10 +98,10 @@ const setPassword = async (req, res) => {
     const result = await authService.setPassword(req.body);
     
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.userNotFound, 404);
+      return Responses.failResponse(req, res, null, messages.userNotFound, 200);
     }
     if (result?.isInValidOtp) {
-      return Responses.failResponse(req, res, null, messages.invalidOtp, 404);
+      return Responses.failResponse(req, res, null, messages.invalidOtp, 200);
     }
 
     return Responses.successResponse(
