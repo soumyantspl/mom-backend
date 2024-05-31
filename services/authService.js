@@ -104,8 +104,9 @@ const insertOtp = async (
   const otpData = new OtpLogs(data);
   await otpData.save();
   console.log("-------------------------------1", userData, data.otp);
-  
-  const mailData = await emailTemplates.sendOtpEmailTemplate(userData, data.otp,process.env.CHECK_OTP_VALIDATION_TIME,"support@ntspl.co.in");
+  const supportData="support@ntspl.co.in";
+  const logo="https://d3uom8aq23ax4d.cloudfront.net/wp-content/themes/ntspl-corporate-website/images/ntspl_logo.png";
+  const mailData = await emailTemplates.sendOtpEmailTemplate(userData, data.otp,process.env.CHECK_OTP_VALIDATION_TIME,supportData,logo);
   //const mailData = await emailTemplates.signInByOtpEmail(userData, data.otp);
   const emailSubject=emailConstants.signInOtpsubject;
   console.log("sendOtpEmailTemplate-----------------------maildata",mailData)

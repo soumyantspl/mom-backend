@@ -27,7 +27,7 @@ const sendOtp = async (req, res) => {
       req,
       res,
       null,
-      messages.otpSentSuccess,
+      await messages.otpSentSuccess(req.body.email),
       200
     );
   } catch (error) {
@@ -82,7 +82,7 @@ const reSendOtp = async (req, res) => {
       req,
       res,
       null,
-      messages.otpSentSuccess,
+      await messages.otpSentSuccess(req.body.email),
       200
     );
   } catch (error) {
