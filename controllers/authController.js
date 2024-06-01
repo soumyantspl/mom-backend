@@ -13,7 +13,7 @@ const sendOtp = async (req, res) => {
     }
 
     // OTP RESEND ALLOWED MAXLIMIT IS 3 & TIME LIMIT IS 10 MINUTES
-    if (result?.isReSendOtpAllowed==false) {
+    if (result?.isReSendOtpAllowed == false) {
       return Responses.failResponse(
         req,
         res,
@@ -68,7 +68,7 @@ const reSendOtp = async (req, res) => {
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 200);
     }
-    if (result?.isReSendOtpAllowed==false) {
+    if (result?.isReSendOtpAllowed == false) {
       return Responses.failResponse(
         req,
         res,
@@ -77,14 +77,11 @@ const reSendOtp = async (req, res) => {
         200
       );
     }
-
-    return Responses.successResponse(
-      req,
-      res,
-      null,
-      await messages.otpSentSuccess(req.body.email),
-      200
-    );
+    const message =
+      result?.otpResendCount <= 3
+        ? await messages.otpResendMessage(result.otpResendCount, req.body.email)
+        : await messages.otpSentSuccess(req.body.email);
+    return Responses.successResponse(req, res, null, message, 200);
   } catch (error) {
     console.log(error);
     errorLog(error);
@@ -96,7 +93,7 @@ const reSendOtp = async (req, res) => {
 const setPassword = async (req, res) => {
   try {
     const result = await authService.setPassword(req.body);
-    
+
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 200);
     }

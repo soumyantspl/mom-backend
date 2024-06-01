@@ -64,13 +64,16 @@ const invalidOtp =
   "The OTP you entered is incorrect. Please verify and try again.";
 const userNotFound =
   "The email you entered does not match our records. Please enter a valid email.";
-const otpSentSuccess = async (email)=>{
-return  `We have sent an OTP to your registered email address at ${email}. Please check your email and enter it here.`;
-}
- 
+const otpSentSuccess = async (email) => {
+  return `We have sent an OTP to your registered email address at ${email}. Please check your email and enter it here.`;
+};
+const otpResendMessage = async (attemptNumbar, email) => {
+  return `You have requested to resend the OTP ${attemptNumbar} out of ${process.env.OTP_MAX_RESENDCOUNT} times. An OTP has been sent to your registered email address at ${email}. Please check your email and enter the OTP here.`;
+};
 const otpResendMaxLimitCrossed = `Sorry! You have reached the maximum limit of 3 OTP resend attempts. Please try again after ${process.env.OTP_MAX_RESEND_TIMEINMINUTES} minutes.`;
 
 module.exports = {
+  otpResendMessage,
   duplicateName,
   otpSentSuccess,
   userNotFound,

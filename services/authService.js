@@ -5,6 +5,7 @@ const emailService = require("./emailService");
 const authMiddleware = require("../middlewares/authMiddleware");
 const emailTemplates = require("../emailSetUp/emailTemplates");
 const emailConstants = require("../constants/emailConstants");
+const ObjectId = require("mongoose").Types.ObjectId;
 /**FUNC- TO VERIFY VALID EMAIL USER */
 const verifyEmail = async (email) => {
   console.log("----------------------33333", email);
@@ -60,6 +61,7 @@ const getOtpLogs = async (data) => {
           $gte: fromTime,
           $lt: new Date(),
         },
+        isActive:true
       },
     },
     {
@@ -94,6 +96,8 @@ const insertOtp = async (
   otpResendTime = null,
   emailType
 ) => {
+  const otpLogsUpdate=await OtpLogs.updateMany({ email: userData.email, organizationId: new ObjectId(userData.organizationId)},{isActive:false},{upsert: true});
+  console.log("----------------otpLogsUpdate",otpLogsUpdate)
   const data = {
     otp: commonHelper.generateOtp(),
     email: userData.email,
@@ -133,15 +137,16 @@ const validateSendingOtp = async (userData,emailType) => {
   if (rulesData?.isNewRecordCreated) {
     otpResendTime = new Date();
     otpResendCount = 1;
+   
     console.log("final user data-----------", userData);
-    return await insertOtp(userData, otpResendCount, otpResendTime,emailType);
+    return {...await insertOtp(userData, otpResendCount, otpResendTime,emailType),otpResendCount}
   }
 
   if (rulesData?.isReSendOtpAllowed) {
     otpResendTime = rulesData.otpResendTime;
     otpResendCount = rulesData.otpResendCount;
     console.log("final user data-----------", userData);
-    return await insertOtp(userData, otpResendCount, otpResendTime,emailType);
+    return {...await insertOtp(userData, otpResendCount, otpResendTime,emailType),otpResendCount}
   }
   if (!rulesData.isReSendOtpAllowed) {
     return rulesData;
