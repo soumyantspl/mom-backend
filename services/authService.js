@@ -79,6 +79,7 @@ const getOtpLogs = async (data) => {
           name: 1,
           _id: 1,
           email: 1,
+          organizationId:1
         },
       },
     },
@@ -277,7 +278,7 @@ const signInByPassword = async (data) => {
     };
   }
 
-  const token = authMiddleware.generatUserToken({
+  const token = await authMiddleware.generateUserToken({
     userId: userData._id,
     name: userData.name,
   });

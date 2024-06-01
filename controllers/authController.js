@@ -19,7 +19,7 @@ const sendOtp = async (req, res) => {
         res,
         null,
         messages.otpResendMaxLimitCrossed,
-        404
+        200
       );
     }
 
@@ -124,7 +124,7 @@ const signInByPassword = async (req, res) => {
     const result = await authService.signInByPassword(req.body);
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.userNotFound, 404);
+      return Responses.failResponse(req, res, null, messages.userNotFound, 200);
     }
     if (result?.incorrectPassword) {
       return Responses.failResponse(
@@ -132,7 +132,7 @@ const signInByPassword = async (req, res) => {
         res,
         null,
         messages.incorrectPassword,
-        404
+        200
       );
     }
 

@@ -595,3 +595,59 @@ Stack Trace: TypeError: Cannot read properties of undefined (reading 'rejectedBy
     at Object.downLoadMinutes (E:\Ongoing\MOM\services\minutesService.js:246:28)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async downloadMinutes (E:\Ongoing\MOM\controllers\minutesController.js:57:20)
+Date: 01/06/2024, Time: 10:04
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 10:04
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:519:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 01/06/2024, Time: 10:47
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 10:47
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 10:58
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 10:58
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 10:58
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 11:31
+Error: read ECONNRESET
+Stack Trace: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:218:20)
+Date: 01/06/2024, Time: 11:32
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 11:32
+Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+Stack Trace: Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)
+Date: 01/06/2024, Time: 11:33
+Error: read ECONNRESET
+Stack Trace: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:218:20)
+Date: 01/06/2024, Time: 11:39
+Error: "email" is required
+Stack Trace: ValidationError: "email" is required
+Date: 01/06/2024, Time: 11:39
+Error: Password min 8 letter, with at least a symbol, upper and lower case letters and a number!
+Stack Trace: ValidationError: Password min 8 letter, with at least a symbol, upper and lower case letters and a number!
+Date: 01/06/2024, Time: 12:31
+Error: authMiddleware.generatUserToken is not a function
+Stack Trace: TypeError: authMiddleware.generatUserToken is not a function
+    at Object.signInByPassword (E:\Ongoing\MOM\services\authService.js:281:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async signInByPassword (E:\Ongoing\MOM\controllers\authController.js:124:20)
