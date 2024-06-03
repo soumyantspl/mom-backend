@@ -255,17 +255,17 @@ const viewAllMeetingsValidator = async (req, res, next) => {
       // }),
       attendeeId: Joi.string().trim().alphanum(),
       organizationId: Joi.string().trim().alphanum().required(),
+      // limit: Joi.number().required(),
+      // page: Joi.number().required(),
+      // order: Joi.number().required(),
+    });
+    const paramsSchema = Joi.object({
       limit: Joi.number().required(),
       page: Joi.number().required(),
-      order: Joi.number().required(),
+      order: Joi.number().required()
     });
-    // const paramsSchema = Joi.object({
-    //   limit: Joi.number().required(),
-    //   page: Joi.number().required(),
-    //   order: Joi.number().required(),
-    // });
     await headerSchema.validateAsync({ headers: req.headers });
-   // await paramsSchema.validateAsync(req.query);
+    await paramsSchema.validateAsync(req.query);
     await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {
