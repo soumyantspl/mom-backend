@@ -9,25 +9,29 @@ const connectDB = require("./dbLayer/connection");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+const allowOrigin=["*",'http://localhost:3000'];
 const corsOpts = {
-  origin: "*",
+  origin: allowOrigin,
   methods: ["GET, POST, PUT, DELETE, OPTIONS, PATCH"],
-  allowedHeaders: ["Content-Type"],
+  allowedHeaders: ["Content-Type","Authorization"],
 };
 
 app.use(cors(corsOpts));
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization, timeZone, x-token"
-  );
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, OPTIONS, PATCH"
-  );
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", allowOrigin);
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization, timeZone, x-token"
+//   );
+//   res.header(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+//   );
+//   next();
+// });
+
+
+
 //mongodb connection using mongoose
 connectDB();
 app.get("/", (req, res) => {

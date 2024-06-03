@@ -41,7 +41,7 @@ router.get(
   meetingController.viewMeeting
 );
 /* VIEW ALL MEETINGS  */
-router.get(
+router.post(
   "/viewAllMeetings",
   meetingValidator.viewAllMeetingsValidator,
   authMiddleware.verifyUserToken,

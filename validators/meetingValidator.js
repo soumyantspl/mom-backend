@@ -237,7 +237,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
         authorization: Joi.required(),
       }).unknown(true),
     });
-    const enumValues=["closed", "sceduled", "rescheduled", "canceled", "due"];
+    const enumValues = ["closed", "sceduled", "rescheduled", "canceled", "due"];
     const bodySchema = Joi.object({
       searchKey: Joi.string()
         .trim()
@@ -255,20 +255,23 @@ const viewAllMeetingsValidator = async (req, res, next) => {
       // }),
       attendeeId: Joi.string().trim().alphanum(),
       organizationId: Joi.string().trim().alphanum().required(),
-    });
-    const paramsSchema = Joi.object({
       limit: Joi.number().required(),
       page: Joi.number().required(),
       order: Joi.number().required(),
     });
+    // const paramsSchema = Joi.object({
+    //   limit: Joi.number().required(),
+    //   page: Joi.number().required(),
+    //   order: Joi.number().required(),
+    // });
     await headerSchema.validateAsync({ headers: req.headers });
-    await paramsSchema.validateAsync(req.query);
+   // await paramsSchema.validateAsync(req.query);
     await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
     // errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 

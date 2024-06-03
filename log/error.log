@@ -651,3 +651,258 @@ Stack Trace: TypeError: authMiddleware.generatUserToken is not a function
     at Object.signInByPassword (E:\Ongoing\MOM\services\authService.js:281:32)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async signInByPassword (E:\Ongoing\MOM\controllers\authController.js:124:20)
+Date: 01/06/2024, Time: 14:21
+Error: ObjectId is not defined
+Stack Trace: ReferenceError: ObjectId is not defined
+    at insertOtp (E:\Ongoing\MOM\services\authService.js:98:79)
+    at validateSendingOtp (E:\Ongoing\MOM\services\authService.js:146:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.sendOtp (E:\Ongoing\MOM\services\authService.js:22:12)
+    at async sendOtp (E:\Ongoing\MOM\controllers\authController.js:9:20)
+Date: 01/06/2024, Time: 14:27
+Error: OtpLogs.findAndUpdate is not a function
+Stack Trace: TypeError: OtpLogs.findAndUpdate is not a function
+    at insertOtp (E:\Ongoing\MOM\services\authService.js:99:37)
+    at validateSendingOtp (E:\Ongoing\MOM\services\authService.js:148:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.reSendOtp (E:\Ongoing\MOM\services\authService.js:127:12)
+    at async reSendOtp (E:\Ongoing\MOM\controllers\authController.js:66:20)
+Date: 01/06/2024, Time: 14:27
+Error: OtpLogs.findAndUpdate is not a function
+Stack Trace: TypeError: OtpLogs.findAndUpdate is not a function
+    at insertOtp (E:\Ongoing\MOM\services\authService.js:99:37)
+    at validateSendingOtp (E:\Ongoing\MOM\services\authService.js:148:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.reSendOtp (E:\Ongoing\MOM\services\authService.js:127:12)
+    at async reSendOtp (E:\Ongoing\MOM\controllers\authController.js:66:20)
+Date: 01/06/2024, Time: 14:28
+Error: OtpLogs.update is not a function
+Stack Trace: TypeError: OtpLogs.update is not a function
+    at insertOtp (E:\Ongoing\MOM\services\authService.js:99:37)
+    at validateSendingOtp (E:\Ongoing\MOM\services\authService.js:148:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.reSendOtp (E:\Ongoing\MOM\services\authService.js:127:12)
+    at async reSendOtp (E:\Ongoing\MOM\controllers\authController.js:66:20)
+Date: 01/06/2024, Time: 14:28
+Error: OtpLogs.update is not a function
+Stack Trace: TypeError: OtpLogs.update is not a function
+    at insertOtp (E:\Ongoing\MOM\services\authService.js:99:37)
+    at validateSendingOtp (E:\Ongoing\MOM\services\authService.js:148:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.reSendOtp (E:\Ongoing\MOM\services\authService.js:127:12)
+    at async reSendOtp (E:\Ongoing\MOM\controllers\authController.js:66:20)
+Date: 01/06/2024, Time: 14:48
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 14:52
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:01
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:06
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:13
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:36
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:39
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:58
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:00
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:16
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:16
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:16
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:16
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:32
+Error: otpResendCount is not defined
+Stack Trace: ReferenceError: otpResendCount is not defined
+    at reSendOtp (E:\Ongoing\MOM\controllers\authController.js:80:73)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 01/06/2024, Time: 16:34
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 16:35
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 16:35
+Error: otpResendCount is not defined
+Stack Trace: ReferenceError: otpResendCount is not defined
+    at reSendOtp (E:\Ongoing\MOM\controllers\authController.js:80:73)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 01/06/2024, Time: 16:37
+Error: otpResendCount is not defined
+Stack Trace: ReferenceError: otpResendCount is not defined
+    at reSendOtp (E:\Ongoing\MOM\controllers\authController.js:81:73)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 01/06/2024, Time: 16:57
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 03/06/2024, Time: 09:55
+Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+Stack Trace: Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)
+Date: 03/06/2024, Time: 10:28
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 03/06/2024, Time: 11:24
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:24
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:27
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:27
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:33
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:33
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:33
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:33
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:33
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:34
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:34
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:41
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:41
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:41
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:41
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:45
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:45
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:45
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:45
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:56
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:267:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 12:03
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:267:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 12:19
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 12:46
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 12:46
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 12:48
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 14:25
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 03/06/2024, Time: 14:26
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 15:21
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 16:47
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)

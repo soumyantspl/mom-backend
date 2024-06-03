@@ -139,7 +139,7 @@ const viewAllMeetings = async (req, res) => {
         res,
         null,
         messages.recordsNotFound,
-        409
+        200
       );
     }
     return Responses.successResponse(

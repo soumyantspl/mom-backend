@@ -53,10 +53,6 @@ const meetingSchema = new mongoose.Schema(
         },
       },
     ],
-    // roomId: {
-    //   type: mongoose.Schema.ObjectId,
-    //   required: true,
-    // },
     meetingStatus: {
       status: {
         type: String,
@@ -77,18 +73,7 @@ const meetingSchema = new mongoose.Schema(
     agendaIds: [{
       type:  mongoose.Schema.ObjectId
   }]
-    // logs: [
-    //   {
-    //     id: {
-    //       type: mongoose.Schema.ObjectId,
-    //       required: true,
-    //     },
-    //     action: {
-    //       type: String,
-    //       required: true,
-    //     },
-    //   },
-    // ],
+ 
   },
   {
     timestamps: true,
