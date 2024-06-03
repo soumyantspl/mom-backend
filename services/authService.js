@@ -30,7 +30,7 @@ const verifyOtp = async (data) => {
   const otpLogsData = await getOtpLogs(data);
   if (otpLogsData.length !== 0) {
     const userData = otpLogsData[0].userDetail;
-    const token = authMiddleware.generateUserToken({
+    const token = await authMiddleware.generateUserToken({
       userId: userData._id,
       name: userData.name,
     });

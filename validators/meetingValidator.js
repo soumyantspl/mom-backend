@@ -237,6 +237,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
         authorization: Joi.required(),
       }).unknown(true),
     });
+    const enumValues=["closed", "sceduled", "rescheduled", "canceled", "due"];
     const bodySchema = Joi.object({
       searchKey: Joi.string()
         .trim()
