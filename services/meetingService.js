@@ -268,23 +268,24 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
       },
     },
   ])
+  .skip(skip)
     .sort({ createdAt: parseInt(order) })
     .limit(limit)
-    .skip(skip);
-  console.log("meetingData---------", meetingData);
+    
+//  console.log("meetingData---------", meetingData);
   if (meetingData.length !== 0) {
     meetingData.map((meetingDataObject) => {
-      console.log("meetingDataObject---------", meetingDataObject);
+   //   console.log("meetingDataObject---------", meetingDataObject);
       meetingDataObject.attendees.map((item) => {
-        console.log("item---------", item);
-        console.log(
-          "attendeesDetail----------",
-          meetingDataObject.attendeesDetail
-        );
+        // console.log("item---------", item);
+        // console.log(
+        //   "attendeesDetail----------",
+        //   meetingDataObject.attendeesDetail
+        // );
         const attendeeData = meetingDataObject.attendeesDetail.find(
           (attendee) => attendee._id == item.id.toString()
         );
-        console.log("attendeeData---------", attendeeData);
+       // console.log("attendeeData---------", attendeeData);
         if (item.id.toString() == userId) {
           meetingDataObject.rsvp = item.rsvp;
         }
@@ -294,10 +295,10 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
       });
       delete meetingDataObject.attendeesDetail;
 
-      meetingDataObject.userRsvp = console.log(
-        "meetingDataObject---------------",
-        meetingDataObject
-      );
+      // meetingDataObject.userRsvp = console.log(
+      //   "meetingDataObject---------------",
+      //   meetingDataObject
+      // );
     });
 
     // return meetingDataObject;
