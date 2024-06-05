@@ -49,7 +49,7 @@ router.post(
 );
 /* LIST ATTENDEES FROM PREVIOOUS MEETING */
 router.get(
-  "/listAttendeesFromPreviousMeeting",
+  "/listAttendeesFromPreviousMeeting/:organizationId",
   meetingValidator.listAttendeesFromPreviousMeetingValidator,
   authMiddleware.verifyUserToken,
   meetingController.listAttendeesFromPreviousMeeting

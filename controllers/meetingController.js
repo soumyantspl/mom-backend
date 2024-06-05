@@ -130,7 +130,8 @@ const viewAllMeetings = async (req, res) => {
       req.body,
       req.query,
       req.userId,
-      req.userRole
+      // req.userRole
+      "USER"
     );
     console.log(result);
     if (result.totalCount == 0) {
@@ -191,16 +192,17 @@ const viewMeeting = async (req, res) => {
 const listAttendeesFromPreviousMeeting = async (req, res) => {
   try {
     const result = await meetingService.listAttendeesFromPreviousMeeting(
-      req.body,
+      req.params.organizationId,
       req.userId
     );
-    if (!result) {
+    console.log(result)
+    if (result.length==0) {
       return Responses.failResponse(
         req,
         res,
         null,
         messages.recordsNotFound,
-        409
+        200
       );
     }
     return Responses.successResponse(

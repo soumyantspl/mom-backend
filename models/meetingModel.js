@@ -56,7 +56,7 @@ const meetingSchema = new mongoose.Schema(
     meetingStatus: {
       status: {
         type: String,
-        enum: ["closed", "sceduled", "rescheduled", "canceled", "due"],
+        enum: ["closed", "scheduled", "rescheduled", "cancelled", "due"],
         default: "due",
       },
       remarks: { type: String, required: false },

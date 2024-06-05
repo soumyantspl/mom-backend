@@ -228,7 +228,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
     query["attendees.id"] = new ObjectId(bodyData.attendeeId);
   }
   if (bodyData.meetingStatus) {
-    query["status"] = bodyData.meetingStatus;
+    query["meetingStatus.status"] = bodyData.meetingStatus;
   }
   console.log("query", query);
 
@@ -284,8 +284,8 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
       },
     },
   ])
+  .sort({ _id: parseInt(order) })
     .skip(skip)
-    .sort({ createdAt: parseInt(order) })
     .limit(limit);
 
   //  console.log("meetingData---------", meetingData);
@@ -406,12 +406,12 @@ const cancelMeeting = async (id, userId, data, ipAddress) => {
 };
 
 // /**FUNC- TO VIEW LIST OF ATTENDEES FROM PREVIOUS MEETING */
-const listAttendeesFromPreviousMeeting = async (data, userId) => {
+const listAttendeesFromPreviousMeeting = async (organizationId, userId) => {
   const meetingData = await Meeting.aggregate([
     {
       $match: {
         "attendees.id": new ObjectId(userId),
-        organizationId: new ObjectId(data.organizationId),
+        organizationId: new ObjectId(organizationId),
       },
     },
     {

@@ -78,5 +78,6 @@ const downloadMinutes = async (req, res) => {
 
 module.exports = {
   acceptRejectMinutes,
-  createMinutes,downloadMinutes
+  createMinutes,
+  downloadMinutes
 };

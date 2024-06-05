@@ -237,7 +237,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
         authorization: Joi.required(),
       }).unknown(true),
     });
-    const enumValues = ["closed", "sceduled", "rescheduled", "canceled", "due"];
+    const enumValues = ["closed", "scheduled", "rescheduled", "cancelled", "due"];
     const bodySchema = Joi.object({
       searchKey: Joi.string()
         .trim()
@@ -300,16 +300,19 @@ const updateRsvpValidator = async (req, res, next) => {
 //LIST ATTENDEES FROM PREVIOUS MEETING//
 const listAttendeesFromPreviousMeetingValidator = async (req, res, next) => {
   try {
+    console.log(req.body);
+    console.log(req.query);
+    console.log(req.params);
     const headerSchema = Joi.object({
       headers: Joi.object({
         authorization: Joi.required(),
       }).unknown(true),
     });
-    const bodySchema = Joi.object({
+    const paramsSchema = Joi.object({
       organizationId: Joi.string().trim().alphanum().required(),
     }).required();
     await headerSchema.validateAsync({ headers: req.headers });
-    await bodySchema.validateAsync(req.body);
+    await paramsSchema.validateAsync(req.params);
     next();
   } catch (error) {
     console.log(error);
