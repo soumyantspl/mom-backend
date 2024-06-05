@@ -211,11 +211,11 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
       };
 
   if (bodyData.fromDate && bodyData.toDate) {
-    const fromDate=new Date(bodyData.fromDate)
-    const toDate=new Date(bodyData.toDate)
+    const fromDate = new Date(bodyData.fromDate);
+    const toDate = new Date(bodyData.toDate);
     query.date = {
-      $gte:new Date(fromDate.setDate(fromDate.getDate() - 1)),
-      $lt: new Date(toDate.setDate(toDate.getDate() + 1))
+      $gte: new Date(fromDate.setDate(fromDate.getDate() - 1)),
+      $lt: new Date(toDate.setDate(toDate.getDate() + 1)),
     };
   }
 
@@ -228,7 +228,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
     query["attendees.id"] = new ObjectId(bodyData.attendeeId);
   }
   if (bodyData.meetingStatus) {
-    query["status"] = bodyData.meetingStatus
+    query["status"] = bodyData.meetingStatus;
   }
   console.log("query", query);
 
@@ -266,14 +266,15 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         date: 1,
         fromTime: 1,
         toTime: 1,
-        status:1,
+        status: 1,
         locationDetails: 1,
-        meetingStatus:1,
-        actionDetail:{
-          _id:1,
-          meetingId:1,
-          isComplete:1,
-          assignedUserId:1
+        meetingStatus: 1,
+        actionDetail: {
+          _id: 1,
+          meetingId: 1,
+          isComplete: 1,
+          assignedUserId: 1,
+          isAction: 1,
         },
         attendeesDetail: {
           email: 1,
@@ -283,14 +284,14 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
       },
     },
   ])
-  .skip(skip)
+    .skip(skip)
     .sort({ createdAt: parseInt(order) })
-    .limit(1)
-    
-//  console.log("meetingData---------", meetingData);
+    .limit(limit);
+
+  //  console.log("meetingData---------", meetingData);
   if (meetingData.length !== 0) {
     meetingData.map((meetingDataObject) => {
-     console.log("meetingDataObject---------", meetingDataObject);
+      console.log("meetingDataObject---------", meetingDataObject);
       meetingDataObject.attendees.map((item) => {
         // console.log("item---------", item);
         // console.log(
@@ -300,7 +301,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         const attendeeData = meetingDataObject.attendeesDetail.find(
           (attendee) => attendee._id == item.id.toString()
         );
-       // console.log("attendeeData---------", attendeeData);
+        // console.log("attendeeData---------", attendeeData);
         if (item.id.toString() == userId) {
           meetingDataObject.rsvp = item.rsvp;
         }
@@ -309,11 +310,17 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         }
       });
 
-      const actionData = meetingDataObject.actionDetail.find(
-        (action) => action.assignedUserId == userId
+      const actionData = meetingDataObject.actionDetail.filter(
+        (action) => action.assignedUserId == userId && action.isAction == true
       );
-     
-console.log("=================================================>>>>>",actionData)
+      if (actionData.length !== 0) {
+        meetingDataObject.actionDetail = actionData;
+      }
+
+      console.log(
+        "=================================================>>>>>",
+        actionData
+      );
       delete meetingDataObject.attendeesDetail;
 
       // meetingDataObject.userRsvp = console.log(

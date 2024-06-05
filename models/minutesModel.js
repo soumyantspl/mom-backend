@@ -103,6 +103,7 @@ const minutesSchema = new mongoose.Schema(
     ],
     isComplete: {
       type: Boolean,
+      default:false
       //required: true,
     },
     dueDate: {
