@@ -137,7 +137,10 @@ const viewAllMeetings = async (req, res) => {
       return Responses.failResponse(
         req,
         res,
-        null,
+        {
+          totalCount:0,
+          meetingData:[]
+        },
         messages.recordsNotFound,
         200
       );

@@ -249,6 +249,14 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
       },
     },
     {
+      $lookup: {
+        from: "minutes",
+        localField: "_id",
+        foreignField: "meetingId",
+        as: "actionDetail",
+      },
+    },
+    {
       $project: {
         _id: 1,
         attendees: 1,
@@ -260,6 +268,13 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         toTime: 1,
         status:1,
         locationDetails: 1,
+        meetingStatus:1,
+        actionDetail:{
+          _id:1,
+          meetingId:1,
+          isComplete:1,
+          assignedUserId:1
+        },
         attendeesDetail: {
           email: 1,
           _id: 1,
@@ -270,12 +285,12 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
   ])
   .skip(skip)
     .sort({ createdAt: parseInt(order) })
-    .limit(limit)
+    .limit(1)
     
 //  console.log("meetingData---------", meetingData);
   if (meetingData.length !== 0) {
     meetingData.map((meetingDataObject) => {
-   //   console.log("meetingDataObject---------", meetingDataObject);
+     console.log("meetingDataObject---------", meetingDataObject);
       meetingDataObject.attendees.map((item) => {
         // console.log("item---------", item);
         // console.log(
@@ -293,6 +308,12 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
           return (item.name = attendeeData.name);
         }
       });
+
+      const actionData = meetingDataObject.actionDetail.find(
+        (action) => action.assignedUserId == userId
+      );
+     
+console.log("=================================================>>>>>",actionData)
       delete meetingDataObject.attendeesDetail;
 
       // meetingDataObject.userRsvp = console.log(
@@ -429,7 +450,7 @@ const createMeetingActivities = async (data, userId) => {
   const inputData = {
     activityDetails: data.activityDetails,
     meetingId: data.meetingId,
-    userId: userId,
+    userId,
     activityTitle: data.activityTitle,
   };
   console.log("inputData-----------------", inputData);
