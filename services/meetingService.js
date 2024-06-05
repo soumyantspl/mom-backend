@@ -269,6 +269,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         status: 1,
         locationDetails: 1,
         meetingStatus: 1,
+        createdAt:1,
         actionDetail: {
           _id: 1,
           meetingId: 1,
@@ -288,12 +289,12 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
     .skip(skip)
     .limit(limit);
 
-  //  console.log("meetingData---------", meetingData);
+    console.log("meetingData---------", meetingData);
   if (meetingData.length !== 0) {
     meetingData.map((meetingDataObject) => {
       console.log("meetingDataObject---------", meetingDataObject);
       meetingDataObject.attendees.map((item) => {
-        // console.log("item---------", item);
+         console.log("item---------", item);
         // console.log(
         //   "attendeesDetail----------",
         //   meetingDataObject.attendeesDetail
