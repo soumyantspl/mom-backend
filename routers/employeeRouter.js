@@ -40,5 +40,7 @@ router.get(
   authMiddleware.verifyUserToken,
   employeeController.viewSingleEmploye
 );
+/* MASTER DATA */
+router.get("/masterData/:id", employeeController.masterData);
 
 module.exports = router;

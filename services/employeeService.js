@@ -1,8 +1,11 @@
 const Employee = require("../models/employeeModel");
 const ObjectId = require("mongoose").Types.ObjectId;
+const Designations = require("../models/designationModel");
 const logService = require("./logsService");
 const logMessages = require("../constants/logsConstants");
 const commonHelper = require("../helpers/commonHelper");
+const Department = require("../models/departmentModel");
+const Units = require("../models/unitModel");
 
 // const createEmployeeForMeeting = async (data) => {
 //   const newEmployee = new Employee({ name, email, password });
@@ -59,12 +62,24 @@ const createEmployee = async (userId, data, ipAddress = "1000") => {
     console.log("logData-------------------", logData);
     await logService.createLog(logData);
     ///////////////////// LOGER END
-
     return result;
   }
 
   return false;
 };
+/**FUNC- TO FETCH MASTER DATA*/
+const masterData = async (id) => {
+  // const organisationId = id;
+  let query = { organizationId: id, isActive: true };
+  console.log("query", query);
+  const designationList = await Designations.find(query, { name: 1 });
+  const departmentList = await Department.find(query, { name: 1 });
+  const unitList = await Units.find(query, { name: 1 });
+
+  const masterData = { designationList, departmentList, unitList };
+  return masterData;
+};
+
 /**FUNC- TO DELETE AN EMPLOYEE */
 const deleteEmploye = async (userId, id, ipAddress = "1000") => {
   console.log("id--->>", id);
@@ -262,4 +277,5 @@ module.exports = {
   listEmployee,
   viewSingleEmployee,
   createAttendee,
+  masterData,
 };
