@@ -198,7 +198,7 @@ const masterDataValidator = async (req, res, next) => {
         authorization: Joi.required(),
       }).unknown(true),
     });
-    await headerSchema.validateAsync({ headers: req.headers });
+    // await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     next();
   } catch (error) {

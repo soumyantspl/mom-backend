@@ -187,20 +187,12 @@ const masterData = async (req, res) => {
   try {
     const result = await employeeService.masterData(req.params.organizationId);
     console.log("result----->>>", result);
-    if (result.length == 0) {
-      return Responses.failResponse(
-        req,
-        res,
-        null,
-        messages.recordsNotFound,
-        409
-      );
-    }
+ 
     return Responses.successResponse(
       req,
       res,
-      result,
-      messages.recordsFound,
+      result.masterData,
+      result.message,
       200
     );
   } catch (error) {

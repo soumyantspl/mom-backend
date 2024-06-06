@@ -75,9 +75,12 @@ const masterData = async (organizationId) => {
   const designationList = await Designations.find(query, { name: 1 });
   const departmentList = await Department.find(query, { name: 1 });
   const unitList = await Units.find(query, { name: 1 });
-
+  const message = `${designationList.length} designation found , ${departmentList.length} department found &  ${unitList.length} unit found `;
   const masterData = { designationList, departmentList, unitList };
-  return masterData;
+  return {
+    message,
+    masterData,
+  };
 };
 
 /**FUNC- TO DELETE AN EMPLOYEE */
