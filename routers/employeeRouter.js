@@ -42,7 +42,7 @@ router.get(
 );
 /* MASTER DATA */
 router.get(
-  "/masterData/:id",
+  "/masterData/:organizationId",
   validator.masterDataValidator,
   authMiddleware.verifyUserToken,
   employeeController.masterData

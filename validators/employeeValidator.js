@@ -189,8 +189,9 @@ const viewSingleEmployeeValidator = async (req, res, next) => {
 
 const masterDataValidator = async (req, res, next) => {
   try {
+    console.log(req.params);
     const paramsSchema = Joi.object({
-      id: Joi.string().trim().alphanum().required(),
+      organizationId: Joi.string().trim().alphanum().required(),
     });
     const headerSchema = Joi.object({
       headers: Joi.object({

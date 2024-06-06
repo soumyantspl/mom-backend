@@ -185,7 +185,7 @@ const viewSingleEmploye = async (req, res) => {
 
 const masterData = async (req, res) => {
   try {
-    const result = await employeeService.masterData(req.params.id);
+    const result = await employeeService.masterData(req.params.organizationId);
     console.log("result----->>>", result);
     if (result.length == 0) {
       return Responses.failResponse(

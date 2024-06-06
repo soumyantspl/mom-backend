@@ -68,9 +68,9 @@ const createEmployee = async (userId, data, ipAddress = "1000") => {
   return false;
 };
 /**FUNC- TO FETCH MASTER DATA*/
-const masterData = async (id) => {
-  // const organisationId = id;
-  let query = { organizationId: id, isActive: true };
+const masterData = async (organizationId) => {
+  console.log("organizationId--->>", organizationId);
+  let query = { organizationId: organizationId, isActive: true };
   console.log("query", query);
   const designationList = await Designations.find(query, { name: 1 });
   const departmentList = await Department.find(query, { name: 1 });
