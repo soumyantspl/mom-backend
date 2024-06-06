@@ -278,18 +278,21 @@ const viewAllMeetingsValidator = async (req, res, next) => {
 // UPDATE USER RSVP FOR MEETING VALIDATOR
 const updateRsvpValidator = async (req, res, next) => {
   try {
-    // const headerSchema = Joi.object({
-    //   headers: Joi.object({
-    //     authorization: Joi.required(),
-    //   }).unknown(true),
-    // });
+    const enumValues = ["YES", "NO", "WAITING","MAYBE"];
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const bodySchema = Joi.object({
       //  id: Joi.string().trim().alphanum().required(),
       //  userId: Joi.string().trim().alphanum().required(),
-      rsvp: Joi.string().required(),
+      rsvp: Joi.string().valid(...enumValues).required()
     }).required();
+    await headerSchema.validateAsync({ headers: req.headers });
     await bodySchema.validateAsync(req.body);
-    // await headerSchema.validateAsync({ headers: req.headers });
+   // await paramsSchema.validateAsync(req.query);
+    
     next();
   } catch (error) {
     console.log(error);
