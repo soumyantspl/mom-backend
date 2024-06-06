@@ -41,6 +41,11 @@ router.get(
   employeeController.viewSingleEmploye
 );
 /* MASTER DATA */
-router.get("/masterData/:id", employeeController.masterData);
+router.get(
+  "/masterData/:id",
+  validator.masterDataValidator,
+  authMiddleware.verifyUserToken,
+  employeeController.masterData
+);
 
 module.exports = router;

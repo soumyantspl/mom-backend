@@ -186,6 +186,26 @@ const viewSingleEmployeeValidator = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+
+const masterDataValidator = async (req, res, next) => {
+  try {
+    const paramsSchema = Joi.object({
+      id: Joi.string().trim().alphanum().required(),
+    });
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    await headerSchema.validateAsync({ headers: req.headers });
+    await paramsSchema.validateAsync(req.params);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
 module.exports = {
   viewEmployeeValidator,
   createEmployeeValidator,
@@ -193,4 +213,5 @@ module.exports = {
   deleteEmployeValidator,
   listEmployesValidator,
   viewSingleEmployeeValidator,
+  masterDataValidator,
 };
