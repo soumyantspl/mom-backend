@@ -15,7 +15,7 @@ const sendOtpValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error,200);
   }
 };
 
@@ -39,7 +39,7 @@ const verifyOtpValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error,200);
   }
 };
 
@@ -71,7 +71,7 @@ const setPasswordValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error,200);
   }
 };
 
@@ -96,7 +96,7 @@ const signInByPasswordValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error,200);
   }
 };
 module.exports = {

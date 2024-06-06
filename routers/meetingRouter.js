@@ -15,7 +15,7 @@ router.post(
 /*UPDATE RSVP */
 router.put(
   "/updateRsvp/:id",
- meetingValidator.updateRsvpValidator,
+  meetingValidator.updateRsvpValidator,
   authMiddleware.verifyUserToken,
   meetingController.updateRsvp
 );
@@ -41,7 +41,7 @@ router.get(
   meetingController.viewMeeting
 );
 /* VIEW ALL MEETINGS  */
-router.get(
+router.post(
   "/viewAllMeetings",
   meetingValidator.viewAllMeetingsValidator,
   authMiddleware.verifyUserToken,
@@ -49,7 +49,7 @@ router.get(
 );
 /* LIST ATTENDEES FROM PREVIOOUS MEETING */
 router.get(
-  "/listAttendeesFromPreviousMeeting",
+  "/listAttendeesFromPreviousMeeting/:organizationId",
   meetingValidator.listAttendeesFromPreviousMeetingValidator,
   authMiddleware.verifyUserToken,
   meetingController.listAttendeesFromPreviousMeeting

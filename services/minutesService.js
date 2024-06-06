@@ -35,6 +35,7 @@ const acceptRejectMinutes = async (data, userId) => {
 //FUNCTION RO CREATE MINUTES
 
 const createMinutes = async (data, userId) => {
+  console.log("44444",data,userId)
   if (data.isNewUser) {
     const empData = await employeeService.createAttendee(
       data.name,
@@ -44,7 +45,7 @@ const createMinutes = async (data, userId) => {
     if (empData.isDuplicate) {
       return empData;
     }
-    userId = new ObjectId(empData._id);
+    data.assignedUserId = new ObjectId(empData._id);
   }
   //
   const attendeesData = await getAllAttendees(data.meetingId);
@@ -58,12 +59,12 @@ const createMinutes = async (data, userId) => {
   console.log("attendeeResult-->", attendeeResult);
   const inputData = {
     createdById: userId,
-    organisationId: data.organisationId,
+    organizationId: data.organizationId,
     meetingId: data.meetingId,
     description: data.description,
     dueDate: data.dueDate,
     priority: data.priority,
-    responsiblePerson: data.responsiblePerson,
+    assignedUserId: data.assignedUserId,
     isAction: data.isAction,
     attendees: attendeeResult,
   };
@@ -75,11 +76,10 @@ const createMinutes = async (data, userId) => {
   const activityObject = {
     activityDetails: newMinutes.description,
     activityTitle: "MINUTES CREATED",
-    meetingId: data.meetingId,
-    userId,
+    meetingId: data.meetingId
   };
   console.log("activityObject-->", activityObject);
-  const meetingActivitiesResult = await createMeetingActivities(activityObject);
+  const meetingActivitiesResult = await createMeetingActivities(activityObject,userId);
   console.log("meetingActivities------------", meetingActivitiesResult);
 
   return {
@@ -519,8 +519,20 @@ const downLoadMinutes = async (meetingId) => {
   return false;
 };
 
+
+
+const testPdf=async ()=>{
+
+  return await fileService.generateMinutesPdf();
+  // return meetingDataObject;
+}
+
+
+
+
+
 module.exports = {
   acceptRejectMinutes,
   createMinutes,
-  downLoadMinutes,
+  downLoadMinutes,testPdf
 };
