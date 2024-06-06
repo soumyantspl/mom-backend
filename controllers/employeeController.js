@@ -1,12 +1,16 @@
 const employeeService = require("../services/employeeService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
-const Employee = require("../models/employeeModel");
+const { errorLog } = require("../middlewares/errorLog");
 
 /**FUNC- TO CREATE EMPLOYEE**/
 const createEmployee = async (req, res) => {
   try {
-    const result = await employeeService.createEmployee(req.body);
+    const result = await employeeService.createEmployee(
+      req.userId,
+      req.body,
+      req.ip
+    );
     console.log(result);
     if (result?.isDuplicateEmail) {
       return Responses.failResponse(
@@ -45,7 +49,12 @@ const createEmployee = async (req, res) => {
 /**FUNC- TO EDIT EMPLOYEE **/
 const editEmployee = async (req, res) => {
   try {
-    const result = await employeeService.editEmployee(req.body, req.params.id);
+    const result = await employeeService.editEmployee(
+      req.userId,
+      req.params.id,
+      req.body,
+      req.ip
+    );
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -93,7 +102,11 @@ const editEmployee = async (req, res) => {
 const deleteEmploye = async (req, res) => {
   try {
     console.log(req.params);
-    const result = await employeeService.deleteEmploye(req.params.id);
+    const result = await employeeService.deleteEmploye(
+      userId,
+      req.params.id,
+      req.ip
+    );
     if (!result) {
       return Responses.failResponse(
         req,
@@ -170,10 +183,30 @@ const viewSingleEmploye = async (req, res) => {
   }
 };
 
+const masterData = async (req, res) => {
+  try {
+    const result = await employeeService.masterData(req.params.organizationId);
+    console.log("result----->>>", result);
+ 
+    return Responses.successResponse(
+      req,
+      res,
+      result.masterData,
+      result.message,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   createEmployee,
   editEmployee,
   deleteEmploye,
   listEmployee,
   viewSingleEmploye,
+  masterData,
 };

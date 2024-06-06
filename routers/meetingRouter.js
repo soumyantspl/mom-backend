@@ -15,15 +15,15 @@ router.post(
 /*UPDATE RSVP */
 router.put(
   "/updateRsvp/:id",
- // meetingValidator.updateRsvpValidator,
-  // authMiddleware.verifyUserToken,
+ meetingValidator.updateRsvpValidator,
+  authMiddleware.verifyUserToken,
   meetingController.updateRsvp
 );
 /* CANCEL MEETING */
 router.put(
   "/cancelMeeting/:id",
-  // meetingValidator.cancelMeetingValidator,
-  // authMiddleware.verifyUserToken,
+  meetingValidator.cancelMeetingValidator,
+  authMiddleware.verifyUserToken,
   meetingController.cancelMeeting
 );
 /* UPDATE MEETING  */

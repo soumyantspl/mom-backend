@@ -8,18 +8,10 @@ const ObjectId = require("mongoose").Types.ObjectId;
 const createDesignationService = async (userId, data, ipAddress = "1000") => {
   const result = new Designations({
     name: data.name,
-    organizationId: data.organizationId,
+    organizationId: new Object(data.organizationId),
   });
 
   ////////////////////LOGER START
-  const inputKeys = Object.keys(result);
-  const details = await commonHelper.generateLogObject(
-    inputKeys,
-    result,
-    userId,
-    data
-  );
-
   const logData = {
     moduleName: logMessages.Designation.moduleName,
     userId,
@@ -30,8 +22,8 @@ const createDesignationService = async (userId, data, ipAddress = "1000") => {
   };
   console.log("logData-------------------", logData);
   await logService.createLog(logData);
-
   ///////////////////// LOGER END
+
   return await result.save();
 };
 
@@ -80,14 +72,6 @@ const deleteDesignationService = async (userId, data, ipAddress = "1000") => {
   );
 
   ////////////////////LOGER START
-  const inputKeys = Object.keys(result);
-  const details = await commonHelper.generateLogObject(
-    inputKeys,
-    result,
-    userId,
-    data
-  );
-
   const logData = {
     moduleName: logMessages.Designation.moduleName,
     userId,

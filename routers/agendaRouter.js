@@ -5,7 +5,7 @@ const agendaValidator = require("../validators/agendaValidator");
 const authMiddleware = require("../middlewares/authMiddleware");
 
 router.post(
-  "/addAgenda",
+  "/createAgenda",
   agendaValidator.createAgendaValidator,
   authMiddleware.verifyUserToken,
   agendaController.createAgenda

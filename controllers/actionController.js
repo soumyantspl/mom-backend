@@ -8,7 +8,6 @@ const actionCommentsCreate = async (req, res) => {
   try {
     const result = await actionService.comments(
       req.userId,
-      // "663dbb0bcf8ec14b66687084",
       req.params.id,
       req.body,
       req.ip
