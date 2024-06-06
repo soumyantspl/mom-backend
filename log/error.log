@@ -595,3 +595,1089 @@ Stack Trace: TypeError: Cannot read properties of undefined (reading 'rejectedBy
     at Object.downLoadMinutes (E:\Ongoing\MOM\services\minutesService.js:246:28)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async downloadMinutes (E:\Ongoing\MOM\controllers\minutesController.js:57:20)
+Date: 21/05/2024, Time: 15:06
+Error: "id" is not allowed
+Stack Trace: ValidationError: "id" is not allowed
+Date: 21/05/2024, Time: 15:07
+Error: inputKeys is not defined
+Stack Trace: ReferenceError: inputKeys is not defined
+    at Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:22:5)
+    at createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:7:44)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:30:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 21/05/2024, Time: 15:10
+Error: result is not defined
+Stack Trace: ReferenceError: result is not defined
+    at Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:25:5)
+    at createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:7:44)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:30:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 21/05/2024, Time: 15:13
+Error: Cannot read properties of undefined (reading 'map')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'map')
+    at Object.generateLogObject (D:\mom\mom-backend\helpers\commonHelper.js:35:13)
+    at Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:21:38)
+    at createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:7:44)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:30:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 21/05/2024, Time: 15:15
+Error: details is not defined
+Stack Trace: ReferenceError: details is not defined
+    at Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:22:14)
+    at createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:7:44)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:30:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 21/05/2024, Time: 15:16
+Error: result is not defined
+Stack Trace: ReferenceError: result is not defined
+    at Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:22:21)
+    at createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:7:44)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:30:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 21/05/2024, Time: 15:16
+Error: logService is not defined
+Stack Trace: ReferenceError: logService is not defined
+    at Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:25:3)
+    at createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:7:44)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:30:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 21/05/2024, Time: 15:17
+Error: logs validation failed: details: Path `details` is required., organizationId: Path `organizationId` is required., action: Path `action` is required.
+Stack Trace: ValidationError: logs validation failed: details: Path `details` is required., organizationId: Path `organizationId` is required., action: Path `action` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 21/05/2024, Time: 15:20
+Error: logs validation failed: details: Path `details` is required., organizationId: Path `organizationId` is required., action: Path `action` is required.
+Stack Trace: ValidationError: logs validation failed: details: Path `details` is required., organizationId: Path `organizationId` is required., action: Path `action` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 21/05/2024, Time: 15:21
+Error: logs validation failed: details: Path `details` is required., organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: logs validation failed: details: Path `details` is required., organizationId: Path `organizationId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 21/05/2024, Time: 15:22
+Error: logs validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError", details: Path `details` is required.
+Stack Trace: ValidationError: logs validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError", details: Path `details` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1463:12)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1117:16)
+    at model.Document (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:166:12)
+    at model.Model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4819:15)
+    at Object.createLog (D:\mom\mom-backend\services\logsService.js:8:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:26:3)
+    at async createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:7:20)
+Date: 21/05/2024, Time: 15:25
+Error: logs validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError", details: Path `details` is required.
+Stack Trace: ValidationError: logs validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError", details: Path `details` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1463:12)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1117:16)
+    at model.Document (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:166:12)
+    at model.Model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4819:15)
+    at Object.createLog (D:\mom\mom-backend\services\logsService.js:8:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:26:3)
+    at async createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:7:20)
+Date: 21/05/2024, Time: 15:41
+Error: logs validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError", details: Path `details` is required.
+Stack Trace: ValidationError: logs validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError", details: Path `details` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1463:12)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1117:16)
+    at model.Document (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:166:12)
+    at model.Model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4819:15)
+    at Object.createLog (D:\mom\mom-backend\services\logsService.js:8:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:26:3)
+    at async createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:7:20)
+Date: 21/05/2024, Time: 15:44
+Error: logs validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError", details: Path `details` is required.
+Stack Trace: ValidationError: logs validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError", details: Path `details` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1463:12)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1117:16)
+    at model.Document (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:166:12)
+    at model.Model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4819:15)
+    at Object.createLog (D:\mom\mom-backend\services\logsService.js:8:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:27:3)
+    at async createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:7:20)
+Date: 21/05/2024, Time: 15:48
+Error: logs validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError", details: Path `details` is required.
+Stack Trace: ValidationError: logs validation failed: organizationId: Cast to ObjectId failed for value "6634b34bbaade79427" (type string) at path "organizationId" because of "BSONError", details: Path `details` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1463:12)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1117:16)
+    at model.Document (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:166:12)
+    at model.Model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4819:15)
+    at Object.createLog (D:\mom\mom-backend\services\logsService.js:8:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.createDepartmentService (D:\mom\mom-backend\services\departmentService.js:27:3)
+    at async createDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:7:20)
+Date: 21/05/2024, Time: 15:49
+Error: logs validation failed: details: Path `details` is required.
+Stack Trace: ValidationError: logs validation failed: details: Path `details` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 21/05/2024, Time: 15:53
+Error: id is not defined
+Stack Trace: ReferenceError: id is not defined
+    at Object.editDepartmentService (D:\mom\mom-backend\services\departmentService.js:35:15)
+    at editDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:29:44)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:421:3)
+Date: 21/05/2024, Time: 15:54
+Error: id is not defined
+Stack Trace: ReferenceError: id is not defined
+    at Object.editDepartmentService (D:\mom\mom-backend\services\departmentService.js:35:15)
+    at editDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:28:44)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:421:3)
+Date: 21/05/2024, Time: 16:14
+Error: jwt malformed
+Stack Trace: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (D:\mom\mom-backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at exports.deleteDepartmentValidator (D:\mom\mom-backend\validators\departmentValidator.js:59:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 21/05/2024, Time: 16:15
+Error: id is not defined
+Stack Trace: ReferenceError: id is not defined
+    at deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:17)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:421:3)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+Date: 21/05/2024, Time: 16:15
+Error: ObjectId is not defined
+Stack Trace: ReferenceError: ObjectId is not defined
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:81:16)
+    at deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:44)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:421:3)
+Date: 21/05/2024, Time: 16:16
+Error: id is not defined
+Stack Trace: ReferenceError: id is not defined
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:81:12)
+    at deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:44)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:421:3)
+Date: 21/05/2024, Time: 16:16
+Error: Cast to ObjectId failed for value "{ _id: undefined }" (type Object) at path "_id" for model "departments"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: undefined }" (type Object) at path "_id" for model "departments"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOneAndUpdate (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:3280:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:80:29)
+Date: 21/05/2024, Time: 16:17
+Error: Cast to ObjectId failed for value "{ _id: undefined }" (type Object) at path "_id" for model "departments"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: undefined }" (type Object) at path "_id" for model "departments"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOneAndUpdate (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:3280:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:80:29)
+Date: 21/05/2024, Time: 16:17
+Error: inputKeys is not defined
+Stack Trace: ReferenceError: inputKeys is not defined
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:88:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:20)
+Date: 21/05/2024, Time: 16:18
+Error: details is not defined
+Stack Trace: ReferenceError: details is not defined
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:92:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:20)
+Date: 21/05/2024, Time: 16:19
+Error: details is not defined
+Stack Trace: ReferenceError: details is not defined
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:92:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:20)
+Date: 21/05/2024, Time: 16:22
+Error: meetingService.generateLogObject is not a function
+Stack Trace: TypeError: meetingService.generateLogObject is not a function
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:87:40)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:20)
+Date: 21/05/2024, Time: 16:23
+Error: inputKeys is not defined
+Stack Trace: ReferenceError: inputKeys is not defined
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:88:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:20)
+Date: 21/05/2024, Time: 16:24
+Error: Cannot convert undefined or null to object
+Stack Trace: TypeError: Cannot convert undefined or null to object
+    at Function.keys (<anonymous>)
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:87:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:20)
+Date: 21/05/2024, Time: 16:25
+Error: result is not defined
+Stack Trace: ReferenceError: result is not defined
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:90:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:20)
+Date: 21/05/2024, Time: 16:25
+Error: meetingService.generateLogObject is not a function
+Stack Trace: TypeError: meetingService.generateLogObject is not a function
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:88:40)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:20)
+Date: 21/05/2024, Time: 16:25
+Error: meetingService.generateLogObject is not a function
+Stack Trace: TypeError: meetingService.generateLogObject is not a function
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:88:40)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:20)
+Date: 21/05/2024, Time: 16:29
+Error: deletedDepartment is not defined
+Stack Trace: ReferenceError: deletedDepartment is not defined
+    at Object.deleteDepartmentService (D:\mom\mom-backend\services\departmentService.js:108:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteDepartmentController (D:\mom\mom-backend\controllers\departmentController.js:58:20)
+Date: 21/05/2024, Time: 16:41
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 21/05/2024, Time: 16:42
+Error: result is not defined
+Stack Trace: ReferenceError: result is not defined
+    at Object.createDesignationService (D:\mom\mom-backend\services\designationService.js:13:33)
+    at createDesignationController (D:\mom\mom-backend\controllers\designationController.js:8:45)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 21/05/2024, Time: 16:42
+Error: userId is not defined
+Stack Trace: ReferenceError: userId is not defined
+    at Object.createDesignationService (D:\mom\mom-backend\services\designationService.js:17:5)
+    at createDesignationController (D:\mom\mom-backend\controllers\designationController.js:8:45)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 21/05/2024, Time: 16:50
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 21/05/2024, Time: 16:51
+Error: Cannot convert undefined or null to object
+Stack Trace: TypeError: Cannot convert undefined or null to object
+    at Function.keys (<anonymous>)
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:49:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:20)
+Date: 21/05/2024, Time: 16:51
+Error: Cannot convert undefined or null to object
+Stack Trace: TypeError: Cannot convert undefined or null to object
+    at Function.keys (<anonymous>)
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:49:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:20)
+Date: 21/05/2024, Time: 16:51
+Error: Cannot convert undefined or null to object
+Stack Trace: TypeError: Cannot convert undefined or null to object
+    at Function.keys (<anonymous>)
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:49:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:20)
+Date: 21/05/2024, Time: 16:52
+Error: Cannot convert undefined or null to object
+Stack Trace: TypeError: Cannot convert undefined or null to object
+    at Function.keys (<anonymous>)
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:49:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:20)
+Date: 21/05/2024, Time: 16:53
+Error: Cannot convert undefined or null to object
+Stack Trace: TypeError: Cannot convert undefined or null to object
+    at Function.keys (<anonymous>)
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:49:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:20)
+Date: 21/05/2024, Time: 16:54
+Error: Cannot read properties of null (reading 'id')
+Stack Trace: TypeError: Cannot read properties of null (reading 'id')
+    at D:\mom\mom-backend\helpers\commonHelper.js:48:41
+    at Array.map (<anonymous>)
+    at Object.generateLogObject (D:\mom\mom-backend\helpers\commonHelper.js:35:13)
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:50:38)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:20)
+Date: 21/05/2024, Time: 16:56
+Error: Cannot read properties of null (reading 'id')
+Stack Trace: TypeError: Cannot read properties of null (reading 'id')
+    at D:\mom\mom-backend\helpers\commonHelper.js:48:41
+    at Array.map (<anonymous>)
+    at Object.generateLogObject (D:\mom\mom-backend\helpers\commonHelper.js:35:13)
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:50:38)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:20)
+Date: 21/05/2024, Time: 16:56
+Error: Cannot read properties of null (reading 'id')
+Stack Trace: TypeError: Cannot read properties of null (reading 'id')
+    at D:\mom\mom-backend\helpers\commonHelper.js:48:41
+    at Array.map (<anonymous>)
+    at Object.generateLogObject (D:\mom\mom-backend\helpers\commonHelper.js:35:13)
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:50:38)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:20)
+Date: 21/05/2024, Time: 16:58
+Error: ObjectId is not defined
+Stack Trace: ReferenceError: ObjectId is not defined
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:39:9)
+    at editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:45)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 21/05/2024, Time: 16:59
+Error: ObjectId is not defined
+Stack Trace: ReferenceError: ObjectId is not defined
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:39:9)
+    at editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:45)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 21/05/2024, Time: 17:01
+Error: Cannot read properties of null (reading 'id')
+Stack Trace: TypeError: Cannot read properties of null (reading 'id')
+    at D:\mom\mom-backend\helpers\commonHelper.js:48:41
+    at Array.map (<anonymous>)
+    at Object.generateLogObject (D:\mom\mom-backend\helpers\commonHelper.js:35:13)
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:50:38)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:20)
+Date: 21/05/2024, Time: 17:08
+Error: Cannot read properties of null (reading 'id')
+Stack Trace: TypeError: Cannot read properties of null (reading 'id')
+    at D:\mom\mom-backend\helpers\commonHelper.js:48:41
+    at Array.map (<anonymous>)
+    at Object.generateLogObject (D:\mom\mom-backend\helpers\commonHelper.js:35:13)
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:50:38)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:20)
+Date: 21/05/2024, Time: 17:11
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 21/05/2024, Time: 17:11
+Error: Cannot read properties of null (reading '0')
+Stack Trace: TypeError: Cannot read properties of null (reading '0')
+    at D:\mom\mom-backend\helpers\commonHelper.js:48:41
+    at Array.map (<anonymous>)
+    at Object.generateLogObject (D:\mom\mom-backend\helpers\commonHelper.js:35:13)
+    at Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:50:38)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editDesignationController (D:\mom\mom-backend\controllers\designationController.js:29:20)
+Date: 21/05/2024, Time: 17:12
+Error: Cast to ObjectId failed for value "{ id: '663a0d12d3ce13ca2688bed6' }" (type Object) at path "_id" for model "Designation"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ id: '663a0d12d3ce13ca2688bed6' }" (type Object) at path "_id" for model "Designation"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOneAndUpdate (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:3280:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:38:18)
+Date: 21/05/2024, Time: 17:12
+Error: Cast to ObjectId failed for value "{ id: '663a0d17d3ce13ca2688bed8' }" (type Object) at path "_id" for model "Designation"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ id: '663a0d17d3ce13ca2688bed8' }" (type Object) at path "_id" for model "Designation"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOneAndUpdate (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:3280:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:38:18)
+Date: 21/05/2024, Time: 17:12
+Error: Cast to ObjectId failed for value "{ id: '663a169d7e8f53b1344c24cd' }" (type Object) at path "_id" for model "Designation"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ id: '663a169d7e8f53b1344c24cd' }" (type Object) at path "_id" for model "Designation"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOneAndUpdate (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:3280:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:38:18)
+Date: 21/05/2024, Time: 17:13
+Error: Cast to ObjectId failed for value "{ id: '663b0ddfc4e692b4939c5772' }" (type Object) at path "_id" for model "Designation"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ id: '663b0ddfc4e692b4939c5772' }" (type Object) at path "_id" for model "Designation"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOneAndUpdate (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:3280:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:38:18)
+Date: 21/05/2024, Time: 17:13
+Error: Cast to ObjectId failed for value "{ id: '664c823123d67f178bf6c8fa' }" (type Object) at path "_id" for model "Designation"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ id: '664c823123d67f178bf6c8fa' }" (type Object) at path "_id" for model "Designation"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOneAndUpdate (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:3280:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:38:18)
+Date: 21/05/2024, Time: 17:14
+Error: Cast to ObjectId failed for value "{ id: '664c823123d67f178bf6c8fa' }" (type Object) at path "_id" for model "Designation"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ id: '664c823123d67f178bf6c8fa' }" (type Object) at path "_id" for model "Designation"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOneAndUpdate (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:3280:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.editDesignationService (D:\mom\mom-backend\services\designationService.js:38:18)
+Date: 21/05/2024, Time: 17:22
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 21/05/2024, Time: 17:23
+Error: logs validation failed: userId: Path `userId` is required.
+Stack Trace: ValidationError: logs validation failed: userId: Path `userId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 21/05/2024, Time: 18:15
+Error: logs validation failed: userId: Path `userId` is required.
+Stack Trace: ValidationError: logs validation failed: userId: Path `userId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 21/05/2024, Time: 19:03
+Error: commonHelper is not defined
+Stack Trace: ReferenceError: commonHelper is not defined
+    at Object.comments (D:\mom\mom-backend\services\actionService.js:19:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async actionComments (D:\mom\mom-backend\controllers\actionController.js:9:20)
+Date: 21/05/2024, Time: 19:04
+Error: inputKeys is not defined
+Stack Trace: ReferenceError: inputKeys is not defined
+    at Object.comments (D:\mom\mom-backend\services\actionService.js:21:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async actionComments (D:\mom\mom-backend\controllers\actionController.js:9:20)
+Date: 21/05/2024, Time: 19:08
+Error: logMessages is not defined
+Stack Trace: ReferenceError: logMessages is not defined
+    at Object.comments (D:\mom\mom-backend\services\actionService.js:19:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async actionComments (D:\mom\mom-backend\controllers\actionController.js:9:20)
+Date: 21/05/2024, Time: 19:09
+Error: result is not defined
+Stack Trace: ReferenceError: result is not defined
+    at Object.comments (D:\mom\mom-backend\services\actionService.js:25:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async actionComments (D:\mom\mom-backend\controllers\actionController.js:9:20)
+Date: 21/05/2024, Time: 19:09
+Error: logService is not defined
+Stack Trace: ReferenceError: logService is not defined
+    at Object.comments (D:\mom\mom-backend\services\actionService.js:28:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async actionComments (D:\mom\mom-backend\controllers\actionController.js:9:20)
+Date: 21/05/2024, Time: 19:10
+Error: logService is not defined
+Stack Trace: ReferenceError: logService is not defined
+    at Object.comments (D:\mom\mom-backend\services\actionService.js:28:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async actionComments (D:\mom\mom-backend\controllers\actionController.js:9:20)
+Date: 21/05/2024, Time: 19:10
+Error: logs validation failed: organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: logs validation failed: organizationId: Path `organizationId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 21/05/2024, Time: 19:11
+Error: logs validation failed: organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: logs validation failed: organizationId: Path `organizationId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 21/05/2024, Time: 19:13
+Error: Cannot access 'result' before initialization
+Stack Trace: ReferenceError: Cannot access 'result' before initialization
+    at Object.comments (D:\mom\mom-backend\services\actionService.js:16:42)
+    at actionComments (D:\mom\mom-backend\controllers\actionController.js:9:40)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:421:3)
+Date: 21/05/2024, Time: 19:14
+Error: Cannot access 'result' before initialization
+Stack Trace: ReferenceError: Cannot access 'result' before initialization
+    at Object.comments (D:\mom\mom-backend\services\actionService.js:16:42)
+    at actionComments (D:\mom\mom-backend\controllers\actionController.js:9:40)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:421:3)
+Date: 21/05/2024, Time: 19:14
+Error: Cannot access 'result' before initialization
+Stack Trace: ReferenceError: Cannot access 'result' before initialization
+    at Object.comments (D:\mom\mom-backend\services\actionService.js:17:42)
+    at actionComments (D:\mom\mom-backend\controllers\actionController.js:9:40)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:421:3)
+Date: 21/05/2024, Time: 19:14
+Error: logs validation failed: organizationId: Cast to ObjectId failed for value "5878749499" (type string) at path "organizationId" because of "BSONError"
+Stack Trace: ValidationError: logs validation failed: organizationId: Cast to ObjectId failed for value "5878749499" (type string) at path "organizationId" because of "BSONError"
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1463:12)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1117:16)
+    at model.Document (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:166:12)
+    at model.Model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4819:15)
+    at Object.createLog (D:\mom\mom-backend\services\logsService.js:8:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.comments (D:\mom\mom-backend\services\actionService.js:29:3)
+    at async actionComments (D:\mom\mom-backend\controllers\actionController.js:9:20)
+Date: 22/05/2024, Time: 10:24
+Error: data.map is not a function
+Stack Trace: TypeError: data.map is not a function
+    at Object.createAgendaForMeeting (D:\mom\mom-backend\services\agendaService.js:11:26)
+    at createAgenda (D:\mom\mom-backend\controllers\agendaController.js:9:40)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 22/05/2024, Time: 10:28
+Error: data.map is not a function
+Stack Trace: TypeError: data.map is not a function
+    at Object.createAgendaForMeeting (D:\mom\mom-backend\services\agendaService.js:11:26)
+    at createAgenda (D:\mom\mom-backend\controllers\agendaController.js:9:40)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 22/05/2024, Time: 10:52
+Error: data.map is not a function
+Stack Trace: TypeError: data.map is not a function
+    at Object.createAgendaForMeeting (D:\mom\mom-backend\services\agendaService.js:11:26)
+    at createAgenda (D:\mom\mom-backend\controllers\agendaController.js:9:40)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 22/05/2024, Time: 11:03
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 22/05/2024, Time: 11:19
+Error: result is not defined
+Stack Trace: ReferenceError: result is not defined
+    at Object.createEmployee (D:\mom\mom-backend\services\employeeService.js:48:43)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createEmployee (D:\mom\mom-backend\controllers\employeeController.js:10:20)
+Date: 22/05/2024, Time: 11:20
+Error: userId is not defined
+Stack Trace: ReferenceError: userId is not defined
+    at Object.createEmployee (D:\mom\mom-backend\services\employeeService.js:56:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createEmployee (D:\mom\mom-backend\controllers\employeeController.js:10:20)
+Date: 22/05/2024, Time: 12:10
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 22/05/2024, Time: 12:10
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 22/05/2024, Time: 12:12
+Error: result is not defined
+Stack Trace: ReferenceError: result is not defined
+    at Object.deleteEmploye (D:\mom\mom-backend\services\employeeService.js:78:38)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteEmploye (D:\mom\mom-backend\controllers\employeeController.js:105:20)
+Date: 22/05/2024, Time: 12:36
+Error: newRoom is not defined
+Stack Trace: ReferenceError: newRoom is not defined
+    at Object.createRoom (D:\mom\mom-backend\services\roomService.js:22:44)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createRoom (D:\mom\mom-backend\controllers\roomController.js:8:20)
+Date: 22/05/2024, Time: 12:37
+Error: logs validation failed: action: Path `action` is required.
+Stack Trace: ValidationError: logs validation failed: action: Path `action` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 22/05/2024, Time: 12:58
+Error: Cast to ObjectId failed for value "{ id: '664d9974d19acc6b5efa7124' }" (type Object) at path "organizationId" for model "meetingrooms"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ id: '664d9974d19acc6b5efa7124' }" (type Object) at path "organizationId" for model "meetingrooms"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkDuplicateEntry (D:\mom\mom-backend\services\roomService.js:44:10)
+Date: 22/05/2024, Time: 13:02
+Error: Cast to ObjectId failed for value "{ id: '664d9974d19acc6b5efa7124' }" (type Object) at path "organizationId" for model "meetingrooms"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ id: '664d9974d19acc6b5efa7124' }" (type Object) at path "organizationId" for model "meetingrooms"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkDuplicateEntry (D:\mom\mom-backend\services\roomService.js:44:10)
+Date: 22/05/2024, Time: 13:04
+Error: Cast to ObjectId failed for value "{ id: '664d9974d19acc6b5efa7124' }" (type Object) at path "organizationId" for model "meetingrooms"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ id: '664d9974d19acc6b5efa7124' }" (type Object) at path "organizationId" for model "meetingrooms"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkDuplicateEntry (D:\mom\mom-backend\services\roomService.js:44:10)
+Date: 22/05/2024, Time: 13:06
+Error: Cast to ObjectId failed for value "{ id: '664d9974d19acc6b5efa7124' }" (type Object) at path "organizationId" for model "meetingrooms"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ id: '664d9974d19acc6b5efa7124' }" (type Object) at path "organizationId" for model "meetingrooms"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async checkDuplicateEntry (D:\mom\mom-backend\services\roomService.js:44:10)
+Date: 22/05/2024, Time: 13:07
+Error: Cast to ObjectId failed for value "{ _id: { id: '664d9974d19acc6b5efa7124' } }" (type Object) at path "_id" for model "meetingrooms"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: { id: '664d9974d19acc6b5efa7124' } }" (type Object) at path "_id" for model "meetingrooms"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOneAndUpdate (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:3280:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.editRoom (D:\mom\mom-backend\services\roomService.js:59:20)
+Date: 22/05/2024, Time: 14:49
+Error: result is not defined
+Stack Trace: ReferenceError: result is not defined
+    at Object.deleteRoom (D:\mom\mom-backend\services\roomService.js:128:38)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteRoom (D:\mom\mom-backend\controllers\roomController.js:97:20)
+Date: 22/05/2024, Time: 14:50
+Error: room is not defined
+Stack Trace: ReferenceError: room is not defined
+    at Object.deleteRoom (D:\mom\mom-backend\services\roomService.js:126:46)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteRoom (D:\mom\mom-backend\controllers\roomController.js:97:20)
+Date: 22/05/2024, Time: 14:50
+Error: Cannot read properties of null (reading 'organizationId')
+Stack Trace: TypeError: Cannot read properties of null (reading 'organizationId')
+    at Object.deleteRoom (D:\mom\mom-backend\services\roomService.js:135:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteRoom (D:\mom\mom-backend\controllers\roomController.js:97:20)
+Date: 22/05/2024, Time: 14:51
+Error: logs validation failed: organizationId: Cast to ObjectId failed for value "N/A" (type string) at path "organizationId" because of "BSONError"
+Stack Trace: ValidationError: logs validation failed: organizationId: Cast to ObjectId failed for value "N/A" (type string) at path "organizationId" because of "BSONError"
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1463:12)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1117:16)
+    at model.Document (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:166:12)
+    at model.Model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4819:15)
+    at Object.createLog (D:\mom\mom-backend\services\logsService.js:8:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.deleteRoom (D:\mom\mom-backend\services\roomService.js:138:3)
+    at async deleteRoom (D:\mom\mom-backend\controllers\roomController.js:97:20)
+Date: 22/05/2024, Time: 14:52
+Error: logs validation failed: organizationId: Cast to ObjectId failed for value "" (type string) at path "organizationId" because of "BSONError"
+Stack Trace: ValidationError: logs validation failed: organizationId: Cast to ObjectId failed for value "" (type string) at path "organizationId" because of "BSONError"
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1463:12)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1117:16)
+    at model.Document (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:166:12)
+    at model.Model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4819:15)
+    at Object.createLog (D:\mom\mom-backend\services\logsService.js:8:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.deleteRoom (D:\mom\mom-backend\services\roomService.js:138:3)
+    at async deleteRoom (D:\mom\mom-backend\controllers\roomController.js:97:20)
+Date: 22/05/2024, Time: 14:53
+Error: Cannot read properties of null (reading 'data')
+Stack Trace: TypeError: Cannot read properties of null (reading 'data')
+    at Object.deleteRoom (D:\mom\mom-backend\services\roomService.js:126:34)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteRoom (D:\mom\mom-backend\controllers\roomController.js:97:20)
+Date: 22/05/2024, Time: 14:55
+Error: logs validation failed: organizationId: Cast to ObjectId failed for value "" (type string) at path "organizationId" because of "BSONError"
+Stack Trace: ValidationError: logs validation failed: organizationId: Cast to ObjectId failed for value "" (type string) at path "organizationId" because of "BSONError"
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1463:12)
+    at model.$set (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:1117:16)
+    at model.Document (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:166:12)
+    at model.Model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:131:12)
+    at new model (D:\mom\mom-backend\node_modules\mongoose\lib\model.js:4819:15)
+    at Object.createLog (D:\mom\mom-backend\services\logsService.js:8:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.deleteRoom (D:\mom\mom-backend\services\roomService.js:138:3)
+    at async deleteRoom (D:\mom\mom-backend\controllers\roomController.js:97:20)
+Date: 22/05/2024, Time: 15:23
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 22/05/2024, Time: 15:24
+Error: Cannot read properties of undefined (reading 'organizationId')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'organizationId')
+    at Object.createUnit (D:\mom\mom-backend\services\unitService.js:7:49)
+    at createUnit (D:\mom\mom-backend\controllers\unitController.js:9:38)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 22/05/2024, Time: 15:26
+Error: Units validation failed: address: Path `address` is required.
+Stack Trace: ValidationError: Units validation failed: address: Path `address` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 22/05/2024, Time: 15:27
+Error: newUnit is not defined
+Stack Trace: ReferenceError: newUnit is not defined
+    at Object.createUnit (D:\mom\mom-backend\services\unitService.js:17:29)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async createUnit (D:\mom\mom-backend\controllers\unitController.js:9:20)
+Date: 22/05/2024, Time: 15:27
+Error: logs validation failed: action: Path `action` is required.
+Stack Trace: ValidationError: logs validation failed: action: Path `action` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 22/05/2024, Time: 15:45
+Error: id is not defined
+Stack Trace: ReferenceError: id is not defined
+    at Object.editUnit (D:\mom\mom-backend\services\unitService.js:39:53)
+    at editUnit (D:\mom\mom-backend\controllers\unitController.js:42:38)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:421:3)
+Date: 22/05/2024, Time: 15:49
+Error: result is not defined
+Stack Trace: ReferenceError: result is not defined
+    at Object.editUnit (D:\mom\mom-backend\services\unitService.js:46:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editUnit (D:\mom\mom-backend\controllers\unitController.js:42:20)
+Date: 22/05/2024, Time: 16:12
+Error: result is not defined
+Stack Trace: ReferenceError: result is not defined
+    at Object.deleteUnit (D:\mom\mom-backend\services\unitService.js:78:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteUnit (D:\mom\mom-backend\controllers\unitController.js:76:20)
+Date: 22/05/2024, Time: 16:16
+Error: result.organizationId.concat is not a function
+Stack Trace: TypeError: result.organizationId.concat is not a function
+    at Object.deleteUnit (D:\mom\mom-backend\services\unitService.js:85:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteUnit (D:\mom\mom-backend\controllers\unitController.js:76:20)
+Date: 22/05/2024, Time: 16:36
+Error: userId is not defined
+Stack Trace: ReferenceError: userId is not defined
+    at Object.deleteRole (D:\mom\mom-backend\services\roleService.js:104:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async deleteRole (D:\mom\mom-backend\controllers\roleController.js:103:20)
+Date: 22/05/2024, Time: 17:14
+Error: updateData is not defined
+Stack Trace: ReferenceError: updateData is not defined
+    at Object.editOrganizationService (D:\mom\mom-backend\services\organizationService.js:51:59)
+    at editOrganizationController (D:\mom\mom-backend\controllers\organizationController.js:72:46)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\mom\mom-backend\node_modules\express\lib\router\index.js:175:3)
+Date: 22/05/2024, Time: 17:16
+Error: Cannot convert undefined or null to object
+Stack Trace: TypeError: Cannot convert undefined or null to object
+    at Function.keys (<anonymous>)
+    at Object.editOrganizationService (D:\mom\mom-backend\services\organizationService.js:57:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editOrganizationController (D:\mom\mom-backend\controllers\organizationController.js:72:20)
+Date: 22/05/2024, Time: 17:17
+Error: logs validation failed: userId: Path `userId` is required., organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: logs validation failed: userId: Path `userId` is required., organizationId: Path `organizationId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 22/05/2024, Time: 17:19
+Error: logs validation failed: userId: Path `userId` is required., organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: logs validation failed: userId: Path `userId` is required., organizationId: Path `organizationId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 22/05/2024, Time: 17:20
+Error: logs validation failed: organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: logs validation failed: organizationId: Path `organizationId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 22/05/2024, Time: 17:21
+Error: logs validation failed: organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: logs validation failed: organizationId: Path `organizationId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 06/06/2024, Time: 11:09
+Error: "title" is not allowed
+Stack Trace: ValidationError: "title" is not allowed
+Date: 06/06/2024, Time: 11:10
+Error: Cannot read properties of undefined (reading 'startsWith')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:20:15)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at updateRsvpValidator (D:\mom\mom-backend\validators\meetingValidator.js:281:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 06/06/2024, Time: 12:20
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 06/06/2024, Time: 12:34
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 06/06/2024, Time: 12:37
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 06/06/2024, Time: 12:38
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 06/06/2024, Time: 13:03
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 06/06/2024, Time: 14:50
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 06/06/2024, Time: 14:51
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 06/06/2024, Time: 14:51
+Error: Cannot read properties of undefined (reading 'startsWith')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:20:15)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\mom\mom-backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at D:\mom\mom-backend\node_modules\express\lib\router\index.js:284:15
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:365:14)
+    at param (D:\mom\mom-backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (D:\mom\mom-backend\node_modules\express\lib\router\index.js:421:3)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\index.js:280:10)
+Date: 06/06/2024, Time: 14:57
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 06/06/2024, Time: 14:57
+Error: Cannot read properties of undefined (reading 'startsWith')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:20:15)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at masterDataValidator (D:\mom\mom-backend\validators\employeeValidator.js:202:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 06/06/2024, Time: 15:04
+Error: organizationId is not defined
+Stack Trace: ReferenceError: organizationId is not defined
+    at masterData (D:\mom\mom-backend\controllers\employeeController.js:189:38)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 06/06/2024, Time: 15:06
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 06/06/2024, Time: 15:06
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 06/06/2024, Time: 15:07
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 06/06/2024, Time: 15:09
+Error: Cast to ObjectId failed for value "6634b34bbaadea05d9e7942" (type string) at path "organizationId" for model "Designation"
+Stack Trace: CastError: Cast to ObjectId failed for value "6634b34bbaadea05d9e7942" (type string) at path "organizationId" for model "Designation"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._find (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2225:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.masterData (D:\mom\mom-backend\services\employeeService.js:75:27)
+Date: 06/06/2024, Time: 15:09
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 06/06/2024, Time: 15:10
+Error: Cast to ObjectId failed for value "6634b34bbaadea05d9e7942" (type string) at path "organizationId" for model "Designation"
+Stack Trace: CastError: Cast to ObjectId failed for value "6634b34bbaadea05d9e7942" (type string) at path "organizationId" for model "Designation"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._find (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2225:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.masterData (D:\mom\mom-backend\services\employeeService.js:75:27)
