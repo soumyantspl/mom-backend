@@ -6,7 +6,11 @@ const { errorLog } = require("../middlewares/errorLog");
 /**FUNC- TO CREATE AGENDA **/
 const createAgenda = async (req, res) => {
   try {
-    const result = await agendaService.createAgendaForMeeting(req.body);
+    const result = await agendaService.createAgendaForMeeting(
+      req.userId,
+      req.body,
+      req.ip
+    );
     console.log(result);
     if (!result) {
       return Responses.failResponse(req, res, null, messages.createError, 409);

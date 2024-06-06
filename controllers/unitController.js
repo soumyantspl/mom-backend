@@ -6,7 +6,7 @@ const { errorLog } = require("../middlewares/errorLog");
 const createUnit = async (req, res) => {
   try {
     console.log("request body", req.body);
-    const result = await unitService.createUnit(req.body);
+    const result = await unitService.createUnit(req.userId, req.body, req.ip);
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -35,7 +35,12 @@ const editUnit = async (req, res) => {
   try {
     console.log(req.body);
     // const { id, data } = req.body
-    const result = await unitService.editUnit(req.body, req.params.id);
+    const result = await unitService.editUnit(
+      req.userId,
+      req.params.id,
+      req.body,
+      req.ip
+    );
     // console.log("Query id", req.params.id);
     console.log(result);
     if (!result) {
@@ -64,7 +69,11 @@ const editUnit = async (req, res) => {
 const deleteUnit = async (req, res) => {
   try {
     console.log(req.params);
-    const result = await unitService.deleteUnit(req.params.id);
+    const result = await unitService.deleteUnit(
+      req.userId,
+      req.params.id,
+      req.ip
+    );
     if (!result) {
       return Responses.failResponse(
         req,
@@ -114,4 +123,4 @@ const listUnit = async (req, res) => {
     return Responses.errorResponse(req, res, error);
   }
 };
-module.exports = { createUnit, editUnit, deleteUnit,listUnit };
+module.exports = { createUnit, editUnit, deleteUnit, listUnit };

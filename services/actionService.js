@@ -18,18 +18,6 @@ const comments = async (userId, id, data, ipAddress = "1000") => {
 
   const commentData = new ActionComments(inputData);
   const result = await commentData.save();
-  ////////////////////LOGER START
-  const logData = {
-    moduleName: logMessages.Action.moduleName,
-    userId,
-    action: logMessages.Action.createComment,
-    ipAddress,
-    details: "N/A",
-   // organizationId: ,
-  };
-  console.log("logData--->", logData);
-  await logService.createLog(logData);
-  ///////////////////// LOGER END
 
   return result;
 };
@@ -43,7 +31,7 @@ const viewActionComment = async (id) => {
 };
 
 /**FUNC- ACTION REASSIGN REQUEST */
-const actionReassignRequest = async (data, id) => {
+const actionReassignRequest = async (userId, id, data, ipAddress = "1000") => {
   console.log(data, id);
   const result = await Minutes.findOneAndUpdate(
     {
