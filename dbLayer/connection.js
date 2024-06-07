@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const dbUrl =  `${process.env.DATABASE_LOCAL_URL}/${process.env.DB_NAME}`
+const dbUrl =  `${process.env.DATABASE_CLUSTER_URL}/${process.env.DB_NAME}`
 console.log('URL-------------',dbUrl)
 const { errorLog } = require("../middlewares/errorLog");
 
