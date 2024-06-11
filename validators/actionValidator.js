@@ -152,7 +152,11 @@ const viewAllActionsValidator = async (req, res, next) => {
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
-
+      createdById: Joi.string().trim().alphanum(),
+      meetingId: Joi.string().trim().alphanum(),
+      actionStatus: Joi.string().valid(...enumValues),
+      fromDate: Joi.date().iso(),
+      toDate: Joi.date().iso(),
       organizationId: Joi.string().trim().alphanum().required(),
     });
     const paramsSchema = Joi.object({

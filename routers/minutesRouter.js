@@ -19,8 +19,6 @@ router.post(
   minutesController.createMinutes
 );
 
-
-
 /*DOWNLOAD MINUTE */
 router.get(
   "/downloadMinutes/:meetingId",

@@ -52,7 +52,7 @@ const createEmployeeValidator = async (req, res, next) => {
         .strict(),
     });
 
-    await headerSchema.validateAsync({ headers: req.headers });
+    // await headerSchema.validateAsync({ headers: req.headers });
     await bodySchema.validateAsync(req.body);
 
     next();

@@ -143,6 +143,34 @@ const viewUserAllAction = async (bodyData, queryData, userId) => {
         isAction: true,
         assignedUserId: new ObjectId(userId),
       };
+
+      if (bodyData.fromDate && bodyData.toDate) {
+        const fromDate=new Date(bodyData.fromDate)
+        const toDate=new Date(bodyData.toDate)
+        query.date = {
+          $gte:new Date(fromDate.setDate(fromDate.getDate() - 1)),
+          $lt: new Date(toDate.setDate(toDate.getDate() + 1))
+        };
+      }
+    
+      console.log("roleType---------", roleType);
+      console.log("userId---------", userId);
+      if (roleType == "USER") {
+        query["createdById"] = new ObjectId(userId);
+      }
+      if (bodyData.createdById) {
+        query["createdById"] = new ObjectId(bodyData.createdById);
+      }
+      if (bodyData.actionStatus) {
+        query["status"] = bodyData.actionStatus
+      }
+      if (bodyData.meetingId) {
+        query["meetingId"] = new ObjectId(bodyData.meetingId);
+      }
+      console.log("query", query);
+
+
+
   console.log("query--------------", query);
   var limit = parseInt(queryData.limit);
   var skip = (parseInt(queryData.page) - 1) * parseInt(limit);

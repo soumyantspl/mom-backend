@@ -595,6 +595,7 @@ Stack Trace: TypeError: Cannot read properties of undefined (reading 'rejectedBy
     at Object.downLoadMinutes (E:\Ongoing\MOM\services\minutesService.js:246:28)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async downloadMinutes (E:\Ongoing\MOM\controllers\minutesController.js:57:20)
+<<<<<<< HEAD
 Date: 21/05/2024, Time: 15:06
 Error: "id" is not allowed
 Stack Trace: ValidationError: "id" is not allowed
@@ -1681,3 +1682,1864 @@ Stack Trace: CastError: Cast to ObjectId failed for value "6634b34bbaadea05d9e79
     at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async Object.masterData (D:\mom\mom-backend\services\employeeService.js:75:27)
+=======
+Date: 01/06/2024, Time: 10:04
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 10:04
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:519:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 01/06/2024, Time: 10:47
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 10:47
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 10:58
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 10:58
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 10:58
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 11:31
+Error: read ECONNRESET
+Stack Trace: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:218:20)
+Date: 01/06/2024, Time: 11:32
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 11:32
+Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+Stack Trace: Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)
+Date: 01/06/2024, Time: 11:33
+Error: read ECONNRESET
+Stack Trace: Error: read ECONNRESET
+    at TLSWrap.onStreamRead (node:internal/stream_base_commons:218:20)
+Date: 01/06/2024, Time: 11:39
+Error: "email" is required
+Stack Trace: ValidationError: "email" is required
+Date: 01/06/2024, Time: 11:39
+Error: Password min 8 letter, with at least a symbol, upper and lower case letters and a number!
+Stack Trace: ValidationError: Password min 8 letter, with at least a symbol, upper and lower case letters and a number!
+Date: 01/06/2024, Time: 12:31
+Error: authMiddleware.generatUserToken is not a function
+Stack Trace: TypeError: authMiddleware.generatUserToken is not a function
+    at Object.signInByPassword (E:\Ongoing\MOM\services\authService.js:281:32)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async signInByPassword (E:\Ongoing\MOM\controllers\authController.js:124:20)
+Date: 01/06/2024, Time: 14:21
+Error: ObjectId is not defined
+Stack Trace: ReferenceError: ObjectId is not defined
+    at insertOtp (E:\Ongoing\MOM\services\authService.js:98:79)
+    at validateSendingOtp (E:\Ongoing\MOM\services\authService.js:146:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.sendOtp (E:\Ongoing\MOM\services\authService.js:22:12)
+    at async sendOtp (E:\Ongoing\MOM\controllers\authController.js:9:20)
+Date: 01/06/2024, Time: 14:27
+Error: OtpLogs.findAndUpdate is not a function
+Stack Trace: TypeError: OtpLogs.findAndUpdate is not a function
+    at insertOtp (E:\Ongoing\MOM\services\authService.js:99:37)
+    at validateSendingOtp (E:\Ongoing\MOM\services\authService.js:148:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.reSendOtp (E:\Ongoing\MOM\services\authService.js:127:12)
+    at async reSendOtp (E:\Ongoing\MOM\controllers\authController.js:66:20)
+Date: 01/06/2024, Time: 14:27
+Error: OtpLogs.findAndUpdate is not a function
+Stack Trace: TypeError: OtpLogs.findAndUpdate is not a function
+    at insertOtp (E:\Ongoing\MOM\services\authService.js:99:37)
+    at validateSendingOtp (E:\Ongoing\MOM\services\authService.js:148:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.reSendOtp (E:\Ongoing\MOM\services\authService.js:127:12)
+    at async reSendOtp (E:\Ongoing\MOM\controllers\authController.js:66:20)
+Date: 01/06/2024, Time: 14:28
+Error: OtpLogs.update is not a function
+Stack Trace: TypeError: OtpLogs.update is not a function
+    at insertOtp (E:\Ongoing\MOM\services\authService.js:99:37)
+    at validateSendingOtp (E:\Ongoing\MOM\services\authService.js:148:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.reSendOtp (E:\Ongoing\MOM\services\authService.js:127:12)
+    at async reSendOtp (E:\Ongoing\MOM\controllers\authController.js:66:20)
+Date: 01/06/2024, Time: 14:28
+Error: OtpLogs.update is not a function
+Stack Trace: TypeError: OtpLogs.update is not a function
+    at insertOtp (E:\Ongoing\MOM\services\authService.js:99:37)
+    at validateSendingOtp (E:\Ongoing\MOM\services\authService.js:148:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.reSendOtp (E:\Ongoing\MOM\services\authService.js:127:12)
+    at async reSendOtp (E:\Ongoing\MOM\controllers\authController.js:66:20)
+Date: 01/06/2024, Time: 14:48
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 14:52
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:01
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:06
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:13
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:36
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:39
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 15:58
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:00
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:16
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:16
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:16
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:16
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 01/06/2024, Time: 16:32
+Error: otpResendCount is not defined
+Stack Trace: ReferenceError: otpResendCount is not defined
+    at reSendOtp (E:\Ongoing\MOM\controllers\authController.js:80:73)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 01/06/2024, Time: 16:34
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 16:35
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 01/06/2024, Time: 16:35
+Error: otpResendCount is not defined
+Stack Trace: ReferenceError: otpResendCount is not defined
+    at reSendOtp (E:\Ongoing\MOM\controllers\authController.js:80:73)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 01/06/2024, Time: 16:37
+Error: otpResendCount is not defined
+Stack Trace: ReferenceError: otpResendCount is not defined
+    at reSendOtp (E:\Ongoing\MOM\controllers\authController.js:81:73)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 01/06/2024, Time: 16:57
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 03/06/2024, Time: 09:55
+Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+Stack Trace: Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)
+Date: 03/06/2024, Time: 10:28
+Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c03::6d:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 03/06/2024, Time: 11:24
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:24
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:27
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:27
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:33
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:33
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:33
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:33
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:33
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:34
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:34
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:41
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:41
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:41
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:41
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:45
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:45
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:45
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:45
+Error: "email" must be a valid email
+Stack Trace: ValidationError: "email" must be a valid email
+Date: 03/06/2024, Time: 11:56
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:267:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 12:03
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:267:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 12:19
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 12:46
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 12:46
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 12:48
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 14:25
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 03/06/2024, Time: 14:26
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 15:21
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 03/06/2024, Time: 16:47
+Error: jwt must be provided
+Stack Trace: JsonWebTokenError: jwt must be provided
+    at module.exports [as verify] (E:\Ongoing\MOM\node_modules\jsonwebtoken\verify.js:60:17)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at viewAllMeetingsValidator (E:\Ongoing\MOM\validators\meetingValidator.js:270:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+>>>>>>> 4cfbd95bcab1d7fd50fcb3ab13211fd66656e5cb
+Date: 06/06/2024, Time: 15:52
+Error: Invalid scheme, expected connection string to start with "mongodb://" or "mongodb+srv://"
+Stack Trace: MongoParseError: Invalid scheme, expected connection string to start with "mongodb://" or "mongodb+srv://"
+    at new ConnectionString (D:\mom\mom-backend\node_modules\mongodb-connection-string-url\lib\index.js:86:19)
+    at parseOptions (D:\mom\mom-backend\node_modules\mongodb\lib\connection_string.js:192:17)
+    at new MongoClient (D:\mom\mom-backend\node_modules\mongodb\lib\mongo_client.js:52:63)
+    at NativeConnection.createClient (D:\mom\mom-backend\node_modules\mongoose\lib\drivers\node-mongodb-native\connection.js:293:14)
+    at NativeConnection.openUri (D:\mom\mom-backend\node_modules\mongoose\lib\connection.js:801:34)
+    at Mongoose.connect (D:\mom\mom-backend\node_modules\mongoose\lib\mongoose.js:414:15)
+    at connectDB (D:\mom\mom-backend\dbLayer\connection.js:8:33)
+    at Object.<anonymous> (D:\mom\mom-backend\server.js:36:1)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+Date: 06/06/2024, Time: 15:56
+Error: Cannot read properties of undefined (reading 'startsWith')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:20:15)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at masterDataValidator (D:\mom\mom-backend\validators\employeeValidator.js:203:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 06/06/2024, Time: 16:04
+Error: Cannot read properties of undefined (reading 'startsWith')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:20:15)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at masterDataValidator (D:\mom\mom-backend\validators\employeeValidator.js:203:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 07/06/2024, Time: 15:17
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 07/06/2024, Time: 15:17
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 07/06/2024, Time: 15:17
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 07/06/2024, Time: 15:17
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 07/06/2024, Time: 15:17
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 07/06/2024, Time: 15:17
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 07/06/2024, Time: 15:17
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 07/06/2024, Time: 15:18
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 07/06/2024, Time: 15:27
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 07/06/2024, Time: 15:27
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 07/06/2024, Time: 16:00
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 07/06/2024, Time: 16:14
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 07/06/2024, Time: 16:26
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 07/06/2024, Time: 16:27
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 07/06/2024, Time: 17:00
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 07/06/2024, Time: 17:02
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 07/06/2024, Time: 17:43
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 07/06/2024, Time: 17:45
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 07/06/2024, Time: 17:57
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 07/06/2024, Time: 18:57
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 07/06/2024, Time: 19:00
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 10/06/2024, Time: 12:41
+Error: Units validation failed: organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: Units validation failed: organizationId: Path `organizationId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 10/06/2024, Time: 12:55
+Error: Units validation failed: organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: Units validation failed: organizationId: Path `organizationId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 10/06/2024, Time: 14:38
+Error: Units validation failed: organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: Units validation failed: organizationId: Path `organizationId` is required.
+    at Document.invalidate (D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3289:32)
+    at D:\mom\mom-backend\node_modules\mongoose\lib\document.js:3050:17
+    at D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 10/06/2024, Time: 15:38
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 10/06/2024, Time: 16:17
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 10/06/2024, Time: 16:21
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 10/06/2024, Time: 16:22
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 10/06/2024, Time: 16:22
+Error: invalid token
+Stack Trace: JsonWebTokenError: invalid token
+    at module.exports [as verify] (D:\mom\mom-backend\node_modules\jsonwebtoken\verify.js:82:17)
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at createUnitValidator (D:\mom\mom-backend\validators\unitValidator.js:31:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 10/06/2024, Time: 16:24
+Error: invalid token
+Stack Trace: JsonWebTokenError: invalid token
+    at module.exports [as verify] (D:\mom\mom-backend\node_modules\jsonwebtoken\verify.js:82:17)
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at createUnitValidator (D:\mom\mom-backend\validators\unitValidator.js:31:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 10/06/2024, Time: 16:26
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 10/06/2024, Time: 16:35
+Error: Invalid scheme, expected connection string to start with "mongodb://" or "mongodb+srv://"
+Stack Trace: MongoParseError: Invalid scheme, expected connection string to start with "mongodb://" or "mongodb+srv://"
+    at new ConnectionString (D:\mom\mom-backend\node_modules\mongodb-connection-string-url\lib\index.js:86:19)
+    at parseOptions (D:\mom\mom-backend\node_modules\mongodb\lib\connection_string.js:192:17)
+    at new MongoClient (D:\mom\mom-backend\node_modules\mongodb\lib\mongo_client.js:52:63)
+    at NativeConnection.createClient (D:\mom\mom-backend\node_modules\mongoose\lib\drivers\node-mongodb-native\connection.js:293:14)
+    at NativeConnection.openUri (D:\mom\mom-backend\node_modules\mongoose\lib\connection.js:801:34)
+    at Mongoose.connect (D:\mom\mom-backend\node_modules\mongoose\lib\mongoose.js:414:15)
+    at connectDB (D:\mom\mom-backend\dbLayer\connection.js:8:33)
+    at Object.<anonymous> (D:\mom\mom-backend\server.js:36:1)
+    at Module._compile (node:internal/modules/cjs/loader:1369:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1427:10)
+Date: 10/06/2024, Time: 18:30
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 10/06/2024, Time: 18:30
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 10/06/2024, Time: 18:31
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 10/06/2024, Time: 18:33
+Error: "name" length must be at least 3 characters long
+Stack Trace: ValidationError: "name" length must be at least 3 characters long
+Date: 10/06/2024, Time: 18:33
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (D:\mom\mom-backend\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (D:\mom\mom-backend\node_modules\mongoose\lib\connection.js:826:11)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async connectDB (D:\mom\mom-backend\dbLayer\connection.js:8:18)
+Date: 10/06/2024, Time: 18:34
+Error: "name" length must be at least 3 characters long
+Stack Trace: ValidationError: "name" length must be at least 3 characters long
+Date: 10/06/2024, Time: 18:41
+Error: "name" length must be at least 3 characters long
+Stack Trace: ValidationError: "name" length must be at least 3 characters long
+Date: 10/06/2024, Time: 18:52
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 10/06/2024, Time: 18:52
+Error: "address" is not allowed to be empty
+Stack Trace: ValidationError: "address" is not allowed to be empty
+Date: 11/06/2024, Time: 10:24
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (D:\mom\mom-backend\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (D:\mom\mom-backend\node_modules\mongoose\lib\connection.js:826:11)
+    at async connectDB (D:\mom\mom-backend\dbLayer\connection.js:8:18)
+Date: 11/06/2024, Time: 10:25
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (D:\mom\mom-backend\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (D:\mom\mom-backend\node_modules\mongoose\lib\connection.js:826:11)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async connectDB (D:\mom\mom-backend\dbLayer\connection.js:8:18)
+Date: 11/06/2024, Time: 10:30
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (D:\mom\mom-backend\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 11/06/2024, Time: 10:30
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (D:\mom\mom-backend\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 11/06/2024, Time: 10:30
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (D:\mom\mom-backend\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 11/06/2024, Time: 10:30
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (D:\mom\mom-backend\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 11/06/2024, Time: 10:30
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (D:\mom\mom-backend\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (D:\mom\mom-backend\node_modules\mongoose\lib\connection.js:826:11)
+    at async connectDB (D:\mom\mom-backend\dbLayer\connection.js:8:18)
+Date: 11/06/2024, Time: 12:25
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 11/06/2024, Time: 13:09
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 11/06/2024, Time: 13:09
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 11/06/2024, Time: 13:09
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 11/06/2024, Time: 13:09
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 11/06/2024, Time: 13:17
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 13:17
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 13:22
+Error: "address" is not allowed to be empty
+Stack Trace: ValidationError: "address" is not allowed to be empty
+Date: 11/06/2024, Time: 13:22
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 13:22
+Error: "address" is not allowed to be empty
+Stack Trace: ValidationError: "address" is not allowed to be empty
+Date: 11/06/2024, Time: 13:23
+Error: "address" is not allowed to be empty
+Stack Trace: ValidationError: "address" is not allowed to be empty
+Date: 11/06/2024, Time: 13:23
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 13:29
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 13:29
+Error: "address" is not allowed to be empty
+Stack Trace: ValidationError: "address" is not allowed to be empty
+Date: 11/06/2024, Time: 13:29
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 11/06/2024, Time: 14:42
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 11/06/2024, Time: 14:42
+Error: "address" is not allowed to be empty
+Stack Trace: ValidationError: "address" is not allowed to be empty
+Date: 11/06/2024, Time: 14:44
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 11/06/2024, Time: 14:45
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 14:45
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 11/06/2024, Time: 14:47
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 14:47
+Error: "address" is not allowed to be empty
+Stack Trace: ValidationError: "address" is not allowed to be empty
+Date: 11/06/2024, Time: 14:55
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 14:59
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 15:01
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 15:04
+Error: "address" is not allowed to be empty
+Stack Trace: ValidationError: "address" is not allowed to be empty
+Date: 11/06/2024, Time: 15:04
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 15:07
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 11/06/2024, Time: 15:07
+Error: "address" is not allowed to be empty
+Stack Trace: ValidationError: "address" is not allowed to be empty
+Date: 11/06/2024, Time: 15:07
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 11/06/2024, Time: 15:16
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 15:16
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 15:16
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 15:21
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 11/06/2024, Time: 15:21
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 15:48
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 15:56
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 11/06/2024, Time: 15:56
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:00
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:01
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:01
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:01
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:02
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:02
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:02
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:02
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:02
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:02
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:02
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:03
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:03
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:03
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:07
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:08
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:08
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:09
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:09
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:09
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:09
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:10
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:11
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:12
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:13
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:13
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:13
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:14
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:15
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:15
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:15
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:16
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:16
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:16
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:16
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:16
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:16
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:16
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:16
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:20
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:21
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:22
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:22
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:23
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:25
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:25
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:25
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:25
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:25
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:25
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:25
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:26
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:26
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:26
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:26
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:26
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:26
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:26
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:28
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:33
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:35
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:37
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:45
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:46
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:46
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:48
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:48
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:49
+Error: connect ECONNREFUSED 2404:6800:4003:c0f::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c0f::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)
+Date: 11/06/2024, Time: 16:49
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:52
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 16:59
+Error: connect ECONNREFUSED 2404:6800:4003:c0f::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c0f::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)
+Date: 11/06/2024, Time: 16:59
+Error: connect ECONNREFUSED 2404:6800:4003:c0f::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c0f::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)
+Date: 11/06/2024, Time: 17:01
+Error: connect ECONNREFUSED 2404:6800:4003:c0f::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c0f::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)
+Date: 11/06/2024, Time: 17:01
+Error: connect ECONNREFUSED 2404:6800:4003:c0f::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c0f::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)
+Date: 11/06/2024, Time: 17:02
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 17:05
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 17:08
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 17:08
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 17:08
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 17:08
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 17:08
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (D:\mom\mom-backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (D:\mom\mom-backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (D:\mom\mom-backend\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (D:\mom\mom-backend\services\employeeService.js:181:32)
+Date: 11/06/2024, Time: 17:14
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty

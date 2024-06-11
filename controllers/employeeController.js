@@ -6,11 +6,8 @@ const { errorLog } = require("../middlewares/errorLog");
 /**FUNC- TO CREATE EMPLOYEE**/
 const createEmployee = async (req, res) => {
   try {
-    const result = await employeeService.createEmployee(
-      req.userId,
-      req.body,
-      req.ip
-    );
+    const userId = "663dbc52c6d385847217c4b0";
+    const result = await employeeService.createEmployee(userId, req.body, 3000);
     console.log(result);
     if (result?.isDuplicateEmail) {
       return Responses.failResponse(
@@ -187,7 +184,7 @@ const masterData = async (req, res) => {
   try {
     const result = await employeeService.masterData(req.params.organizationId);
     console.log("result----->>>", result);
- 
+
     return Responses.successResponse(
       req,
       res,

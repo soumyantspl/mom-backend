@@ -209,12 +209,27 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         organizationId: new ObjectId(organizationId),
         isActive: true,
       };
+
+  if (bodyData.fromDate && bodyData.toDate) {
+    const fromDate = new Date(bodyData.fromDate);
+    const toDate = new Date(bodyData.toDate);
+    query.date = {
+      $gte: new Date(fromDate.setDate(fromDate.getDate() - 1)),
+      $lt: new Date(toDate.setDate(toDate.getDate() + 1)),
+    };
+  }
+
   console.log("roleType---------", roleType);
   console.log("userId---------", userId);
   if (roleType == "USER") {
     query["attendees.id"] = new ObjectId(userId);
   }
-
+  if (bodyData.attendeeId) {
+    query["attendees.id"] = new ObjectId(bodyData.attendeeId);
+  }
+  if (bodyData.meetingStatus) {
+    query["meetingStatus.status"] = bodyData.meetingStatus;
+  }
   console.log("query", query);
 
   var limit = parseInt(queryData.limit);
@@ -234,6 +249,14 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
       },
     },
     {
+      $lookup: {
+        from: "minutes",
+        localField: "_id",
+        foreignField: "meetingId",
+        as: "actionDetail",
+      },
+    },
+    {
       $project: {
         _id: 1,
         attendees: 1,
@@ -243,7 +266,17 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         date: 1,
         fromTime: 1,
         toTime: 1,
+        status: 1,
         locationDetails: 1,
+        meetingStatus: 1,
+        createdAt: 1,
+        actionDetail: {
+          _id: 1,
+          meetingId: 1,
+          isComplete: 1,
+          assignedUserId: 1,
+          isAction: 1,
+        },
         attendeesDetail: {
           email: 1,
           _id: 1,
@@ -252,23 +285,24 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
       },
     },
   ])
-    .sort({ createdAt: parseInt(order) })
-    .limit(limit)
-    .skip(skip);
+    .sort({ _id: parseInt(order) })
+    .skip(skip)
+    .limit(limit);
+
   console.log("meetingData---------", meetingData);
   if (meetingData.length !== 0) {
     meetingData.map((meetingDataObject) => {
       console.log("meetingDataObject---------", meetingDataObject);
       meetingDataObject.attendees.map((item) => {
         console.log("item---------", item);
-        console.log(
-          "attendeesDetail----------",
-          meetingDataObject.attendeesDetail
-        );
+        // console.log(
+        //   "attendeesDetail----------",
+        //   meetingDataObject.attendeesDetail
+        // );
         const attendeeData = meetingDataObject.attendeesDetail.find(
           (attendee) => attendee._id == item.id.toString()
         );
-        console.log("attendeeData---------", attendeeData);
+        // console.log("attendeeData---------", attendeeData);
         if (item.id.toString() == userId) {
           meetingDataObject.rsvp = item.rsvp;
         }
@@ -276,12 +310,24 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
           return (item.name = attendeeData.name);
         }
       });
+
+      const actionData = meetingDataObject.actionDetail.filter(
+        (action) => action.assignedUserId == userId && action.isAction == true
+      );
+      if (actionData.length !== 0) {
+        meetingDataObject.actionDetail = actionData;
+      }
+
+      console.log(
+        "=================================================>>>>>",
+        actionData
+      );
       delete meetingDataObject.attendeesDetail;
 
-      meetingDataObject.userRsvp = console.log(
-        "meetingDataObject---------------",
-        meetingDataObject
-      );
+      // meetingDataObject.userRsvp = console.log(
+      //   "meetingDataObject---------------",
+      //   meetingDataObject
+      // );
     });
 
     // return meetingDataObject;
@@ -302,7 +348,7 @@ const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
       _id: new ObjectId(id),
     },
     {
-      $set: { "attendees.$.rsvp": data.rsvp, title: data.title },
+      $set: { "attendees.$.rsvp": data.rsvp },
     }
   );
   console.log(result);
@@ -311,11 +357,12 @@ const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
 
   ////////////////////LOGER START
   const details = await commonHelper.generateLogObject(
-    inputKeys.id,
-    result.status,
+    inputKeys,
+    result,
     userId,
     data
   );
+  console.log("details------>>>", details);
   const logData = {
     moduleName: logMessages.Meeting.moduleName,
     userId,
@@ -361,12 +408,12 @@ const cancelMeeting = async (id, userId, data, ipAddress) => {
 };
 
 // /**FUNC- TO VIEW LIST OF ATTENDEES FROM PREVIOUS MEETING */
-const listAttendeesFromPreviousMeeting = async (data, userId) => {
+const listAttendeesFromPreviousMeeting = async (organizationId, userId) => {
   const meetingData = await Meeting.aggregate([
     {
       $match: {
         "attendees.id": new ObjectId(userId),
-        organizationId: new ObjectId(data.organizationId),
+        organizationId: new ObjectId(organizationId),
       },
     },
     {
@@ -412,7 +459,7 @@ const createMeetingActivities = async (data, userId) => {
   const inputData = {
     activityDetails: data.activityDetails,
     meetingId: data.meetingId,
-    userId: userId,
+    userId,
     activityTitle: data.activityTitle,
   };
   console.log("inputData-----------------", inputData);

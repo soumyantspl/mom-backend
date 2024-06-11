@@ -48,19 +48,15 @@ const meetingSchema = new mongoose.Schema(
         },
         rsvp: {
           type: String,
-          enum: ["YES", "NO", "WAITING"],
+          enum: ["YES", "NO", "WAITING","MAYBE"],
           default: "WAITING"
         },
       },
     ],
-    // roomId: {
-    //   type: mongoose.Schema.ObjectId,
-    //   required: true,
-    // },
     meetingStatus: {
       status: {
         type: String,
-        enum: ["closed", "sceduled", "rescheduled", "canceled", "due"],
+        enum: ["closed", "scheduled", "rescheduled", "cancelled", "due"],
         default: "due",
       },
       remarks: { type: String, required: false },
@@ -77,18 +73,7 @@ const meetingSchema = new mongoose.Schema(
     agendaIds: [{
       type:  mongoose.Schema.ObjectId
   }]
-    // logs: [
-    //   {
-    //     id: {
-    //       type: mongoose.Schema.ObjectId,
-    //       required: true,
-    //     },
-    //     action: {
-    //       type: String,
-    //       required: true,
-    //     },
-    //   },
-    // ],
+ 
   },
   {
     timestamps: true,
