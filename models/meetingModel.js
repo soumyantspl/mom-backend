@@ -48,7 +48,7 @@ const meetingSchema = new mongoose.Schema(
         },
         rsvp: {
           type: String,
-          enum: ["YES", "NO", "WAITING","MAYBE"],
+          enum: ["YES", "NO", "AWAITING","MAYBE"],
           default: "WAITING"
         },
       },
