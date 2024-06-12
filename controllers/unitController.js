@@ -6,14 +6,14 @@ const { errorLog } = require("../middlewares/errorLog");
 const createUnit = async (req, res) => {
   try {
     console.log("request body", req.body);
-    const result = await unitService.createUnit(req.userId, req.body, 3000);
+    const result = await unitService.createUnit(req.userId, req.body, req.ip);
     console.log("result", result);
     if (!result) {
       return Responses.failResponse(
         req,
         res,
         null,
-        messages.duplicateEntry,
+        messages.duplicateUnitEntry,
         200
       );
     }

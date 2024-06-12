@@ -23,6 +23,7 @@ const tokenIsMissing = "TokenIsMissing";
 const unknownUser = "Unknown user type";
 const noToken = "NoToken";
 const duplicateEntry = "Duplicate entry found!";
+const duplicateUnitEntry = "Duplicate Unit Name found!";
 const duplicateEmpCode = "Duplicate employee code found!";
 const duplicateEmail = "Duplicate email found!";
 const uploadFileSuccess = "File uploaded successfully!";
@@ -100,6 +101,7 @@ module.exports = {
   designationDeleted,
   designationList,
   duplicateEntry,
+  duplicateUnitEntry,
   createdSuccess,
   invalidId,
   updateSuccess,
