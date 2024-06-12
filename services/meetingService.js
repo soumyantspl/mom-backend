@@ -302,12 +302,14 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         const attendeeData = meetingDataObject.attendeesDetail.find(
           (attendee) => attendee._id == item.id.toString()
         );
-        // console.log("attendeeData---------", attendeeData);
+         console.log("attendeeData---------", attendeeData);
         if (item.id.toString() == userId) {
           meetingDataObject.rsvp = item.rsvp;
         }
         if (attendeeData) {
-          return (item.name = attendeeData.name);
+          item.email=attendeeData.email
+          item.name = attendeeData.name;
+          return ;
         }
       });
 

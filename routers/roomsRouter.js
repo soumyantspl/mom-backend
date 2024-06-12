@@ -21,7 +21,7 @@ router.put(
 );
 
 /* VIEW ROOMS  */
-router.get(
+router.post(
   "/viewRooms",
   validator.viewRoomValidator,
   authMiddleware.verifyUserToken,

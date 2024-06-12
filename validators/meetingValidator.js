@@ -278,7 +278,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
 // UPDATE USER RSVP FOR MEETING VALIDATOR
 const updateRsvpValidator = async (req, res, next) => {
   try {
-    const enumValues = ["YES", "NO", "WAITING","MAYBE"];
+    const enumValues = ["YES", "NO", "AWAITING","MAYBE"];
     const headerSchema = Joi.object({
       headers: Joi.object({
         authorization: Joi.required(),
