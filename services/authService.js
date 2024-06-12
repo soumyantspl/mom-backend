@@ -292,7 +292,7 @@ const signInByPassword = async (data) => {
   return {
     token,
     userData: {
-      id: userData._id,
+      _id: userData._id,
       name: userData.name,
       email: userData.email,
       organizationId: userData.organizationId,
