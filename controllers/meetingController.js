@@ -139,8 +139,8 @@ const viewAllMeetings = async (req, res) => {
         req,
         res,
         {
-          totalCount:0,
-          meetingData:[]
+          totalCount: 0,
+          meetingData: [],
         },
         messages.recordsNotFound,
         200
@@ -195,8 +195,8 @@ const listAttendeesFromPreviousMeeting = async (req, res) => {
       req.params.organizationId,
       req.userId
     );
-    console.log(result)
-    if (result.length==0) {
+    console.log(result);
+    if (result.length == 0) {
       return Responses.failResponse(
         req,
         res,

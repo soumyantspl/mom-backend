@@ -6,25 +6,33 @@ const ObjectId = require("mongoose").Types.ObjectId;
 
 //FUCNTION TO CREATE DESIGNATION
 const createDesignationService = async (userId, data, ipAddress = "1000") => {
-  const result = new Designations({
-    name: data.name,
-    organizationId: new Object(data.organizationId),
-  });
+  const designationDetails = await checkDuplicate(
+    data.organizationId,
+    data.name
+  );
+  console.log("orgid--->", data.organizationId);
+  if (!designationDetails) {
+    const result = new Designations({
+      name: data.name,
+      organizationId: new Object(data.organizationId),
+    });
 
-  ////////////////////LOGER START
-  const logData = {
-    moduleName: logMessages.Designation.moduleName,
-    userId,
-    action: logMessages.Designation.createDesignation,
-    ipAddress,
-    details: "N/A",
-    organizationId: result.organizationId,
-  };
-  console.log("logData-------------------", logData);
-  await logService.createLog(logData);
-  ///////////////////// LOGER END
+    ////////////////////LOGER START
+    const logData = {
+      moduleName: logMessages.Designation.moduleName,
+      userId,
+      action: logMessages.Designation.createDesignation,
+      ipAddress,
+      details: "N/A",
+      organizationId: result.organizationId,
+    };
+    console.log("logData-------------------", logData);
+    await logService.createLog(logData);
+    ///////////////////// LOGER END
 
-  return await result.save();
+    return await result.save();
+  }
+  return false;
 };
 
 //FUCNTION TO CREATE DESIGNATION
@@ -114,6 +122,13 @@ const listDesignationService = async (bodyData, queryData) => {
     totalCount,
     designationList,
   };
+};
+
+const checkDuplicate = async (organizationId, name) => {
+  return await Designations.findOne(
+    { organizationId, name, isActive: true },
+    { organizationId: 1, name: 1 }
+  );
 };
 module.exports = {
   createDesignationService,

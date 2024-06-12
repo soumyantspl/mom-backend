@@ -6,7 +6,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 //CREATING NEW ORGANIZATION
 router.post(
   "/createOrganization",
-  // organizationValidator.createOrganisationValidator,
+  organizationValidator.createOrganisationValidator,
   organzationController.createOrganizationController
 );
 //VIEWING LIST OF ORGANIZATION
@@ -19,8 +19,8 @@ router.get(
 //EDDITING ORGANIZATION
 router.post(
   "/editOrganization/:id",
-  // organizationValidator.editOrganizationValidator,
-  // authMiddleware.verifyUserToken,
+  organizationValidator.editOrganizationValidator,
+  authMiddleware.verifyUserToken,
   organzationController.editOrganizationController
 );
 module.exports = router;

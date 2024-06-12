@@ -269,7 +269,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         status: 1,
         locationDetails: 1,
         meetingStatus: 1,
-        createdAt:1,
+        createdAt: 1,
         actionDetail: {
           _id: 1,
           meetingId: 1,
@@ -285,16 +285,16 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
       },
     },
   ])
-  .sort({ _id: parseInt(order) })
+    .sort({ _id: parseInt(order) })
     .skip(skip)
     .limit(limit);
 
-    console.log("meetingData---------", meetingData);
+  console.log("meetingData---------", meetingData);
   if (meetingData.length !== 0) {
     meetingData.map((meetingDataObject) => {
       console.log("meetingDataObject---------", meetingDataObject);
       meetingDataObject.attendees.map((item) => {
-         console.log("item---------", item);
+        console.log("item---------", item);
         // console.log(
         //   "attendeesDetail----------",
         //   meetingDataObject.attendeesDetail
@@ -350,7 +350,7 @@ const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
       _id: new ObjectId(id),
     },
     {
-      $set: { "attendees.$.rsvp": data.rsvp},
+      $set: { "attendees.$.rsvp": data.rsvp },
     }
   );
   console.log(result);
@@ -358,22 +358,23 @@ const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
   console.log("inputKeys---------------", inputKeys);
 
   ////////////////////LOGER START
-  // const details = await commonHelper.generateLogObject(
-  //   inputKeys.id,
-  //   result.status,
-  //   userId,
-  //   data
-  // );
-  // const logData = {
-  //   moduleName: logMessages.Meeting.moduleName,
-  //   userId,
-  //   action: logMessages.Meeting.updateRSVP,
-  //   ipAddress,
-  //   details: details.join(" , "),
-  //   organizationId: result.organizationId,
-  // };
-  // console.log("logData--->", logData);
-  // await logService.createLog(logData);
+  const details = await commonHelper.generateLogObject(
+    inputKeys,
+    result,
+    userId,
+    data
+  );
+  console.log("details------>>>", details);
+  const logData = {
+    moduleName: logMessages.Meeting.moduleName,
+    userId,
+    action: logMessages.Meeting.updateRSVP,
+    ipAddress,
+    details: details.join(" , "),
+    organizationId: result.organizationId,
+  };
+  console.log("logData--->", logData);
+  await logService.createLog(logData);
   ///////////////////// LOGER END
   return result;
 };
