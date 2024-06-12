@@ -8,7 +8,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 router.post(
   "/createEmployee",
   validator.createEmployeeValidator,
-  // authMiddleware.verifyUserToken,
+  authMiddleware.verifyUserToken,
   employeeController.createEmployee
 );
 
