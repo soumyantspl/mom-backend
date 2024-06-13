@@ -9,7 +9,7 @@ const connectDB = require("./dbLayer/connection");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-const allowOrigin=["*",'http://localhost:3000',"http://192.168.1.125:3000",'http://localhost:3001',"http://192.168.1.125:3001"];
+const allowOrigin=["*","http://localhost:3000","http://192.168.1.125:3000","http://192.168.1.5:3001"];
 const corsOpts = {
   origin: allowOrigin,
   methods: ["GET, POST, PUT, DELETE, OPTIONS, PATCH"],
