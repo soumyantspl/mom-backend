@@ -10,6 +10,15 @@ const createDesignationController = async (req, res) => {
       req.body,
       req.ip
     );
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateEntry,
+        409
+      );
+    }
     return Responses.successResponse(
       req,
       res,

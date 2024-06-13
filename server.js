@@ -9,11 +9,16 @@ const connectDB = require("./dbLayer/connection");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-const allowOrigin=["*","http://localhost:3000","http://192.168.1.125:3000","http://192.168.1.5:3001"];
+const allowOrigin = [
+  "*",
+  "http://localhost:3000",
+  "http://192.168.1.125:3000",
+  "http://192.168.1.5:3000",
+];
 const corsOpts = {
   origin: allowOrigin,
   methods: ["GET, POST, PUT, DELETE, OPTIONS, PATCH"],
-  allowedHeaders: ["Content-Type","Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOpts));
@@ -30,8 +35,6 @@ app.use(cors(corsOpts));
 //   next();
 // });
 
-
-
 //mongodb connection using mongoose
 connectDB();
 app.get("/", (req, res) => {
@@ -45,6 +48,5 @@ app.listen(PORT, () => {
 });
 
 //"dev": "set NODE_TLS_REJECT_UNAUTHORIZED='0'&& nodemon server.js",
-
 
 //NODE_TLS_REJECT_UNAUTHORIZED='0' node server.js

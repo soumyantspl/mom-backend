@@ -359,22 +359,23 @@ const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
   console.log("inputKeys---------------", inputKeys);
 
   ////////////////////LOGER START
-  // const details = await commonHelper.generateLogObject(
-  //   inputKeys.id,
-  //   result.status,
-  //   userId,
-  //   data
-  // );
-  // const logData = {
-  //   moduleName: logMessages.Meeting.moduleName,
-  //   userId,
-  //   action: logMessages.Meeting.updateRSVP,
-  //   ipAddress,
-  //   details: details.join(" , "),
-  //   organizationId: result.organizationId,
-  // };
-  // console.log("logData--->", logData);
-  // await logService.createLog(logData);
+  const details = await commonHelper.generateLogObject(
+    inputKeys,
+    result,
+    userId,
+    data
+  );
+  console.log("details------>>>", details);
+  const logData = {
+    moduleName: logMessages.Meeting.moduleName,
+    userId,
+    action: logMessages.Meeting.updateRSVP,
+    ipAddress,
+    details: details.join(" , "),
+    organizationId: result.organizationId,
+  };
+  console.log("logData--->", logData);
+  await logService.createLog(logData);
   ///////////////////// LOGER END
   return result;
 };
