@@ -56,8 +56,8 @@ const meetingSchema = new mongoose.Schema(
     meetingStatus: {
       status: {
         type: String,
-        enum: ["closed", "scheduled", "rescheduled", "cancelled", "due"],
-        default: "due",
+        enum: ["closed", "scheduled", "rescheduled", "cancelled"],
+        default: "scheduled",
       },
       remarks: { type: String, required: false },
     },
@@ -69,6 +69,10 @@ const meetingSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
       default: true,
+    },
+    createdById: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
     },
     agendaIds: [{
       type:  mongoose.Schema.ObjectId

@@ -23,8 +23,8 @@ const createMeetingValidator = async (req, res, next) => {
       mode: Joi.string().valid("VIRTUAL", "PHYSICAL").required(),
       link: Joi.string().uri(),
       date: Joi.string().trim().required(),
-      fromTime: Joi.number().required(),
-      toTime: Joi.number().required(),
+      fromTime: Joi.string().required(),
+      toTime: Joi.string().required(),
       locationDetails: Joi.object({
         isMeetingRoom: Joi.boolean().required().strict(),
         location: Joi.string()
@@ -109,8 +109,8 @@ const updateMeetingValidator = async (req, res, next) => {
       mode: Joi.string().valid("VIRTUAL", "PHYSICAL"),
       link: Joi.string().uri(),
       date: Joi.string().trim(),
-      fromTime: Joi.number(),
-      toTime: Joi.number(),
+      fromTime: Joi.string(),
+      toTime: Joi.string(),
       locationDetails: Joi.object({
         isMeetingRoom: Joi.boolean().required().strict(),
         location: Joi.string()
@@ -345,6 +345,30 @@ const meetingActivitieslist = async (req, res, next) => {
     return Responses.errorResponse(req, res, error);
   }
 };
+
+// FUNCTION TO GET MEETING CREATE STEP STATUS
+const getCreateMeetingStep = async (req, res, next) => {
+  try {
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const paramsSchema = Joi.object({
+      organizationId: Joi.string().trim().alphanum().required(),
+    }).required();
+
+    await headerSchema.validateAsync({ headers: req.headers });
+    await paramsSchema.validateAsync(req.params);
+    next();
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+
 module.exports = {
   createMeetingValidator,
   updateMeetingValidator,
@@ -354,4 +378,5 @@ module.exports = {
   cancelMeetingValidator,
   listAttendeesFromPreviousMeetingValidator,
   meetingActivitieslist,
+  getCreateMeetingStep
 };

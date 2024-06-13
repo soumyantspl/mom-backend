@@ -21,6 +21,7 @@ const createMeeting = async (data, userId, ipAddress, email) => {
     step: 1,
     toTime: data.toTime,
     fromTime: data.fromTime,
+    createdById: new ObjectId(userId),
   };
 
   const meetingData = new Meeting(inputData);
@@ -302,14 +303,14 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
         const attendeeData = meetingDataObject.attendeesDetail.find(
           (attendee) => attendee._id == item.id.toString()
         );
-         console.log("attendeeData---------", attendeeData);
+        console.log("attendeeData---------", attendeeData);
         if (item.id.toString() == userId) {
           meetingDataObject.rsvp = item.rsvp;
         }
         if (attendeeData) {
-          item.email=attendeeData.email
+          item.email = attendeeData.email;
           item.name = attendeeData.name;
-          return ;
+          return;
         }
       });
 
@@ -478,6 +479,20 @@ const viewMeetingActivities = async (id) => {
   return result;
 };
 
+//FUNCTION TO GET MEETING CREATE STEP STATUS
+const getCreateMeetingStep = async (organizationId, userId) => {
+  const result = await Meeting.findOne(
+    {
+      createdById: new ObjectId(userId),
+      organizationId: new ObjectId(organizationId),
+      isActive: true,
+      $or: [{ step: 1 }, { step: 2 }],
+    },
+    // { step: 1, _id: 1, createdAt: 1 }
+  ).sort({ createdAt: -1 });
+  return result;
+};
+
 module.exports = {
   createMeeting,
   updateRsvp,
@@ -489,4 +504,5 @@ module.exports = {
   getAllAttendees,
   createMeetingActivities,
   viewMeetingActivities,
+  getCreateMeetingStep,
 };
