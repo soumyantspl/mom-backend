@@ -487,7 +487,7 @@ const getCreateMeetingStep = async (organizationId, userId) => {
       isActive: true,
       $or: [{ step: 1 }, { step: 2 }],
     },
-    { step: 1, _id: 1, createdAt: 1 }
+    // { step: 1, _id: 1, createdAt: 1 }
   ).sort({ createdAt: -1 });
   return result;
 };
