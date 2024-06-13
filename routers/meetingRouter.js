@@ -69,4 +69,12 @@ router.get(
   meetingController.viewMeetingActivities
 );
 
+/* GET MEETING CREATE STEP STATUS  */
+router.get(
+  "/getCreateMeetingStep/:organizationId",
+  meetingValidator.getCreateMeetingStep,
+  authMiddleware.verifyUserToken,
+  meetingController.getCreateMeetingStep
+);
+
 module.exports = router;

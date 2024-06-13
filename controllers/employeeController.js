@@ -161,13 +161,13 @@ const viewSingleEmploye = async (req, res) => {
   try {
     const result = await employeeService.viewSingleEmployee(req.params.id);
     console.log("viewSingleEmploye result", result);
-    if (result.length == 0) {
+    if (!result) {
       return Responses.failResponse(
         req,
         res,
         null,
         messages.recordsNotFound,
-        409
+        200
       );
     }
     return Responses.successResponse(

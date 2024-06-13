@@ -248,6 +248,38 @@ const viewMeetingActivities = async (req, res) => {
   }
 };
 
+/* GET MEETING CREATE STEP STATUS  */
+const getCreateMeetingStep = async (req, res) => {
+  try {
+    const result = await meetingService.getCreateMeetingStep(
+      req.params.organizationId,
+      req.userId
+    );
+    console.log(result);
+
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        200
+      );
+    }
+    return Responses.successResponse(
+      req,
+      res,
+      result,
+      messages.recordsFound,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
 module.exports = {
   createMeeting,
   updateRsvp,
@@ -257,4 +289,5 @@ module.exports = {
   viewAllMeetings,
   listAttendeesFromPreviousMeeting,
   viewMeetingActivities,
+  getCreateMeetingStep,
 };
