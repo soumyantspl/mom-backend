@@ -84,9 +84,10 @@ const deleteUnit = async (userId, id, data, ipAddress = "1000") => {
   return result;
 };
 
-const listUnit = async (bodyData, queryData) => {
-  const { order } = queryData;
+const listUnit = async (userId, bodyData, queryData) => {
   const { organizationId, searchKey } = bodyData;
+  const { order } = queryData;
+  console.log("organizationId-->", organizationId);
   let query = searchKey
     ? {
         organizationId,
