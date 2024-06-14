@@ -17,7 +17,7 @@ const createMeeting = async (req, res) => {
         res,
         null,
         messages.duplicateEmail,
-        409
+        200
       );
     }
 
@@ -27,7 +27,7 @@ const createMeeting = async (req, res) => {
         res,
         null,
         messages.duplicateEmpCode,
-        409
+        200
       );
     }
 
