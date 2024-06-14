@@ -144,6 +144,19 @@ const checkDuplicateEmpId = async (empId, organizationId) => {
 const listEmployee = async (bodyData, queryData) => {
   const { order } = queryData;
   const { organizationId, searchKey } = bodyData;
+  const fields={
+    "designationId": 1,
+    "departmentId": 1,
+    "unitId": 1,
+    "isEmployee": 1,
+    "_id": 1,
+    "email": 1,
+    "isActive": 1,
+    "organizationId": 1,
+    "name":1,
+    "isMeetingOrganiser": 1,
+    "empId":1
+  }
   let query = searchKey
     ? {
         $and: [
@@ -164,14 +177,21 @@ const listEmployee = async (bodyData, queryData) => {
         isActive: true,
       };
 
-  var limit = parseInt(queryData.limit);
-  var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
-
+  let mongooseQuery = null;
+  if (queryData.limit && queryData.page && queryData.order) {
+    const limit = parseInt(queryData.limit);
+    const skip = (parseInt(queryData.page) - 1) * parseInt(limit);
+    mongooseQuery = Employee.find(query,fields)
+     // .sort({ createdAt: parseInt(order) })
+      .sort({ _id: parseInt(order) })
+      .skip(skip)
+      .limit(limit)
+      
+  } else {
+    mongooseQuery = Employee.find(query,fields);
+  }
   const totalCount = await Employee.countDocuments(query);
-  const employeeData = await Employee.find(query)
-    .sort({ createdAt: parseInt(order) })
-    .limit(limit)
-    .skip(skip);
+  const employeeData = await mongooseQuery;
 
   return { totalCount, employeeData };
 };
