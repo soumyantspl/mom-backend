@@ -27,7 +27,7 @@ router.delete(
   employeeController.deleteEmploye
 );
 /* VIEW EMPLOYEE  */
-router.get(
+router.post(
   "/listEmployee",
   validator.listEmployesValidator,
   authMiddleware.verifyUserToken,
