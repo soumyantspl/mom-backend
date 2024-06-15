@@ -131,3 +131,324 @@ Date: 13/06/2024, Time: 18:21
 Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
 Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1605:16)
+Date: 14/06/2024, Time: 10:58
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 11:40
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 11:41
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 11:45
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 11:45
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 11:46
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 11:46
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 11:47
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 11:49
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 12:23
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 12:24
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 12:32
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 12:35
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 12:36
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 12:37
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 13:01
+Error: "name" is required
+Stack Trace: ValidationError: "name" is required
+Date: 14/06/2024, Time: 13:08
+Error: "name" is required
+Stack Trace: ValidationError: "name" is required
+Date: 14/06/2024, Time: 15:52
+Error: "name" is required
+Stack Trace: ValidationError: "name" is required
+Date: 14/06/2024, Time: 16:22
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 17:17
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 17:18
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 17:19
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 17:22
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 18:30
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 18:31
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 18:32
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 18:35
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 14/06/2024, Time: 18:49
+Error: "queryData" is not allowed
+Stack Trace: ValidationError: "queryData" is not allowed
+Date: 14/06/2024, Time: 18:50
+Error: "queryData" is not allowed
+Stack Trace: ValidationError: "queryData" is not allowed
+Date: 14/06/2024, Time: 18:55
+Error: Invalid sort value: { createdAt: NaN }
+Stack Trace: TypeError: Invalid sort value: { createdAt: NaN }
+    at _handleSortValue (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2945:9)
+    at Query.sort (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2914:19)
+    at Object.listUnit (D:\mom\mom-backend\services\unitService.js:107:6)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listUnit (D:\mom\mom-backend\controllers\unitController.js:102:20)
+Date: 14/06/2024, Time: 18:55
+Error: Invalid sort value: { createdAt: NaN }
+Stack Trace: TypeError: Invalid sort value: { createdAt: NaN }
+    at _handleSortValue (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2945:9)
+    at Query.sort (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2914:19)
+    at Object.listUnit (D:\mom\mom-backend\services\unitService.js:107:6)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listUnit (D:\mom\mom-backend\controllers\unitController.js:102:20)
+Date: 14/06/2024, Time: 19:04
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 19:06
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 19:06
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 19:06
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 19:06
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 19:06
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 19:07
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 19:08
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 19:08
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 19:08
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 19:08
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 14/06/2024, Time: 19:08
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:24
+Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+Stack Trace: Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:118:26)
+Date: 15/06/2024, Time: 10:24
+Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+Stack Trace: Error: getaddrinfo EAI_AGAIN smtp.gmail.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:118:26)
+Date: 15/06/2024, Time: 10:29
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:33
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:34
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:41
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:41
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:52
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:52
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:52
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:53
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:53
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:54
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:55
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:56
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:57
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 10:58
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:01
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:06
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:06
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:06
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:06
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:09
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:27
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:28
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:29
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:29
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:29
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:29
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:30
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:30
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:30
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:32
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:32
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:32
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:32
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:32
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:35
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:35
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:35
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:35
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:43
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:43
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:43
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:44
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:44
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:44
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:45
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:45
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:45
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:46
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:46
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:47
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:49
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:49
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 15/06/2024, Time: 11:52
+Error: "searchKey" is not allowed to be empty
+Stack Trace: ValidationError: "searchKey" is not allowed to be empty
+Date: 15/06/2024, Time: 11:55
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 15/06/2024, Time: 11:56
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 15/06/2024, Time: 13:16
+Error: "name" is required
+Stack Trace: ValidationError: "name" is required
+Date: 15/06/2024, Time: 13:17
+Error: "name" is required
+Stack Trace: ValidationError: "name" is required
