@@ -8,6 +8,7 @@ const emailService = require("./emailService");
 const emailTemplates = require("../emailSetUp/emailTemplates");
 const emailConstants = require("../constants/emailConstants");
 const commonHelper = require("../helpers/commonHelper");
+const employeeService=require("./employeeService")
 /**FUNC- CREATE MEETING */
 const createMeeting = async (data, userId, ipAddress, email) => {
   console.log("----------------------33333", data);
@@ -57,10 +58,18 @@ const createMeeting = async (data, userId, ipAddress, email) => {
 };
 
 /**FUNC- UPDATE MEETING */
-const updateMeeting = async (data, id, email) => {
+const updateMeeting = async (data, id,userId,ipAddress) => {
   console.log("----------------------33333", data, id);
   let updateData = {};
   if (data.step == 2) {
+    const newPeopleArrya = data.attendees.filter(
+      (item) => item.isEmployee === false
+    );
+    console.log("newPeopleArrya---------------", newPeopleArrya);
+if(newPeopleArrya.length!==0){
+
+  const newEmployee = await employeeService.createAttendees(newPeopleArrya,data.organizationId);
+}
     // CHECK IF NEW PEOPLE , IF THEN FIRST ADD THEM IN EMPLOYEED AND THEN ADD THEM IN ATTENDEES ARRAY
     // PENDING
     // if (data.isNewPeople) {
@@ -113,15 +122,15 @@ const updateMeeting = async (data, id, email) => {
 
   ////////////////////LOGER START
 
-  const logData = {
-    moduleName: logMessages.Meeting.moduleName,
-    userId,
-    action: logMessages.Meeting.updateMeeting,
-    ipAddress,
-    details: details.join(" , "),
-    organizationId: data.organizationId,
-  };
-  await logService.createLog(logData);
+  // const logData = {
+  //   moduleName: logMessages.Meeting.moduleName,
+  //   userId,
+  //   action: logMessages.Meeting.updateMeeting,
+  //   ipAddress,
+  //   details: details.join(" , "),
+  //   organizationId: data.organizationId,
+  // };
+  // await logService.createLog(logData);
   /////////////////////LOGER END
   return meeting;
 };
@@ -231,7 +240,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
   if (bodyData.meetingStatus) {
     query["meetingStatus.status"] = bodyData.meetingStatus;
   }
-  console.log("query", query);
+  console.log("query------------------------>>>>>>>>>>>>>>>>>>>>>", query);
 
   var limit = parseInt(queryData.limit);
   var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
@@ -487,7 +496,7 @@ const getCreateMeetingStep = async (organizationId, userId) => {
       organizationId: new ObjectId(organizationId),
       isActive: true,
       $or: [{ step: 1 }, { step: 2 }],
-    },
+    }
     // { step: 1, _id: 1, createdAt: 1 }
   ).sort({ createdAt: -1 });
   return result;

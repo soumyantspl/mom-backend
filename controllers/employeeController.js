@@ -235,7 +235,7 @@ const checkDuplicateUser = async (req, res) => {
       req,
       res,
       resultObject,
-      messages.recordsFound,
+      messages.duplicateEmail,
       200
     );
   } catch (error) {
