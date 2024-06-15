@@ -189,11 +189,53 @@ const masterData = async (req, res) => {
     const result = await employeeService.masterData(req.params.organizationId);
     console.log("result----->>>", result);
 
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        200
+      );
+    }
+
     return Responses.successResponse(
       req,
       res,
       result.masterData,
       result.message,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+const checkDuplicateUser = async (req, res) => {
+  try {
+    const result = await employeeService.checkDuplicateUserEntry(req.body);
+    console.log("result----->>>", result);
+    const resultObject = {
+      isDuplicateUser: true,
+    };
+    if (!result) {
+      resultObject.isDuplicateUser = false;
+      return Responses.failResponse(
+        req,
+        res,
+        resultObject,
+        messages.recordsNotFound,
+        200
+      );
+    }
+
+    return Responses.successResponse(
+      req,
+      res,
+      resultObject,
+      messages.recordsFound,
       200
     );
   } catch (error) {
@@ -210,4 +252,5 @@ module.exports = {
   listEmployee,
   viewSingleEmploye,
   masterData,
+  checkDuplicateUser,
 };

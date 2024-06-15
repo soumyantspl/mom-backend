@@ -48,4 +48,12 @@ router.get(
   employeeController.masterData
 );
 
+
+/* CHECK DUPLICATE VISITOR USER  */
+router.post(
+  "/checkDuplicateUser",
+  validator.checkDuplicateUser,
+  authMiddleware.verifyUserToken,
+  employeeController.checkDuplicateUser
+);
 module.exports = router;

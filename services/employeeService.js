@@ -120,6 +120,15 @@ const checkDuplicateEntry = async (email, organizationId, empId) => {
   ]);
 };
 
+/**FUNC- TO VERIFY DUPLICATE USER */
+const checkDuplicateUserEntry = async (data) => {
+  console.log("email---------------",data.email);
+
+  console.log("organizationId---------------", data.organizationId);
+  return await checkDuplicateEmail(data.email, data.organizationId);
+  
+};
+
 /**FUNC- TO VERIFY DUPLICATE EMPLOYEE EMAIL */
 const checkDuplicateEmail = async (email, organizationId) => {
   console.log("email---------------", email);
@@ -300,4 +309,5 @@ module.exports = {
   viewSingleEmployee,
   createAttendee,
   masterData,
+  checkDuplicateUserEntry
 };
