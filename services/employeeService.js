@@ -120,6 +120,15 @@ const checkDuplicateEntry = async (email, organizationId, empId) => {
   ]);
 };
 
+/**FUNC- TO VERIFY DUPLICATE USER */
+const checkDuplicateUserEntry = async (data) => {
+  console.log("email---------------",data.email);
+
+  console.log("organizationId---------------", data.organizationId);
+  return await checkDuplicateEmail(data.email, data.organizationId);
+  
+};
+
 /**FUNC- TO VERIFY DUPLICATE EMPLOYEE EMAIL */
 const checkDuplicateEmail = async (email, organizationId) => {
   console.log("email---------------", email);
@@ -290,6 +299,32 @@ const createAttendee = async (name, email, organizationId) => {
   };
 };
 
+/**FUNC- ADD VISITORS AS ATTENDEE IN EMPLOYEE */
+const createAttendees = async (attendees ) => {
+
+  
+  console.log("attendees-------------", attendees);
+  // if (!emailDetails) {
+  //   const inputData = {
+  //     name,
+  //     email,
+  //     organizationId: new ObjectId(organizationId),
+  //     isEmployee: false,
+  //   };
+   // const empData = new Employee(attendees);
+    const newEmps = await Employee.insertMany(attendees);
+
+  //   Student.insertMany([
+  //     { name: "Student1", school: "ABC", class: "A1" },
+  //     { name: "Student2", school: "ABC", class: "A2" },
+  // ])
+
+
+    console.log("newEmp----------------", newEmps);
+    return newEmps;
+
+};
+
 module.exports = {
   createEmployee,
   listEmployee,
@@ -300,4 +335,6 @@ module.exports = {
   viewSingleEmployee,
   createAttendee,
   masterData,
+  checkDuplicateUserEntry,
+  createAttendees
 };

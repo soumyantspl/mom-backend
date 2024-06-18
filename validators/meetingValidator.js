@@ -63,7 +63,7 @@ const createMeetingValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error,200);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 // CANCEL MEETING VALIDATOR
@@ -90,6 +90,7 @@ const cancelMeetingValidator = async (req, res, next) => {
 };
 //UPDATE MEETING VALIDATOR
 const updateMeetingValidator = async (req, res, next) => {
+  console.log(req.body);
   try {
     const headerSchema = Joi.object({
       headers: Joi.object({
@@ -150,8 +151,32 @@ const updateMeetingValidator = async (req, res, next) => {
             "attendees.min": "attendees can't be empty!",
           })
           .items({
-            id: Joi.string().required(),
-            rsvp: Joi.string().valid("YES", "NO", "WAITING"),
+            isEmployee: Joi.boolean(),
+            _id:Joi.when("isEmployee", {
+              is: Joi.boolean().valid(true),
+              then: Joi.string().required(),
+              otherwise:  Joi.string()
+            }),
+            organizationId:Joi.when("isEmployee", {
+              is: Joi.boolean().valid(false),
+              then: Joi.string().trim().alphanum().required(),
+              otherwise:  Joi.string().trim().alphanum()
+            }),
+         //   email:Joi.string().email().required(),
+            email:Joi.when("isEmployee", {
+              is: Joi.boolean().valid(false),
+              then: Joi.string().email().required(),
+              otherwise: Joi.string().email()
+            }),
+            name:Joi.when("isEmployee", {
+              is: Joi.boolean().valid(false),
+              then: Joi.string().required(),
+              otherwise: Joi.string()
+            }),
+          //  name: Joi.string(),
+            // rsvp: Joi.string().valid("YES", "NO", "WAITING"),
+         //   isEmployee: Joi.boolean(),
+          //  organizationId:Joi.string().trim().alphanum().required(),
           })
           .required(),
         otherwise: Joi.array()
@@ -160,8 +185,11 @@ const updateMeetingValidator = async (req, res, next) => {
             "attendees.min": "attendees can't be empty!",
           })
           .items({
-            id: Joi.string().required(),
-            rsvp: Joi.string().valid("YES", "NO", "WAITING"),
+            _id: Joi.string(),
+            email:Joi.string().email().required(),
+            name: Joi.string(),
+            // rsvp: Joi.string().valid("YES", "NO", "WAITING"),
+            isEmployee: Joi.boolean(),
           }),
       }),
       agendas: Joi.when("step", {
@@ -173,7 +201,7 @@ const updateMeetingValidator = async (req, res, next) => {
           })
           .items({
             title: Joi.string().required(),
-            topic: Joi.string(),
+            topic: Joi.string().allow(null, ''),
             timeLine: Joi.string().required(),
           })
           .required(),
@@ -184,7 +212,7 @@ const updateMeetingValidator = async (req, res, next) => {
           })
           .items({
             title: Joi.string().required(),
-            topic: Joi.string(),
+            topic: Joi.string().allow(null, ''),
             timeLine: Joi.string().required(),
           }),
       }),
@@ -199,7 +227,7 @@ const updateMeetingValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     //   errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error,200);
   }
 };
 // VIEW SINGLE MEETING VALIDATOR
@@ -237,7 +265,13 @@ const viewAllMeetingsValidator = async (req, res, next) => {
         authorization: Joi.required(),
       }).unknown(true),
     });
-    const enumValues = ["closed", "scheduled", "rescheduled", "cancelled", "due"];
+    const enumValues = [
+      "closed",
+      "scheduled",
+      "rescheduled",
+      "cancelled",
+      "due",
+    ];
     const bodySchema = Joi.object({
       searchKey: Joi.string()
         .trim()
@@ -262,7 +296,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
     const paramsSchema = Joi.object({
       limit: Joi.number().required(),
       page: Joi.number().required(),
-      order: Joi.number().required()
+      order: Joi.number().required(),
     });
     await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.query);
@@ -278,7 +312,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
 // UPDATE USER RSVP FOR MEETING VALIDATOR
 const updateRsvpValidator = async (req, res, next) => {
   try {
-    const enumValues = ["YES", "NO", "AWAITING","MAYBE"];
+    const enumValues = ["YES", "NO", "AWAITING", "MAYBE"];
     const headerSchema = Joi.object({
       headers: Joi.object({
         authorization: Joi.required(),
@@ -287,12 +321,14 @@ const updateRsvpValidator = async (req, res, next) => {
     const bodySchema = Joi.object({
       //  id: Joi.string().trim().alphanum().required(),
       //  userId: Joi.string().trim().alphanum().required(),
-      rsvp: Joi.string().valid(...enumValues).required()
+      rsvp: Joi.string()
+        .valid(...enumValues)
+        .required(),
     }).required();
     await headerSchema.validateAsync({ headers: req.headers });
     await bodySchema.validateAsync(req.body);
-   // await paramsSchema.validateAsync(req.query);
-    
+    // await paramsSchema.validateAsync(req.query);
+
     next();
   } catch (error) {
     console.log(error);
@@ -368,7 +404,6 @@ const getCreateMeetingStep = async (req, res, next) => {
   }
 };
 
-
 module.exports = {
   createMeetingValidator,
   updateMeetingValidator,
@@ -378,5 +413,5 @@ module.exports = {
   cancelMeetingValidator,
   listAttendeesFromPreviousMeetingValidator,
   meetingActivitieslist,
-  getCreateMeetingStep
+  getCreateMeetingStep,
 };
