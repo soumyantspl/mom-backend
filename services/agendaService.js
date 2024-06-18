@@ -4,7 +4,7 @@ const ObjectId = require("mongoose").Types.ObjectId;
 
 
 /**FUNC- TO CREATE AGENDA FOR MEETING**/
-const createAgendaForMeeting = async (userId, data, ipAddress = "1000") => {
+const createAgendaForMeeting = async (data) => {
   console.log("data--------------123", data);
   const inputData = data.map((item) => {
     item.timeLine = parseFloat(item.timeLine).toFixed(2);

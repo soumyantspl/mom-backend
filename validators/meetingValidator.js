@@ -90,7 +90,7 @@ const cancelMeetingValidator = async (req, res, next) => {
 };
 //UPDATE MEETING VALIDATOR
 const updateMeetingValidator = async (req, res, next) => {
-  console.log(req.body.attendees);
+  console.log(req.body);
   try {
     const headerSchema = Joi.object({
       headers: Joi.object({
@@ -201,7 +201,7 @@ const updateMeetingValidator = async (req, res, next) => {
           })
           .items({
             title: Joi.string().required(),
-            topic: Joi.string(),
+            topic: Joi.string().allow(null, ''),
             timeLine: Joi.string().required(),
           })
           .required(),
@@ -212,7 +212,7 @@ const updateMeetingValidator = async (req, res, next) => {
           })
           .items({
             title: Joi.string().required(),
-            topic: Joi.string(),
+            topic: Joi.string().allow(null, ''),
             timeLine: Joi.string().required(),
           }),
       }),
@@ -227,7 +227,7 @@ const updateMeetingValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     //   errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error,200);
   }
 };
 // VIEW SINGLE MEETING VALIDATOR
