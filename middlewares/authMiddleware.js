@@ -16,7 +16,7 @@ const generateUserToken = async (data) => {
 const verifyUserToken = async (req, res, next) => {
   try {
     let token = req.headers.authorization;
-
+    console.log("token-->", token);
     if (token.startsWith("Bearer ")) {
       token = token.substring(7, token.length);
     }

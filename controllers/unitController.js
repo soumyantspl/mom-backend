@@ -41,7 +41,7 @@ const editUnit = async (req, res) => {
       req.body,
       req.ip
     );
-    // console.log("Query id", req.params.id);
+    console.log("Query id", req.params.id);
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -99,8 +99,8 @@ const deleteUnit = async (req, res) => {
 
 const listUnit = async (req, res) => {
   try {
-    const result = await unitService.listUnit(req.body, req.query);
-    console.log(result);
+    const result = await unitService.listUnit(req.userId, req.body, req.query);
+    console.log("UserID--->>>", req.userId);
     if (result.totalCount == 0) {
       return Responses.failResponse(
         req,

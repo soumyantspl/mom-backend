@@ -26,7 +26,7 @@ router.delete(
   unitController.deleteUnit
 );
 //LIST UNIT API
-router.get(
+router.post(
   "/listUnit",
   unitValidator.listUnitValidator,
   authMiddleware.verifyUserToken,

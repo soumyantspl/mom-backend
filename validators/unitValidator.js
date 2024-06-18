@@ -94,7 +94,6 @@ const deleteUnitValidator = async (req, res, next) => {
 
 const listUnitValidator = async (req, res, next) => {
   try {
-    console.log(req.body);
     console.log(req.query);
     console.log(req.params);
     const headerSchema = Joi.object({
@@ -109,7 +108,6 @@ const listUnitValidator = async (req, res, next) => {
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
-
       organizationId: Joi.string().trim().alphanum().required(),
     });
     const paramsSchema = Joi.object({
