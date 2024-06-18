@@ -90,14 +90,14 @@ const listUnit = async (userId, bodyData, queryData) => {
   console.log("organizationId-->", organizationId);
   let query = searchKey
     ? {
-        organizationId,
-        name: { $regex: searchKey, $options: "i" },
-        isActive: true,
-      }
+      organizationId,
+      name: { $regex: searchKey, $options: "i" },
+      isActive: true,
+    }
     : {
-        organizationId,
-        isActive: true,
-      };
+      organizationId,
+      isActive: true,
+    };
 
   var limit = parseInt(queryData.limit);
   var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
