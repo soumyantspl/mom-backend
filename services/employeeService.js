@@ -178,12 +178,14 @@ const listEmployee = async (bodyData, queryData) => {
           {
             organizationId: new ObjectId(organizationId),
             isActive: true,
+            isEmployee:true
           },
         ],
       }
     : {
         organizationId: new ObjectId(organizationId),
         isActive: true,
+        isEmployee:true
       };
 
   let mongooseQuery = null;

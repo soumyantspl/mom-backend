@@ -87,7 +87,7 @@ const updateMeeting = async (req, res) => {
     return Responses.successResponse(
       req,
       res,
-      result.data,
+      result,
       messages.updateSuccess,
       201
     );
