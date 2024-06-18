@@ -41,7 +41,7 @@ const editUnit = async (req, res) => {
       req.body,
       req.ip
     );
-    // console.log("Query id", req.params.id);
+    console.log("Query id", req.params.id);
     console.log(result);
     if (!result) {
       return Responses.failResponse(
