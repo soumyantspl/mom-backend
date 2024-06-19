@@ -152,7 +152,7 @@ const updateMeetingValidator = async (req, res, next) => {
           })
           .items({
             isEmployee: Joi.boolean(),
-            _id:Joi.when("isEmployee", {
+            id:Joi.when("isEmployee", {
               is: Joi.boolean().valid(true),
               then: Joi.string().required(),
               otherwise:  Joi.string()
