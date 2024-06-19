@@ -162,6 +162,14 @@ const viewMeeting = async (meetingId) => {
       },
     },
     {
+      $lookup: {
+        from: "meetingrooms",
+        localField: "locationDetails.roomId",
+        foreignField: "_id",
+        as: "roomDetail",
+      },
+    },
+    {
       $project: {
         _id: 1,
         attendees: 1,
@@ -171,6 +179,7 @@ const viewMeeting = async (meetingId) => {
         date: 1,
         fromTime: 1,
         toTime: 1,
+        step:1,
         locationDetails: 1,
         agendasDetail: {
           title: 1,
@@ -183,9 +192,16 @@ const viewMeeting = async (meetingId) => {
           _id: 1,
           name: 1,
         },
+        roomDetail: {
+          title: 1,
+          _id: 1,
+          location: 1
+        },
       },
     },
+    { $unwind: "$roomDetail" },
   ]);
+  console.log(meetingData);
   if (meetingData.length !== 0) {
     let meetingDataObject = meetingData[0];
     meetingDataObject.attendees.map((item) => {
