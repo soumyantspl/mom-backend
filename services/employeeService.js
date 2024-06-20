@@ -320,10 +320,13 @@ const createAttendees = async (attendees ) => {
   //     { name: "Student1", school: "ABC", class: "A1" },
   //     { name: "Student2", school: "ABC", class: "A2" },
   // ])
-
+const newEmpData=newEmps.map((item)=>{
+  return {id:item._id}
+})
 
     console.log("newEmp----------------", newEmps);
-    return newEmps;
+    console.log("newEmpData----------------", newEmpData);
+    return newEmpData;
 
 };
 

@@ -1,7 +1,13 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
 const { errorLog } = require("../middlewares/errorLog");
-
+const meetingStatusValues = [
+  "closed",
+  "scheduled",
+  "rescheduled",
+  "cancelled",
+  "draft",
+];
 // CREATE MEETING VALIDATOR
 const createMeetingValidator = async (req, res, next) => {
   try {
@@ -22,6 +28,7 @@ const createMeetingValidator = async (req, res, next) => {
       organizationId: Joi.string().trim().alphanum().required(),
       mode: Joi.string().valid("VIRTUAL", "PHYSICAL").required(),
       link: Joi.string().uri(),
+      meetingStatus: Joi.string().valid(...meetingStatusValues),
       date: Joi.string().trim().required(),
       fromTime: Joi.string().required(),
       toTime: Joi.string().required(),
@@ -185,7 +192,7 @@ const updateMeetingValidator = async (req, res, next) => {
             "attendees.min": "attendees can't be empty!",
           })
           .items({
-            _id: Joi.string(),
+            id: Joi.string(),
             email:Joi.string().email().required(),
             name: Joi.string(),
             // rsvp: Joi.string().valid("YES", "NO", "WAITING"),
@@ -265,13 +272,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
         authorization: Joi.required(),
       }).unknown(true),
     });
-    const enumValues = [
-      "closed",
-      "scheduled",
-      "rescheduled",
-      "cancelled",
-      "due",
-    ];
+ 
     const bodySchema = Joi.object({
       searchKey: Joi.string()
         .trim()
@@ -279,7 +280,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
-      meetingStatus: Joi.string().valid(...enumValues),
+      meetingStatus: Joi.string().valid(...meetingStatusValues),
       fromDate: Joi.date().iso(),
       toDate: Joi.date().iso(),
       // toDate: Joi.when("fromDate", {

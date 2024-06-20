@@ -61,16 +61,26 @@ const createMeeting = async (data, userId, ipAddress, email) => {
 const updateMeeting = async (data, id, userId, ipAddress) => {
   console.log("----------------------33333", data, id);
   let updateData = {};
+  let mergedData =  [];
   if (data.step == 2) {
-    const newPeopleArrya = data.attendees.filter(
+    const newPeopleArray = data.attendees.filter(
       (item) => item.isEmployee === false
     );
-    console.log("newPeopleArrya---------------", newPeopleArrya);
-    if (newPeopleArrya.length !== 0) {
+    console.log("newPeopleArrya---------------", newPeopleArray);
+    if (newPeopleArray.length !== 0) {
       const newEmployee = await employeeService.createAttendees(
-        newPeopleArrya,
+        newPeopleArray,
         data.organizationId
       );
+      console.log("merge test------", [...data.attendees, ...newEmployee]);
+      mergedData = [...data.attendees, ...newEmployee]
+        .filter((item) => item.id !== undefined)
+        .map((item) => {
+          console.log("id---------", item.id);
+
+          return { id: item.id };
+        });
+      console.log("mergedData", mergedData);
     }
     // CHECK IF NEW PEOPLE , IF THEN FIRST ADD THEM IN EMPLOYEED AND THEN ADD THEM IN ATTENDEES ARRAY
     // PENDING
@@ -81,9 +91,9 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
     //   };
     //   const newEmployee = await employeeService.createEmployee(empData);
     // }
-
+    console.log("mergedData", mergedData);
     updateData = {
-      attendees: data.attendees,
+      $addToSet: {  attendees: mergedData.length !== 0 ? mergedData : data.attendees} ,
       step: 2,
     };
   }
@@ -96,8 +106,12 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
     });
     console.log("newAgendaData---------------", newAgendaData);
     const agendaIds = await agendaService.createAgendaForMeeting(newAgendaData);
-    updateData.step = 3;
-    updateData.agendaIds = agendaIds;
+    // updateData.step = 3;
+    // updateData.agendaIds = agendaIds;
+    updateData = {
+      $push: {  agendaIds} ,
+      step: 3
+    };
   }
 
   if (data.step == 1) {
@@ -584,10 +598,11 @@ const getCreateMeetingStep = async (organizationId, userId) => {
       },
     },
     // { $unwind: "$roomDetail" },
-  ]).sort({ createdAt: -1 });
+  ]).sort({ _id: -1 });
   console.log(meetingData);
-  console.log(meetingData[0].attendeesDetail);
+
   if (meetingData.length !== 0) {
+     console.log(meetingData[0].attendeesDetail);
     let meetingDataObject = meetingData[0];
     meetingDataObject.attendees.map((item) => {
       console.log("item---------", item);
