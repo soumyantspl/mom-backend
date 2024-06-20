@@ -22,7 +22,7 @@ const createMeeting = async (data, userId, ipAddress, email) => {
     step: 1,
     toTime: data.toTime,
     fromTime: data.fromTime,
-    createdById: new ObjectId(userId),
+    createdById: new ObjectId(userId)
   };
 
   const meetingData = new Meeting(inputData);
@@ -110,7 +110,8 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
     // updateData.agendaIds = agendaIds;
     updateData = {
       $push: {  agendaIds} ,
-      step: 3
+      step: 3,
+      "meetingStatus.status":data.meetingStatus
     };
   }
 
@@ -196,6 +197,7 @@ const viewMeeting = async (meetingId) => {
         fromTime: 1,
         toTime: 1,
         step: 1,
+        meetingStatus:1,
         locationDetails: 1,
         agendasDetail: {
           title: 1,
@@ -239,7 +241,7 @@ const viewMeeting = async (meetingId) => {
 };
 
 /**FUNC- TO VIEW ALL MEETING LIST */
-const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
+const viewAllMeetings = async (bodyData, queryData, userId, isMeetingOrganiser) => {
   const { order } = queryData;
   const { organizationId, searchKey } = bodyData;
   let query = searchKey
@@ -262,9 +264,9 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
     };
   }
 
-  console.log("roleType---------", roleType);
+  console.log("isMeetingOrganiser---------", isMeetingOrganiser);
   console.log("userId---------", userId);
-  if (roleType == "USER") {
+  if (!isMeetingOrganiser) {
     query["attendees.id"] = new ObjectId(userId);
   }
   if (bodyData.attendeeId) {
@@ -400,24 +402,24 @@ const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
   const inputKeys = Object.keys(data);
   console.log("inputKeys---------------", inputKeys);
 
-  ////////////////////LOGER START
-  const details = await commonHelper.generateLogObject(
-    inputKeys,
-    result,
-    userId,
-    data
-  );
-  console.log("details------>>>", details);
-  const logData = {
-    moduleName: logMessages.Meeting.moduleName,
-    userId,
-    action: logMessages.Meeting.updateRSVP,
-    ipAddress,
-    details: details.join(" , "),
-    organizationId: result.organizationId,
-  };
-  console.log("logData--->", logData);
-  await logService.createLog(logData);
+  // ////////////////////LOGER START
+  // const details = await commonHelper.generateLogObject(
+  //   inputKeys,
+  //   result,
+  //   userId,
+  //   data
+  // );
+  // console.log("details------>>>", details);
+  // const logData = {
+  //   moduleName: logMessages.Meeting.moduleName,
+  //   userId,
+  //   action: logMessages.Meeting.updateRSVP,
+  //   ipAddress,
+  //   details: details.join(" , "),
+  //   organizationId: result.organizationId,
+  // };
+  // console.log("logData--->", logData);
+  // await logService.createLog(logData);
   ///////////////////// LOGER END
   return result;
 };
@@ -579,6 +581,7 @@ const getCreateMeetingStep = async (organizationId, userId) => {
         toTime: 1,
         step: 1,
         locationDetails: 1,
+        meetingStatus:1,
         agendasDetail: {
           title: 1,
           _id: 1,

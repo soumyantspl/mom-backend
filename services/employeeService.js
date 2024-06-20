@@ -222,7 +222,7 @@ const verifyEmployee = async (empId) => {
   console.log("empId-----------", empId);
   return await Employee.findOne(
     { _id: new ObjectId(empId), isActive: true },
-    { _id: 1, email: 1, organisationId: 1, name: 1, isActive: 1 }
+    { _id: 1, email: 1, organisationId: 1, name: 1, isActive: 1 ,isMeetingOrganiser:1}
   );
 };
 

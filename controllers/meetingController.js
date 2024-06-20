@@ -130,8 +130,7 @@ const viewAllMeetings = async (req, res) => {
       req.body,
       req.query,
       req.userId,
-      // req.userRole
-      "USER"
+      req.isMeetingOrganiser
     );
     console.log(result);
     if (result.totalCount == 0) {
