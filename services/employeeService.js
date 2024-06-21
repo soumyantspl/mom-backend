@@ -178,12 +178,14 @@ const listEmployee = async (bodyData, queryData) => {
           {
             organizationId: new ObjectId(organizationId),
             isActive: true,
+            isEmployee:true
           },
         ],
       }
     : {
         organizationId: new ObjectId(organizationId),
         isActive: true,
+        isEmployee:true
       };
 
   let mongooseQuery = null;
@@ -220,7 +222,7 @@ const verifyEmployee = async (empId) => {
   console.log("empId-----------", empId);
   return await Employee.findOne(
     { _id: new ObjectId(empId), isActive: true },
-    { _id: 1, email: 1, organisationId: 1, name: 1, isActive: 1 }
+    { _id: 1, email: 1, organisationId: 1, name: 1, isActive: 1 ,isMeetingOrganiser:1}
   );
 };
 
@@ -318,10 +320,13 @@ const createAttendees = async (attendees ) => {
   //     { name: "Student1", school: "ABC", class: "A1" },
   //     { name: "Student2", school: "ABC", class: "A2" },
   // ])
-
+const newEmpData=newEmps.map((item)=>{
+  return {_id:item._id}
+})
 
     console.log("newEmp----------------", newEmps);
-    return newEmps;
+    console.log("newEmpData----------------", newEmpData);
+    return newEmpData;
 
 };
 

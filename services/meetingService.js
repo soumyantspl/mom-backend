@@ -8,7 +8,7 @@ const emailService = require("./emailService");
 const emailTemplates = require("../emailSetUp/emailTemplates");
 const emailConstants = require("../constants/emailConstants");
 const commonHelper = require("../helpers/commonHelper");
-const employeeService=require("./employeeService")
+const employeeService = require("./employeeService");
 /**FUNC- CREATE MEETING */
 const createMeeting = async (data, userId, ipAddress, email) => {
   console.log("----------------------33333", data);
@@ -22,7 +22,7 @@ const createMeeting = async (data, userId, ipAddress, email) => {
     step: 1,
     toTime: data.toTime,
     fromTime: data.fromTime,
-    createdById: new ObjectId(userId),
+    createdById: new ObjectId(userId)
   };
 
   const meetingData = new Meeting(inputData);
@@ -58,18 +58,31 @@ const createMeeting = async (data, userId, ipAddress, email) => {
 };
 
 /**FUNC- UPDATE MEETING */
-const updateMeeting = async (data, id,userId,ipAddress) => {
+const updateMeeting = async (data, id, userId, ipAddress) => {
   console.log("----------------------33333", data, id);
   let updateData = {};
+  let mergedData =  [];
   if (data.step == 2) {
-    const newPeopleArrya = data.attendees.filter(
+    const newPeopleArray = data.attendees.filter(
       (item) => item.isEmployee === false
     );
-    console.log("newPeopleArrya---------------", newPeopleArrya);
-if(newPeopleArrya.length!==0){
+    console.log("newPeopleArrya---------------", newPeopleArray);
+    if (newPeopleArray.length !== 0) {
+      const newEmployee = await employeeService.createAttendees(
+        newPeopleArray,
+        data.organizationId
+      );
+      console.log("newEmployee--------",newEmployee)
+      console.log("merge test------", [...data.attendees, ...newEmployee]);
+      mergedData = [...data.attendees, ...newEmployee]
+        .filter((item) => item._id !== undefined)
+        .map((item) => {
+          console.log("id---------", item);
 
-  const newEmployee = await employeeService.createAttendees(newPeopleArrya,data.organizationId);
-}
+          return { _id: item._id };
+        });
+      console.log("mergedData", mergedData);
+    }
     // CHECK IF NEW PEOPLE , IF THEN FIRST ADD THEM IN EMPLOYEED AND THEN ADD THEM IN ATTENDEES ARRAY
     // PENDING
     // if (data.isNewPeople) {
@@ -79,9 +92,9 @@ if(newPeopleArrya.length!==0){
     //   };
     //   const newEmployee = await employeeService.createEmployee(empData);
     // }
-
+    console.log("mergedData", mergedData);
     updateData = {
-      attendees: data.attendees,
+      $addToSet: {  attendees: mergedData.length !== 0 ? mergedData : data.attendees} ,
       step: 2,
     };
   }
@@ -94,8 +107,13 @@ if(newPeopleArrya.length!==0){
     });
     console.log("newAgendaData---------------", newAgendaData);
     const agendaIds = await agendaService.createAgendaForMeeting(newAgendaData);
-    updateData.step = 3;
-    updateData.agendaIds = agendaIds;
+    // updateData.step = 3;
+    // updateData.agendaIds = agendaIds;
+    updateData = {
+      $push: {  agendaIds} ,
+      step: 3,
+      "meetingStatus.status":data.meetingStatus
+    };
   }
 
   if (data.step == 1) {
@@ -156,9 +174,17 @@ const viewMeeting = async (meetingId) => {
     {
       $lookup: {
         from: "employees",
-        localField: "attendees.id",
+        localField: "attendees._id",
         foreignField: "_id",
         as: "attendeesDetail",
+      },
+    },
+    {
+      $lookup: {
+        from: "meetingrooms",
+        localField: "locationDetails.roomId",
+        foreignField: "_id",
+        as: "roomDetail",
       },
     },
     {
@@ -171,6 +197,8 @@ const viewMeeting = async (meetingId) => {
         date: 1,
         fromTime: 1,
         toTime: 1,
+        step: 1,
+        meetingStatus:1,
         locationDetails: 1,
         agendasDetail: {
           title: 1,
@@ -183,15 +211,23 @@ const viewMeeting = async (meetingId) => {
           _id: 1,
           name: 1,
         },
+        roomDetail: {
+          title: 1,
+          _id: 1,
+          location: 1,
+        },
       },
     },
+    // { $unwind: "$roomDetail" },
   ]);
+  console.log(meetingData);
+  console.log(meetingData[0].attendeesDetail);
   if (meetingData.length !== 0) {
     let meetingDataObject = meetingData[0];
     meetingDataObject.attendees.map((item) => {
       console.log("item---------", item);
       const attendeeData = meetingDataObject.attendeesDetail.find(
-        (attendee) => attendee._id == item.id.toString()
+        (attendee) => attendee._id == item._id.toString()
       );
       console.log("attendeeData---------", attendeeData);
       return (item.name = attendeeData.name);
@@ -206,7 +242,7 @@ const viewMeeting = async (meetingId) => {
 };
 
 /**FUNC- TO VIEW ALL MEETING LIST */
-const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
+const viewAllMeetings = async (bodyData, queryData, userId, isMeetingOrganiser) => {
   const { order } = queryData;
   const { organizationId, searchKey } = bodyData;
   let query = searchKey
@@ -229,9 +265,9 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
     };
   }
 
-  console.log("roleType---------", roleType);
+  console.log("isMeetingOrganiser---------", isMeetingOrganiser);
   console.log("userId---------", userId);
-  if (roleType == "USER") {
+  if (!isMeetingOrganiser) {
     query["attendees.id"] = new ObjectId(userId);
   }
   if (bodyData.attendeeId) {
@@ -253,7 +289,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
     {
       $lookup: {
         from: "employees",
-        localField: "attendees.id",
+        localField: "attendees._id",
         foreignField: "_id",
         as: "attendeesDetail",
       },
@@ -302,18 +338,18 @@ const viewAllMeetings = async (bodyData, queryData, userId, roleType) => {
   console.log("meetingData---------", meetingData);
   if (meetingData.length !== 0) {
     meetingData.map((meetingDataObject) => {
-    //  console.log("meetingDataObject---------", meetingDataObject);
+      //  console.log("meetingDataObject---------", meetingDataObject);
       meetingDataObject.attendees.map((item) => {
-    //    console.log("item---------", item);
+           console.log("item---------", item);
         // console.log(
         //   "attendeesDetail----------",
         //   meetingDataObject.attendeesDetail
         // );
         const attendeeData = meetingDataObject.attendeesDetail.find(
-          (attendee) => attendee._id == item.id.toString()
+          (attendee) => attendee._id == item._id.toString()
         );
-      //  console.log("attendeeData---------", attendeeData);
-        if (item.id.toString() == userId) {
+        //  console.log("attendeeData---------", attendeeData);
+        if (item._id.toString() == userId) {
           meetingDataObject.rsvp = item.rsvp;
         }
         if (attendeeData) {
@@ -356,35 +392,35 @@ const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
   console.log("data----------------------------", data, id, userId);
   const result = await Meeting.findOneAndUpdate(
     {
-      "attendees.id": new ObjectId(userId),
+      "attendees._id": new ObjectId(userId),
       _id: new ObjectId(id),
     },
     {
       $set: { "attendees.$.rsvp": data.rsvp },
     }
   );
-  console.log(result);
+  console.log("result-------------123",result);
   const inputKeys = Object.keys(data);
   console.log("inputKeys---------------", inputKeys);
 
-  ////////////////////LOGER START
-  const details = await commonHelper.generateLogObject(
-    inputKeys,
-    result,
-    userId,
-    data
-  );
-  console.log("details------>>>", details);
-  const logData = {
-    moduleName: logMessages.Meeting.moduleName,
-    userId,
-    action: logMessages.Meeting.updateRSVP,
-    ipAddress,
-    details: details.join(" , "),
-    organizationId: result.organizationId,
-  };
-  console.log("logData--->", logData);
-  await logService.createLog(logData);
+  // ////////////////////LOGER START
+  // const details = await commonHelper.generateLogObject(
+  //   inputKeys,
+  //   result,
+  //   userId,
+  //   data
+  // );
+  // console.log("details------>>>", details);
+  // const logData = {
+  //   moduleName: logMessages.Meeting.moduleName,
+  //   userId,
+  //   action: logMessages.Meeting.updateRSVP,
+  //   ipAddress,
+  //   details: details.join(" , "),
+  //   organizationId: result.organizationId,
+  // };
+  // console.log("logData--->", logData);
+  // await logService.createLog(logData);
   ///////////////////// LOGER END
   return result;
 };
@@ -424,14 +460,14 @@ const listAttendeesFromPreviousMeeting = async (organizationId, userId) => {
   const meetingData = await Meeting.aggregate([
     {
       $match: {
-        "attendees.id": new ObjectId(userId),
+       // "attendees.id": new ObjectId(userId),
         organizationId: new ObjectId(organizationId),
       },
     },
     {
       $lookup: {
         from: "employees",
-        localField: "attendees.id",
+        localField: "attendees._id",
         foreignField: "_id",
         as: "attendeesDetail",
       },
@@ -490,16 +526,103 @@ const viewMeetingActivities = async (id) => {
 
 //FUNCTION TO GET MEETING CREATE STEP STATUS
 const getCreateMeetingStep = async (organizationId, userId) => {
-  const result = await Meeting.findOne(
+  // const result = await Meeting.findOne(
+  //   {
+  //     createdById: new ObjectId(userId),
+  //     organizationId: new ObjectId(organizationId),
+  //     isActive: true,
+  //     $or: [{ step: 1 }, { step: 2 }],
+  //   }
+  //   // { step: 1, _id: 1, createdAt: 1 }
+  // ).sort({ createdAt: -1 });
+  // return result;
+
+  const meetingData = await Meeting.aggregate([
     {
-      createdById: new ObjectId(userId),
-      organizationId: new ObjectId(organizationId),
-      isActive: true,
-      $or: [{ step: 1 }, { step: 2 }],
-    }
-    // { step: 1, _id: 1, createdAt: 1 }
-  ).sort({ createdAt: -1 });
-  return result;
+      $match: {
+        createdById: new ObjectId(userId),
+        organizationId: new ObjectId(organizationId),
+        isActive: true,
+        $or: [{ step: 1 }, { step: 2 }],
+      },
+    },
+    {
+      $lookup: {
+        from: "agendas",
+        localField: "agendaIds",
+        foreignField: "_id",
+        as: "agendasDetail",
+      },
+    },
+    {
+      $lookup: {
+        from: "employees",
+        localField: "attendees._id",
+        foreignField: "_id",
+        as: "attendeesDetail",
+      },
+    },
+    {
+      $lookup: {
+        from: "meetingrooms",
+        localField: "locationDetails.roomId",
+        foreignField: "_id",
+        as: "roomDetail",
+      },
+    },
+    {
+      $project: {
+        _id: 1,
+        attendees: 1,
+        title: 1,
+        mode: 1,
+        link: 1,
+        date: 1,
+        fromTime: 1,
+        toTime: 1,
+        step: 1,
+        locationDetails: 1,
+        meetingStatus:1,
+        agendasDetail: {
+          title: 1,
+          _id: 1,
+          meetingId: 1,
+          timeLine: 1,
+        },
+        attendeesDetail: {
+          email: 1,
+          _id: 1,
+          name: 1,
+        },
+        roomDetail: {
+          title: 1,
+          _id: 1,
+          location: 1,
+        },
+      },
+    },
+    // { $unwind: "$roomDetail" },
+  ]).sort({ _id: -1 });
+  console.log(meetingData);
+
+  if (meetingData.length !== 0) {
+     console.log("----------",meetingData[0].attendeesDetail);
+    let meetingDataObject = meetingData[0];
+    meetingDataObject.attendees.map((item) => {
+      console.log("item---------", item);
+      const attendeeData = meetingDataObject.attendeesDetail.find(
+        (attendee) => attendee._id == item._id.toString()
+      );
+      console.log("attendeeData---------", attendeeData);
+      return (item.name = attendeeData.name);
+    });
+    delete meetingDataObject.attendeesDetail;
+
+    console.log("meetingDataObject---------------", meetingDataObject);
+
+    return meetingDataObject;
+  }
+  return false;
 };
 
 module.exports = {

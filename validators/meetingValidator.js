@@ -1,7 +1,13 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
 const { errorLog } = require("../middlewares/errorLog");
-
+const meetingStatusValues = [
+  "closed",
+  "scheduled",
+  "rescheduled",
+  "cancelled",
+  "draft",
+];
 // CREATE MEETING VALIDATOR
 const createMeetingValidator = async (req, res, next) => {
   try {
@@ -14,7 +20,7 @@ const createMeetingValidator = async (req, res, next) => {
       sendNotification: Joi.boolean(),
       title: Joi.string()
         .trim()
-        .pattern(/^[0-9a-zA-Z ,/-]+$/)
+        .pattern(/^[0-9a-zA-Z ,./-]+$/)
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         })
@@ -22,6 +28,7 @@ const createMeetingValidator = async (req, res, next) => {
       organizationId: Joi.string().trim().alphanum().required(),
       mode: Joi.string().valid("VIRTUAL", "PHYSICAL").required(),
       link: Joi.string().uri(),
+     // meetingStatus: Joi.string().valid(...meetingStatusValues),
       date: Joi.string().trim().required(),
       fromTime: Joi.string().required(),
       toTime: Joi.string().required(),
@@ -101,7 +108,7 @@ const updateMeetingValidator = async (req, res, next) => {
       sendNotification: Joi.boolean(),
       title: Joi.string()
         .trim()
-        .pattern(/^[0-9a-zA-Z ,/-]+$/)
+        .pattern(/^[0-9a-zA-Z .,/-]+$/)
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
@@ -112,6 +119,7 @@ const updateMeetingValidator = async (req, res, next) => {
       date: Joi.string().trim(),
       fromTime: Joi.string(),
       toTime: Joi.string(),
+      meetingStatus: Joi.string().valid(...meetingStatusValues),
       locationDetails: Joi.object({
         isMeetingRoom: Joi.boolean().required().strict(),
         location: Joi.string()
@@ -202,7 +210,7 @@ const updateMeetingValidator = async (req, res, next) => {
           .items({
             title: Joi.string().required(),
             topic: Joi.string().allow(null, ''),
-            timeLine: Joi.string().required(),
+            timeLine: Joi.string().allow(null, ''),
           })
           .required(),
         otherwise: Joi.array()
@@ -213,7 +221,7 @@ const updateMeetingValidator = async (req, res, next) => {
           .items({
             title: Joi.string().required(),
             topic: Joi.string().allow(null, ''),
-            timeLine: Joi.string().required(),
+            timeLine: Joi.string().allow(null, ''),
           }),
       }),
     });
@@ -265,13 +273,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
         authorization: Joi.required(),
       }).unknown(true),
     });
-    const enumValues = [
-      "closed",
-      "scheduled",
-      "rescheduled",
-      "cancelled",
-      "due",
-    ];
+ 
     const bodySchema = Joi.object({
       searchKey: Joi.string()
         .trim()
@@ -279,7 +281,7 @@ const viewAllMeetingsValidator = async (req, res, next) => {
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
-      meetingStatus: Joi.string().valid(...enumValues),
+      meetingStatus: Joi.string().valid(...meetingStatusValues),
       fromDate: Joi.date().iso(),
       toDate: Joi.date().iso(),
       // toDate: Joi.when("fromDate", {

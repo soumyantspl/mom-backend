@@ -81,7 +81,8 @@ const getOtpLogs = async (data) => {
           name: 1,
           _id: 1,
           email: 1,
-          organizationId:1
+          organizationId:1,
+          isMeetingOrganiser:1
         },
       },
     },
@@ -259,7 +260,7 @@ const setPassword = async (data) => {
 const signInByPassword = async (data) => {
   const userData = await Employee.findOne(
     { email: data.email },
-    { _id: 1, email: 1, organizationId: 1, name: 1, password: 1, isActive: 1 }
+    { _id: 1, email: 1, organizationId: 1, name: 1, password: 1, isActive: 1,isMeetingOrganiser:1 }
   );
   console.log("userData----------", userData);
   if (!userData) {
@@ -296,6 +297,7 @@ const signInByPassword = async (data) => {
       name: userData.name,
       email: userData.email,
       organizationId: userData.organizationId,
+      isMeetingOrganiser:userData.isMeetingOrganiser
     },
   };
 };

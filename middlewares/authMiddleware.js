@@ -27,6 +27,7 @@ const verifyUserToken = async (req, res, next) => {
     console.log("isActiveUser------", isActiveUser);
     if (isActiveUser) {
       req.userId = userId;
+      req.isMeetingOrganiser=isActiveUser.isMeetingOrganiser
       next();
     } else {
       console.log("return from jwt verify");
