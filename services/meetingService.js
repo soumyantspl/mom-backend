@@ -72,13 +72,14 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
         newPeopleArray,
         data.organizationId
       );
+      console.log("newEmployee--------",newEmployee)
       console.log("merge test------", [...data.attendees, ...newEmployee]);
       mergedData = [...data.attendees, ...newEmployee]
-        .filter((item) => item.id !== undefined)
+        .filter((item) => item._id !== undefined)
         .map((item) => {
-          console.log("id---------", item.id);
+          console.log("id---------", item);
 
-          return { id: item.id };
+          return { _id: item._id };
         });
       console.log("mergedData", mergedData);
     }
@@ -173,7 +174,7 @@ const viewMeeting = async (meetingId) => {
     {
       $lookup: {
         from: "employees",
-        localField: "attendees.id",
+        localField: "attendees._id",
         foreignField: "_id",
         as: "attendeesDetail",
       },
@@ -226,7 +227,7 @@ const viewMeeting = async (meetingId) => {
     meetingDataObject.attendees.map((item) => {
       console.log("item---------", item);
       const attendeeData = meetingDataObject.attendeesDetail.find(
-        (attendee) => attendee._id == item.id.toString()
+        (attendee) => attendee._id == item._id.toString()
       );
       console.log("attendeeData---------", attendeeData);
       return (item.name = attendeeData.name);
@@ -288,7 +289,7 @@ const viewAllMeetings = async (bodyData, queryData, userId, isMeetingOrganiser) 
     {
       $lookup: {
         from: "employees",
-        localField: "attendees.id",
+        localField: "attendees._id",
         foreignField: "_id",
         as: "attendeesDetail",
       },
@@ -339,16 +340,16 @@ const viewAllMeetings = async (bodyData, queryData, userId, isMeetingOrganiser) 
     meetingData.map((meetingDataObject) => {
       //  console.log("meetingDataObject---------", meetingDataObject);
       meetingDataObject.attendees.map((item) => {
-        //    console.log("item---------", item);
+           console.log("item---------", item);
         // console.log(
         //   "attendeesDetail----------",
         //   meetingDataObject.attendeesDetail
         // );
         const attendeeData = meetingDataObject.attendeesDetail.find(
-          (attendee) => attendee._id == item.id.toString()
+          (attendee) => attendee._id == item._id.toString()
         );
         //  console.log("attendeeData---------", attendeeData);
-        if (item.id.toString() == userId) {
+        if (item._id.toString() == userId) {
           meetingDataObject.rsvp = item.rsvp;
         }
         if (attendeeData) {
@@ -391,14 +392,14 @@ const updateRsvp = async (id, userId, data, ipAddress = "1000") => {
   console.log("data----------------------------", data, id, userId);
   const result = await Meeting.findOneAndUpdate(
     {
-      "attendees.id": new ObjectId(userId),
+      "attendees._id": new ObjectId(userId),
       _id: new ObjectId(id),
     },
     {
       $set: { "attendees.$.rsvp": data.rsvp },
     }
   );
-  console.log(result);
+  console.log("result-------------123",result);
   const inputKeys = Object.keys(data);
   console.log("inputKeys---------------", inputKeys);
 
@@ -459,14 +460,14 @@ const listAttendeesFromPreviousMeeting = async (organizationId, userId) => {
   const meetingData = await Meeting.aggregate([
     {
       $match: {
-        "attendees.id": new ObjectId(userId),
+       // "attendees.id": new ObjectId(userId),
         organizationId: new ObjectId(organizationId),
       },
     },
     {
       $lookup: {
         from: "employees",
-        localField: "attendees.id",
+        localField: "attendees._id",
         foreignField: "_id",
         as: "attendeesDetail",
       },
@@ -556,7 +557,7 @@ const getCreateMeetingStep = async (organizationId, userId) => {
     {
       $lookup: {
         from: "employees",
-        localField: "attendees.id",
+        localField: "attendees._id",
         foreignField: "_id",
         as: "attendeesDetail",
       },
@@ -605,12 +606,12 @@ const getCreateMeetingStep = async (organizationId, userId) => {
   console.log(meetingData);
 
   if (meetingData.length !== 0) {
-     console.log(meetingData[0].attendeesDetail);
+     console.log("----------",meetingData[0].attendeesDetail);
     let meetingDataObject = meetingData[0];
     meetingDataObject.attendees.map((item) => {
       console.log("item---------", item);
       const attendeeData = meetingDataObject.attendeesDetail.find(
-        (attendee) => attendee._id == item.id.toString()
+        (attendee) => attendee._id == item._id.toString()
       );
       console.log("attendeeData---------", attendeeData);
       return (item.name = attendeeData.name);

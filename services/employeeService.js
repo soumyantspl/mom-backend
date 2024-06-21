@@ -321,7 +321,7 @@ const createAttendees = async (attendees ) => {
   //     { name: "Student2", school: "ABC", class: "A2" },
   // ])
 const newEmpData=newEmps.map((item)=>{
-  return {id:item._id}
+  return {_id:item._id}
 })
 
     console.log("newEmp----------------", newEmps);

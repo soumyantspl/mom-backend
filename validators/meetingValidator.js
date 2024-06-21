@@ -160,7 +160,7 @@ const updateMeetingValidator = async (req, res, next) => {
           })
           .items({
             isEmployee: Joi.boolean(),
-            id:Joi.when("isEmployee", {
+            _id:Joi.when("isEmployee", {
               is: Joi.boolean().valid(true),
               then: Joi.string().required(),
               otherwise:  Joi.string()
@@ -193,7 +193,7 @@ const updateMeetingValidator = async (req, res, next) => {
             "attendees.min": "attendees can't be empty!",
           })
           .items({
-            id: Joi.string(),
+            _id: Joi.string(),
             email:Joi.string().email().required(),
             name: Joi.string(),
             // rsvp: Joi.string().valid("YES", "NO", "WAITING"),
