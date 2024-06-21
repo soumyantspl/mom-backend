@@ -56,6 +56,7 @@ const editUnitValidator = async (req, res, next) => {
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
+      organizationId: Joi.string().trim().alphanum().required(),
     });
     await headerSchema.validateAsync({ headers: req.headers });
     const paramsSchema = Joi.object({

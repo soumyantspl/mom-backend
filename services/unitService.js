@@ -36,29 +36,39 @@ const createUnit = async (userId, data, ipAddress = "1000") => {
 };
 
 const editUnit = async (userId, id, data, ipAddress = "1000") => {
-  const result = await Units.findByIdAndUpdate({ _id: id }, data, {
-    new: false,
-  });
-  ////////////////////LOGER START
-  const inputKeys = Object.keys(data);
-  const details = await commonHelper.generateLogObject(
-    inputKeys,
-    result,
-    userId,
-    data
-  );
-  const logData = {
-    moduleName: logMessages.Unit.moduleName,
-    userId,
-    action: logMessages.Unit.editUnit,
-    ipAddress,
-    details: details.join(" , "),
-    organizationId: result.organizationId,
-  };
-  console.log("logData-------------------", logData);
-  await logService.createLog(logData);
-  ///////////////////// LOGER END
-  return result;
+  const unitDetails = await checkDuplicate(data.organizationId, data.name);
+
+  if (!unitDetails) {
+    const result = await Units.findByIdAndUpdate({ _id: id }, data, {
+      new: false,
+    });
+    ////////////////////LOGER START
+    const inputKeys = Object.keys(data);
+    const details = await commonHelper.generateLogObject(
+      inputKeys,
+      result,
+      userId,
+      data
+    );
+    const logData = {
+      moduleName: logMessages.Unit.moduleName,
+      userId,
+      action: logMessages.Unit.editUnit,
+      ipAddress,
+      details: details.join(" , "),
+      organizationId: result.organizationId,
+    };
+    console.log("logData-------------------", logData);
+    await logService.createLog(logData);
+    ///////////////////// LOGER END
+    return {
+      isDuplicate: false,
+    };
+  } else {
+    return {
+      isDuplicate: true,
+    };
+  }
 };
 
 const deleteUnit = async (userId, id, data, ipAddress = "1000") => {
@@ -90,14 +100,14 @@ const listUnit = async (userId, bodyData, queryData) => {
   console.log("organizationId-->", organizationId);
   let query = searchKey
     ? {
-      organizationId,
-      name: { $regex: searchKey, $options: "i" },
-      isActive: true,
-    }
+        organizationId,
+        name: { $regex: searchKey, $options: "i" },
+        isActive: true,
+      }
     : {
-      organizationId,
-      isActive: true,
-    };
+        organizationId,
+        isActive: true,
+      };
 
   var limit = parseInt(queryData.limit);
   var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
