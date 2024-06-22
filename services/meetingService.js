@@ -66,12 +66,14 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
   if (data.step == 2) {
     const newPeopleArray = data.attendees.filter(
       (item) => item.isEmployee === false && item._id===undefined
-    );
+    ).map((item)=>{
+      item.organizationId= data.organizationId
+      return item
+    })
     console.log("newPeopleArrya---------------", newPeopleArray);
     if (newPeopleArray.length !== 0) {
       const newEmployee = await employeeService.createAttendees(
-        newPeopleArray,
-        data.organizationId
+        newPeopleArray
       );
       console.log("newEmployee--------",newEmployee)
       console.log("merge test------", [...data.attendees, ...newEmployee]);
@@ -99,6 +101,9 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
      // $addToSet: {  attendees: mergedData.length !== 0 ? mergedData : data.attendees} ,
       step: data.step,
     };
+    if(data.isUpdate){
+      delete updateData.step
+    }
   }
 
   if (data.step == 3) {
@@ -117,6 +122,9 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
       step: data.step,
       "meetingStatus.status":data.meetingStatus
     };
+    if(data.isUpdate){
+      delete updateData.step
+    }
   }
 
   if (data.step == 1) {
@@ -124,6 +132,8 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
     if (data.date) {
       updateData.date = new Date(data.date);
     }
+   
+    delete updateData.step
   }
   console.log("----------------------updateData", updateData);
   const meeting = await Meeting.findByIdAndUpdate({ _id: id }, updateData, {
@@ -208,6 +218,7 @@ const viewMeeting = async (meetingId) => {
           _id: 1,
           meetingId: 1,
           timeLine: 1,
+          topic:1,
         },
         attendeesDetail: {
           email: 1,

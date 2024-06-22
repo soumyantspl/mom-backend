@@ -105,6 +105,7 @@ const updateMeetingValidator = async (req, res, next) => {
       }).unknown(true),
     });
     const bodySchema = Joi.object({
+      isUpdate:Joi.boolean().required(),
       sendNotification: Joi.boolean(),
       title: Joi.string()
         .trim()
