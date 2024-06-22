@@ -165,11 +165,11 @@ const updateMeetingValidator = async (req, res, next) => {
               then: Joi.string().required(),
               otherwise:  Joi.string()
             }),
-            organizationId:Joi.when("isEmployee", {
-              is: Joi.boolean().valid(false),
-              then: Joi.string().trim().alphanum().required(),
-              otherwise:  Joi.string().trim().alphanum()
-            }),
+            // organizationId:Joi.when("isEmployee", {
+            //   is: Joi.boolean().valid(false),
+            //   then: Joi.string().trim().alphanum().required(),
+            //   otherwise:  Joi.string().trim().alphanum()
+            // }),
          //   email:Joi.string().email().required(),
             email:Joi.when("isEmployee", {
               is: Joi.boolean().valid(false),
@@ -208,6 +208,7 @@ const updateMeetingValidator = async (req, res, next) => {
             "agendas.min": "agendas can't be empty!",
           })
           .items({
+            _id: Joi.string().allow(null, ''),
             title: Joi.string().required(),
             topic: Joi.string().allow(null, ''),
             timeLine: Joi.string().allow(null, ''),
@@ -219,6 +220,7 @@ const updateMeetingValidator = async (req, res, next) => {
             "agendas.min": "agendas can't be empty!",
           })
           .items({
+            _id: Joi.string().allow(null, ''),
             title: Joi.string().required(),
             topic: Joi.string().allow(null, ''),
             timeLine: Joi.string().allow(null, ''),

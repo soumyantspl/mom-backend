@@ -1,4 +1,5 @@
 const Meeting = require("../models/meetingModel");
+const Agenda = require("../models/agendaModel");
 const MeetingActivities = require("../models/meetingActivitiesModel");
 const agendaService = require("./agendaService");
 const logService = require("./logsService");
@@ -64,7 +65,7 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
   let mergedData =  [];
   if (data.step == 2) {
     const newPeopleArray = data.attendees.filter(
-      (item) => item.isEmployee === false
+      (item) => item.isEmployee === false && item._id===undefined
     );
     console.log("newPeopleArrya---------------", newPeopleArray);
     if (newPeopleArray.length !== 0) {
@@ -94,13 +95,15 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
     // }
     console.log("mergedData", mergedData);
     updateData = {
-      $addToSet: {  attendees: mergedData.length !== 0 ? mergedData : data.attendees} ,
-      step: 2,
+      attendees:mergedData.length !== 0 ? mergedData : data.attendees,
+     // $addToSet: {  attendees: mergedData.length !== 0 ? mergedData : data.attendees} ,
+      step: data.step,
     };
   }
 
   if (data.step == 3) {
     data.meetingId = id;
+  await Agenda.deleteMany({meetingId:id})
     const newAgendaData = data.agendas.map((item) => {
       (item.meetingId = id), (item.organizationId = data.organizationId);
       return item;
@@ -110,8 +113,8 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
     // updateData.step = 3;
     // updateData.agendaIds = agendaIds;
     updateData = {
-      $push: {  agendaIds} ,
-      step: 3,
+      agendaIds ,
+      step: data.step,
       "meetingStatus.status":data.meetingStatus
     };
   }
@@ -210,6 +213,8 @@ const viewMeeting = async (meetingId) => {
           email: 1,
           _id: 1,
           name: 1,
+          isEmployee:1,
+          email:1
         },
         roomDetail: {
           title: 1,
@@ -230,7 +235,10 @@ const viewMeeting = async (meetingId) => {
         (attendee) => attendee._id == item._id.toString()
       );
       console.log("attendeeData---------", attendeeData);
-      return (item.name = attendeeData.name);
+      item.name = attendeeData.name;
+        item.email=attendeeData.email;
+        item.isEmployee=attendeeData.isEmployee;
+      return item;
     });
     delete meetingDataObject.attendeesDetail;
 
