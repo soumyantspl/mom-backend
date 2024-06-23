@@ -34,7 +34,7 @@ const createMeeting = async (req, res) => {
     return Responses.successResponse(
       req,
       res,
-      result.data,
+      result,
       messages.createdSuccess,
       201
     );

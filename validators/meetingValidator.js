@@ -27,7 +27,7 @@ const createMeetingValidator = async (req, res, next) => {
         .required(),
       organizationId: Joi.string().trim().alphanum().required(),
       mode: Joi.string().valid("VIRTUAL", "PHYSICAL").required(),
-      link: Joi.string().uri(),
+      link: Joi.string().uri().allow(null,""),
      // meetingStatus: Joi.string().valid(...meetingStatusValues),
       date: Joi.string().trim().required(),
       fromTime: Joi.string().required(),
@@ -105,6 +105,7 @@ const updateMeetingValidator = async (req, res, next) => {
       }).unknown(true),
     });
     const bodySchema = Joi.object({
+      isUpdate:Joi.boolean().required(),
       sendNotification: Joi.boolean(),
       title: Joi.string()
         .trim()
@@ -115,7 +116,7 @@ const updateMeetingValidator = async (req, res, next) => {
 
       organizationId: Joi.string().trim().alphanum().required(),
       mode: Joi.string().valid("VIRTUAL", "PHYSICAL"),
-      link: Joi.string().uri(),
+      link: Joi.string().uri().allow(null,""),
       date: Joi.string().trim(),
       fromTime: Joi.string(),
       toTime: Joi.string(),
