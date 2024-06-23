@@ -221,7 +221,6 @@ const viewMeeting = async (meetingId) => {
           topic:1,
         },
         attendeesDetail: {
-          email: 1,
           _id: 1,
           name: 1,
           isEmployee:1,
@@ -249,6 +248,7 @@ const viewMeeting = async (meetingId) => {
       item.name = attendeeData.name;
         item.email=attendeeData.email;
         item.isEmployee=attendeeData.isEmployee;
+        
       return item;
     });
     delete meetingDataObject.attendeesDetail;
@@ -452,7 +452,7 @@ const cancelMeeting = async (id, userId, data, ipAddress) => {
     },
     {
       $set: {
-        "meetingStatus.status": "canceled",
+        "meetingStatus.status": "cancelled",
         "meetingStatus.remarks": data.remarks,
       },
     }
@@ -498,6 +498,7 @@ const listAttendeesFromPreviousMeeting = async (organizationId, userId) => {
           email: 1,
           _id: 1,
           name: 1,
+          isEmployee:1
         },
       },
     },
@@ -612,6 +613,7 @@ const getCreateMeetingStep = async (organizationId, userId) => {
           email: 1,
           _id: 1,
           name: 1,
+          isEmployee:1
         },
         roomDetail: {
           title: 1,
@@ -633,7 +635,12 @@ const getCreateMeetingStep = async (organizationId, userId) => {
         (attendee) => attendee._id == item._id.toString()
       );
       console.log("attendeeData---------", attendeeData);
-      return (item.name = attendeeData.name);
+      item.name = attendeeData.name;
+      item.email=attendeeData.email;
+      item.isEmployee=attendeeData.isEmployee;
+      
+    return item;
+     // return (item.name = attendeeData.name);
     });
     delete meetingDataObject.attendeesDetail;
 
