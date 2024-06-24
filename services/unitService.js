@@ -36,9 +36,52 @@ const createUnit = async (userId, data, ipAddress = "1000") => {
 };
 
 const editUnit = async (userId, id, data, ipAddress = "1000") => {
-  const unitDetails = await checkDuplicate(data.organizationId, data.name);
+  console.log("data-------------------------->", data);
+  console.log("UNIT ID-------------------------->", id);
 
-  if (!unitDetails) {
+  const unitDetails = await checkDuplicate(data.organizationId, data.name);
+  console.log("unitDetails----------------->", unitDetails);
+
+  if (unitDetails) {
+    if (unitDetails.name === data.name && unitDetails._id.toString() !== id) {
+      return {
+        isDuplicate: true,
+      };
+    } else if (
+      unitDetails.name === data.name &&
+      unitDetails._id.toString() == id
+    ) {
+      const result = await Units.findByIdAndUpdate({ _id: id }, data, {
+        new: false,
+      });
+      ////////////////////LOGER START
+      const inputKeys = Object.keys(data);
+      const details = await commonHelper.generateLogObject(
+        inputKeys,
+        result,
+        userId,
+        data
+      );
+      const logData = {
+        moduleName: logMessages.Unit.moduleName,
+        userId,
+        action: logMessages.Unit.editUnit,
+        ipAddress,
+        details: details.join(" , "),
+        organizationId: result.organizationId,
+      };
+      console.log("logData-------------------", logData);
+      await logService.createLog(logData);
+      //   ///////////////////// LOGER END
+      return {
+        isDuplicate: false,
+      };
+    } else {
+      return {
+        isDuplicate: false,
+      };
+    }
+  } else {
     const result = await Units.findByIdAndUpdate({ _id: id }, data, {
       new: false,
     });
@@ -63,10 +106,6 @@ const editUnit = async (userId, id, data, ipAddress = "1000") => {
     ///////////////////// LOGER END
     return {
       isDuplicate: false,
-    };
-  } else {
-    return {
-      isDuplicate: true,
     };
   }
 };

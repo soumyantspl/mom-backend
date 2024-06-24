@@ -32,7 +32,7 @@ const createUnitValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 
