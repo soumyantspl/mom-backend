@@ -89,6 +89,7 @@ const cancelMeetingValidator = async (req, res, next) => {
     }).required();
     await bodySchema.validateAsync(req.body);
     await headerSchema.validateAsync({ headers: req.headers });
+    next();
   } catch (error) {
     console.log(error);
     errorLog(error);
