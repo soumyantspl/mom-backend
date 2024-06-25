@@ -452,3 +452,335 @@ Stack Trace: ValidationError: "name" is required
 Date: 15/06/2024, Time: 13:17
 Error: "name" is required
 Stack Trace: ValidationError: "name" is required
+Date: 19/06/2024, Time: 11:08
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 19/06/2024, Time: 11:28
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 19/06/2024, Time: 12:42
+Error: "organizationId" must only contain alpha-numeric characters
+Stack Trace: ValidationError: "organizationId" must only contain alpha-numeric characters
+Date: 19/06/2024, Time: 12:42
+Error: "organizationId" must only contain alpha-numeric characters
+Stack Trace: ValidationError: "organizationId" must only contain alpha-numeric characters
+Date: 19/06/2024, Time: 15:52
+Error: jwt malformed
+Stack Trace: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (D:\mom\mom-backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at createUnitValidator (D:\mom\mom-backend\validators\unitValidator.js:31:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 19/06/2024, Time: 15:53
+Error: jwt malformed
+Stack Trace: JsonWebTokenError: jwt malformed
+    at module.exports [as verify] (D:\mom\mom-backend\node_modules\jsonwebtoken\verify.js:70:17)
+    at verifyUserToken (D:\mom\mom-backend\middlewares\authMiddleware.js:23:25)
+    at Layer.handle [as handle_request] (D:\mom\mom-backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\mom\mom-backend\node_modules\express\lib\router\route.js:149:13)
+    at createUnitValidator (D:\mom\mom-backend\validators\unitValidator.js:31:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 20/06/2024, Time: 10:36
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:37
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:40
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:40
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:40
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:41
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:43
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:46
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:46
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:47
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:52
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:52
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:52
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:52
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:52
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:54
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:54
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:54
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 10:55
+Error: Invalid sort value: { createdAt: NaN }
+Stack Trace: TypeError: Invalid sort value: { createdAt: NaN }
+    at _handleSortValue (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2945:9)
+    at Query.sort (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2914:19)
+    at Object.listUnit (D:\mom\mom-backend\services\unitService.js:107:6)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listUnit (D:\mom\mom-backend\controllers\unitController.js:102:20)
+Date: 20/06/2024, Time: 10:56
+Error: Invalid sort value: { createdAt: NaN }
+Stack Trace: TypeError: Invalid sort value: { createdAt: NaN }
+    at _handleSortValue (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2945:9)
+    at Query.sort (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2914:19)
+    at Object.listUnit (D:\mom\mom-backend\services\unitService.js:107:6)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listUnit (D:\mom\mom-backend\controllers\unitController.js:102:20)
+Date: 20/06/2024, Time: 11:01
+Error: Invalid sort value: { createdAt: NaN }
+Stack Trace: TypeError: Invalid sort value: { createdAt: NaN }
+    at _handleSortValue (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2945:9)
+    at Query.sort (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2914:19)
+    at Object.listUnit (D:\mom\mom-backend\services\unitService.js:107:6)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listUnit (D:\mom\mom-backend\controllers\unitController.js:102:20)
+Date: 20/06/2024, Time: 11:04
+Error: "organizationId" is required
+Stack Trace: ValidationError: "organizationId" is required
+Date: 20/06/2024, Time: 11:04
+Error: Invalid sort value: { createdAt: NaN }
+Stack Trace: TypeError: Invalid sort value: { createdAt: NaN }
+    at _handleSortValue (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2945:9)
+    at Query.sort (D:\mom\mom-backend\node_modules\mongoose\lib\query.js:2914:19)
+    at Object.listUnit (D:\mom\mom-backend\services\unitService.js:107:6)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listUnit (D:\mom\mom-backend\controllers\unitController.js:102:20)
+Date: 20/06/2024, Time: 12:30
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 12:30
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 12:30
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 12:30
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 12:33
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 12:33
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 12:43
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 12:43
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 12:56
+Error: "organizationId" is not allowed
+Stack Trace: ValidationError: "organizationId" is not allowed
+Date: 20/06/2024, Time: 12:56
+Error: "organizationId" is not allowed
+Stack Trace: ValidationError: "organizationId" is not allowed
+Date: 20/06/2024, Time: 12:57
+Error: "organizationId" is not allowed
+Stack Trace: ValidationError: "organizationId" is not allowed
+Date: 20/06/2024, Time: 12:57
+Error: "organizationId" is not allowed
+Stack Trace: ValidationError: "organizationId" is not allowed
+Date: 20/06/2024, Time: 14:39
+Error: "organizationId" is not allowed
+Stack Trace: ValidationError: "organizationId" is not allowed
+Date: 20/06/2024, Time: 14:39
+Error: "organizationId" is not allowed
+Stack Trace: ValidationError: "organizationId" is not allowed
+Date: 20/06/2024, Time: 14:39
+Error: "organizationId" is not allowed
+Stack Trace: ValidationError: "organizationId" is not allowed
+Date: 20/06/2024, Time: 15:16
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 15:17
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 15:17
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 15:19
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 15:43
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 15:50
+Error: "_id" is not allowed
+Stack Trace: ValidationError: "_id" is not allowed
+Date: 20/06/2024, Time: 16:09
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 20/06/2024, Time: 16:11
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 20/06/2024, Time: 17:12
+Error: "data" is not allowed
+Stack Trace: ValidationError: "data" is not allowed
+Date: 20/06/2024, Time: 17:13
+Error: "updatedUnit" is not allowed
+Stack Trace: ValidationError: "updatedUnit" is not allowed
+Date: 20/06/2024, Time: 17:14
+Error: "organizationId" is not allowed
+Stack Trace: ValidationError: "organizationId" is not allowed
+Date: 20/06/2024, Time: 18:06
+Error: "organizationId" is not allowed
+Stack Trace: ValidationError: "organizationId" is not allowed
+Date: 20/06/2024, Time: 18:16
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 20/06/2024, Time: 18:16
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 20/06/2024, Time: 18:16
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 20/06/2024, Time: 18:17
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 21/06/2024, Time: 13:09
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 21/06/2024, Time: 13:09
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 21/06/2024, Time: 13:09
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 21/06/2024, Time: 13:09
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 21/06/2024, Time: 13:09
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 21/06/2024, Time: 13:09
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 21/06/2024, Time: 13:09
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 21/06/2024, Time: 13:09
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 21/06/2024, Time: 15:59
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 21/06/2024, Time: 16:00
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 21/06/2024, Time: 16:00
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 21/06/2024, Time: 16:16
+Error: "name" is not allowed to be empty
+Stack Trace: ValidationError: "name" is not allowed to be empty
+Date: 24/06/2024, Time: 11:36
+Error: Cannot read properties of null (reading 'organizationId')
+Stack Trace: TypeError: Cannot read properties of null (reading 'organizationId')
+    at Object.editUnit (D:\mom\mom-backend\services\unitService.js:59:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async editUnit (D:\mom\mom-backend\controllers\unitController.js:38:20)
+Date: 24/06/2024, Time: 12:31
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 12:44
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 12:44
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 12:46
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 12:49
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 12:49
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 12:50
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 12:53
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 12:54
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 12:54
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 12:54
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 13:00
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 13:01
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 24/06/2024, Time: 16:35
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 24/06/2024, Time: 16:36
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 24/06/2024, Time: 16:39
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 25/06/2024, Time: 10:14
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 25/06/2024, Time: 10:15
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
