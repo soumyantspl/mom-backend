@@ -43,12 +43,12 @@ const editUnit = async (req, res) => {
     );
     console.log("Query id", req.params.id);
     console.log(result);
-    if (!result) {
+    if (result.isDuplicate) {
       return Responses.failResponse(
         req,
         res,
         null,
-        messages.updateFailedRecordNotFound,
+        messages.duplicateUnitEntry,
         409
       );
     }
@@ -100,14 +100,14 @@ const deleteUnit = async (req, res) => {
 const listUnit = async (req, res) => {
   try {
     const result = await unitService.listUnit(req.userId, req.body, req.query);
-    console.log("UserID--->>>", req.userId);
+    console.log("UserID-hhh-->>>", req.userId);
     if (result.totalCount == 0) {
       return Responses.failResponse(
         req,
         res,
         null,
         messages.recordsNotFound,
-        409
+        200
       );
     }
     return Responses.successResponse(

@@ -32,7 +32,7 @@ const createUnitValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 
@@ -56,6 +56,7 @@ const editUnitValidator = async (req, res, next) => {
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
+      organizationId: Joi.string().trim().alphanum().required(),
     });
     await headerSchema.validateAsync({ headers: req.headers });
     const paramsSchema = Joi.object({
