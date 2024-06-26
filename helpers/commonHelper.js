@@ -94,7 +94,23 @@ const getTimeSession = (time) => {
   }
   return "AM";
 };
-
+const formatTimeFormat = (time) => {
+  console.log(time);
+  const timeArray = time.split(":");
+  console.log(timeArray);
+  let session = "AM";
+  let hour = parseInt(timeArray[0]);
+  //let minute = parseInt(timeArray[1]);
+  let minute =timeArray[1];
+  console.log(hour, minute);
+  if (hour > 12) {
+    session = "PM";
+    hour = hour - 12;
+  }
+  let finalTime = [hour, minute].join(":");
+  const result = `${finalTime} ${session}`;
+  return result;
+};
 module.exports = {
   generateOtp,
   otpExpiryTime,
@@ -104,4 +120,5 @@ module.exports = {
   generateLogObject,
   formatDateTimeFormat,
   getTimeSession,
+  formatTimeFormat
 };
