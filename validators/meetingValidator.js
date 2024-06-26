@@ -107,7 +107,7 @@ const updateMeetingValidator = async (req, res, next) => {
     });
     const bodySchema = Joi.object({
       isUpdate:Joi.boolean().required(),
-      sendNotification: Joi.boolean(),
+      sendNotification: Joi.boolean().required(),
       title: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z .,/-]+$/)
