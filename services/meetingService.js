@@ -142,35 +142,33 @@ const updateMeeting = async (data, id, userId, ipAddress) => {
     const meetingDetails = await viewMeeting(id);
     console.log("meetingDetails-------------------------", meetingDetails);
     if (meetingDetails?.attendees?.length !== 0) {
-     meetingDetails?.attendees?.map(async (attendee) => {
-       
-     
-    //  console.log("attendeesEmails-------------------------", attendeesEmails);
-  
-   
-      const logo =
-        "https://d3uom8aq23ax4d.cloudfront.net/wp-content/themes/ntspl-corporate-website/images/ntspl_logo.png";
-      const mailData = await emailTemplates.sendCancelMeetingEmailTemplate(
-        meetingDetails,attendee.name,
-        logo
-      );
-      //const mailData = await emailTemplates.signInByOtpEmail(userData, data.otp);
-      const emailSubject = await emailConstants.scheduleMeetingSubject(meetingDetails);
-      console.log(
-        "sendOtpEmailTemplate-----------------------maildata",
-        mailData
-      );
-      console.log(
-        "sendOtpEmailTemplate-----------------------emailSubject",
-        emailSubject
-      );
-      await emailService.sendEmail(
-        attendee.email,
-        "Meeting Created",
-        emailSubject,
-        mailData
-      );
-    })
+      meetingDetails?.attendees?.map(async (attendee) => {
+        const logo =
+          "https://d3uom8aq23ax4d.cloudfront.net/wp-content/themes/ntspl-corporate-website/images/ntspl_logo.png";
+        const mailData = await emailTemplates.sendScheduledMeetingEmailTemplate(
+          meetingDetails,
+          attendee.name,
+          logo
+        );
+
+        const emailSubject = await emailConstants.scheduleMeetingSubject(
+          meetingDetails
+        );
+        console.log(
+          "sendOtpEmailTemplate-----------------------maildata",
+          mailData
+        );
+        console.log(
+          "sendOtpEmailTemplate-----------------------emailSubject",
+          emailSubject
+        );
+        await emailService.sendEmail(
+          attendee.email,
+          "Meeting Created",
+          emailSubject,
+          mailData
+        );
+      });
     }
   }
 
@@ -330,8 +328,11 @@ const viewAllMeetings = async (
   console.log("isMeetingOrganiser---------", isMeetingOrganiser);
   console.log("userId---------", userId);
   if (!isMeetingOrganiser) {
-   // query["attendees.id"] = new ObjectId(userId);
-    query['$or']=[ {"attendees.id":new ObjectId(userId)}, {'createdById':new ObjectId(userId)}]
+    // query["attendees.id"] = new ObjectId(userId);
+    query["$or"] = [
+      { "attendees.id": new ObjectId(userId) },
+      { createdById: new ObjectId(userId) },
+    ];
   }
   if (bodyData.attendeeId) {
     query["attendees.id"] = new ObjectId(bodyData.attendeeId);
@@ -508,35 +509,35 @@ const cancelMeeting = async (id, userId, data, ipAddress) => {
   const meetingDetails = await viewMeeting(id);
   console.log("meetingDetails-------------------------", meetingDetails);
   if (meetingDetails?.attendees?.length !== 0) {
-   meetingDetails?.attendees?.map(async (attendee) => {
-     
-   
-  //  console.log("attendeesEmails-------------------------", attendeesEmails);
+    meetingDetails?.attendees?.map(async (attendee) => {
+      //  console.log("attendeesEmails-------------------------", attendeesEmails);
 
- 
-    const logo =
-      "https://d3uom8aq23ax4d.cloudfront.net/wp-content/themes/ntspl-corporate-website/images/ntspl_logo.png";
-    const mailData = await emailTemplates.sendCancelMeetingEmailTemplate(
-      meetingDetails,attendee.name,
-      logo
-    );
-    //const mailData = await emailTemplates.signInByOtpEmail(userData, data.otp);
-    const emailSubject = await emailConstants.cancelMeetingSubject(meetingDetails);
-    console.log(
-      "sendOtpEmailTemplate-----------------------maildata",
-      mailData
-    );
-    console.log(
-      "sendOtpEmailTemplate-----------------------emailSubject",
-      emailSubject
-    );
-    await emailService.sendEmail(
-      attendee.email,
-      "Cancel Meeting",
-      emailSubject,
-      mailData
-    );
-  })
+      const logo =
+        "https://d3uom8aq23ax4d.cloudfront.net/wp-content/themes/ntspl-corporate-website/images/ntspl_logo.png";
+      const mailData = await emailTemplates.sendCancelMeetingEmailTemplate(
+        meetingDetails,
+        attendee.name,
+        logo
+      );
+      //const mailData = await emailTemplates.signInByOtpEmail(userData, data.otp);
+      const emailSubject = await emailConstants.cancelMeetingSubject(
+        meetingDetails
+      );
+      console.log(
+        "sendOtpEmailTemplate-----------------------maildata",
+        mailData
+      );
+      console.log(
+        "sendOtpEmailTemplate-----------------------emailSubject",
+        emailSubject
+      );
+      await emailService.sendEmail(
+        attendee.email,
+        "Cancel Meeting",
+        emailSubject,
+        mailData
+      );
+    });
   }
 
   const logData = {
