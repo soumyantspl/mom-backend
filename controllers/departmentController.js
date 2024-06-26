@@ -9,6 +9,15 @@ const createDepartmentController = async (req, res) => {
       req.body,
       req.ip
     );
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateUnitEntry,
+        200
+      );
+    }
     return Responses.successResponse(
       req,
       res,

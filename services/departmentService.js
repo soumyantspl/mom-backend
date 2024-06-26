@@ -8,27 +8,34 @@ const ObjectId = require("mongoose").Types.ObjectId;
 
 //FUCNTION TO CREATE DEPARTMENT
 const createDepartmentService = async (userId, data, ipAddress = "1000") => {
-  const newDepartment = new Department({
-    name: data.name,
-    organizationId: data.id,
-  });
-  console.log("name---", data.name);
-  console.log("id---", data.id);
-  ////////////////////LOGER START
-  const inputKeys = Object.keys(newDepartment);
-  console.log("inputKeys", inputKeys);
-  const logData = {
-    moduleName: logMessages.Department.moduleName,
-    userId,
-    action: logMessages.Department.createDepartment,
-    ipAddress,
-    details: "N/A",
-    organizationId: data.id,
-  };
-  console.log("logData--->", logData);
-  await logService.createLog(logData);
-  ///////////////////// LOGER END
-  return await newDepartment.save();
+  const departmentDetails = await checkDuplicate(
+    data.organizationId,
+    data.name
+  );
+  if (!departmentDetails) {
+    const newDepartment = new Department({
+      name: data.name,
+      organizationId: data.organizationId,
+    });
+    console.log("name---", data.name);
+    console.log("id---", data.organizationId);
+    ////////////////////LOGER START
+    const inputKeys = Object.keys(newDepartment);
+    console.log("inputKeys", inputKeys);
+    const logData = {
+      moduleName: logMessages.Department.moduleName,
+      userId,
+      action: logMessages.Department.createDepartment,
+      ipAddress,
+      details: "N/A",
+      organizationId: data.organizationId,
+    };
+    console.log("logData--->", logData);
+    await logService.createLog(logData);
+    ///////////////////// LOGER END
+    return await newDepartment.save();
+  }
+  return false;
 };
 
 //FUCNTION TO EDIT DEPARTMENT
@@ -137,6 +144,12 @@ const listDepartmentService = async (bodyData, queryData) => {
   };
 };
 
+const checkDuplicate = async (organizationId, name) => {
+  return await Department.findOne(
+    { organizationId, name, isActive: true },
+    { organizationId: 1, name: 1 }
+  );
+};
 module.exports = {
   createDepartmentService,
   editDepartmentService,
