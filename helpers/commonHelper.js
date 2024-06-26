@@ -65,6 +65,36 @@ const generateLogObject = async (inputKeys, result, userId, data) => {
   return details;
 };
 
+const formatDateTimeFormat = (date) => {
+  console.log(date);
+  const sourceDate = new Date(date).toDateString();
+  const sourceTime = new Date(date).toLocaleTimeString();
+  // The above yields e.g. 'Mon Jan 06 2020'
+  console.log(sourceTime);
+  const [, month, day, year] = sourceDate.split(" ");
+  const formattedDate = [day, month, year].join(" ");
+  // console.log(formattedDate);
+
+  const [hour, minute, second] = sourceTime.split(" ")[0].split(":");
+  const formattedTime =
+    [hour, minute].join(":") + " " + sourceTime.split(" ")[1];
+  return {
+    formattedTime,
+    formattedDate,
+  };
+};
+
+const getTimeSession = (time) => {
+  console.log(typeof time);
+  const timeArray = time.split(":");
+  const timeHour = timeArray[0];
+
+  if (timeHour > 12) {
+    return "PM";
+  }
+  return "AM";
+};
+
 module.exports = {
   generateOtp,
   otpExpiryTime,
@@ -72,4 +102,6 @@ module.exports = {
   generetHashPassword,
   verifyPassword,
   generateLogObject,
+  formatDateTimeFormat,
+  getTimeSession,
 };
