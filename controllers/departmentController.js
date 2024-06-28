@@ -68,15 +68,17 @@ const deleteDepartmentController = async (req, res) => {
     const result = await departmentService.deleteDepartmentService(
       req.userId,
       req.params,
-      req.ip
+      req.ip,
+      req.organizationId
     );
+    console.log("Org id-->", req.organizationId);
     if (!result) {
       return Responses.failResponse(
         req,
         res,
         null,
         messages.idIsNotAvailabled,
-        404
+        200
       );
     }
     return Responses.successResponse(

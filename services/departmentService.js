@@ -123,13 +123,18 @@ const existingDepartmentService = async (organizationId) => {
   return isExist;
 };
 ////FUCNTION TO DELETE DEPARTMENT
-const deleteDepartmentService = async (userId, data, ipAddress = "1000") => {
+const deleteDepartmentService = async (
+  userId,
+  data,
+  ipAddress = "1000",
+  organizationId
+) => {
   const result = await Department.findByIdAndUpdate(
     { _id: data.id },
     { isActive: false },
     { new: true }
   );
-
+  console.log("organisaio idd->", organizationId);
   ////////////////////LOGER START
   const inputKeys = Object.keys(result);
   const details = await commonHelper.generateLogObject(
@@ -145,7 +150,7 @@ const deleteDepartmentService = async (userId, data, ipAddress = "1000") => {
     action: logMessages.Department.deleteDepartment,
     ipAddress,
     details: logMessages.Department.details,
-    organizationId: result.organizationId,
+    organizationId: organizationId,
   };
   console.log("logData-------------------", logData);
   await logService.createLog(logData);
