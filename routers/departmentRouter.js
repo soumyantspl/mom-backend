@@ -26,7 +26,7 @@ router.delete(
   departmentController.deleteDepartmentController
 );
 //LIST DEPARTMENT
-router.get(
+router.post(
   "/listDepartment",
   departmentValidator.listDepartmentValidator,
   authMiddleware.verifyUserToken,
