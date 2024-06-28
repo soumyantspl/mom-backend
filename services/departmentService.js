@@ -41,41 +41,80 @@ const createDepartmentService = async (userId, data, ipAddress = "1000") => {
 //FUCNTION TO EDIT DEPARTMENT
 const editDepartmentService = async (userId, id, data, ipAddress = "1000") => {
   console.log(userId, data);
-  const result = await Department.findByIdAndUpdate(
-    id,
-    {
-      name: data.name,
-    },
-    {
-      new: false,
+  const departmentDetails = await checkDuplicate(
+    data.organizationId,
+    data.name
+  );
+
+  if (departmentDetails) {
+    if (
+      departmentDetails.name === data.name &&
+      departmentDetails._id.toString() !== id
+    ) {
+      return {
+        isDuplicate: true,
+      };
+    } else if (
+      departmentDetails.name === data.name &&
+      departmentDetails._id.toString() == id
+    ) {
+      const result = await Department.findByIdAndUpdate({ _id: id }, data, {
+        new: false,
+      });
+      ////////////////////LOGER START
+      const inputKeys = Object.keys(data);
+      const details = await commonHelper.generateLogObject(
+        inputKeys,
+        result,
+        userId,
+        data
+      );
+      const logData = {
+        moduleName: logMessages.Department.moduleName,
+        userId,
+        action: logMessages.Department.editDepartment,
+        ipAddress,
+        details: details.join(" , "),
+        organizationId: result.organizationId,
+      };
+      console.log("logData-------------------", logData);
+      await logService.createLog(logData);
+      //   ///////////////////// LOGER END
+      return {
+        isDuplicate: false,
+      };
+    } else {
+      return {
+        isDuplicate: false,
+      };
     }
-  );
-  ////////////////////LOGER START
-  console.log("result------------>", result);
-  const inputKeys = Object.keys(data);
-  console.log("inputKeys---------------", inputKeys);
-  const details = await commonHelper.generateLogObject(
-    inputKeys,
-    result,
-    userId,
-    data
-  );
-
-  console.log("details", details);
-  const logData = {
-    moduleName: logMessages.Department.moduleName,
-    userId,
-    action: logMessages.Department.editDepartment,
-    ipAddress,
-    details: details.join(" , "),
-    organizationId: result.organizationId,
-  };
-  console.log("logData-------------------", logData);
-  await logService.createLog(logData);
-
-  ///////////////////// LOGER END
-
-  return result;
+  } else {
+    const result = await Department.findByIdAndUpdate({ _id: id }, data, {
+      new: false,
+    });
+    ////////////////////LOGER START
+    const inputKeys = Object.keys(data);
+    const details = await commonHelper.generateLogObject(
+      inputKeys,
+      result,
+      userId,
+      data
+    );
+    const logData = {
+      moduleName: logMessages.Department.moduleName,
+      userId,
+      action: logMessages.Department.editDepartment,
+      ipAddress,
+      details: details.join(" , "),
+      organizationId: result.organizationId,
+    };
+    console.log("logData-------------------", logData);
+    await logService.createLog(logData);
+    ///////////////////// LOGER END
+    return {
+      isDuplicate: false,
+    };
+  }
 };
 
 //FUCNTION TO CHECK
