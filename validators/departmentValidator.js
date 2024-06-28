@@ -11,7 +11,7 @@ exports.createDepartmentValidator = async (req, res, next) => {
     });
     const bodySchema = Joi.object({
       name: Joi.string().alphanum().min(3).max(30).required(),
-      id: Joi.string(),
+      organizationId: Joi.string().trim().alphanum().required(),
     });
     await headerSchema.validateAsync({ headers: req.headers });
     await bodySchema.validateAsync(req.body);
@@ -31,7 +31,7 @@ exports.editDepartmentValidator = async (req, res, next) => {
     });
     const bodySchema = Joi.object({
       name: Joi.string().alphanum().min(3).max(30),
-      id: Joi.string(),
+      organizationId: Joi.string().trim().alphanum().required(),
     });
     await headerSchema.validateAsync({ headers: req.headers });
     await bodySchema.validateAsync(req.body);

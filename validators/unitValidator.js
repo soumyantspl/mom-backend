@@ -43,6 +43,7 @@ const editUnitValidator = async (req, res, next) => {
         authorization: Joi.required(),
       }).unknown(true),
     });
+    console.log("-----------", req.headers, req.body, req.params);
     const bodySchema = Joi.object({
       name: Joi.string()
         .trim()
@@ -58,18 +59,18 @@ const editUnitValidator = async (req, res, next) => {
         }),
       organizationId: Joi.string().trim().alphanum().required(),
     });
-    await headerSchema.validateAsync({ headers: req.headers });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
 
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 
@@ -89,7 +90,7 @@ const deleteUnitValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 
@@ -123,7 +124,7 @@ const listUnitValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 module.exports = {
