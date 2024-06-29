@@ -34,58 +34,69 @@ const acceptRejectMinutes = async (data, userId) => {
 
 //FUNCTION RO CREATE MINUTES
 
-const createMinutes = async (data, userId) => {
-  console.log("44444",data,userId)
-  if (data.isNewUser) {
-    const empData = await employeeService.createAttendee(
-      data.name,
-      data.email,
-      data.organizationId
-    );
-    if (empData.isDuplicate) {
-      return empData;
+const createMinutes = async (minutes, userId) => {
+  console.log(minutes)
+  for(data of minutes){
+    console.log("44444",data,userId)
+    if (data.isNewUser) {
+      const empData = await employeeService.createAttendee(
+        data.name,
+        data.email,
+        data.organizationId
+      );
+      if (empData.isDuplicate) {
+        //return empData;
+        data.assignedUserId=empData.duplicateUserId
+      }
+      else{
+        data.assignedUserId = new ObjectId(empData._id);
+      }
+     
     }
-    data.assignedUserId = new ObjectId(empData._id);
+console.log("inside data-------------------------",data)
+    const minuteData = new Minutes(data);
+    const newMinutes = await minuteData.save();
+
+    console.log("createdBy---", newMinutes.description);
+    const activityObject = {
+      activityDetails: newMinutes.description,
+      activityTitle: "MINUTES CREATED",
+      meetingId: data.meetingId
+    };
+    console.log("activityObject-->", activityObject);
+    const meetingActivitiesResult = await createMeetingActivities(activityObject,userId);
+    console.log("meetingActivities------------", meetingActivitiesResult);
   }
+ 
   //
-  const attendeesData = await getAllAttendees(data.meetingId);
-  const attendeeArr = JSON.stringify(attendeesData.attendees);
-  console.log("Required data-->>", attendeeArr);
-  const attendeeResult = JSON.parse(attendeeArr).map((item) => {
-    console.log("---------------", item);
-    item["status"] = "PENDING";
-    return item;
-  });
-  console.log("attendeeResult-->", attendeeResult);
-  const inputData = {
-    createdById: userId,
-    organizationId: data.organizationId,
-    meetingId: data.meetingId,
-    description: data.description,
-    dueDate: data.dueDate,
-    priority: data.priority,
-    assignedUserId: data.assignedUserId,
-    isAction: data.isAction,
-    attendees: attendeeResult,
-  };
+ // const attendeesData = await getAllAttendees(data.meetingId);
+ // const attendeeArr = JSON.stringify(attendeesData.attendees);
+ // console.log("Required data-->>", attendeeArr);
+ // const attendeeResult = JSON.parse(attendeeArr).map((item) => {
+ //   console.log("---------------", item);
+ //   item["status"] = "PENDING";
+ //   return item;
+ // });
+//  console.log("attendeeResult-->", attendeeResult);
+  // const inputData = {
+  //   createdById: userId,
+  //   organizationId: data.organizationId,
+  //   meetingId: data.meetingId,
+  //   description: data.description,
+  //   dueDate: data.dueDate,
+  //   priority: data.priority,
+  //   assignedUserId: data.assignedUserId,
+  //   isAction: data.isAction,
+  //   attendees: attendeeResult,
+  // };
 
-  const minuteData = new Minutes(inputData);
-  const newMinutes = await minuteData.save();
 
-  console.log("createdBy---", newMinutes.description);
-  const activityObject = {
-    activityDetails: newMinutes.description,
-    activityTitle: "MINUTES CREATED",
-    meetingId: data.meetingId
-  };
-  console.log("activityObject-->", activityObject);
-  const meetingActivitiesResult = await createMeetingActivities(activityObject,userId);
-  console.log("meetingActivities------------", meetingActivitiesResult);
+ return true;
 
-  return {
-    data: newMinutes,
-  };
-};
+//   return {
+//     data: newMinutes,
+//   };
+ };
 
 //FUNCTION TO DOWNLOAD MINUTES
 const downLoadMinutes1 = async (meetingId) => {

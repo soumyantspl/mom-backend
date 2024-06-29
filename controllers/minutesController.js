@@ -32,7 +32,8 @@ const acceptRejectMinutes = async (req, res) => {
 
 const createMinutes = async (req, res) => {
   try {
-    const result = await minutesService.createMinutes(req.body,req.userId);
+    console.log("in controller------------------------",req.body)
+    const result = await minutesService.createMinutes(req.body.minutes,req.userId);
     console.log(result);
     if (!result) {
       return Responses.failResponse(req, res, null, messages.createError, 409);
