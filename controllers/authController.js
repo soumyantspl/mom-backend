@@ -119,7 +119,7 @@ const setPassword = async (req, res) => {
 const signInByPassword = async (req, res) => {
   try {
     const result = await authService.signInByPassword(req.body);
-    console.log(result);
+    console.log("eeeeeeeeee",result);
     if (!result) {
       return Responses.failResponse(req, res, null, messages.userNotFound, 200);
     }
@@ -129,6 +129,16 @@ const signInByPassword = async (req, res) => {
         res,
         null,
         messages.incorrectPassword,
+        200
+      );
+    }
+
+    if (result?.isUserDeactivated) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.invalidUser,
         200
       );
     }

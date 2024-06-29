@@ -111,6 +111,9 @@ const formatTimeFormat = (time) => {
   const result = `${finalTime} ${session}`;
   return result;
 };
+const convertFirstLetterToCapital=(text)=>{
+  return text.charAt(0).toUpperCase()+text.slice(1).toLowerCase()
+}
 module.exports = {
   generateOtp,
   otpExpiryTime,
@@ -120,5 +123,6 @@ module.exports = {
   generateLogObject,
   formatDateTimeFormat,
   getTimeSession,
-  formatTimeFormat
+  formatTimeFormat,
+  convertFirstLetterToCapital
 };
