@@ -26,7 +26,7 @@ router.delete(
   designationController.deleteDesignationController
 );
 //FUNCTION GET TO LIST DESIGNATION
-router.get(
+router.post(
   "/listDesignation",
   designationValidator.listDesignationValidator,
   authMiddleware.verifyUserToken,

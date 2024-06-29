@@ -65,13 +65,14 @@ const editDepartmentController = async (req, res) => {
 
 const deleteDepartmentController = async (req, res) => {
   try {
+   // console.log("Org id-->", req);
     const result = await departmentService.deleteDepartmentService(
       req.userId,
       req.params,
       req.ip,
       req.organizationId
     );
-    console.log("Org id-->", req.organizationId);
+
     if (!result) {
       return Responses.failResponse(
         req,
