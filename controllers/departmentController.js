@@ -40,13 +40,13 @@ const editDepartmentController = async (req, res) => {
       req.body,
       req.ip
     );
-    if (!result) {
+    if (result.isDuplicate) {
       return Responses.failResponse(
         req,
         res,
         null,
-        messages.idIsNotAvailabled,
-        404
+        messages.duplicateUnitEntry,
+        200
       );
     }
     return Responses.successResponse(
@@ -54,7 +54,7 @@ const editDepartmentController = async (req, res) => {
       res,
       result,
       messages.departmentUpdated,
-      201
+      200
     );
   } catch (error) {
     console.error("Controller error:", error);
@@ -68,15 +68,17 @@ const deleteDepartmentController = async (req, res) => {
     const result = await departmentService.deleteDepartmentService(
       req.userId,
       req.params,
-      req.ip
+      req.ip,
+      req.organizationId
     );
+    console.log("Org id-->", req.organizationId);
     if (!result) {
       return Responses.failResponse(
         req,
         res,
         null,
         messages.idIsNotAvailabled,
-        404
+        200
       );
     }
     return Responses.successResponse(

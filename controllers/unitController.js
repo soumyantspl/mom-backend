@@ -49,7 +49,7 @@ const editUnit = async (req, res) => {
         res,
         null,
         messages.duplicateUnitEntry,
-        409
+        200
       );
     }
     return Responses.successResponse(
