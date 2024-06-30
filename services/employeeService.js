@@ -298,6 +298,7 @@ const createAttendee = async (name, email, organizationId) => {
   }
   return {
     isDuplicate: true,
+    duplicateUserId:emailDetails._id
   };
 };
 
