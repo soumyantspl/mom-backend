@@ -89,7 +89,8 @@ const viewAgendas = async (meetingId) => {
       },
     },
   ];
-  const meetingData = await Agenda.aggregate(pipeLine).limit(1);
+  const meetingData = await Agenda.aggregate(pipeLine)
+  //.limit(1);
   console.log("meetingData-----------", meetingData);
   if (meetingData.length !== 0) {
     const meetingDataObject = {
