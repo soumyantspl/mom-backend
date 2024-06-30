@@ -56,6 +56,14 @@ const viewAgendas = async (meetingId) => {
       },
     },
     {
+      $lookup: {
+        from: "employees",
+        localField: "minutesDetail.assignedUserId",
+        foreignField: "_id",
+        as: "assignedUserIdDetails",
+      },
+    },
+    {
       $project: {
         _id: 1,
         title: 1,
@@ -86,6 +94,11 @@ const viewAgendas = async (meetingId) => {
           attendees: 1,
           createdById: 1,
         },
+        assignedUserIdDetails:{
+          _id:1,
+          email:1,
+          name:1
+        }
       },
     },
   ];
