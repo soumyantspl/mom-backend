@@ -64,6 +64,22 @@ const viewAgendas = async (meetingId) => {
       },
     },
     {
+      $lookup: {
+        from: "employees",
+        localField: "meetingDetail.attendees._id",
+        foreignField: "_id",
+        as: "attendeesDetail",
+      },
+    },
+    {
+      $lookup: {
+        from: "employees",
+        localField: "organizationId",
+        foreignField: "organizationId",
+        as: "employeesDetail",
+      },
+    },
+    {
       $project: {
         _id: 1,
         title: 1,
@@ -98,26 +114,55 @@ const viewAgendas = async (meetingId) => {
           _id:1,
           email:1,
           name:1
+        },
+        attendeesDetail: {
+          email: 1,
+          _id: 1,
+          name: 1,
+          isEmployee: 1,
+        },
+        employeesDetail:{
+          email: 1,
+          _id: 1,
+          name: 1,
+          isEmployee: 1,
         }
       },
     },
   ];
   const meetingData = await Agenda.aggregate(pipeLine)
   //.limit(1);
-  console.log("meetingData-----------", meetingData);
+  console.log("meetingData---------3345--", meetingData);
   if (meetingData.length !== 0) {
     const meetingDataObject = {
       agendaDetails: [],
     };
-    meetingData.map((item) => {
+    meetingData.map((data) => {
       if (!meetingDataObject.meetingDetail) {
-        meetingDataObject.meetingDetail = item.meetingDetail;
+
+        data.meetingDetail.attendees.map((item) => {
+         // console.log("item---------", item);
+          const attendeeData = data.attendeesDetail.find(
+            (attendee) => attendee._id == item._id.toString()
+          );
+         // console.log("attendeeData---------", attendeeData);
+          item.name = attendeeData.name;
+          item.email = attendeeData.email;
+          item.isEmployee = attendeeData.isEmployee;
+    
+          return item;
+          // return (item.name = attendeeData.name);
+        });  
+
+
+
+        meetingDataObject.meetingDetail = data.meetingDetail;
       }
-      delete item.meetingDetail;
-      meetingDataObject.agendaDetails.push(item);
+      delete data.meetingDetail;
+      meetingDataObject.agendaDetails.push(data);
     });
 
-    console.log("meetingDataObject", meetingDataObject);
+   // console.log("meetingDataObject", meetingDataObject);
     return meetingDataObject;
   }
   return false;
