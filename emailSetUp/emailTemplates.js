@@ -180,50 +180,51 @@ const sendCancelMeetingEmailTemplate = async (
       } ${attendeeName},</p>` +
       '<p style="color: #000 !important">We hope this message finds you well. This is to inform you that a meeting has been cancelled through our Meeting Minutes application.</p>' +
       '<p style="color: #000 !important">Below are the details:</p>' +
-      '<p style="color: #000 !important"><strong>When (Cancelled)</strong></p>' +
-      `<p style="color: #000 !important">${new Date(
+      '<p style="color: #000 !important; margin-bottom:0px"><strong>When (Cancelled)</strong></p>' +
+      `<p style="color: #000 !important; margin:0px;">${new Date(
         meetingData.date
-      ).toDateString()}</p>` +
-      '<p style="color: #000 !important"><strong>Reason of Cancellation</strong></p>' +
-      `<p style="color: #000 !important">${meetingData.meetingStatus.remarks}</p>` +
-      '<p style="color: #000 !important"><strong>Meeting Mode</strong></p>' +
-      `<p style="color: #000 !important">${commonHelper.convertFirstLetterToCapital(
+      ).toDateString()} ${commonHelper.formatTimeFormat(meetingData.fromTime)}
+    -  ${commonHelper.formatTimeFormat(meetingData.toTime)}</p>` +
+      '<p style="color: #000 !important; margin-bottom:0px;"><strong>Reason of Cancellation</strong></p>' +
+      `<p style="color: #000 !important; margin:0px"">${meetingData.meetingStatus.remarks}</p>` +
+      '<p style="color: #000 !important;margin-bottom:0px;" ><strong>Meeting Mode</strong></p>' +
+      `<p style="color: #000 !important;margin:0px;">${commonHelper.convertFirstLetterToCapital(
         meetingData.mode
       )}</p>` +
-      '<p style="color: #000 !important"><strong>Meeting Link</strong></p>' +
-      `${meetingData.link!==""?`<a style="color: #000 !important" href="${meetingData.link}">${meetingData.link}</a>`:'<p style="color: #000 !important">Not Available</p>'}` +
-      '<p style="color: #000 !important"><strong>Location</strong></p>' +
-      `<p style="color: #000 !important">${
+      '<p style="color: #000 !important; margin-bottom:0px;"><strong>Meeting Link</strong></p>' +
+      `${meetingData.link!==""?`<a style="color: #000 !important;margin:0px;" href="${meetingData.link}">${meetingData.link}</a>`:'<p style="color: #000 !important;margin:0px;">Not Available</p>'}` +
+      '<p style="color: #000 !important;margin-bottom:0px;"><strong>Location</strong></p>' +
+      `<p style="color: #000 !important;margin:0px;">${
         meetingData.locationDetails?.isMeetingRoom === true
           ? meetingData?.roomDetail[0]?.location
           : meetingData?.locationDetails?.location
       }</p>` +
-      '<p style="color: #000 !important"><strong>Guests</strong></p>' +
-      `<p style="color: #000 !important">${meetingData?.attendees.map(
-        (attendee) => {
-          return `&nbsp;${attendee.name}(${attendee.email})&nbsp;`;
+      '<p style="color: #000 !important;margin-bottom:0px"><strong>Guests</strong></p>' +
+      `<p style="color: #000 !important;margin:0px">${meetingData?.attendees.map((attendee) => {
+          return `${attendee.name}(${attendee.email})&nbsp;`;
         }
       )}</p>` +
-      '<p style="color: #000 !important"><strong>Agenda(s)</strong></p>' +
+     '<p style="color: #000 !important;margin-bottom:0px"><strong>Agenda(s)</strong></p>' +
       `${meetingData?.agendasDetail.map((agenda) => {
-        return `<table style="border: 1px solid black;border-collapse: collapse; width:100%">
+        return `<table style="border: 1px solid black;border-collapse: collapse; width:100%;color:black;">
         <tr style="border: 1px solid black;border-collapse: collapse;" >
-        <td  style="border: 1px solid black;border-collapse: collapse;" colspan="6">
+        <td  style="border: 1px solid black;border-collapse: collapse;width:20%;padding:3px;" colspan="6">
         Agenda Title
         </td>
-        <td colspan="6">${agenda.title}</td>
+        <td colspan="6" style="border: 1px solid black;border-collapse: collapse;width:50%;padding:3px;">${agenda.title}</td>
         </tr>
         <tr style="border: 1px solid black;border-collapse: collapse;">
-        <td  style="border: 1px solid black;border-collapse: collapse;" colspan="6">Topic to Discuss</td>
-        <td colspan="6">${agenda.topic}</td>
+        <td  style="border: 1px solid black;border-collapse: collapse; width:20%;padding:3px;" colspan="6" >Topic to Discuss</td>
+        <td colspan="6" style="border: 1px solid black;border-collapse: collapse;width:50%;padding:3px;">${agenda.topic}</td>
         </tr>
-        <tr style="border: 1px solid black;border-collapse: collapse;">
-        <td  style="border: 1px solid black;border-collapse: collapse;" colspan="6">Timeline</td>
-        <td colspan="6">${agenda.timeLine} Mins</td>
+        <tr style="border: 1px solid black;border-collapse: collapse; ">
+        <td  style="border: 1px solid black;border-collapse: collapse;width:20%;padding:3px;" colspan="6">Timeline</td>
+        <td colspan="6" style="border: 1px solid black;border-collapse: collapse;width:50%;padding:3px;">${agenda.timeLine} Mins</td>
         </tr>
-        </table><br>`;
+        </table>`
       })}` +
-      '<p style="color: #000 !important; margin-top:0">' +
+      "<br />" +
+      '<p style="color: #000 !important; margin-top:0;margin-bottom:0px">' +
       "Regards," +
       `<br />${meetingData.createdByDetail.name}` +
       `<br />${meetingData.createdByDetail.email} <br />` +
@@ -297,43 +298,50 @@ const sendScheduledMeetingEmailTemplate = async (
       '<p style="color: #000 !important">We hope this message finds you well. This is to inform you that a meeting has been scheduled through our Meeting Minutes application. </p>' +
       '<p style="color: #000 !important">Please make sure to mark your calendar accordingly. If you have any conflicts or questions regarding this meeting, feel free to reach out to the meeting organizer.</p>' +
       '<p style="color: #000 !important">Thank you, and we look forward to your participation. Below are the details:</p>' +
-      '<p style="color: #000 !important"><strong>When </strong></p>' +
-      `<p style="color: #000 !important">${new Date(
+      '<p style="color: #000 !important; margin-bottom:0px"><strong>When </strong></p>' +
+      `<p style="color: #000 !important; margin:0px;">${new Date(
         meetingData.date
       ).toDateString()} ${commonHelper.formatTimeFormat(meetingData.fromTime)}
     -  ${commonHelper.formatTimeFormat(meetingData.toTime)}</p>` +
-      '<p style="color: #000 !important"><strong>Meeting Mode</strong></p>' +
-      `<p style="color: #000 !important">${commonHelper.convertFirstLetterToCapital(
+      '<p style="color: #000 !important;margin-bottom:0px;" ><strong>Meeting Mode</strong></p>' +
+      `<p style="color: #000 !important;margin:0px;">${commonHelper.convertFirstLetterToCapital(
         meetingData.mode
       )}</p>` +
-      '<p style="color: #000 !important"><strong>Meeting Link</strong></p>' +
-      `${meetingData.link!==""?`<a style="color: #000 !important" href="${meetingData.link}">${meetingData.link}</a>`:'<p style="color: #000 !important">Not Available</p>'}` +
-      '<p style="color: #000 !important"><strong>Location</strong></p>' +
-      `<p style="color: #000 !important">${
+      '<p style="color: #000 !important; margin-bottom:0px;"><strong>Meeting Link</strong></p>' +
+      `${meetingData.link!==""?`<a style="color: #000 !important;margin:0px;" href="${meetingData.link}">${meetingData.link}</a>`:'<p style="color: #000 !important">Not Available</p>'}` +
+      '<p style="color: #000 !important;margin-bottom:0px;"><strong>Location</strong></p>' +
+      `<p style="color: #000 !important;margin:0px;">${
         meetingData.locationDetails?.isMeetingRoom === true
           ? meetingData?.roomDetail[0]?.location
           : meetingData?.locationDetails?.location
       }</p>` +
-      '<p style="color: #000 !important"><strong>Guests</strong></p>' +
-      `<p style="color: #000 !important">${meetingData?.attendees.map(
+      '<p style="color: #000 !important;margin-bottom:0px"><strong>Guests</strong></p>' +
+      `<p style="color: #000 !important;margin:0px">${meetingData?.attendees.map(
         (attendee) => {
-          return `&nbsp;${attendee.name}(${attendee.email})&nbsp;`;
+          return `${attendee.name}(${attendee.email})&nbsp;`;
         }
       )}</p>` +
-      '<p style="color: #000 !important"><strong>Agenda(s)</strong></p>' +
-      `${meetingData?.agendasDetail.map((agenda, index) => {
-        return `<table style="border: 1px solid black;border-collapse: collapse; width:100%"><tr style="border: 1px solid black;border-collapse: collapse;" ><strong>Agenda ${
-          index + 1
-        }</strong></tr><tr style="border: 1px solid black;border-collapse: collapse;" >Agenda Title : ${
-          agenda.title
-        }</tr><tr style="border: 1px solid black;border-collapse: collapse;">Topic to Discuss : ${
-          agenda.topic
-        }</tr><tr style="border: 1px solid black;border-collapse: collapse;">Timeline : ${
-          agenda.timeLine
-        } Mins</tr></table>`;
+     '<p style="color: #000 !important;margin-bottom:0px"><strong>Agenda(s)</strong></p>' +
+      `${meetingData?.agendasDetail.map((agenda) => {
+        return `<table style="border: 1px solid black;border-collapse: collapse; width:100%;color:black;">
+        <tr style="border: 1px solid black;border-collapse: collapse;" >
+        <td  style="border: 1px solid black;border-collapse: collapse;width:20%;padding:3px;" colspan="6">
+        Agenda Title
+        </td>
+        <td colspan="6" style="border: 1px solid black;border-collapse: collapse;width:50%;padding:3px;">${agenda.title}</td>
+        </tr>
+        <tr style="border: 1px solid black;border-collapse: collapse;">
+        <td  style="border: 1px solid black;border-collapse: collapse; width:20%;padding:3px;" colspan="6" >Topic to Discuss</td>
+        <td colspan="6" style="border: 1px solid black;border-collapse: collapse;width:50%;padding:3px;">${agenda.topic}</td>
+        </tr>
+        <tr style="border: 1px solid black;border-collapse: collapse; ">
+        <td  style="border: 1px solid black;border-collapse: collapse;width:20%;padding:3px;" colspan="6">Timeline</td>
+        <td colspan="6" style="border: 1px solid black;border-collapse: collapse;width:50%;padding:3px;">${agenda.timeLine} Mins</td>
+        </tr>
+        </table>`
       })}` +
       "<br />" +
-      '<p style="color: #000 !important; margin-top:0">' +
+      '<p style="color: #000 !important; margin-top:0;margin-bottom:0px">' +
       "Regards," +
       `<br />${meetingData.createdByDetail.name}` +
       `<br />${meetingData.createdByDetail.email} <br />` +

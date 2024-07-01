@@ -192,7 +192,9 @@ const viewAgendas = async (meetingId) => {
               "attendeeDeta----------------",
               attendeeData
             );
-            return attendee['name']=attendeeData.name;
+            attendee['email'] = attendeeData.email;
+            attendee['name']=attendeeData.name;
+            return attendee;
           })
           return (minute["assignedUserDetails"] = assignedUserDetails);
         });

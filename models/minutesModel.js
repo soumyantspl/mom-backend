@@ -26,6 +26,11 @@ const minutesSchema = new mongoose.Schema(
           enum: ["ACCEPTED", "REJECTED", "PENDING"],
           required: true,
         },
+        updatedAt:{
+          type: Date,
+          required: true,
+          default: Date.now(),
+        }
       },
     ],
     // responsiblePerson: {
