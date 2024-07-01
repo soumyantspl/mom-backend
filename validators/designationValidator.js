@@ -42,7 +42,7 @@ exports.editDesignationValidator = async (req, res, next) => {
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
-      id: Joi.string(),
+      organizationId: Joi.string().required(),
     });
     await headerSchema.validateAsync({ headers: req.headers });
     await bodySchema.validateAsync(req.body);

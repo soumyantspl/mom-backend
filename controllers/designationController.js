@@ -41,13 +41,13 @@ const editDesignationController = async (req, res) => {
       req.body,
       req.ip
     );
-    if (!result) {
+    if (result.isDuplicate) {
       return Responses.failResponse(
         req,
         res,
         null,
-        messages.idIsNotAvailabled,
-        404
+        messages.duplicateUnitEntry,
+        200
       );
     }
     return Responses.successResponse(

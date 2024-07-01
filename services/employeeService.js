@@ -122,11 +122,10 @@ const checkDuplicateEntry = async (email, organizationId, empId) => {
 
 /**FUNC- TO VERIFY DUPLICATE USER */
 const checkDuplicateUserEntry = async (data) => {
-  console.log("email---------------",data.email);
+  console.log("email---------------", data.email);
 
   console.log("organizationId---------------", data.organizationId);
   return await checkDuplicateEmail(data.email, data.organizationId);
-  
 };
 
 /**FUNC- TO VERIFY DUPLICATE EMPLOYEE EMAIL */
@@ -178,14 +177,14 @@ const listEmployee = async (bodyData, queryData) => {
           {
             organizationId: new ObjectId(organizationId),
             isActive: true,
-            isEmployee:true
+            isEmployee: true,
           },
         ],
       }
     : {
         organizationId: new ObjectId(organizationId),
         isActive: true,
-        isEmployee:true
+        isEmployee: true,
       };
 
   let mongooseQuery = null;
@@ -297,14 +296,12 @@ const createAttendee = async (name, email, organizationId) => {
   }
   return {
     isDuplicate: true,
-    duplicateUserId:emailDetails._id
+    duplicateUserId: emailDetails._id,
   };
 };
 
 /**FUNC- ADD VISITORS AS ATTENDEE IN EMPLOYEE */
-const createAttendees = async (attendees ) => {
-
-  
+const createAttendees = async (attendees) => {
   console.log("attendees-------------", attendees);
   // if (!emailDetails) {
   //   const inputData = {
@@ -313,21 +310,20 @@ const createAttendees = async (attendees ) => {
   //     organizationId: new ObjectId(organizationId),
   //     isEmployee: false,
   //   };
-   // const empData = new Employee(attendees);
-    const newEmps = await Employee.insertMany(attendees);
+  // const empData = new Employee(attendees);
+  const newEmps = await Employee.insertMany(attendees);
 
   //   Student.insertMany([
   //     { name: "Student1", school: "ABC", class: "A1" },
   //     { name: "Student2", school: "ABC", class: "A2" },
   // ])
-const newEmpData=newEmps.map((item)=>{
-  return {_id:item._id}
-})
+  const newEmpData = newEmps.map((item) => {
+    return { _id: item._id };
+  });
 
-    console.log("newEmp----------------", newEmps);
-    console.log("newEmpData----------------", newEmpData);
-    return newEmpData;
-
+  console.log("newEmp----------------", newEmps);
+  console.log("newEmpData----------------", newEmpData);
+  return newEmpData;
 };
 
 module.exports = {
@@ -341,5 +337,5 @@ module.exports = {
   createAttendee,
   masterData,
   checkDuplicateUserEntry,
-  createAttendees
+  createAttendees,
 };

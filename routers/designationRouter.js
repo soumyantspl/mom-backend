@@ -12,7 +12,7 @@ router.post(
   designationController.createDesignationController
 );
 //FUNCTION TO EDIT DESIGNATION
-router.put(
+router.post(
   "/editDesignation/:id",
   designationValidator.editDesignationValidator,
   authMiddleware.verifyUserToken,

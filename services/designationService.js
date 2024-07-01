@@ -37,38 +37,80 @@ const createDesignationService = async (userId, data, ipAddress = "1000") => {
 
 //FUCNTION TO CREATE DESIGNATION
 const editDesignationService = async (userId, id, data, ipAddress = "1000") => {
-  const result = await Designations.findByIdAndUpdate(
-    id,
-    {
-      name: data.name,
-    },
-    {
-      new: false,
+  const designationDetails = await checkDuplicate(
+    data.organizationId,
+    data.name
+  );
+
+  if (designationDetails) {
+    if (
+      designationDetails.name === data.name &&
+      designationDetails._id.toString() !== id
+    ) {
+      return {
+        isDuplicate: true,
+      };
+    } else if (
+      designationDetails.name === data.name &&
+      designationDetails._id.toString() == id
+    ) {
+      const result = await Designations.findByIdAndUpdate({ _id: id }, data, {
+        new: false,
+      });
+      ////////////////////LOGER START
+      const inputKeys = Object.keys(data);
+      const details = await commonHelper.generateLogObject(
+        inputKeys,
+        result,
+        userId,
+        data
+      );
+      const logData = {
+        moduleName: logMessages.Designation.moduleName,
+        userId,
+        action: logMessages.Designation.editDesignation,
+        ipAddress,
+        details: details.join(" , "),
+        organizationId: result.organizationId,
+      };
+      console.log("logData-------------------", logData);
+      await logService.createLog(logData);
+      //   ///////////////////// LOGER END
+      return {
+        isDuplicate: false,
+      };
+    } else {
+      return {
+        isDuplicate: false,
+      };
     }
-  );
-  console.log("result", result);
-  ////////////////////LOGER START
-  const inputKeys = Object.keys(data);
-  const details = await commonHelper.generateLogObject(
-    inputKeys,
-    result,
-    userId,
-    data
-  );
-
-  const logData = {
-    moduleName: logMessages.Designation.moduleName,
-    userId,
-    action: logMessages.Designation.editDesignation,
-    ipAddress,
-    details: details.join(" , "),
-    organizationId: result.organizationId,
-  };
-  console.log("logData-------------------", logData);
-  await logService.createLog(logData);
-
-  ///////////////////// LOGER END
-  return result;
+  } else {
+    const result = await Designations.findByIdAndUpdate({ _id: id }, data, {
+      new: false,
+    });
+    ////////////////////LOGER START
+    const inputKeys = Object.keys(data);
+    const details = await commonHelper.generateLogObject(
+      inputKeys,
+      result,
+      userId,
+      data
+    );
+    const logData = {
+      moduleName: logMessages.Designation.moduleName,
+      userId,
+      action: logMessages.Designation.editDesignation,
+      ipAddress,
+      details: details.join(" , "),
+      organizationId: result.organizationId,
+    };
+    console.log("logData-------------------", logData);
+    await logService.createLog(logData);
+    ///////////////////// LOGER END
+    return {
+      isDuplicate: false,
+    };
+  }
 };
 
 //FUCNTION TO DELETE DESIGNATION
