@@ -16,7 +16,7 @@ const createDesignationController = async (req, res) => {
         res,
         null,
         messages.duplicateEntry,
-        409
+        200
       );
     }
     return Responses.successResponse(
