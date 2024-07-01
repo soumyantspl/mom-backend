@@ -2,7 +2,6 @@
 const Agenda = require("../models/agendaModel");
 const ObjectId = require("mongoose").Types.ObjectId;
 
-
 /**FUNC- TO CREATE AGENDA FOR MEETING**/
 const createAgendaForMeeting = async (data) => {
   console.log("data--------------123", data);
@@ -71,14 +70,23 @@ const viewAgendas = async (meetingId) => {
         as: "attendeesDetail",
       },
     },
+    // {
+    //   $lookup: {
+    //     from: "employees",
+    //     localField: "organizationId",
+    //     foreignField: "organizationId",
+    //     as: "employeesDetail",
+    //   },
+    // },
     {
       $lookup: {
-        from: "employees",
-        localField: "organizationId",
-        foreignField: "organizationId",
-        as: "employeesDetail",
+        from: "meetingrooms",
+        localField: "meetingDetail.locationDetails.roomId",
+        foreignField: "_id",
+        as: "roomDetail",
       },
     },
+
     {
       $project: {
         _id: 1,
@@ -110,10 +118,10 @@ const viewAgendas = async (meetingId) => {
           attendees: 1,
           createdById: 1,
         },
-        assignedUserIdDetails:{
-          _id:1,
-          email:1,
-          name:1
+        assignedUserIdDetails: {
+          _id: 1,
+          email: 1,
+          name: 1,
         },
         attendeesDetail: {
           email: 1,
@@ -121,16 +129,22 @@ const viewAgendas = async (meetingId) => {
           name: 1,
           isEmployee: 1,
         },
-        employeesDetail:{
-          email: 1,
+        // employeesDetail: {
+        //   email: 1,
+        //   _id: 1,
+        //   name: 1,
+        //   isEmployee: 1,
+        // },
+        roomDetail: {
+          title: 1,
           _id: 1,
-          name: 1,
-          isEmployee: 1,
-        }
+          location: 1,
+        },
       },
     },
+    // { $unwind: "$roomDetail" }
   ];
-  const meetingData = await Agenda.aggregate(pipeLine)
+  const meetingData = await Agenda.aggregate(pipeLine);
   //.limit(1);
   console.log("meetingData---------3345--", meetingData);
   if (meetingData.length !== 0) {
@@ -139,30 +153,61 @@ const viewAgendas = async (meetingId) => {
     };
     meetingData.map((data) => {
       if (!meetingDataObject.meetingDetail) {
-
         data.meetingDetail.attendees.map((item) => {
-         // console.log("item---------", item);
+          // console.log("item---------", item);
           const attendeeData = data.attendeesDetail.find(
             (attendee) => attendee._id == item._id.toString()
           );
-         // console.log("attendeeData---------", attendeeData);
+          // console.log("attendeeData---------", attendeeData);
           item.name = attendeeData.name;
           item.email = attendeeData.email;
           item.isEmployee = attendeeData.isEmployee;
-    
+
           return item;
           // return (item.name = attendeeData.name);
-        });  
-
+        });
 
 
         meetingDataObject.meetingDetail = data.meetingDetail;
+        meetingDataObject.meetingDetail["roomDetail"] = data.roomDetail;
       }
+
+
+      console.log("data.minutesDetail--------------", data.minutesDetail);
+      if (data.minutesDetail.length !== 0) {
+        data.minutesDetail.map((minute) => {
+          console.log("minute map------------------------",minute)
+          const assignedUserDetails = data.assignedUserIdDetails.find(
+            (user) => user._id.toString() === minute.assignedUserId.toString()
+          );
+          console.log(
+            "assignedUserDetails----------------",
+            assignedUserDetails
+          );
+          minute.attendees.map((attendee)=>{
+            const attendeeData = data.attendeesDetail.find(
+              (user) => user._id.toString() === attendee.id.toString()
+            );
+            console.log(
+              "attendeeDeta----------------",
+              attendeeData
+            );
+            return attendee['name']=attendeeData.name;
+          })
+          return (minute["assignedUserDetails"] = assignedUserDetails);
+        });
+      }
+
+
       delete data.meetingDetail;
+      delete data.roomDetail;
+      delete data.attendeesDetail;
+      delete data.assignedUserIdDetails;
       meetingDataObject.agendaDetails.push(data);
+
     });
 
-   // console.log("meetingDataObject", meetingDataObject);
+    // console.log("meetingDataObject", meetingDataObject);
     return meetingDataObject;
   }
   return false;

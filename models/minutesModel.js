@@ -23,7 +23,7 @@ const minutesSchema = new mongoose.Schema(
         },
         status: {
           type: String,
-          enum: ["ACCEPTED", "REJECT", "PENDING"],
+          enum: ["ACCEPTED", "REJECTED", "PENDING"],
           required: true,
         },
       },
