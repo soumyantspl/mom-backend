@@ -1,11 +1,17 @@
 const Organization = require("../models/organizationModel");
+const logService = require("./logsService");
+const logMessages = require("../constants/logsConstants");
+const commonHelper = require("../helpers/commonHelper");
 
+//FUNCTION TO- ORGANIZATION EXIST OR NOT
 const existingOrganization = async (email) => {
   console.log("email-->", email);
   const DATA = await Organization.findOne({ email, isActive: true });
   console.log("DATA-->", DATA);
   return DATA;
 };
+
+//FUNCTION TO- CREATE ORGANIZATION
 const createOrganizationService = async (
   name,
   details,
@@ -39,19 +45,38 @@ const viewOrganizationService = async (query, page, limit) => {
   return organisationData;
 };
 
-const editOrganizationService = async (id, updateData) => {
-  const findOrganizationData = await Organization.findById(id);
-  if (!findOrganizationData) {
-    return false;
-  }
-  Object.assign(id, updateData);
-  const updateQuery = { $set: updateData };
-  const updatedOrganization = await Organization.findByIdAndUpdate(
-    id,
-    updateQuery,
-    { new: true }
+const editOrganizationService = async (
+  userId,
+  id,
+  data,
+  ipAddress = "1000"
+) => {
+  const result = await Organization.findByIdAndUpdate(id, data, {
+    new: false,
+  });
+  console.log("result---", result);
+  ////////////////////LOGER START
+  const inputKeys = Object.keys(result);
+  const details = await commonHelper.generateLogObject(
+    inputKeys,
+    result,
+    userId,
+    data
   );
-  return updatedOrganization;
+
+  const logData = {
+    moduleName: logMessages.Organization.moduleName,
+    userId,
+    action: logMessages.Organization.editOrganization,
+    ipAddress,
+    details: details.join(" , "),
+    organizationId: result._id,
+  };
+  console.log("logData-------------------", logData);
+  await logService.createLog(logData);
+
+  ///////////////////// LOGER END
+  return result;
 };
 
 module.exports = {

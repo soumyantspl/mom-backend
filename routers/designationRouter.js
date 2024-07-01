@@ -1,30 +1,35 @@
 const express = require("express");
 const router = express.Router();
-const {
-  validateCreateDesignation,
-  editDesignationValidator,
-  listDesignationValidator,
-} = require("../validators/designationValidator");
-const {
-  createDesignationController,
-  editDesignationController,
-  deleteDesignationController,
-  listDesignationController,
-} = require("../controllers/designationController");
+const authMiddleware = require("../middlewares/authMiddleware");
+const designationValidator = require("../validators/designationValidator");
+const designationController = require("../controllers/designationController");
+
+//FUNCTION TO CREATING DESIGNATION
 router.post(
   "/createDesignation",
-  validateCreateDesignation,
-  createDesignationController
+  designationValidator.validateCreateDesignation,
+  authMiddleware.verifyUserToken,
+  designationController.createDesignationController
 );
+//FUNCTION TO EDIT DESIGNATION
 router.post(
-  "/editDesignation",
-  editDesignationValidator,
-  editDesignationController
+  "/editDesignation/:id",
+  designationValidator.editDesignationValidator,
+  authMiddleware.verifyUserToken,
+  designationController.editDesignationController
 );
-router.delete("/deleteDesignation", deleteDesignationController);
-router.get(
+//FUNCTION TO DELETE DESIGNATION
+router.delete(
+  "/deleteDesignation/:id",
+  designationValidator.deleteDesignationValidator,
+  authMiddleware.verifyUserToken,
+  designationController.deleteDesignationController
+);
+//FUNCTION GET TO LIST DESIGNATION
+router.post(
   "/listDesignation",
-  listDesignationValidator,
-  listDesignationController
+  designationValidator.listDesignationValidator,
+  authMiddleware.verifyUserToken,
+  designationController.listDesignationController
 );
 module.exports = router;

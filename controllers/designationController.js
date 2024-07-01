@@ -1,14 +1,24 @@
 const designationService = require("../services/designationService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
+const { errorLog } = require("../middlewares/errorLog");
 
 const createDesignationController = async (req, res) => {
   try {
-    const { name, organizationId } = req.body;
     const result = await designationService.createDesignationService(
-      name,
-      organizationId
+      req.userId,
+      req.body,
+      req.ip
     );
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateEntry,
+        200
+      );
+    }
     return Responses.successResponse(
       req,
       res,
@@ -18,21 +28,26 @@ const createDesignationController = async (req, res) => {
     );
   } catch (error) {
     console.log("controller error", error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
 
 const editDesignationController = async (req, res) => {
   try {
-    const { id, name } = req.body;
-    const result = await designationService.editDesignationService(id, name);
-    if (!result) {
+    const result = await designationService.editDesignationService(
+      req.userId,
+      req.params.id,
+      req.body,
+      req.ip
+    );
+    if (result.isDuplicate) {
       return Responses.failResponse(
         req,
         res,
         null,
-        messages.idIsNotAvailabled,
-        404
+        messages.duplicateUnitEntry,
+        200
       );
     }
     return Responses.successResponse(
@@ -44,14 +59,18 @@ const editDesignationController = async (req, res) => {
     );
   } catch (error) {
     console.error("Controller error:", error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
 
 const deleteDesignationController = async (req, res) => {
   try {
-    const id = req.body.id;
-    const result = await designationService.deleteDesignationService(id);
+    const result = await designationService.deleteDesignationService(
+      req.userId,
+      req.params,
+      req.ip
+    );
     if (!result) {
       return Responses.failResponse(
         req,
@@ -69,6 +88,7 @@ const deleteDesignationController = async (req, res) => {
       202
     );
   } catch (error) {
+    errorLog(error);
     console.error("Controller error:", error);
     return Responses.errorResponse(req, res, error);
   }
@@ -99,6 +119,7 @@ const listDesignationController = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

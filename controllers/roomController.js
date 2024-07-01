@@ -1,11 +1,11 @@
 const roomService = require("../services/roomService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
-
+const { errorLog } = require("../middlewares/errorLog");
 /**FUNC- TO CREATE NEW MEETING ROOM**/
 const createRoom = async (req, res) => {
   try {
-    const result = await roomService.createRoom(req.body);
+    const result = await roomService.createRoom(req.userId, req.body, req.ip);
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -20,11 +20,12 @@ const createRoom = async (req, res) => {
       req,
       res,
       result,
-      messages.creatSuccess,
+      messages.createdSuccess,
       201
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -32,10 +33,21 @@ const createRoom = async (req, res) => {
 /**FUNC- TO EDIT MEETING ROOM**/
 const editRoom = async (req, res) => {
   try {
-    const result = await roomService.editRoom(req.body, req.params.id);
+    const result = await roomService.editRoom(
+      req.userId,
+      req.params.id,
+      req.body,
+      req.ip
+    );
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.updateFailedRecordNotFound, 409);
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.updateFailedRecordNotFound,
+        409
+      );
     }
     return Responses.successResponse(
       req,
@@ -46,19 +58,24 @@ const editRoom = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
 
-
-
 /**FUNC- TO VIEW MEETING ROOM**/
 const viewRooms = async (req, res) => {
   try {
-    const result = await roomService.viewRoom(req.body,req.query);
+    const result = await roomService.viewRoom(req.body, req.query);
     console.log(result);
-    if (result.totalCount==0) {
-      return Responses.failResponse(req, res, null, messages.recordsNotFound, 409);
+    if (result.totalCount == 0) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        409
+      );
     }
     return Responses.successResponse(
       req,
@@ -69,6 +86,7 @@ const viewRooms = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -76,10 +94,20 @@ const viewRooms = async (req, res) => {
 /**FUNC- TO DELETE MEETING ROOM**/
 const deleteRoom = async (req, res) => {
   try {
-    const result = await roomService.deleteRoom(req.params.id);
+    const result = await roomService.deleteRoom(
+      req.userId,
+      req.params.id,
+      req.ip
+    );
     console.log(result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.deleteFailedRecordNotFound, 409);
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.deleteFailedRecordNotFound,
+        409
+      );
     }
     return Responses.successResponse(
       req,
@@ -90,6 +118,7 @@ const deleteRoom = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -98,5 +127,5 @@ module.exports = {
   createRoom,
   editRoom,
   viewRooms,
-  deleteRoom
+  deleteRoom,
 };

@@ -1,15 +1,23 @@
 const departmentService = require("../services/departmentService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
-
+const { errorLog } = require("../middlewares/errorLog");
 const createDepartmentController = async (req, res) => {
   try {
-    const { name, organizationId } = req.body;
-
     const result = await departmentService.createDepartmentService(
-      name,
-      organizationId
+      req.userId,
+      req.body,
+      req.ip
     );
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.duplicateUnitEntry,
+        200
+      );
+    }
     return Responses.successResponse(
       req,
       res,
@@ -19,21 +27,26 @@ const createDepartmentController = async (req, res) => {
     );
   } catch (error) {
     console.log("controller error", error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
 
 const editDepartmentController = async (req, res) => {
   try {
-    const { id, name } = req.body;
-    const result = await departmentService.editDepartmentService(id, name);
-    if (!result) {
+    const result = await departmentService.editDepartmentService(
+      req.userId,
+      req.params.id,
+      req.body,
+      req.ip
+    );
+    if (result.isDuplicate) {
       return Responses.failResponse(
         req,
         res,
         null,
-        messages.idIsNotAvailabled,
-        404
+        messages.duplicateUnitEntry,
+        200
       );
     }
     return Responses.successResponse(
@@ -41,26 +54,32 @@ const editDepartmentController = async (req, res) => {
       res,
       result,
       messages.departmentUpdated,
-      201
+      200
     );
   } catch (error) {
     console.error("Controller error:", error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
 
 const deleteDepartmentController = async (req, res) => {
   try {
-    const id = req.body.id;
-    console.log(id);
-    const result = await departmentService.deleteDepartmentService(id);
+   // console.log("Org id-->", req);
+    const result = await departmentService.deleteDepartmentService(
+      req.userId,
+      req.params,
+      req.ip,
+      req.organizationId
+    );
+
     if (!result) {
       return Responses.failResponse(
         req,
         res,
         null,
         messages.idIsNotAvailabled,
-        404
+        200
       );
     }
     return Responses.successResponse(
@@ -72,6 +91,7 @@ const deleteDepartmentController = async (req, res) => {
     );
   } catch (error) {
     console.error("Controller error:", error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -101,6 +121,7 @@ const listDepartmentController = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

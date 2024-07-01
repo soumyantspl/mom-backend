@@ -1,29 +1,31 @@
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 const unitService = require("../services/unitService");
+const { errorLog } = require("../middlewares/errorLog");
 
 const createUnit = async (req, res) => {
   try {
     console.log("request body", req.body);
-    const result = await unitService.createUnit(req.body);
-    console.log(result);
+    const result = await unitService.createUnit(req.userId, req.body, req.ip);
+    console.log("result", result);
     if (!result) {
       return Responses.failResponse(
         req,
         res,
         null,
-        messages.duplicateEntry,
-        409
+        messages.duplicateUnitEntry,
+        200
       );
     }
     return Responses.successResponse(
       req,
       res,
       null,
-      messages.creatSuccess,
+      messages.createdSuccess,
       201
     );
   } catch (error) {
+    errorLog(error);
     console.log(error);
     return Responses.errorResponse(req, res, error);
   }
@@ -33,16 +35,21 @@ const editUnit = async (req, res) => {
   try {
     console.log(req.body);
     // const { id, data } = req.body
-    const result = await unitService.editUnit(req.body, req.params.id);
-    // console.log("Query id", req.params.id);
+    const result = await unitService.editUnit(
+      req.userId,
+      req.params.id,
+      req.body,
+      req.ip
+    );
+    console.log("Query id", req.params.id);
     console.log(result);
-    if (!result) {
+    if (result.isDuplicate) {
       return Responses.failResponse(
         req,
         res,
         null,
-        messages.updateFailedRecordNotFound,
-        409
+        messages.duplicateUnitEntry,
+        200
       );
     }
     return Responses.successResponse(
@@ -54,6 +61,7 @@ const editUnit = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -61,7 +69,11 @@ const editUnit = async (req, res) => {
 const deleteUnit = async (req, res) => {
   try {
     console.log(req.params);
-    const result = await unitService.deleteUnit(req.params.id);
+    const result = await unitService.deleteUnit(
+      req.userId,
+      req.params.id,
+      req.ip
+    );
     if (!result) {
       return Responses.failResponse(
         req,
@@ -80,21 +92,22 @@ const deleteUnit = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
 
 const listUnit = async (req, res) => {
   try {
-    const result = await unitService.listUnit(req.body, req.query);
-    console.log(result);
+    const result = await unitService.listUnit(req.userId, req.body, req.query);
+    console.log("UserID-hhh-->>>", req.userId);
     if (result.totalCount == 0) {
       return Responses.failResponse(
         req,
         res,
         null,
         messages.recordsNotFound,
-        409
+        200
       );
     }
     return Responses.successResponse(
@@ -106,7 +119,8 @@ const listUnit = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
-module.exports = { createUnit, editUnit, deleteUnit,listUnit };
+module.exports = { createUnit, editUnit, deleteUnit, listUnit };

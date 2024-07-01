@@ -1,12 +1,19 @@
 const Employee = require("../models/employeeModel");
+const ObjectId = require("mongoose").Types.ObjectId;
+const Designations = require("../models/designationModel");
+const logService = require("./logsService");
+const logMessages = require("../constants/logsConstants");
+const commonHelper = require("../helpers/commonHelper");
+const Department = require("../models/departmentModel");
+const Units = require("../models/unitModel");
 
-const createEmployee1 = async (data) => {
-  const newEmployee = new Employee({ name, email, password });
-  return await newEmployee.save();
-};
+// const createEmployeeForMeeting = async (data) => {
+//   const newEmployee = new Employee({ name, email, password });
+//   return await newEmployee.save();
+// };
 
 /**FUNC- CREATE EMPLOYEE */
-const createEmployee = async (data) => {
+const createEmployee = async (userId, data, ipAddress = "1000") => {
   console.log("----------------------33333", data);
   const [emailDetails, empCodeDetails] = await checkDuplicateEntry(
     data.email,
@@ -40,25 +47,66 @@ const createEmployee = async (data) => {
       empId: data.empId,
     };
     const empData = new Employee(inputData);
-    const newEmp = await empData.save();
-    console.log("newEmp----------------", newEmp);
+    const result = await empData.save();
 
-    return {
-      data: newEmp,
+    ////////////////////LOGER START
+    console.log("result------------>", result);
+    const logData = {
+      moduleName: logMessages.Employee.moduleName,
+      userId,
+      action: logMessages.Employee.createEmployee,
+      ipAddress,
+      details: "N/A",
+      organizationId: result.organizationId,
     };
+    console.log("logData-------------------", logData);
+    await logService.createLog(logData);
+    ///////////////////// LOGER END
+    return result;
   }
 
   return false;
 };
+/**FUNC- TO FETCH MASTER DATA*/
+const masterData = async (organizationId) => {
+  console.log("organizationId--->>", organizationId);
+  let query = { organizationId: organizationId, isActive: true };
+  const designationList = await Designations.find(query, { name: 1 });
+  const departmentList = await Department.find(query, { name: 1 });
+  const unitList = await Units.find(query, { name: 1 });
+  const message = `${designationList.length} designation found , ${departmentList.length} department found &  ${unitList.length} unit found `;
+  const masterData = { designationList, departmentList, unitList };
+  return {
+    message,
+    masterData,
+  };
+};
+
 /**FUNC- TO DELETE AN EMPLOYEE */
-const deleteEmploye = async (id) => {
+const deleteEmploye = async (userId, id, ipAddress = "1000") => {
   console.log("id--->>", id);
-  const deletedEmployee = await Employee.findByIdAndUpdate(
+  const result = await Employee.findByIdAndUpdate(
     { _id: id },
     { isActive: false },
     { new: true }
   );
-  return deletedEmployee;
+
+  ////////////////////LOGER START
+  console.log("result------------>", result);
+
+  const logData = {
+    moduleName: logMessages.Employee.moduleName,
+    userId,
+    action: logMessages.Employee.deleteEmployee,
+    ipAddress,
+    details: "N/A",
+    organizationId: result.organizationId,
+  };
+  console.log("logData-------------------", logData);
+  await logService.createLog(logData);
+
+  ///////////////////// LOGER END
+  return result;
 };
 
 /**FUNC- TO VERIFY DUPLICATE EMPLOYEE */
@@ -72,13 +120,21 @@ const checkDuplicateEntry = async (email, organizationId, empId) => {
   ]);
 };
 
+/**FUNC- TO VERIFY DUPLICATE USER */
+const checkDuplicateUserEntry = async (data) => {
+  console.log("email---------------", data.email);
+
+  console.log("organizationId---------------", data.organizationId);
+  return await checkDuplicateEmail(data.email, data.organizationId);
+};
+
 /**FUNC- TO VERIFY DUPLICATE EMPLOYEE EMAIL */
 const checkDuplicateEmail = async (email, organizationId) => {
   console.log("email---------------", email);
   console.log("organizationId---------------", organizationId);
 
   return await Employee.findOne(
-    { email, organizationId, isActive: true },
+    { email, organizationId: new ObjectId(organizationId), isActive: true },
     { _id: 1, email: 1, organisationId: 1, name: 1, isActive: 1 }
   );
 };
@@ -88,7 +144,7 @@ const checkDuplicateEmpId = async (empId, organizationId) => {
   console.log("empid---------------", empId);
   console.log("organizationId---------------", organizationId);
   return await Employee.findOne(
-    { empId, organizationId, isActive: true },
+    { empId, organizationId: new ObjectId(organizationId), isActive: true },
     { _id: 1, email: 1, organisationId: 1, name: 1, isActive: 1 }
   );
 };
@@ -96,31 +152,55 @@ const checkDuplicateEmpId = async (empId, organizationId) => {
 const listEmployee = async (bodyData, queryData) => {
   const { order } = queryData;
   const { organizationId, searchKey } = bodyData;
+  const fields = {
+    designationId: 1,
+    departmentId: 1,
+    unitId: 1,
+    isEmployee: 1,
+    _id: 1,
+    email: 1,
+    isActive: 1,
+    organizationId: 1,
+    name: 1,
+    isMeetingOrganiser: 1,
+    empId: 1,
+  };
   let query = searchKey
     ? {
         $and: [
           {
-            $or: [{ name: searchKey }, { empId: searchKey }],
+            $or: [
+              { name: { $regex: searchKey, $options: "i" } },
+              { empId: { $regex: searchKey, $options: "i" } },
+            ],
           },
           {
-            organizationId,
+            organizationId: new ObjectId(organizationId),
             isActive: true,
+            isEmployee: true,
           },
         ],
       }
     : {
-        organizationId,
+        organizationId: new ObjectId(organizationId),
         isActive: true,
+        isEmployee: true,
       };
 
-  var limit = parseInt(queryData.limit);
-  var skip = (parseInt(queryData.page) - 1) * parseInt(limit);
-
+  let mongooseQuery = null;
+  if (queryData.limit && queryData.page && queryData.order) {
+    const limit = parseInt(queryData.limit);
+    const skip = (parseInt(queryData.page) - 1) * parseInt(limit);
+    mongooseQuery = Employee.find(query, fields)
+      // .sort({ createdAt: parseInt(order) })
+      .sort({ _id: parseInt(order) })
+      .skip(skip)
+      .limit(limit);
+  } else {
+    mongooseQuery = Employee.find(query, fields);
+  }
   const totalCount = await Employee.countDocuments(query);
-  const employeeData = await Employee.find(query)
-    .sort({ createdAt: parseInt(order) })
-    .limit(limit)
-    .skip(skip);
+  const employeeData = await mongooseQuery;
 
   return { totalCount, employeeData };
 };
@@ -139,13 +219,13 @@ const viewSingleEmployee = async (id) => {
 const verifyEmployee = async (empId) => {
   console.log("empId-----------", empId);
   return await Employee.findOne(
-    { _id: empId, isActive: true },
-    { _id: 1, email: 1, organisationId: 1, name: 1, isActive: 1 }
+    { _id: new ObjectId(empId), isActive: true },
+    { _id: 1, email: 1, organizationId: 1, name: 1, isActive: 1 }
   );
 };
 
 /**FUNC- EDIT EMPLOYEE */
-const editEmployee = async (data, id) => {
+const editEmployee = async (userId, id, data, ipAddress = "1000") => {
   console.log("----------------------3333344", data);
   console.log("----------------------33333", id);
 
@@ -170,11 +250,80 @@ const editEmployee = async (data, id) => {
     };
   }
 
-  const employee = await Employee.findByIdAndUpdate({ _id: id }, data, {
+  const result = await Employee.findByIdAndUpdate({ _id: id }, data, {
     new: true,
   });
-  console.log("employee-----------------------", employee);
-  return employee;
+  console.log("employee-----------------------", result);
+  ////////////////////LOGER START
+  const inputKeys = Object.keys(data);
+  const details = await commonHelper.generateLogObject(
+    inputKeys,
+    result,
+    userId,
+    data
+  );
+  const logData = {
+    moduleName: logMessages.Employee.moduleName,
+    userId,
+    action: logMessages.Employee.editEmployee,
+    ipAddress,
+    details: details.join(" , "),
+    organizationId: result.organizationId,
+  };
+  console.log("logData-------------------", logData);
+  await logService.createLog(logData);
+
+  ///////////////////// LOGER END
+  return result;
+};
+
+/**FUNC- ADD VISITOR AS ATTENDEE IN EMPLOYEE */
+const createAttendee = async (name, email, organizationId) => {
+  console.log(organizationId);
+  const emailDetails = await checkDuplicateEmail(email, organizationId);
+  console.log("emailDetails-------------", emailDetails);
+  if (!emailDetails) {
+    const inputData = {
+      name,
+      email,
+      organizationId: new ObjectId(organizationId),
+      isEmployee: false,
+    };
+    const empData = new Employee(inputData);
+    const newEmp = await empData.save();
+    console.log("newEmp----------------", newEmp);
+    return newEmp;
+  }
+  return {
+    isDuplicate: true,
+    duplicateUserId: emailDetails._id,
+  };
+};
+
+/**FUNC- ADD VISITORS AS ATTENDEE IN EMPLOYEE */
+const createAttendees = async (attendees) => {
+  console.log("attendees-------------", attendees);
+  // if (!emailDetails) {
+  //   const inputData = {
+  //     name,
+  //     email,
+  //     organizationId: new ObjectId(organizationId),
+  //     isEmployee: false,
+  //   };
+  // const empData = new Employee(attendees);
+  const newEmps = await Employee.insertMany(attendees);
+
+  //   Student.insertMany([
+  //     { name: "Student1", school: "ABC", class: "A1" },
+  //     { name: "Student2", school: "ABC", class: "A2" },
+  // ])
+  const newEmpData = newEmps.map((item) => {
+    return { _id: item._id };
+  });
+
+  console.log("newEmp----------------", newEmps);
+  console.log("newEmpData----------------", newEmpData);
+  return newEmpData;
 };
 
 module.exports = {
@@ -185,4 +334,8 @@ module.exports = {
   deleteEmploye,
   listEmployee,
   viewSingleEmployee,
+  createAttendee,
+  masterData,
+  checkDuplicateUserEntry,
+  createAttendees,
 };

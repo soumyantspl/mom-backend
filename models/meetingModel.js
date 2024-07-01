@@ -8,38 +8,37 @@ const meetingSchema = new mongoose.Schema(
     mode: {
       type: String,
       enum: ["VIRTUAL", "PHYSICAL"],
-      default: 'PHYSICAL'
+      default: "PHYSICAL",
     },
     locationDetails: {
       location: {
         type: String,
-
       },
       isMeetingRoom: {
         type: Boolean,
         required: true,
       },
       roomId: {
-        type: mongoose.Schema.ObjectId
-      }
+        type: mongoose.Schema.ObjectId,
+      },
     },
     link: {
-      type: String
+      type: String,
     },
     date: {
       type: Date,
-      required: true
+      required: true,
     },
     fromTime: {
-      type: String
+      type: String,
     },
     toTime: {
-      type: String
+      type: String,
     },
     step: {
       type: Number,
       enum: [1, 2, 3],
-      default: 1
+      default: 1,
     },
     attendees: [
       {
@@ -48,38 +47,37 @@ const meetingSchema = new mongoose.Schema(
           required: [true, "id is required"],
         },
         rsvp: {
-          enum: ["YES", "NO", "WAITING"],
+          type: String,
+          enum: ["YES", "NO", "AWAITING","MAYBE"],
+          default: "AWAITING"
         },
-
       },
     ],
-    // roomId: {
-    //   type: mongoose.Schema.ObjectId,
-    //   required: true,
-    // },
-    status: {
-
-      type: String,
-      enum: ["closed", "sceduled", "rescheduled", "canceled", "due"],
-      default: 'due'
+    meetingStatus: {
+      status: {
+        type: String,
+        enum: ["closed", "scheduled", "rescheduled", "cancelled","draft"],
+        default: "draft",
+      },
+      remarks: { type: String, required: false },
+    },
+    organizationId: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
     },
     isActive: {
       type: Boolean,
       required: true,
-      default: true
+      default: true,
     },
-    logs: [
-      {
-        id: {
-          type: mongoose.Schema.ObjectId,
-          required: true,
-        },
-        action: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
+    createdById: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
+    agendaIds: [{
+      type:  mongoose.Schema.ObjectId
+  }]
+ 
   },
   {
     timestamps: true,

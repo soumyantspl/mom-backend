@@ -7,19 +7,28 @@ const departmentRouter = require("./departmentRouter");
 const unitRouter = require("./unitRouter");
 const roomsRouter = require("./roomsRouter");
 const configRouter = require("./configRouter");
+const agendaRouter = require("./agendaRouter");
+const minutesRouter = require("./minutesRouter");
+const actionRouter = require("./actionRouter")
+const logRouter = require("./logRouter");
+const roleRouter= require("./roleRouter");
 const express = require("express");
 const app = express();
 const BASE_PATH = "V1";
 
 app.use(`/${BASE_PATH}/auth`, authRouter);
 app.use(`/${BASE_PATH}/meeting`, meetingRouter);
-app.use(`/${BASE_PATH}/employess`, employeeRouter);
 app.use(`/${BASE_PATH}/designation`, designationRouter);
 app.use(`/${BASE_PATH}/organization`, organizationRouter);
 app.use(`/${BASE_PATH}/department`, departmentRouter);
 app.use(`/${BASE_PATH}/employee`, employeeRouter);
-app.use(`/${BASE_PATH}/rooms`, roomsRouter);
+app.use(`/${BASE_PATH}/room`, roomsRouter);
 app.use(`/${BASE_PATH}/unit`, unitRouter);
-app.use(`/${BASE_PATH}/configurations`, configRouter);
+app.use(`/${BASE_PATH}/configuration`, configRouter);
+app.use(`/${BASE_PATH}/agenda`, agendaRouter);
+app.use(`/${BASE_PATH}/minute`, minutesRouter);
+app.use(`/${BASE_PATH}/action`, actionRouter);
+app.use(`/${BASE_PATH}/log`, logRouter);
+app.use(`/${BASE_PATH}/role`, roleRouter);
 
 module.exports = app;

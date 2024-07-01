@@ -1,0 +1,356 @@
+[{
+  "_id": {
+    "$oid": "667544ece0401fff877dce6a"
+  },
+  "title": "M1",
+  "mode": "PHYSICAL",
+  "locationDetails": {
+    "isMeetingRoom": true,
+    "roomId": {
+      "$oid": "666fbd602039cc92a30250f3"
+    }
+  },
+  "date": {
+    "$date": "2024-06-28T00:00:00.000Z"
+  },
+  "fromTime": "14:52",
+  "toTime": "16:03",
+  "step": 3,
+  "meetingStatus": {
+    "status": "scheduled"
+  },
+  "organizationId": {
+    "$oid": "6655d3118ba49b304f0d8258"
+  },
+  "isActive": true,
+  "createdById": {
+    "$oid": "6655d2b68ba49b304f0d8256"
+  },
+  "agendaIds": [
+    {
+      "$oid": "6675552006e5ddff834bf398"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-06-21T09:16:28.336Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-21T10:25:36.344Z"
+  },
+  "__v": 0,
+  "attendees": [
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "665873b21b859d8ce14d8dd6"
+      }
+    },
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "665d4c1a21e9e7711f77f496"
+      }
+    },
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "667554ed06e5ddff834bf38d"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66755659de044a8eb711af86"
+  },
+  "title": "T2",
+  "mode": "PHYSICAL",
+  "locationDetails": {
+    "isMeetingRoom": true,
+    "roomId": {
+      "$oid": "666fbe112039cc92a30250f4"
+    }
+  },
+  "date": {
+    "$date": "2024-06-29T00:00:00.000Z"
+  },
+  "fromTime": "16:06",
+  "toTime": "22:06",
+  "step": 3,
+  "meetingStatus": {
+    "status": "scheduled"
+  },
+  "organizationId": {
+    "$oid": "6655d3118ba49b304f0d8258"
+  },
+  "isActive": true,
+  "createdById": {
+    "$oid": "6655d2b68ba49b304f0d8256"
+  },
+  "agendaIds": [
+    {
+      "$oid": "66755846464af293c8b6073d"
+    }
+  ],
+  "attendees": [
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "665d4c1a21e9e7711f77f496"
+      }
+    },
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "665873b21b859d8ce14d8dd6"
+      }
+    },
+    {
+      "rsvp": "MAYBE",
+      "_id": {
+        "$oid": "6655d2b68ba49b304f0d8256"
+      }
+    },
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "667556c4de044a8eb711afb1"
+      }
+    },
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "667556c4de044a8eb711afb2"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-06-21T10:30:49.423Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-21T10:39:02.792Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "667558cc464af293c8b6076e"
+  },
+  "title": "test1",
+  "mode": "PHYSICAL",
+  "locationDetails": {
+    "location": "430",
+    "isMeetingRoom": false
+  },
+  "date": {
+    "$date": "2024-06-22T00:00:00.000Z"
+  },
+  "fromTime": "16:15",
+  "toTime": "16:17",
+  "step": 3,
+  "meetingStatus": {
+    "status": "scheduled"
+  },
+  "organizationId": {
+    "$oid": "6655d3118ba49b304f0d8258"
+  },
+  "isActive": true,
+  "createdById": {
+    "$oid": "6655d2b68ba49b304f0d8256"
+  },
+  "agendaIds": [
+    {
+      "$oid": "66755987464af293c8b60793"
+    },
+    {
+      "$oid": "66755987464af293c8b60794"
+    },
+    {
+      "$oid": "66755987464af293c8b60795"
+    }
+  ],
+  "attendees": [
+    {
+      "rsvp": "MAYBE",
+      "_id": {
+        "$oid": "6655d2b68ba49b304f0d8256"
+      }
+    },
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "667556c4de044a8eb711afb1"
+      }
+    },
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "66755946464af293c8b60788"
+      }
+    },
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "66755946464af293c8b60789"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-06-21T10:41:16.636Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-21T10:46:13.844Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66755a76464af293c8b607da"
+  },
+  "title": "gfhfh",
+  "mode": "PHYSICAL",
+  "locationDetails": {
+    "location": "ghf",
+    "isMeetingRoom": false
+  },
+  "date": {
+    "$date": "2024-06-28T00:00:00.000Z"
+  },
+  "fromTime": "16:23",
+  "toTime": "16:24",
+  "step": 3,
+  "meetingStatus": {
+    "status": "scheduled"
+  },
+  "organizationId": {
+    "$oid": "6655d3118ba49b304f0d8258"
+  },
+  "isActive": true,
+  "createdById": {
+    "$oid": "6655d2b68ba49b304f0d8256"
+  },
+  "agendaIds": [
+    {
+      "$oid": "66755a8d464af293c8b607e9"
+    }
+  ],
+  "attendees": [
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "665d4c1a21e9e7711f77f496"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-06-21T10:48:22.036Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-21T10:48:45.540Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66755ab9464af293c8b607fb"
+  },
+  "title": "FGF",
+  "mode": "PHYSICAL",
+  "locationDetails": {
+    "location": "DFSD",
+    "isMeetingRoom": false
+  },
+  "date": {
+    "$date": "2024-07-05T00:00:00.000Z"
+  },
+  "fromTime": "16:25",
+  "toTime": "16:36",
+  "step": 2,
+  "meetingStatus": {
+    "status": "draft"
+  },
+  "organizationId": {
+    "$oid": "6655d3118ba49b304f0d8258"
+  },
+  "isActive": true,
+  "createdById": {
+    "$oid": "6655d2b68ba49b304f0d8256"
+  },
+  "agendaIds": [],
+  "attendees": [
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "665d4c1a21e9e7711f77f496"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-06-21T10:49:29.542Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-21T10:49:33.822Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66756a0114d3e913ccf2f4c8"
+  },
+  "title": "asdsad",
+  "mode": "PHYSICAL",
+  "locationDetails": {
+    "location": "dfas",
+    "isMeetingRoom": false
+  },
+  "date": {
+    "$date": "2024-06-29T00:00:00.000Z"
+  },
+  "fromTime": "17:29",
+  "toTime": "17:46",
+  "step": 2,
+  "meetingStatus": {
+    "status": "draft"
+  },
+  "organizationId": {
+    "$oid": "6655d3118ba49b304f0d8258"
+  },
+  "isActive": true,
+  "createdById": {
+    "$oid": "6655d2b68ba49b304f0d8256"
+  },
+  "agendaIds": [],
+  "attendees": [
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "667554ed06e5ddff834bf38d"
+      }
+    },
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "6655d2b68ba49b304f0d8256"
+      }
+    },
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "665d4c1a21e9e7711f77f496"
+      }
+    },
+    {
+      "rsvp": "AWAITING",
+      "_id": {
+        "$oid": "6675791f14d3e913ccf2f5a7"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-06-21T11:54:41.692Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-21T12:59:11.728Z"
+  },
+  "__v": 0
+}]

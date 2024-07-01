@@ -1,7 +1,7 @@
 const configService = require("../services/configService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
-
+const { errorLog } = require("../middlewares/errorLog");
 /**FUNC- TO CREATE CONFIGURATION**/
 const createConfig = async (req, res) => {
   try {
@@ -29,11 +29,12 @@ const createConfig = async (req, res) => {
       req,
       res,
       result.data,
-      messages.creatSuccess,
+      messages.createdSuccess,
       201
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -61,6 +62,7 @@ const editConfig = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -88,6 +90,7 @@ const viewConfig = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -115,6 +118,7 @@ const deleteConfig = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

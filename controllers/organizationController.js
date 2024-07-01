@@ -1,6 +1,7 @@
 const organizationService = require("../services/organizationService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
+const { errorLog } = require("../middlewares/errorLog");
 
 const createOrganizationController = async (req, res) => {
   try {
@@ -35,6 +36,7 @@ const createOrganizationController = async (req, res) => {
     );
   } catch (error) {
     console.log(error.message);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -59,18 +61,19 @@ const viewOrganizationController = async (req, res) => {
     return Responses.successResponse(req, res, null, response, 200);
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
 
 const editOrganizationController = async (req, res) => {
-  const id = req.query.id;
-  const updateData = req.body;
   try {
     //Checking given ID is availabled or Not
     const result = await organizationService.editOrganizationService(
-      id,
-      updateData
+     "663dbc52c6d385847217c4b0",
+      req.params.id,
+      req.body,
+      req.ip
     );
     if (!result) {
       return Responses.failResponse(
@@ -89,6 +92,8 @@ const editOrganizationController = async (req, res) => {
       200
     );
   } catch (error) {
+    console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };

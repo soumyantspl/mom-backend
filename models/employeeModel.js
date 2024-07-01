@@ -9,9 +9,10 @@ const employeeSchema = new mongoose.Schema(
     },
     empId: {
       type: String,
-      required: true,
+   //   required: true,
       index: true,
-      unique: true
+    //  unique: true,
+      // default: null
     },
     email: {
       type: String,
@@ -26,15 +27,18 @@ const employeeSchema = new mongoose.Schema(
     },
     designationId: {
       type: mongoose.Schema.ObjectId,
-      required: true,
+  //   required: true,
+     default: null
     },
     departmentId: {
       type: mongoose.Schema.ObjectId,
-      required: true,
+   //   required: true,
+      default: null
     },
     unitId: {
       type: mongoose.Schema.ObjectId,
-      required: true,
+    //  required: true,
+      default: null
     },
     organizationId: {
       type: mongoose.Schema.ObjectId,
@@ -53,20 +57,13 @@ const employeeSchema = new mongoose.Schema(
     },
     password: {
       type: String,
+      default: null
     },
-    // otpData: [
-    //   {
-    //     otp: { type: Number, required: [true, "otp is required"] },
-    //     otpResendCount: {
-    //       type: Number,
-    //       required: [true, "otpResendCount is required"],
-    //     },
-    //     otpResendTime: {
-    //       type: Number,
-    //       required: [true, "otpResendTime is required"],
-    //     },
-    //   },
-    // ],
+    isEmployee: {
+      type: Boolean,
+      required: true,
+      default: true
+    },
   },
   {
     timestamps: true,

@@ -1,12 +1,17 @@
 const employeeService = require("../services/employeeService");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
-const Employee = require("../models/employeeModel");
+const { errorLog } = require("../middlewares/errorLog");
 
 /**FUNC- TO CREATE EMPLOYEE**/
 const createEmployee = async (req, res) => {
   try {
-    const result = await employeeService.createEmployee(req.body);
+    const userId = "663dbc52c6d385847217c4b0";
+    const result = await employeeService.createEmployee(
+      userId,
+      req.body,
+      req.ip
+    );
     console.log(result);
     if (result?.isDuplicateEmail) {
       return Responses.failResponse(
@@ -32,11 +37,12 @@ const createEmployee = async (req, res) => {
       req,
       res,
       result.data,
-      messages.creatSuccess,
+      messages.createdSuccess,
       201
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -44,7 +50,12 @@ const createEmployee = async (req, res) => {
 /**FUNC- TO EDIT EMPLOYEE **/
 const editEmployee = async (req, res) => {
   try {
-    const result = await employeeService.editEmployee(req.body, req.params.id);
+    const result = await employeeService.editEmployee(
+      req.userId,
+      req.params.id,
+      req.body,
+      req.ip
+    );
     console.log(result);
     if (!result) {
       return Responses.failResponse(
@@ -92,7 +103,11 @@ const editEmployee = async (req, res) => {
 const deleteEmploye = async (req, res) => {
   try {
     console.log(req.params);
-    const result = await employeeService.deleteEmploye(req.params.id);
+    const result = await employeeService.deleteEmploye(
+      userId,
+      req.params.id,
+      req.ip
+    );
     if (!result) {
       return Responses.failResponse(
         req,
@@ -111,6 +126,7 @@ const deleteEmploye = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -136,6 +152,7 @@ const listEmployee = async (req, res) => {
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -145,17 +162,85 @@ const viewSingleEmploye = async (req, res) => {
     const result = await employeeService.viewSingleEmployee(req.params.id);
     console.log("viewSingleEmploye result", result);
     if (!result) {
-      return Responses.failResponse(req, res, null, messages.recordsFound, 409);
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        200
+      );
     }
     return Responses.successResponse(
       req,
       res,
       result,
-      messages.recordsNotFound,
+      messages.recordsFound,
       200
     );
   } catch (error) {
     console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+const masterData = async (req, res) => {
+  try {
+    const result = await employeeService.masterData(req.params.organizationId);
+    console.log("result----->>>", result);
+
+    if (!result) {
+      return Responses.failResponse(
+        req,
+        res,
+        null,
+        messages.recordsNotFound,
+        200
+      );
+    }
+
+    return Responses.successResponse(
+      req,
+      res,
+      result.masterData,
+      result.message,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error);
+  }
+};
+
+const checkDuplicateUser = async (req, res) => {
+  try {
+    const result = await employeeService.checkDuplicateUserEntry(req.body);
+    console.log("result----->>>", result);
+    const resultObject = {
+      isDuplicateUser: true,
+    };
+    if (!result) {
+      resultObject.isDuplicateUser = false;
+      return Responses.failResponse(
+        req,
+        res,
+        resultObject,
+        messages.recordsNotFound,
+        200
+      );
+    }
+
+    return Responses.successResponse(
+      req,
+      res,
+      resultObject,
+      messages.duplicateEmail,
+      200
+    );
+  } catch (error) {
+    console.log(error);
+    errorLog(error);
     return Responses.errorResponse(req, res, error);
   }
 };
@@ -166,4 +251,6 @@ module.exports = {
   deleteEmploye,
   listEmployee,
   viewSingleEmploye,
+  masterData,
+  checkDuplicateUser,
 };

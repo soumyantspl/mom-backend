@@ -2,8 +2,9 @@ const jwt = require("jsonwebtoken");
 const Responses = require("../helpers/response");
 const messages = require("../constants/constantMessages");
 const employeeService = require("../services/employeeService");
+const { errorLog } = require("../middlewares/errorLog");
 /*FUNC TO GENERATE NEW TOKEN FOR USER*/
-const generatUserToken = (data) => {
+const generateUserToken = async (data) => {
   token = jwt.sign(data, process.env.JWT_USER_SECRET, {
     //expiresIn: 86400 // 24 hours
     expiresIn: "365d", // 365 days
@@ -15,7 +16,7 @@ const generatUserToken = (data) => {
 const verifyUserToken = async (req, res, next) => {
   try {
     let token = req.headers.authorization;
-
+    console.log("token-->", token);
     if (token.startsWith("Bearer ")) {
       token = token.substring(7, token.length);
     }
@@ -26,18 +27,20 @@ const verifyUserToken = async (req, res, next) => {
     console.log("isActiveUser------", isActiveUser);
     if (isActiveUser) {
       req.userId = userId;
+      req.organizationId = isActiveUser.organizationId.toString();
       next();
     } else {
       console.log("return from jwt verify");
-      return Responses.failResponse(req, res, null, messages.invalidUser, 401);
+      return Responses.failResponse(req, res, {isInValidUser:true}, messages.invalidUser, 200);
     }
   } catch (error) {
-    // console.log(error)
-    return Responses.failResponse(req, res, null, messages.invaliToken, 401);
+    console.log("Errorrr", error);
+    errorLog(error);
+    return Responses.failResponse(req, res, null, messages.invaliToken, 200);
   }
 };
 
 module.exports = {
-  generatUserToken,
+  generateUserToken,
   verifyUserToken,
 };

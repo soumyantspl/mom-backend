@@ -1,0 +1,484 @@
+Date: 13/06/2024, Time: 18:23
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (E:\Ongoing\MOM\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (E:\Ongoing\MOM\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (E:\Ongoing\MOM\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (E:\Ongoing\MOM\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (E:\Ongoing\MOM\services\employeeService.js:181:32)
+Date: 13/06/2024, Time: 18:23
+Error: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+Stack Trace: CastError: Cast to ObjectId failed for value "{ _id: 'undefined', isActive: true }" (type Object) at path "_id" for model "employees"
+    at SchemaObjectId.cast (E:\Ongoing\MOM\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (E:\Ongoing\MOM\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (E:\Ongoing\MOM\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (E:\Ongoing\MOM\node_modules\mongoose\lib\cast.js:304:34)
+    at Query.cast (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:4786:12)
+    at Query._castConditions (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:2199:10)
+    at model.Query._findOne (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:2513:8)
+    at model.Query.exec (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:4330:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.viewSingleEmployee (E:\Ongoing\MOM\services\employeeService.js:181:32)
+Date: 14/06/2024, Time: 09:44
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 14/06/2024, Time: 09:50
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 14/06/2024, Time: 09:52
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 14/06/2024, Time: 09:57
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 14/06/2024, Time: 10:15
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 14/06/2024, Time: 10:18
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 14/06/2024, Time: 10:19
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 14/06/2024, Time: 10:20
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 14/06/2024, Time: 11:00
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:06
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:07
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:27
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:40
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:42
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:42
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:42
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:42
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:43
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:43
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:48
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:48
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:48
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:53
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:54
+Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 14/06/2024, Time: 11:55
+Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 14/06/2024, Time: 11:55
+Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 14/06/2024, Time: 11:56
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 11:56
+Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 14/06/2024, Time: 12:01
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 12:01
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 12:01
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 12:01
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 12:01
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 12:04
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 12:09
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 12:09
+Error: HTML tags & Special letters are not allowed!
+Stack Trace: ValidationError: HTML tags & Special letters are not allowed!
+Date: 14/06/2024, Time: 12:22
+Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
+Stack Trace: Error: connect ECONNREFUSED 2404:6800:4003:c11::6c:465
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1606:16)
+Date: 14/06/2024, Time: 12:58
+Error: "organizationId" must only contain alpha-numeric characters
+Stack Trace: ValidationError: "organizationId" must only contain alpha-numeric characters
+Date: 14/06/2024, Time: 12:58
+Error: "organizationId" must only contain alpha-numeric characters
+Stack Trace: ValidationError: "organizationId" must only contain alpha-numeric characters
+Date: 14/06/2024, Time: 12:59
+Error: "organizationId" must only contain alpha-numeric characters
+Stack Trace: ValidationError: "organizationId" must only contain alpha-numeric characters
+Date: 14/06/2024, Time: 12:59
+Error: "organizationId" must only contain alpha-numeric characters
+Stack Trace: ValidationError: "organizationId" must only contain alpha-numeric characters
+Date: 14/06/2024, Time: 12:59
+Error: "organizationId" must only contain alpha-numeric characters
+Stack Trace: ValidationError: "organizationId" must only contain alpha-numeric characters
+Date: 14/06/2024, Time: 13:00
+Error: "organizationId" must only contain alpha-numeric characters
+Stack Trace: ValidationError: "organizationId" must only contain alpha-numeric characters
+Date: 14/06/2024, Time: 13:00
+Error: "organizationId" must only contain alpha-numeric characters
+Stack Trace: ValidationError: "organizationId" must only contain alpha-numeric characters
+Date: 14/06/2024, Time: 14:16
+Error: Invalid sort value: { createdAt: NaN }
+Stack Trace: TypeError: Invalid sort value: { createdAt: NaN }
+    at _handleSortValue (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:2945:9)
+    at Query.sort (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:2914:19)
+    at Object.listEmployee (E:\Ongoing\MOM\services\employeeService.js:172:6)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listEmployee (E:\Ongoing\MOM\controllers\employeeController.js:135:20)
+Date: 14/06/2024, Time: 14:17
+Error: Invalid sort value: { createdAt: NaN }
+Stack Trace: TypeError: Invalid sort value: { createdAt: NaN }
+    at _handleSortValue (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:2945:9)
+    at Query.sort (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:2914:19)
+    at Object.listEmployee (E:\Ongoing\MOM\services\employeeService.js:172:6)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listEmployee (E:\Ongoing\MOM\controllers\employeeController.js:135:20)
+Date: 14/06/2024, Time: 14:18
+Error: Invalid sort value: { createdAt: NaN }
+Stack Trace: TypeError: Invalid sort value: { createdAt: NaN }
+    at _handleSortValue (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:2945:9)
+    at Query.sort (E:\Ongoing\MOM\node_modules\mongoose\lib\query.js:2914:19)
+    at Object.listEmployee (E:\Ongoing\MOM\services\employeeService.js:172:6)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async listEmployee (E:\Ongoing\MOM\controllers\employeeController.js:135:20)
+Date: 15/06/2024, Time: 09:39
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 15/06/2024, Time: 09:47
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 15/06/2024, Time: 09:47
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 15/06/2024, Time: 09:47
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 15/06/2024, Time: 09:48
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 15/06/2024, Time: 09:49
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 15/06/2024, Time: 09:49
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 15/06/2024, Time: 09:50
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 15/06/2024, Time: 09:50
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 15/06/2024, Time: 09:50
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 15/06/2024, Time: 11:41
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 11:42
+Error: "accessToken" is not allowed
+Stack Trace: ValidationError: "accessToken" is not allowed
+Date: 15/06/2024, Time: 11:49
+Error: email is not defined
+Stack Trace: ReferenceError: email is not defined
+    at Object.checkDuplicateUserEntry (E:\Ongoing\MOM\services\employeeService.js:125:39)
+    at checkDuplicateUser (E:\Ongoing\MOM\controllers\employeeController.js:218:42)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:30:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 15/06/2024, Time: 11:50
+Error: Cannot read properties of null (reading 'masterData')
+Stack Trace: TypeError: Cannot read properties of null (reading 'masterData')
+    at checkDuplicateUser (E:\Ongoing\MOM\controllers\employeeController.js:224:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 15/06/2024, Time: 13:15
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:519:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 15/06/2024, Time: 14:26
+Error: "headers.authorization" is required
+Stack Trace: ValidationError: "headers.authorization" is required
+Date: 15/06/2024, Time: 16:04
+Error: inputData is not defined
+Stack Trace: ReferenceError: inputData is not defined
+    at Object.createAttendees (E:\Ongoing\MOM\services\employeeService.js:314:34)
+    at Object.updateMeeting (E:\Ongoing\MOM\services\meetingService.js:71:45)
+    at updateMeeting (E:\Ongoing\MOM\controllers\meetingController.js:71:41)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:30:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 15/06/2024, Time: 16:06
+Error: Parameter "arr.0" to insertMany() must be an object, got "false" (type boolean)
+Stack Trace: ObjectParameterError: Parameter "arr.0" to insertMany() must be an object, got "false" (type boolean)
+    at Array.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\model.js:3172:27)
+    at _start (E:\Ongoing\MOM\node_modules\mongoose\lib\helpers\parallelLimit.js:27:37)
+    at parallelLimit (E:\Ongoing\MOM\node_modules\mongoose\lib\helpers\parallelLimit.js:23:5)
+    at Model.$__insertMany (E:\Ongoing\MOM\node_modules\mongoose\lib\model.js:3204:3)
+    at E:\Ongoing\MOM\node_modules\kareem\index.js:497:25
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 15/06/2024, Time: 16:06
+Error: userId is not defined
+Stack Trace: ReferenceError: userId is not defined
+    at Object.updateMeeting (E:\Ongoing\MOM\services\meetingService.js:127:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updateMeeting (E:\Ongoing\MOM\controllers\meetingController.js:71:20)
+Date: 15/06/2024, Time: 16:08
+Error: details is not defined
+Stack Trace: ReferenceError: details is not defined
+    at Object.updateMeeting (E:\Ongoing\MOM\services\meetingService.js:130:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async updateMeeting (E:\Ongoing\MOM\controllers\meetingController.js:71:20)
+Date: 15/06/2024, Time: 16:22
+Error: employees validation failed: organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: employees validation failed: organizationId: Path `organizationId` is required.
+    at Document.invalidate (E:\Ongoing\MOM\node_modules\mongoose\lib\document.js:3289:32)
+    at E:\Ongoing\MOM\node_modules\mongoose\lib\document.js:3050:17
+    at E:\Ongoing\MOM\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 15/06/2024, Time: 16:23
+Error: employees validation failed: organizationId: Path `organizationId` is required.
+Stack Trace: ValidationError: employees validation failed: organizationId: Path `organizationId` is required.
+    at Document.invalidate (E:\Ongoing\MOM\node_modules\mongoose\lib\document.js:3289:32)
+    at E:\Ongoing\MOM\node_modules\mongoose\lib\document.js:3050:17
+    at E:\Ongoing\MOM\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Date: 15/06/2024, Time: 16:31
+Error: organizationId is not defined
+Stack Trace: ReferenceError: organizationId is not defined
+    at Object.createAttendees (E:\Ongoing\MOM\services\employeeService.js:304:15)
+    at Object.updateMeeting (E:\Ongoing\MOM\services\meetingService.js:71:45)
+    at updateMeeting (E:\Ongoing\MOM\controllers\meetingController.js:71:41)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:30:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+Date: 17/06/2024, Time: 09:45
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 17/06/2024, Time: 09:51
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at runNextTicks (node:internal/process/task_queues:60:5)
+    at listOnTimeout (node:internal/timers:540:9)
+    at process.processTimers (node:internal/timers:514:7)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 17/06/2024, Time: 09:57
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 17/06/2024, Time: 09:57
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 17/06/2024, Time: 09:57
+Error: connect ETIMEDOUT 3.108.168.132:27017
+Stack Trace: MongooseServerSelectionError: connect ETIMEDOUT 3.108.168.132:27017
+    at _handleConnectionErrors (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:875:11)
+    at NativeConnection.openUri (E:\Ongoing\MOM\node_modules\mongoose\lib\connection.js:826:11)
+    at async connectDB (E:\Ongoing\MOM\dbLayer\connection.js:8:18)
+Date: 17/06/2024, Time: 09:58
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 17/06/2024, Time: 09:58
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 17/06/2024, Time: 09:58
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 17/06/2024, Time: 09:58
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 17/06/2024, Time: 09:58
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 17/06/2024, Time: 09:58
+Error: Operation `employees.findOne()` buffering timed out after 10000ms
+Stack Trace: MongooseError: Operation `employees.findOne()` buffering timed out after 10000ms
+    at Timeout.<anonymous> (E:\Ongoing\MOM\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:185:23)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+Date: 17/06/2024, Time: 15:20
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:519:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 17/06/2024, Time: 15:20
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:519:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 18/06/2024, Time: 11:32
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:519:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 18/06/2024, Time: 11:32
+Error: self-signed certificate in certificate chain
+Stack Trace: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1674:34)
+    at TLSSocket.emit (node:events:519:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1085:8)
+    at ssl.onhandshakedone (node:_tls_wrap:871:12)
+Date: 18/06/2024, Time: 11:36
+Error: Cannot read properties of undefined (reading 'map')
+Stack Trace: TypeError: Cannot read properties of undefined (reading 'map')
+    at Object.createAgendaForMeeting (E:\Ongoing\MOM\services\agendaService.js:9:26)
+    at Object.updateMeeting (E:\Ongoing\MOM\services\meetingService.js:96:43)
+    at updateMeeting (E:\Ongoing\MOM\controllers\meetingController.js:71:41)
+    at Layer.handle [as handle_request] (E:\Ongoing\MOM\node_modules\express\lib\router\layer.js:95:5)
+    at next (E:\Ongoing\MOM\node_modules\express\lib\router\route.js:149:13)
+    at verifyUserToken (E:\Ongoing\MOM\middlewares\authMiddleware.js:30:7)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)

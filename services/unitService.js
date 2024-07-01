@@ -1,6 +1,9 @@
 const Units = require("../models/unitModel");
+const logService = require("./logsService");
+const logMessages = require("../constants/logsConstants");
+const commonHelper = require("../helpers/commonHelper");
 
-const createUnit = async (data) => {
+const createUnit = async (userId, data, ipAddress = "1000") => {
   const unitDetails = await checkDuplicate(data.organizationId, data.name);
   if (!unitDetails) {
     const newData = {
@@ -10,38 +13,134 @@ const createUnit = async (data) => {
     };
     console.log("newData", newData);
     const unitData = new Units(newData);
-    const newUnit = await unitData.save();
-    console.log("UnitData", newUnit);
+    const result = await unitData.save();
+    console.log("UnitData", result);
 
-    return newUnit;
+    ////////////////////LOGER START
+    console.log("result------------>", result);
+    const logData = {
+      moduleName: logMessages.Unit.moduleName,
+      userId,
+      action: logMessages.Unit.createUnit,
+      ipAddress,
+      details: logMessages.Unit.createUnitDetails.concat(result.organizationId),
+      organizationId: result.organizationId,
+    };
+    console.log("logData-------------------", logData);
+    await logService.createLog(logData);
+    ///////////////////// LOGER END
+
+    return result;
   }
   return false;
 };
 
-const editUnit = async (data, id) => {
-  const unit = await Units.findByIdAndUpdate({ _id: id }, data, {
-    new: true,
-  });
-  return unit;
+const editUnit = async (userId, id, data, ipAddress = "1000") => {
+  console.log("data-------------------------->", data);
+  console.log("UNIT ID-------------------------->", id);
+
+  const unitDetails = await checkDuplicate(data.organizationId, data.name);
+  console.log("unitDetails----------------->", unitDetails);
+
+  if (unitDetails) {
+    if (unitDetails.name === data.name && unitDetails._id.toString() !== id) {
+      return {
+        isDuplicate: true,
+      };
+    } else if (
+      unitDetails.name === data.name &&
+      unitDetails._id.toString() == id
+    ) {
+      const result = await Units.findByIdAndUpdate({ _id: id }, data, {
+        new: false,
+      });
+      ////////////////////LOGER START
+      const inputKeys = Object.keys(data);
+      const details = await commonHelper.generateLogObject(
+        inputKeys,
+        result,
+        userId,
+        data
+      );
+      const logData = {
+        moduleName: logMessages.Unit.moduleName,
+        userId,
+        action: logMessages.Unit.editUnit,
+        ipAddress,
+        details: details.join(" , "),
+        organizationId: result.organizationId,
+      };
+      console.log("logData-------------------", logData);
+      await logService.createLog(logData);
+      //   ///////////////////// LOGER END
+      return {
+        isDuplicate: false,
+      };
+    } else {
+      return {
+        isDuplicate: false,
+      };
+    }
+  } else {
+    const result = await Units.findByIdAndUpdate({ _id: id }, data, {
+      new: false,
+    });
+    ////////////////////LOGER START
+    const inputKeys = Object.keys(data);
+    const details = await commonHelper.generateLogObject(
+      inputKeys,
+      result,
+      userId,
+      data
+    );
+    const logData = {
+      moduleName: logMessages.Unit.moduleName,
+      userId,
+      action: logMessages.Unit.editUnit,
+      ipAddress,
+      details: details.join(" , "),
+      organizationId: result.organizationId,
+    };
+    console.log("logData-------------------", logData);
+    await logService.createLog(logData);
+    ///////////////////// LOGER END
+    return {
+      isDuplicate: false,
+    };
+  }
 };
 
-const deleteUnit = async (id) => {
+const deleteUnit = async (userId, id, data, ipAddress = "1000") => {
   console.log("id--->>", id);
-  const deletedUnit = await Units.findByIdAndUpdate(
+  const result = await Units.findByIdAndUpdate(
     { _id: id },
     { isActive: false },
-    { new: true }
+    { new: false }
   );
-  return deletedUnit;
+
+  ////////////////////LOGER START
+  const logData = {
+    moduleName: logMessages.Unit.moduleName,
+    userId,
+    action: logMessages.Unit.deleteUnit,
+    ipAddress,
+    details: result.organizationId + logMessages.Unit.deleteUnit,
+    organizationId: result.organizationId,
+  };
+  console.log("logData-------------------", logData);
+  await logService.createLog(logData);
+  ///////////////////// LOGER END
+  return result;
 };
 
-const listUnit = async (bodyData, queryData) => {
-  const { order } = queryData;
+const listUnit = async (userId, bodyData, queryData) => {
   const { organizationId, searchKey } = bodyData;
+  const { order } = queryData;
+  console.log("organizationId-->", organizationId);
   let query = searchKey
     ? {
         organizationId,
-        name: searchKey,
+        name: { $regex: searchKey, $options: "i" },
         isActive: true,
       }
     : {
@@ -71,5 +170,5 @@ module.exports = {
   createUnit,
   editUnit,
   deleteUnit,
-  listUnit
+  listUnit,
 };

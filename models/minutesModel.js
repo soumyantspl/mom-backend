@@ -1,34 +1,41 @@
 const mongoose = require("mongoose");
 const minutesSchema = new mongoose.Schema(
   {
-    title: {
+    description : {
       type: String,
       required: true,
     },
+    ///
+    createdById: {
+      type: mongoose.Schema.ObjectId,
+      required: true,
+    },
     priority: {
+      type: String,
       enum: ["HIGH", "NORMAL", "LOW"],
       required: true,
     },
     attendees: [
       {
-        createdById: {
+        id: {
           type: mongoose.Schema.ObjectId,
-          required: [true, ""],
+          required: true,
         },
         status: {
-          type: Boolean,
+          type: String,
+          enum: ["ACCEPTED", "REJECT", "PENDING"],
           required: true,
         },
       },
     ],
-    responsiblePerson: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
-    reAssignedTo: {
-      type: mongoose.Schema.ObjectId,
-      required: true,
-    },
+    // responsiblePerson: {
+    //   type: mongoose.Schema.ObjectId,
+    //   required: true,
+    // },
+    // reAssignedTo: {
+    //   type: mongoose.Schema.ObjectId,
+    //   // required: true,
+    // },
     amendmentDetails: [
       {
         createdById: {
@@ -47,15 +54,66 @@ const minutesSchema = new mongoose.Schema(
     ],
     agendaId: {
       type: mongoose.Schema.ObjectId,
-      required: true,
     },
     meetingId: {
       type: mongoose.Schema.ObjectId,
       required: true,
     },
-    organisationId: {
+    organizationId: {
       type: mongoose.Schema.ObjectId,
       required: true,
+    },
+    assignedUserId: {
+      type: mongoose.Schema.ObjectId,
+    },
+    reassignedUserId: {
+      type: mongoose.Schema.ObjectId,
+    },
+    reassigneRequestDetails: [
+      {
+        userId: {
+          type: mongoose.Schema.ObjectId,
+          required: true,
+        },
+        dateTime: {
+          type: Date,
+          required: true,
+          default: Date.now(),
+        },
+        requestDetails: {
+          type: String,
+        },
+      },
+    ],
+    reassignDetails: [
+      {
+        userId: {
+          type: mongoose.Schema.ObjectId,
+          required: true,
+        },
+        dateTime: {
+          type: Date,
+          required: true,
+          default: Date.now(),
+        },
+        reAssignReason: {
+          type: String,
+        },
+      },
+    ],
+    isComplete: {
+      type: Boolean,
+      default:false
+      //required: true,
+    },
+    dueDate: {
+      type: Date,
+      required: true,
+    },
+    isAction: {
+      type: Boolean,
+      required: true,
+      default:false
     },
   },
   {

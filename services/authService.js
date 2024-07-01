@@ -1,8 +1,11 @@
 const Employee = require("../models/employeeModel");
 const OtpLogs = require("../models/otpLogsModel");
-const commonHelper = require("../helpers/commomHelper");
+const commonHelper = require("../helpers/commonHelper");
 const emailService = require("./emailService");
 const authMiddleware = require("../middlewares/authMiddleware");
+const emailTemplates = require("../emailSetUp/emailTemplates");
+const emailConstants = require("../constants/emailConstants");
+const ObjectId = require("mongoose").Types.ObjectId;
 /**FUNC- TO VERIFY VALID EMAIL USER */
 const verifyEmail = async (email) => {
   console.log("----------------------33333", email);
@@ -17,7 +20,7 @@ const sendOtp = async (email) => {
   const userData = await verifyEmail(email);
   console.log('userData------',userData)
   if (userData) {
-    return await validateSendingOtp(userData);
+    return await validateSendingOtp(userData,"Send OTP");
   }
   return false;
 };
@@ -27,7 +30,7 @@ const verifyOtp = async (data) => {
   const otpLogsData = await getOtpLogs(data);
   if (otpLogsData.length !== 0) {
     const userData = otpLogsData[0].userDetail;
-    const token = authMiddleware.generatUserToken({
+    const token = await authMiddleware.generateUserToken({
       userId: userData._id,
       name: userData.name,
     });
@@ -40,7 +43,7 @@ const verifyOtp = async (data) => {
   return false;
 };
 
-/**FUNC- TO VERIFY VALID OTP OF USER */
+/**FUNC- TO OTP LOGS DETAILS */
 const getOtpLogs = async (data) => {
   let fromTime = new Date();
   fromTime.setMinutes(
@@ -58,6 +61,7 @@ const getOtpLogs = async (data) => {
           $gte: fromTime,
           $lt: new Date(),
         },
+        isActive:true
       },
     },
     {
@@ -77,6 +81,8 @@ const getOtpLogs = async (data) => {
           name: 1,
           _id: 1,
           email: 1,
+          organizationId:1,
+          isMeetingOrganiser:1
         },
       },
     },
@@ -88,8 +94,11 @@ const getOtpLogs = async (data) => {
 const insertOtp = async (
   userData,
   otpResendCount = 0,
-  otpResendTime = null
+  otpResendTime = null,
+  emailType
 ) => {
+  const otpLogsUpdate=await OtpLogs.updateMany({ email: userData.email, organizationId: new ObjectId(userData.organizationId)},{isActive:false},{upsert: true});
+  console.log("----------------otpLogsUpdate",otpLogsUpdate)
   const data = {
     otp: commonHelper.generateOtp(),
     email: userData.email,
@@ -100,7 +109,14 @@ const insertOtp = async (
   };
   const otpData = new OtpLogs(data);
   await otpData.save();
-  await emailService.sendSignInOtpEmail(userData, data.otp);
+  console.log("-------------------------------1", userData, data.otp);
+  const supportData="support@ntspl.co.in";
+  const logo="https://d3uom8aq23ax4d.cloudfront.net/wp-content/themes/ntspl-corporate-website/images/ntspl_logo.png";
+  const mailData = await emailTemplates.sendOtpEmailTemplate(userData, data.otp,process.env.CHECK_OTP_VALIDATION_TIME,supportData,logo);
+  //const mailData = await emailTemplates.signInByOtpEmail(userData, data.otp);
+  const emailSubject=emailConstants.signInOtpsubject;
+  console.log("sendOtpEmailTemplate-----------------------maildata",mailData)
+  await emailService.sendEmail(userData.email,emailType,emailSubject,mailData);
   return data.otp;
 };
 
@@ -109,12 +125,12 @@ const reSendOtp = async (email) => {
   const userData = await verifyEmail(email);
   console.log("userData-------------", userData);
   if (userData) {
-    return await validateSendingOtp(userData);
+    return await validateSendingOtp(userData,"Resend OTP");
   }
   return false;
 };
 // FUNCTION TO VALIDATE SENDING OTP
-const validateSendingOtp = async (userData) => {
+const validateSendingOtp = async (userData,emailType) => {
   let otpResendTime;
   let otpResendCount;
   const rulesData = await checkReSendOtpRules(userData);
@@ -122,15 +138,16 @@ const validateSendingOtp = async (userData) => {
   if (rulesData?.isNewRecordCreated) {
     otpResendTime = new Date();
     otpResendCount = 1;
+   
     console.log("final user data-----------", userData);
-    return await insertOtp(userData, otpResendCount, otpResendTime);
+    return {...await insertOtp(userData, otpResendCount, otpResendTime,emailType),otpResendCount}
   }
 
   if (rulesData?.isReSendOtpAllowed) {
     otpResendTime = rulesData.otpResendTime;
     otpResendCount = rulesData.otpResendCount;
     console.log("final user data-----------", userData);
-    return await insertOtp(userData, otpResendCount, otpResendTime);
+    return {...await insertOtp(userData, otpResendCount, otpResendTime,emailType),otpResendCount}
   }
   if (!rulesData.isReSendOtpAllowed) {
     return rulesData;
@@ -152,6 +169,9 @@ const checkReSendOtpRules = async (userData) => {
         new Date(),
         otpResendTime
       );
+      console.log("=======================", timeDifference)
+      console.log("=======================",  process.env.OTP_MAX_RESEND_TIMEINMINUTES)
+      console.log("=======================", timeDifference <= process.env.OTP_MAX_RESEND_TIMEINMINUTES)
       // if resend count is more than or equals to 3(max resend number)
       //&& time difference between current time & first resend attemt time is less than 3 hour
       if (
@@ -240,7 +260,7 @@ const setPassword = async (data) => {
 const signInByPassword = async (data) => {
   const userData = await Employee.findOne(
     { email: data.email },
-    { _id: 1, email: 1, organizationId: 1, name: 1, password: 1, isActive: 1 }
+    { _id: 1, email: 1, organizationId: 1, name: 1, password: 1, isActive: 1,isMeetingOrganiser:1 }
   );
   console.log("userData----------", userData);
   if (!userData) {
@@ -264,7 +284,7 @@ const signInByPassword = async (data) => {
     };
   }
 
-  const token = authMiddleware.generatUserToken({
+  const token = await authMiddleware.generateUserToken({
     userId: userData._id,
     name: userData.name,
   });
@@ -273,10 +293,11 @@ const signInByPassword = async (data) => {
   return {
     token,
     userData: {
-      id: userData._id,
+      _id: userData._id,
       name: userData.name,
       email: userData.email,
       organizationId: userData.organizationId,
+      isMeetingOrganiser:userData.isMeetingOrganiser
     },
   };
 };

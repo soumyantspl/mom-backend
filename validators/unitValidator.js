@@ -1,9 +1,15 @@
 const Joi = require("joi");
 const Responses = require("../helpers/response");
+const { errorLog } = require("../middlewares/errorLog");
 
 const createUnitValidator = async (req, res, next) => {
   try {
-    const schema = Joi.object({
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const bodyschema = Joi.object({
       name: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
@@ -20,17 +26,24 @@ const createUnitValidator = async (req, res, next) => {
         .required(),
       organizationId: Joi.string().trim().alphanum().required(),
     });
-
-    await schema.validateAsync(req.body);
+    await headerSchema.validateAsync({ headers: req.headers });
+    await bodyschema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
-    return Responses.errorResponse(req, res, error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 
 const editUnitValidator = async (req, res, next) => {
   try {
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    console.log("-----------", req.headers, req.body, req.params);
     const bodySchema = Joi.object({
       name: Joi.string()
         .trim()
@@ -44,46 +57,59 @@ const editUnitValidator = async (req, res, next) => {
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
+      organizationId: Joi.string().trim().alphanum().required(),
     });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
 
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     await bodySchema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
-    return Responses.errorResponse(req, res, error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 
 const deleteUnitValidator = async (req, res, next) => {
   try {
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
     const paramsSchema = Joi.object({
       id: Joi.string().trim().alphanum().required(),
     });
-
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.params);
     next();
   } catch (error) {
     console.log(error);
-    return Responses.errorResponse(req, res, error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
+
 const listUnitValidator = async (req, res, next) => {
   try {
-    console.log(req.body);
     console.log(req.query);
     console.log(req.params);
-    const schema = Joi.object({
+    const headerSchema = Joi.object({
+      headers: Joi.object({
+        authorization: Joi.required(),
+      }).unknown(true),
+    });
+    const bodyschema = Joi.object({
       searchKey: Joi.string()
         .trim()
         .pattern(/^[0-9a-zA-Z ,/-]+$/)
         .messages({
           "string.pattern.base": `HTML tags & Special letters are not allowed!`,
         }),
-
       organizationId: Joi.string().trim().alphanum().required(),
     });
     const paramsSchema = Joi.object({
@@ -91,18 +117,19 @@ const listUnitValidator = async (req, res, next) => {
       page: Joi.number(),
       order: Joi.number(),
     });
-
+    await headerSchema.validateAsync({ headers: req.headers });
     await paramsSchema.validateAsync(req.query);
-    await schema.validateAsync(req.body);
+    await bodyschema.validateAsync(req.body);
     next();
   } catch (error) {
     console.log(error);
-    return Responses.errorResponse(req, res, error);
+    errorLog(error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 module.exports = {
   createUnitValidator,
   editUnitValidator,
   deleteUnitValidator,
-  listUnitValidator
+  listUnitValidator,
 };
