@@ -10,7 +10,12 @@ exports.validateCreateDesignation = async (req, res, next) => {
       }).unknown(true),
     });
     const bodySchema = Joi.object({
-      name: Joi.string().alphanum().min(3).max(30).required(),
+      name: Joi.string()
+        .trim()
+        .pattern(/^[0-9a-zA-Z ,/-]+$/)
+        .messages({
+          "string.pattern.base": `HTML tags & Special letters are not allowed!`,
+        }),
       organizationId: Joi.string().required(),
     });
     await headerSchema.validateAsync({ headers: req.headers });
@@ -19,7 +24,7 @@ exports.validateCreateDesignation = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 
@@ -31,7 +36,12 @@ exports.editDesignationValidator = async (req, res, next) => {
       }).unknown(true),
     });
     const bodySchema = Joi.object({
-      name: Joi.string().alphanum().min(3).max(30),
+      name: Joi.string()
+        .trim()
+        .pattern(/^[0-9a-zA-Z ,/-]+$/)
+        .messages({
+          "string.pattern.base": `HTML tags & Special letters are not allowed!`,
+        }),
       id: Joi.string(),
     });
     await headerSchema.validateAsync({ headers: req.headers });
@@ -40,7 +50,7 @@ exports.editDesignationValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 
@@ -60,7 +70,7 @@ exports.deleteDesignationValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
 
@@ -97,6 +107,6 @@ exports.listDesignationValidator = async (req, res, next) => {
   } catch (error) {
     console.log(error);
     errorLog(error);
-    return Responses.errorResponse(req, res, error);
+    return Responses.errorResponse(req, res, error, 200);
   }
 };
